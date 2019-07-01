@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[first]]></title>
-    <url>%2F2019%2F06%2F30%2Ffirst%2F</url>
-    <content type="text"><![CDATA[:wq: q]]></content>
+    <title><![CDATA[我的第一篇]]></title>
+    <url>%2F2019%2F07%2F01%2F%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>前端 - 搭建博客</category>
+      </categories>
+      <tags>
+        <tag>搭建博客</tag>
+        <tag>前端</tag>
+        <tag>next</tag>
+        <tag>备忘</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Hello World]]></title>
