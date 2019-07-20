@@ -95,7 +95,7 @@
 <meta property="og:description" content="前言​        其实大家都说决策树简单，但个人觉得如果想学好这个算法其实还是需要下一些功夫的。决策树是一种基本的分类与回归方法(不要觉得决策树只能分类哦，它也可以做回归的)。 ​        为了方便下面的讨论，我们先做一下说明：  ​        假设有一组训练数据 D=(x1,y1),(x2,y2),\cdots,(xn,yn)​        表示有n个样本，样本共分为K类情况下，">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/07/20/决策树全解析/20190720162435.png">
-<meta property="og:updated_time" content="2019-07-20T10:55:07.696Z">
+<meta property="og:updated_time" content="2019-07-20T11:01:28.937Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="决策树全解析">
 <meta name="twitter:description" content="前言​        其实大家都说决策树简单，但个人觉得如果想学好这个算法其实还是需要下一些功夫的。决策树是一种基本的分类与回归方法(不要觉得决策树只能分类哦，它也可以做回归的)。 ​        为了方便下面的讨论，我们先做一下说明：  ​        假设有一组训练数据 D=(x1,y1),(x2,y2),\cdots,(xn,yn)​        表示有n个样本，样本共分为K类情况下，">
@@ -353,7 +353,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-20T18:55:07+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-20T19:01:28+08:00">
                 2019-07-20
               </time>
             
@@ -403,7 +403,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3.3k
+                  3.4k
                 </span>
               
 
@@ -485,7 +485,7 @@ H(D|A_m)=\sum_{i=1}^{K}{\frac{|D_i|}{|D|}}H(D_i)</script><p>​        <strong>D
 <script type="math/tex; mode=display">
 G_{ratio}=\frac{g(D|A_m)}{H_{A_m}(D)}</script><p>​        其中，</p>
 <script type="math/tex; mode=display">
-H_{A_m}(D)=-\sum_{i=1}^{K}\frac{|D_i|}{|D|}log2{\frac{|D_i|}{|D|}}</script><p>​        需要注意的是，<strong>信息增益率原则可能对取值数目较少的属性更加偏爱</strong>,为了解决这个问题，可以<strong>先找出信息增益在平均值以上的属性，在从中选择信息增益率最高的</strong>。</p>
+H_{A_m}(D)=-\sum_{i=1}^{K}\frac{|D_i|}{|D|}log2{\frac{|D_i|}{|D|}}</script><p>​        需要注意的是，<strong>信息增益率原则可能对取值数目较少的属性更加偏爱</strong>。因此，C4.5并不是直接选择增益最大的候选划分属性。为了解决这个问题，C4.5采用了一种<strong>启发式算法</strong>，可以<strong>先从候选划分属性中找出信息增益在平均值以上的属性，再从中选择信息增益率最高的</strong>。</p>
 <h1 id="CART树"><a href="#CART树" class="headerlink" title="CART树"></a>CART树</h1><p>​        这里先强调一点，<strong>CART树是二叉树</strong>。与ID3和C4.5的决策树所不同的是，<strong>ID3和C4.5生成的决策树可以是多叉的，每个节点下的叉树由该节点特征的取值种类而定，比如特征年龄分为(青年，中年，老年)，那么该节点下可分为3叉。而CART决策树为二叉树，内部节点特征取值为“是”和“否”。左分支取值为“是”，右分支取值为“否”</strong>。因此在搜索分裂特征时，是递归地二分每一个特征。个人理解为<strong>不仅要遍历每一个特征，还要遍历每一个特征的二分取值</strong>，等于是做了一次<strong>双层遍历</strong>。相比于ID3和C4.5要更加复杂一些。</p>
 <p>​        另外，我们还需要注意一点，<strong>ID3和C4.5只能用于分类</strong>，而<strong>CART树既可以用于分类</strong>，也能用于回归。</p>
 <p>​        <strong>CART树的基本构建流程与ID3树和C4.5树类似。</strong>唯一的区别就在于特征选择准则不同，另外CART树不仅要选择最优特征，还要选择最优二值切分点。别的都一样哈哈哈！！</p>
