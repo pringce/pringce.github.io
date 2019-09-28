@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[MySQL密码错误如何修改？]]></title>
+    <url>%2F2019%2F09%2F28%2FMySQL%E5%AF%86%E7%A0%81%E9%94%99%E8%AF%AF%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9%EF%BC%9F%2F</url>
+    <content type="text"><![CDATA[​ 前两天我在用MySQL的时候，出现了一个小问题：就是我在注册完windows服务后，然后用net start MySQL80登录到数据库服务器，却无法使得客户端连接到服务器，即在输入完mysql -uroot -p后，会报如下的错误： (这种问题一般是由于密码错误引起的) ​ 于是我就查了一个解决方法，特此记录一下： 1、首先打开一个cmd窗口A： 首先关闭MySQL服务器 1net stop MySQL80 无密码启动MySQL服务 1mysqld --console --skip-grant-tables --shared-memory 2、再开一个cmd窗口B： 无密码登录（密码处直接enter） 12mysql -uroot -p//注意下面出现密码时，直接enter即可连接至MySQL 免密码登录设置空密码 ​ 设置空密码 1UPDATE mysql.user SET authentication_string=&apos;&apos; WHERE user=&apos;root&apos; and host=&apos;localhost&apos;; ​ 刷新 1flush privileges; 设置加密的密码 ​ 以caching_sha2_password加密密码并设置 1ALTER user &apos;root&apos;@&apos;localhost&apos; IDENTIFIED WITH caching_sha2_password BY &apos;新密码&apos;; ​ 刷新 1flush privileges; 这样修改完之后，就可以设置新的密码了，也就可以解决上述问题。]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+        <tag>个人博客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[MySQL初始化与启动那些事]]></title>
     <url>%2F2019%2F09%2F28%2FMySQL%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%8E%E5%90%AF%E5%8A%A8%E9%82%A3%E4%BA%9B%E4%BA%8B%2F</url>
     <content type="text"><![CDATA[​ MySQL采用客户端/服务端架构，即它是由两部分组成的，一部分是客户端程序，一部分是服务器程序。客户端可以有多种形式，比如手机APP，电脑软件或者网页版微信。每个客户端都有一个唯一的用户名，就是你的微信号，另一方面，腾讯公司在他们的机房里运行着一个服务器程序，我们平时操作微信其实都是用客户端来和这个服务器来打交道。 ​ MySQL的使用过程大概为：它的服务器程序直接和我们存储的数据打交道，然后可以有好多客户端程序连接到这个服务器程序，发送增删改查的请求，然后服务器程序就响应这些请求，从而操作它维护的数据。日常使用MySQL的场景一般是这样的： 启动MySQL服务器程序 启动MySQL客户端程序并连接到服务器程序 在客户端程序中输入一些命令语句作为请求发送到服务器程序，服务器程序收到这些请求后，会根据请求的内容来操作具体的数据并向客户端返回操作结果。 MySQL默认安装位置：C:\Program Files\MySQL\MySQL Server 8.0\，也可以自定义安装路径，为了方便就按照默认路径来安装吧~ 如何启动MySQL服务器程序？​ 这里以windows系统为例介绍。在windows系统下提供了手动启动和以服务的形式启动两种启动方式。 以服务的形式启动 ​ 什么是windows服务呢？如果需要长时间的运行某个程序，而且需要在计算机启动的时候启动它，一般我们都会把它注册为一个windows服务，操作系统会帮助我们管理它。 在MySQL根目录下(C:\Program Files\MySQL\MySQL Server 8.0)手动创建一个data文件夹 进入到bin文件夹，打开cmd命令行，输入命令： 1mysqld install MySQL80 进入到bin文件夹，打开cmd命令行，输入命令： 1mysqld --initialize-insecure --user=mysql80 打开MySQL服务器程序： 12net start MySQL80 //打开net stop MySQL80 //关闭 手动启动 ​ MySQL安装目录下的bin目录下的mysqld可执行文件代表着服务器程序，我们运行这个可执行文件就会启动MySQL服务器。 ​ MySQL服务器运行过程中严重依赖一个称之为数据目录的路径，不过我们安装MySQL时使用的MySQL Installer把这个数据目录的路径设置为了： 1C:\ProgramData\MySQL\MySQL Server 8.0\data 当然不同版本的MySQL Installer可能将数据目录的路径设置为不同的值。 ​ 在使用mysqld可执行文件启动MySQL服务器程序时，它默认并不会将上述路径设置为数据目录的路径，此时需要我们在启动MySQL服务器时显式地指定一个称之为datadir的参数，该参数就代表着数据目录的路径，所以使用下面的命令启动MySQL服务器： 1mysqld --datadir=&quot;C:\ProgramData\MySQL\MySQL Server 8.0\data&quot; 特别要注意的是，当我们按下回车键后，cmd命令窗似乎卡住不动了，这就意味着MySQL服务器启动了，如果此时我们把这个cmd命令窗关掉，或者按下Ctrl+C键，就会停止MySQL服务器程序的运行。因此，还是推荐使用windows服务的方式来启动或停止MySQL服务器程序。 ​ 如果想查看使用mysqld启动MySQL服务器的过程中输出的日志信息，可以在上述命令后边加上—console： 1mysqld --datadir=&quot;C:\ProgramData\MySQL\MySQL Server 8.0\data&quot; --console 如何启动MySQL客户端程序？​ 在服务器程序启动之后（不管是使用mysqld可执行文件启动的还是使用Windows服务的方式启动的），就可以接着启动客户端程序来连接到这个服务器喽。bin目录下有许多客户端程序，比方说mysqladmin、mysqldump、mysqlcheck等等等等（好多呢，就不一一列举了）。这里我们重点要关注的是可执行文件mysql.exe，通过这个可执行文件可以让我们和服务器程序进程交互，也就是发送请求以及接收服务器的处理结果。启动这个可执行文件时一般需要一些参数，格式如下： 1mysql -h主机名 -u用户名 -p密码 参数意义： 参数名 含义 -h 表示启动服务器程序的计算机的域名或者IP地址，如果服务器程序就运行在本机的话，可以省略这个参数，也可以填localhost或127.0.0.1。也可以写成—host=主机名 -u 表示用户名，作为超级管理员的我们的用户名是root。也可以写成—user=root -p 表示密码。也可以写成—password=密码 连接注意事项 最好不要再一行命令中输入密码 这样容易导致密码泄露，可以这样写 1mysql -hlocalhost -uroot -p 如果非要显示的把密码写出来，那密码值和-p之间不能有空格，其他参数之间可以有空格。且各个参数的摆放顺序没有硬性规定。 如果你的服务器和客户端安装在同一台机器上，-h参数可以忽略，就像这样 1mysql -uroot -p]]></content>
