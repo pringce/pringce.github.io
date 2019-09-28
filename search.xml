@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[MySQL初始化与启动那些事]]></title>
+    <url>%2F2019%2F09%2F28%2FMySQL%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%8E%E5%90%AF%E5%8A%A8%E9%82%A3%E4%BA%9B%E4%BA%8B%2F</url>
+    <content type="text"><![CDATA[​ MySQL采用客户端/服务端架构，即它是由两部分组成的，一部分是客户端程序，一部分是服务器程序。客户端可以有多种形式，比如手机APP，电脑软件或者网页版微信。每个客户端都有一个唯一的用户名，就是你的微信号，另一方面，腾讯公司在他们的机房里运行着一个服务器程序，我们平时操作微信其实都是用客户端来和这个服务器来打交道。 ​ MySQL的使用过程大概为：它的服务器程序直接和我们存储的数据打交道，然后可以有好多客户端程序连接到这个服务器程序，发送增删改查的请求，然后服务器程序就响应这些请求，从而操作它维护的数据。日常使用MySQL的场景一般是这样的： 启动MySQL服务器程序 启动MySQL客户端程序并连接到服务器程序 在客户端程序中输入一些命令语句作为请求发送到服务器程序，服务器程序收到这些请求后，会根据请求的内容来操作具体的数据并向客户端返回操作结果。 MySQL默认安装位置：C:\Program Files\MySQL\MySQL Server 8.0\，也可以自定义安装路径，为了方便就按照默认路径来安装吧~ 如何启动MySQL服务器程序？​ 这里以windows系统为例介绍。在windows系统下提供了手动启动和以服务的形式启动两种启动方式。 以服务的形式启动 ​ 什么是windows服务呢？如果需要长时间的运行某个程序，而且需要在计算机启动的时候启动它，一般我们都会把它注册为一个windows服务，操作系统会帮助我们管理它。 在MySQL根目录下(C:\Program Files\MySQL\MySQL Server 8.0)手动创建一个data文件夹 进入到bin文件夹，打开cmd命令行，输入命令： 1mysqld install MySQL80 进入到bin文件夹，打开cmd命令行，输入命令： 1mysqld --initialize-insecure --user=mysql80 打开MySQL服务器程序： 12net start MySQL80 //打开net stop MySQL80 //关闭 手动启动 ​ MySQL安装目录下的bin目录下的mysqld可执行文件代表着服务器程序，我们运行这个可执行文件就会启动MySQL服务器。 ​ MySQL服务器运行过程中严重依赖一个称之为数据目录的路径，不过我们安装MySQL时使用的MySQL Installer把这个数据目录的路径设置为了： 1C:\ProgramData\MySQL\MySQL Server 8.0\data 当然不同版本的MySQL Installer可能将数据目录的路径设置为不同的值。 ​ 在使用mysqld可执行文件启动MySQL服务器程序时，它默认并不会将上述路径设置为数据目录的路径，此时需要我们在启动MySQL服务器时显式地指定一个称之为datadir的参数，该参数就代表着数据目录的路径，所以使用下面的命令启动MySQL服务器： 1mysqld --datadir=&quot;C:\ProgramData\MySQL\MySQL Server 8.0\data&quot; 特别要注意的是，当我们按下回车键后，cmd命令窗似乎卡住不动了，这就意味着MySQL服务器启动了，如果此时我们把这个cmd命令窗关掉，或者按下Ctrl+C键，就会停止MySQL服务器程序的运行。因此，还是推荐使用windows服务的方式来启动或停止MySQL服务器程序。 ​ 如果想查看使用mysqld启动MySQL服务器的过程中输出的日志信息，可以在上述命令后边加上—console： 1mysqld --datadir=&quot;C:\ProgramData\MySQL\MySQL Server 8.0\data&quot; --console 如何启动MySQL客户端程序？​ 在服务器程序启动之后（不管是使用mysqld可执行文件启动的还是使用Windows服务的方式启动的），就可以接着启动客户端程序来连接到这个服务器喽。bin目录下有许多客户端程序，比方说mysqladmin、mysqldump、mysqlcheck等等等等（好多呢，就不一一列举了）。这里我们重点要关注的是可执行文件mysql.exe，通过这个可执行文件可以让我们和服务器程序进程交互，也就是发送请求以及接收服务器的处理结果。启动这个可执行文件时一般需要一些参数，格式如下： 1mysql -h主机名 -u用户名 -p密码 参数意义： 参数名 含义 -h 表示启动服务器程序的计算机的域名或者IP地址，如果服务器程序就运行在本机的话，可以省略这个参数，也可以填localhost或127.0.0.1。也可以写成—host=主机名 -u 表示用户名，作为超级管理员的我们的用户名是root。也可以写成—user=root -p 表示密码。也可以写成—password=密码 连接注意事项 最好不要再一行命令中输入密码 这样容易导致密码泄露，可以这样写 1mysql -hlocalhost -uroot -p 如果非要显示的把密码写出来，那密码值和-p之间不能有空格，其他参数之间可以有空格。且各个参数的摆放顺序没有硬性规定。 如果你的服务器和客户端安装在同一台机器上，-h参数可以忽略，就像这样 1mysql -uroot -p]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+        <tag>个人博客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[hexo博客如何迁移至其它电脑]]></title>
     <url>%2F2019%2F07%2F20%2Fhexo%E5%8D%9A%E5%AE%A2%E5%A6%82%E4%BD%95%E8%BF%81%E7%A7%BB%E8%87%B3%E5%85%B6%E5%AE%83%E7%94%B5%E8%84%91%2F</url>
     <content type="text"><![CDATA[​ 当你在一台电脑上写博客写的蛮爽的，但突然有一天你的电脑坏了或者被偷了咋办？你那些本地的博客可咋整！一想到这种有可能发生的危险，我就夜不能寐呀。于是我就开始疯狂地查找资料，但网上的资料良莠不齐。于是本人就自己慢慢的摸索嘛，这是一个程序员最基本的素质(其实还是自己太菜了)。下面我就把我的总结写一下，希望能对以后的自己和大家有帮助。 1、在新电脑上安装NodeJs和Git​ 这一步很简单，具体怎么安装，可以参见我的上一篇博文：利用hexo框架搭建个人博客(手把手教学) 2、GitHub新建分支​ 在pringce.github.io仓库下： 这里的分支名可以任意设置。 3、设置分支为默认仓库当前仓库-&gt;Settings-&gt;Branches-&gt;Default Branch 4、clone至本地​ 将该分支克隆至本地 1git clone https://github.com/pringce/pringce.github.io.git ​ cd进入 clone 下来的pringce.github.io文件夹，在此文件夹目录下git bash执行git branch命令，应该是新建的分支名 new。 5、新电脑生成ssh key并添加至GitHub​ 依次按照下述步骤生成本机ssh key： 1git config --global user.email "GitHub注册并验证时的邮箱" 1git config --global user.name "GitHub用户名" 1ssh-keygen // 一直按enter就行 在本机目录“C:\Users\10530\.ssh”会生成两个文件：id_rsa(私钥)和id_rsa.pub(公钥)。打开id_rsa.pub，复制里面的内容到GitHub: Settings -&gt; SSH and GPG keys -&gt; (填写)Title -&gt; (粘贴)Key -&gt; Add SSH Key 测试是否成功： 1ssh -T git@github.com 输出 You’ve successfully authenticated 表示添加key 成功。 6、安装hexo1npm install hexo-cli -g 7、将原博客文件拷贝至pringce.github.io文件夹​ 将原博客文件夹下的文件拷贝至pringce.github.io，需要拷贝6个：_config.yml（站点配置文件）、themes\（主题）、source\（博客源文件）、scaffolds\（文章的模板）、package.json、.gitignore。 此时，我们不需要再用hexo init来生成博客了，因为需要的文件我们已经拷贝过来了。 8、提交本地至new分支​ 进入pringce.github.io文件夹，依次执行 1git add . 1git commit -m &quot;新电脑&quot; 1git push 这样，master分支用于保存博客静态资源，提供博客页面供人访问；new分支用于备份博客部署文件，供自己修改和更新，两者在一个GitHub仓库内互不冲突。 9、安装hexo依赖的包1npm install ​ 所依赖的包都在上一步中的package.json备份文件里，所以直接这一个命令就可以了。就可以把你以前配置的那些包都安装上了。 10、新旧电脑更新博客​ 依次按照以下步骤来更新博客： 1git pull 1hexo new &quot;name&quot; 1hexo clean 1hexo g 1hexo s(测试时候在localhost看一下) 1hexo d(部署) 1git add . 1git commit -m &quot;新电脑&quot; 1git push //保证new分支版本为最新 因此，如果我们电脑又坏了或者又被偷了。。。那我们可以先获得新电脑的ssh key，然后添加到GitHub。然后把new分支下文件git clone下来，然后再新建、编辑、部署一步一步来即可。 好啦，心理的最大隐患解除了，可以安心睡觉啦。大家晚安！！]]></content>
@@ -8,8 +20,8 @@
         <category>教程</category>
       </categories>
       <tags>
-        <tag>hexo</tag>
         <tag>个人博客</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -32,8 +44,8 @@
         <category>教程</category>
       </categories>
       <tags>
-        <tag>hexo</tag>
         <tag>个人博客</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
 </search>
