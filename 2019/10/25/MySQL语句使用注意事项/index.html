@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="个人博客,hexo,">
+  <meta name="keywords" content="MySQL,个人博客,">
 
 
 
@@ -86,27 +86,18 @@
 
 
 
-<meta name="description" content="前言​        本文是在Windows 10环境下搭建个人博客，对于Linux和Mac环境，搭建工作基本类似，区别无非在于个别命令行指令的区别，读者只需作相应的调整即可。 1. 安装NodeJs​        hexo是基于NodeJs环境的静态博客，里面的npm工具很有用（个人感觉类似于python里面的pip或者anaconda里面的conda，是一个包管理工具），所以说NodeJs是">
-<meta name="keywords" content="个人博客,hexo">
+<meta name="description" content="​        MySQL的基本运行过程是：通过客户端发送命令给服务器程序，服务器程序按照接收的命令去操作实际的数据。在我们使用黑框框启动了MySQL客户端程序之后，界面上会一直显示一行字儿：mysql&amp;gt;，这是一个提示符，你可以在它后边输入我们的命令然后按下回车键就把命令从客户端程序发送到了服务器程序，在书写命令的时候需要注意下边这几点： 1、命令结束符号 ​        在书写完一个命">
+<meta name="keywords" content="MySQL,个人博客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用hexo框架搭建个人博客(手把手教学)">
-<meta property="og:url" content="http://yoursite.com/2019/07/02/利用hexo框架搭建个人博客(手把手教学)/index.html">
+<meta property="og:title" content="MySQL语句使用注意事项">
+<meta property="og:url" content="http://yoursite.com/2019/10/25/MySQL语句使用注意事项/index.html">
 <meta property="og:site_name" content="CodeMonkey · 程序猴">
-<meta property="og:description" content="前言​        本文是在Windows 10环境下搭建个人博客，对于Linux和Mac环境，搭建工作基本类似，区别无非在于个别命令行指令的区别，读者只需作相应的调整即可。 1. 安装NodeJs​        hexo是基于NodeJs环境的静态博客，里面的npm工具很有用（个人感觉类似于python里面的pip或者anaconda里面的conda，是一个包管理工具），所以说NodeJs是">
+<meta property="og:description" content="​        MySQL的基本运行过程是：通过客户端发送命令给服务器程序，服务器程序按照接收的命令去操作实际的数据。在我们使用黑框框启动了MySQL客户端程序之后，界面上会一直显示一行字儿：mysql&amp;gt;，这是一个提示符，你可以在它后边输入我们的命令然后按下回车键就把命令从客户端程序发送到了服务器程序，在书写命令的时候需要注意下边这几点： 1、命令结束符号 ​        在书写完一个命">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/07/02/利用hexo框架搭建个人博客(手把手教学)/1562074726129.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/02/利用hexo框架搭建个人博客(手把手教学)/1562075088366.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/02/利用hexo框架搭建个人博客(手把手教学)/1562076576274.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/02/利用hexo框架搭建个人博客(手把手教学)/1562076603328.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/02/利用hexo框架搭建个人博客(手把手教学)/1562076668077.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/02/利用hexo框架搭建个人博客(手把手教学)/1562077419577.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/02/利用hexo框架搭建个人博客(手把手教学)/1562077625057.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/02/利用hexo框架搭建个人博客(手把手教学)/1562077888121.png">
-<meta property="og:updated_time" content="2019-07-05T01:39:42.039Z">
+<meta property="og:updated_time" content="2019-10-25T02:13:30.786Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用hexo框架搭建个人博客(手把手教学)">
-<meta name="twitter:description" content="前言​        本文是在Windows 10环境下搭建个人博客，对于Linux和Mac环境，搭建工作基本类似，区别无非在于个别命令行指令的区别，读者只需作相应的调整即可。 1. 安装NodeJs​        hexo是基于NodeJs环境的静态博客，里面的npm工具很有用（个人感觉类似于python里面的pip或者anaconda里面的conda，是一个包管理工具），所以说NodeJs是">
-<meta name="twitter:image" content="http://yoursite.com/2019/07/02/利用hexo框架搭建个人博客(手把手教学)/1562074726129.png">
+<meta name="twitter:title" content="MySQL语句使用注意事项">
+<meta name="twitter:description" content="​        MySQL的基本运行过程是：通过客户端发送命令给服务器程序，服务器程序按照接收的命令去操作实际的数据。在我们使用黑框框启动了MySQL客户端程序之后，界面上会一直显示一行字儿：mysql&amp;gt;，这是一个提示符，你可以在它后边输入我们的命令然后按下回车键就把命令从客户端程序发送到了服务器程序，在书写命令的时候需要注意下边这几点： 1、命令结束符号 ​        在书写完一个命">
 
 
 
@@ -136,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/02/利用hexo框架搭建个人博客(手把手教学)/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/25/MySQL语句使用注意事项/">
 
 
 
 
 
-  <title>利用hexo框架搭建个人博客(手把手教学) | CodeMonkey · 程序猴</title>
+  <title>MySQL语句使用注意事项 | CodeMonkey · 程序猴</title>
   
 
 
@@ -315,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/02/利用hexo框架搭建个人博客(手把手教学)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/25/MySQL语句使用注意事项/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CodeMonkey">
@@ -332,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">利用hexo框架搭建个人博客(手把手教学)</h1>
+          <h1 class="post-title" itemprop="name headline">MySQL语句使用注意事项</h1>
         
 
         <div class="post-meta">
@@ -344,8 +335,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-02T21:29:43+08:00">
-                2019-07-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-25T09:36:39+08:00">
+                2019-10-25
               </time>
             
 
@@ -360,8 +351,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-05T09:39:42+08:00">
-                2019-07-05
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-25T10:13:30+08:00">
+                2019-10-25
               </time>
             
           </span>
@@ -379,8 +370,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/教程/" itemprop="url" rel="index">
-                    <span itemprop="name">教程</span>
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
                   </a>
                 </span>
 
@@ -410,7 +401,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.2k
+                  669
                 </span>
               
 
@@ -426,7 +417,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  2
                 </span>
               
             </div>
@@ -447,62 +438,36 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​        本文是在Windows 10环境下搭建个人博客，对于Linux和Mac环境，搭建工作基本类似，区别无非在于个别命令行指令的区别，读者只需作相应的调整即可。</p>
-<h1 id="1-安装NodeJs"><a href="#1-安装NodeJs" class="headerlink" title="1. 安装NodeJs"></a>1. 安装NodeJs</h1><p>​        hexo是基于NodeJs环境的<strong>静态博客</strong>，里面的npm工具很有用（个人感觉类似于python里面的pip或者anaconda里面的conda，是一个包管理工具），所以说NodeJs是搭建个人博客的第一步。</p>
-<p>下载地址：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></p>
-<p>下载下图的10.16.0 LTS即可。</p>
-<img src="/2019/07/02/利用hexo框架搭建个人博客(手把手教学)/1562074726129.png">
-<p>然后点击下载的安装包，无脑点yes安装即可。至此NodeJs已经全部安装完成。</p>
-<h1 id="2-安装Git-Bash"><a href="#2-安装Git-Bash" class="headerlink" title="2. 安装Git Bash"></a>2. 安装Git Bash</h1><p>​        由于本人使用的是Windows环境，cmd指令过于难用（也难怪众多开发者投入了Linux的怀抱）。所以本人下载了Git Bash（其实也就是下载了Git工具）。在网上搜索Git可以下载一个下面这个应用程序：</p>
-<img src="/2019/07/02/利用hexo框架搭建个人博客(手把手教学)/1562075088366.png">
-<p>​        然后依旧无脑点yes，安装完成后，在左面点击鼠标右键，如果出现了Git Bash和Git GUI即代表Git安装成功。</p>
-<p>​        然后打开Git Bash可以查看NodeJs和npm的版本：</p>
-<ol>
-<li><p>NodeJs版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ node -v</span><br></pre></td></tr></table></figure>
+        <p>​        MySQL的基本运行过程是：<strong>通过客户端发送命令给服务器程序，服务器程序按照接收的命令去操作实际的数据</strong>。在我们使用黑框框启动了MySQL客户端程序之后，界面上会一直显示一行字儿：mysql&gt;，这是一个提示符，你可以在它后边输入我们的命令然后按下回车键就把命令从客户端程序发送到了服务器程序，在书写命令的时候需要注意下边这几点：</p>
+<p><strong>1、命令结束符号</strong></p>
+<p>​        在书写完一个命令后需要以下面几个符号之一结尾：</p>
+<ul>
+<li><p>；</p>
 </li>
-<li><p>npm版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm -v</span><br></pre></td></tr></table></figure>
+<li><p>\g</p>
 </li>
-</ol>
-<h1 id="3-安装hexo"><a href="#3-安装hexo" class="headerlink" title="3. 安装hexo"></a>3. 安装hexo</h1><p>​        我们是需要借助npm来安装hexo框架的。但是由于墙的原因，国内使用npm的下载速度很慢。因此我们需要更换源（使用淘宝的那个源），利用npm来安装一个cnpm。安装完成后，后面完全可以用cnpm全面取代npm。</p>
-<p>​        如何安装cnpm？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g  cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-<p>​        安装完成后，可以查看一下cnpm的版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm -v</span><br></pre></td></tr></table></figure>
-<p>​        随后，开始正式安装hexo框架</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p>​        如何判断hexo是否安装成功，我们只需要查看hexo的版本，如果出现版本信息，则代表hexo安装成功</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo -v</span><br></pre></td></tr></table></figure>
-<h1 id="4-开始正式搭建博客"><a href="#4-开始正式搭建博客" class="headerlink" title="4. 开始正式搭建博客"></a>4. 开始正式搭建博客</h1><p>​        首先我们需要先建立一个空的目录，存储我们的博客信息。这样的好处就是，一旦这个博客出错了或者你不想要了，直接把这个文件夹删除即可，不会影响其他的文件，保持独立性。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir blog</span><br><span class="line">$ cd blog</span><br></pre></td></tr></table></figure>
-<p>​        随后在blog目录下利用hexo生成博客，很简单</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
-<p>​        可以看到，生成完成后会出现下面这些文件</p>
-<img src="/2019/07/02/利用hexo框架搭建个人博客(手把手教学)/1562076576274.png">
-<p>​        随后启动博客</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
-<p>​        可以看到，博客可以在本地的4000端口进行访问</p>
-<img src="/2019/07/02/利用hexo框架搭建个人博客(手把手教学)/1562076603328.png">
-<p>​        我们利用浏览器打开该端口，即可访问到我们最初始的博客。该博客默认有一篇hello word的博文</p>
-<img src="/2019/07/02/利用hexo框架搭建个人博客(手把手教学)/1562076668077.png">
-<p>​        随后我们可以新建一篇文章，里面写上我们想要的内容即可。如何新建一篇文章？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new &quot;我的第一篇文章&quot;</span><br></pre></td></tr></table></figure>
-<p>​        生成完成后，便可以在blog/source/_post目录下找到我们生成的这篇文章，文件名为”我的第一篇文章.md”。随后便可以用Typora来写该博客了（markdown语法）。</p>
-<p>​        因为我们现在新建了一篇文章，如何把它上传呢？（即在浏览器中也可以看到改文章）。这里就要用到hexo中著名的“素质三连”指令了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean (清理)</span><br><span class="line">$ hexo g (生成)</span><br><span class="line">$ hexo s (启动)</span><br></pre></td></tr></table></figure>
-<p>​        随后便可以在本地4000端口看见我们刚才新建的那篇文章了。</p>
-<p><strong><em>一切都是这么简单，一切都是这么优雅！</em></strong></p>
-<h1 id="5-远端部署"><a href="#5-远端部署" class="headerlink" title="5. 远端部署"></a>5. 远端部署</h1><p>​        我们写个人博客的目的不是为了只自己访问，也希望别人能看见，因此需要部署到远端服务器。这里有一种免费的部署方式，即把我们的博客部署到github上公开使用。</p>
-<h2 id="5-1-新建仓库"><a href="#5-1-新建仓库" class="headerlink" title="5.1 新建仓库"></a>5.1 新建仓库</h2><img src="/2019/07/02/利用hexo框架搭建个人博客(手把手教学)/1562077419577.png">
-<p>​        一定要注意仓库的命名方式，仓库的名称一定要和你的github昵称保持一致，否则将无法访问。例如我的github昵称为<strong>pringce</strong>，那么仓库的名称一定要命名为<strong>pringce.github.io</strong>。如下图</p>
-<img src="/2019/07/02/利用hexo框架搭建个人博客(手把手教学)/1562077625057.png">
-<h2 id="5-2-安装Git部署插件"><a href="#5-2-安装Git部署插件" class="headerlink" title="5.2 安装Git部署插件"></a>5.2 安装Git部署插件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<h2 id="5-3-配置config文件"><a href="#5-3-配置config文件" class="headerlink" title="5.3 配置config文件"></a>5.3 配置config文件</h2><p>​        在我们的blog目录下，找到<strong>_config.yml</strong>这个文件，然后到文件的最底部，写入如下配置</p>
-<img src="/2019/07/02/利用hexo框架搭建个人博客(手把手教学)/1562077888121.png">
-<h2 id="5-4-部署到远端"><a href="#5-4-部署到远端" class="headerlink" title="5.4 部署到远端"></a>5.4 部署到远端</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
-<p>​        随后输入”<a href="https://pringce.github.io&quot;，即可访问我们部署到远端服务器上的博客了。至此任何人都可以访问你的博客了，博客的部署工作完成。" target="_blank" rel="noopener">https://pringce.github.io&quot;，即可访问我们部署到远端服务器上的博客了。至此任何人都可以访问你的博客了，博客的部署工作完成。</a></p>
-<p><strong><em>一切都是这么简单，一切都是这么优雅！</em></strong></p>
+<li><p>\G</p>
+<p>其中；和\g的效果一样，如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show tables;</span><br><span class="line">+---------------+</span><br><span class="line">| Tables_in_run |</span><br><span class="line">+---------------+</span><br><span class="line">| student_info  |</span><br><span class="line">| student_score |</span><br><span class="line">| t1            |</span><br><span class="line">| t1_view       |</span><br><span class="line">| t2            |</span><br><span class="line">+---------------+</span><br><span class="line"></span><br><span class="line">mysql&gt; show tables\g</span><br><span class="line">+---------------+</span><br><span class="line">| Tables_in_run |</span><br><span class="line">+---------------+</span><br><span class="line">| student_info  |</span><br><span class="line">| student_score |</span><br><span class="line">| t1            |</span><br><span class="line">| t1_view       |</span><br><span class="line">| t2            |</span><br><span class="line">+---------------+</span><br></pre></td></tr></table></figure>
+<p>其中\G有一点特殊，它并不以表格的形式返回查询结果，而是以<strong>垂直</strong>的形式将每个列都展示在单独的一行中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show tables\G</span><br><span class="line">*************************** <span class="number">1</span>. row ***************************</span><br><span class="line">Tables_in_run: student_info</span><br><span class="line">*************************** <span class="number">2</span>. row ***************************</span><br><span class="line">Tables_in_run: student_score</span><br><span class="line">*************************** <span class="number">3</span>. row ***************************</span><br><span class="line">Tables_in_run: t1</span><br><span class="line">*************************** <span class="number">4</span>. row ***************************</span><br><span class="line">Tables_in_run: t1_view</span><br><span class="line">*************************** <span class="number">5</span>. row ***************************</span><br><span class="line">Tables_in_run: t2</span><br></pre></td></tr></table></figure>
+<p>如果查询结果的列数非常多的话，使用\G可以让我们看清结果。</p>
+<p><strong>注意</strong>：<strong>使用Navicat第三方工具是不支持\g和\G的，只能在cmd界面中使用。</strong></p>
+</li>
+</ul>
+<p><strong>2、命令可以随意换行</strong></p>
+<p>​        并不是按了回车键就提交命令了，只要按回车键的时候输入的语句里没有；、\g或\G这些语句结束符号，该语句就算是没有结束。比如上面的语句可以写成：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show</span><br><span class="line">    -&gt; tables</span><br><span class="line">    -&gt;;</span><br><span class="line">+---------------+</span><br><span class="line">| Tables_in_run |</span><br><span class="line">+---------------+</span><br><span class="line">| student_info  |</span><br><span class="line">| student_score |</span><br><span class="line">| t1            |</span><br><span class="line">| t1_view       |</span><br><span class="line">| t2            |</span><br><span class="line">+---------------+</span><br></pre></td></tr></table></figure>
+<p><strong>3、可以一次提交多个命令</strong></p>
+<p>​        我们可以在一条语句里面写多个命令（命令之间用上面说的结束符间隔，但记住在写完前不要回车），只要没按回车键，就不会提交命令，如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="function">SELECT <span class="title">NOW</span><span class="params">()</span></span>; <span class="function">SELECT <span class="title">NOW</span><span class="params">()</span></span>; <span class="function">SELECT <span class="title">NOW</span><span class="params">()</span></span>;</span><br><span class="line">+---------------------+</span><br><span class="line">| NOW()               |</span><br><span class="line">+---------------------+</span><br><span class="line">| <span class="number">2018</span>-<span class="number">02</span>-<span class="number">06</span> <span class="number">18</span>:<span class="number">00</span>:<span class="number">05</span> |</span><br><span class="line">+---------------------+</span><br><span class="line"><span class="number">1</span> <span class="function">row in <span class="title">set</span> <span class="params">(<span class="number">0.00</span> sec)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">+---------------------+</span></span><br><span class="line"><span class="function">| <span class="title">NOW</span><span class="params">()</span>               |</span></span><br><span class="line"><span class="function">+---------------------+</span></span><br><span class="line"><span class="function">| 2018-02-06 18:00:05 |</span></span><br><span class="line"><span class="function">+---------------------+</span></span><br><span class="line"><span class="function">1 row in <span class="title">set</span> <span class="params">(<span class="number">0.00</span> sec)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">+---------------------+</span></span><br><span class="line"><span class="function">| <span class="title">NOW</span><span class="params">()</span>               |</span></span><br><span class="line"><span class="function">+---------------------+</span></span><br><span class="line"><span class="function">| 2018-02-06 18:00:05 |</span></span><br><span class="line"><span class="function">+---------------------+</span></span><br><span class="line"><span class="function">1 row in <span class="title">set</span> <span class="params">(<span class="number">0.00</span> sec)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">mysql&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>4、使用 \c 放弃本次操作</strong></p>
+<p>​        如果你想放弃本次编写的命令，可以在输入的命令后边加上\c，比如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="function">SELECT <span class="title">NOW</span><span class="params">()</span>\c</span></span><br><span class="line"><span class="function">mysql&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如果不使用\c，那客户端会以为这是一个多行命令，还在一直傻傻的等你输入命令。</p>
+<p><strong>注意：\c在Navicat第三方软件中不能用，只能用于cmd窗口中。</strong></p>
+<p><strong>5、大小写</strong></p>
+<p>​        MySQL默认对<strong>命令</strong>的大小写并没有限制。但是如果是表、列的名称就会对大小写敏感了。</p>
 
       
     </div>
@@ -520,9 +485,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/个人博客/" rel="tag"># 个人博客</a>
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/个人博客/" rel="tag"># 个人博客</a>
           
         </div>
       
@@ -535,15 +500,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/09/28/MySQL密码错误如何修改？/" rel="next" title="MySQL密码错误如何修改？">
+                <i class="fa fa-chevron-left"></i> MySQL密码错误如何修改？
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/20/决策树全解析/" rel="prev" title="决策树全解析">
-                决策树全解析 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -604,17 +569,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -704,22 +660,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-安装NodeJs"><span class="nav-number">2.</span> <span class="nav-text">1. 安装NodeJs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-安装Git-Bash"><span class="nav-number">3.</span> <span class="nav-text">2. 安装Git Bash</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-安装hexo"><span class="nav-number">4.</span> <span class="nav-text">3. 安装hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-开始正式搭建博客"><span class="nav-number">5.</span> <span class="nav-text">4. 开始正式搭建博客</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-远端部署"><span class="nav-number">6.</span> <span class="nav-text">5. 远端部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-新建仓库"><span class="nav-number">6.1.</span> <span class="nav-text">5.1 新建仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-安装Git部署插件"><span class="nav-number">6.2.</span> <span class="nav-text">5.2 安装Git部署插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-配置config文件"><span class="nav-number">6.3.</span> <span class="nav-text">5.3 配置config文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-部署到远端"><span class="nav-number">6.4.</span> <span class="nav-text">5.4 部署到远端</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
