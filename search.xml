@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[一、Java入门]]></title>
+    <url>%2F2020%2F02%2F06%2F%E4%B8%80%E3%80%81Java%E5%85%A5%E9%97%A8%2F</url>
+    <content type="text"><![CDATA[Java介绍​ Java是目前全球Top 1的程序开发语言，是SUN公司James Gosling为手持设备开发的嵌入式编程语言，原名Oak，1995年改名为Java正式推出，有最大的开发社区；目前广泛应用于企业和互联网后端开发、Android开发和大数据开发。 Java的特点 一种面向对象的跨平台编程语言，语法比C++简单 以字节码的形式运行在虚拟机上 自带功能齐全的类库 有非常活跃的开源社区支持 Java的优缺点优点： 简单(语法比C++简单)、健壮(垃圾收集器让内存管理更容易)、安全(字节码运行在虚拟机上，无法操作硬件，因此安全) 跨平台，一次编写，到处运行 高度优化的虚拟机 缺点： 语法比较繁琐 无法直接操作硬件(不适用于底层操作系统的开发) GUI效果不佳(不适用于桌面应用程序的开发) Java的版本 Java SE: Standard Edition(标准版) Java EE: Enterprise Edition(企业版) Java ME: Micro Edition(移动版) Java的规范什么是规范？ ​ 比如USB就是一个规范，它规定了电源的正负极、信号线等等 ​ Java的规范是Java Specification Request，简称JSR。有个组织Java Community Process(JCP)，它负责维护JSR规范。 Java平台​ Java本身是一种面向对象的语言，最显著的特性有两个方面，一是所谓的“一次编译，到处执行”（Compile once, run anywhere），能够非常容易地获得跨平台能力；另外就是垃圾收集（GC, Garbage Collection），Java通过垃圾收集器（Garbage Collector）回收分配内存，大部分情况下，程序员不需要自己操心内存的分配和回收。 Java平台实际上就是运行在各种操作系统上的JVM(虚拟机) Java为什么可以跨平台运行？​ 1.首先开发好的java文件经过编译器Compiler的编译变为.class文件，然而这个.class文件并不是真正的本地可以执行的指令 我们可以把这个.class文件称之为“中间码” ​ 2.不同的计算机操作系统有着相应的JVM 比如win32位的、win64位的、linux系统的，.class文件经过Interpreter（解释器，也就是JVM）的解释（或者称之为翻译），变为真正的本地可执行指令（“00101001001…”） 总结：“一处编译，到处运行”是因为程序的中间码.class文件是标准的，一致的，在各个系统对应的JVM上都可以被识别解释然后运行，所以可以实现跨平台 Java安装 上官网下载对应版本的JDK 官网网址：https://www.oracle.com/technetwork/java/javase/downloads/index.html 不更改安装路径，直接安装在C盘 配置JDK环境变量，将C:\ProgramFiles\Java\jdk\bin添加到系统path变量中。打开cmd，输入“javac -version”，如果出现版本号，即代表配置完成]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[MySQL表的基本操作]]></title>
+    <url>%2F2019%2F11%2F13%2FMySQL%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%2F</url>
+    <content type="text"><![CDATA[​ 创建表的时候首先需要描述清楚这个表是什么样的，它有哪些列，这些列都是用来存什么类型的数据等等。表中的一行叫做一条记录，一列就做一个字段。 展示当前数据库的表​ 下面的语句用于展示当前数据库中有哪些表： 1mysql&gt; SHOW TABLES; 创建表1、基本语法创建一个表时至少需要完成下列事情： （1）给表起个名 （2）给表定义一些列，并且给这些列都起个名 （3）每个列都需要定义一种数据类型 （4）如果有需要的话，可以给这些列定义一些列的属性，比如不许存储NULL，设置默认值等，具体列可以设置哪些属性可以在后面再详细说一下 创建表的基本语法如下： 123456CREATE TABLE 表名( 列名1 数据类型 [列的属性], 列名2 数据类型 [列的属性], ... 列名n 数据类型 [列的属性],); 注意事项： 在CREATE TABLE后写清楚我们要创建的表的名称 在小括号 () 中定义这个表各个列的信息，包括列的名称、列的数据类型，如果有需要的话也可以定义这个列的属性(列的属性用中括号 [] 包起来的意思是这部分是可选的) 列名、数据类型、列属性之间用空白字符分开就好，然后各个列的信息之间用逗号分隔开 下面我们建个表为例展示一下： 1234CREATE TABLE first_table( first_column INT, second_column VARCHAR(100)); 执行结果如下： 12345mysql&gt; CREATE TABLE first_table ( -&gt; first_column INT, -&gt; second_column VARCHAR(100) -&gt; );Query OK, 0 rows affected (0.02 sec) 2、为建表语句添加注释​ 我们可以在创建表时将该表的用处以注释的形式添加到语句中，只要在建表语句最后加上COMMIT语句即可： 123CREATE TABLE 表名 ( 各个列的信息 ...) COMMENT '表的注释信息'; 比如我们可以这样写first_table的建表语句： 1234CREATE TABLE first_table ( first_column INT, second_column VARCHAR(100)) COMMENT '第一个表'; 注释没必要太长，言简意赅即可，毕竟是给人看的，让人看明白是个啥意思就好了。为了我们自己的方便，也为了阅读你创建的人的方便，请遵守一下职业道德，写个注释吧～ 3、IF NOT EXISTS​ 和重复创建数据库一样，如果创建一个已经存在的表的话是会报错的，我们来试试重复创建一下first_table表： 12345mysql&gt; CREATE TABLE first_table ( -&gt; first_column INT, -&gt; second_column VARCHAR(100) -&gt; ) COMMENT '第一个表';ERROR 1050 (42S01): Table 'first_table' already exists 如果想要避免这种错误发生，可以在创建表的时候使用这种形式： 123CREATE TABLE IF NOT EXISTS 表名( 各个列的信息 ...);]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+        <tag>个人博客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[数据库层面基本操作]]></title>
     <url>%2F2019%2F11%2F05%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B1%82%E9%9D%A2%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%2F</url>
     <content type="text"><![CDATA[​ MySQL中把一些标的集合成为一个数据库，MySQL服务器管理着若干个数据库，每个数据库下都可以有若干个表，即 展示数据库​ 在刚安装好MySQL的时候，它内建了许多数据库和表了，我们可以使用下述命令来看一下都有哪些数据库： 1SHOW DATABASES; 创建数据库1CREATE DATABASE 数据库名; ​ 注意如果一个数据库已经存在的情况下再使用CREATE DATABASE去创建这个数据库会产生错误！如果我们并不清楚数据库是否存在，可以使用下边的语句来创建数据库： 1CREATE DATABASE IF NOT EXISTS 数据库名; 上述命令的意思是如果指定数据库不存在的话就创建它，否则什么都不做。 切换当前数据库​ 对于每一个连接到MySQL服务器的客户端，都有一个当前数据库的概念（也可以称之为默认数据库），我们创建的表默认都会被放到当前数据库中，切换当前数据库的命令也贼简单： 1USE 数据库名称; ​ 如果显示了Databases changed，说明当前数据库已经切换成功了。需要注意的是，在退出当前客户端之后，也就是你输入了exit或者quit命令之后或者直接把当前的黑框框页面关掉，当你再次打开MySQL时，相当于重新开启了一个客户端，需要重新调用USE 数据库名称的语句来选择一下当前数据库。 ​ 其实我们在新客户端连接服务器时就可以指定连接建立成功后客户端的当前数据库，只要把数据库名称写在启动客户端的命令后面就好，如下： 1mysql -hlocalhost -uroot -p 数据库名称; 删除数据库​ 如果我们觉得某个数据库没用了，可以把它删除掉，语法如下： 1DROP DATABASE 数据库名; ​ 在真实的工作环境里，在删除数据库之前你需要先拿体温计量量是不是发高烧了，然后再找至少两个人核实一下自己是不是发烧了，然后你才敢执行删除数据库的命令。删除数据库意味着里边的表就都被删除了，也就意味着你的数据都没了，所以是个极其危险的操作，使用时需要极其谨慎。 ​ ​ 如果某个数据库并不存在，我们仍旧调用DROP DATABASE语句去删除它，会报错。 ​ 如果想要避免这种报错，可以使用这种形式的语句来删除数据库： 1DROP DATABASE IF EXISTS 数据库名;]]></content>
