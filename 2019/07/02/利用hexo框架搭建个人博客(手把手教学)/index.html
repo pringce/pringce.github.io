@@ -86,23 +86,18 @@
 
 
 
-<meta name="description" content="​        当你在一台电脑上写博客写的蛮爽的，但突然有一天你的电脑坏了或者被偷了咋办？你那些本地的博客可咋整！一想到这种有可能发生的危险，我就夜不能寐呀。于是我就开始疯狂地查找资料，但网上的资料良莠不齐。于是本人就自己慢慢的摸索嘛，这是一个程序员最基本的素质(其实还是自己太菜了)。下面我就把我的总结写一下，希望能对以后的自己和大家有帮助。 1、在新电脑上安装NodeJs和Git​">
+<meta name="description" content="前言​        本文是在Windows 10环境下搭建个人博客，对于Linux和Mac环境，搭建工作基本类似，区别无非在于个别命令行指令的区别，读者只需作相应的调整即可。 1. 安装NodeJs​        hexo是基于NodeJs环境的静态博客，里面的npm工具很有用（个人感觉类似于python里面的pip或者anaconda里面的conda，是一个包管理工具），所以说NodeJs是">
 <meta name="keywords" content="个人博客,hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo博客如何迁移至其它电脑">
-<meta property="og:url" content="http://yoursite.com/2019/07/20/hexo博客如何迁移至其它电脑/index.html">
+<meta property="og:title" content="利用hexo框架搭建个人博客">
+<meta property="og:url" content="http://yoursite.com/2019/07/02/利用hexo框架搭建个人博客(手把手教学)/index.html">
 <meta property="og:site_name" content="CodeMonkey · 程序猴">
-<meta property="og:description" content="​        当你在一台电脑上写博客写的蛮爽的，但突然有一天你的电脑坏了或者被偷了咋办？你那些本地的博客可咋整！一想到这种有可能发生的危险，我就夜不能寐呀。于是我就开始疯狂地查找资料，但网上的资料良莠不齐。于是本人就自己慢慢的摸索嘛，这是一个程序员最基本的素质(其实还是自己太菜了)。下面我就把我的总结写一下，希望能对以后的自己和大家有帮助。 1、在新电脑上安装NodeJs和Git​">
+<meta property="og:description" content="前言​        本文是在Windows 10环境下搭建个人博客，对于Linux和Mac环境，搭建工作基本类似，区别无非在于个别命令行指令的区别，读者只需作相应的调整即可。 1. 安装NodeJs​        hexo是基于NodeJs环境的静态博客，里面的npm工具很有用（个人感觉类似于python里面的pip或者anaconda里面的conda，是一个包管理工具），所以说NodeJs是">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/07/20/hexo博客如何迁移至其它电脑/20190720191707.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/20/hexo博客如何迁移至其它电脑/20190720192207.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/20/hexo博客如何迁移至其它电脑/20190720193605.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/20/hexo博客如何迁移至其它电脑/20190720194114.png">
-<meta property="og:updated_time" content="2019-07-20T12:20:18.941Z">
+<meta property="og:updated_time" content="2020-02-06T12:13:35.307Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo博客如何迁移至其它电脑">
-<meta name="twitter:description" content="​        当你在一台电脑上写博客写的蛮爽的，但突然有一天你的电脑坏了或者被偷了咋办？你那些本地的博客可咋整！一想到这种有可能发生的危险，我就夜不能寐呀。于是我就开始疯狂地查找资料，但网上的资料良莠不齐。于是本人就自己慢慢的摸索嘛，这是一个程序员最基本的素质(其实还是自己太菜了)。下面我就把我的总结写一下，希望能对以后的自己和大家有帮助。 1、在新电脑上安装NodeJs和Git​">
-<meta name="twitter:image" content="http://yoursite.com/2019/07/20/hexo博客如何迁移至其它电脑/20190720191707.png">
+<meta name="twitter:title" content="利用hexo框架搭建个人博客">
+<meta name="twitter:description" content="前言​        本文是在Windows 10环境下搭建个人博客，对于Linux和Mac环境，搭建工作基本类似，区别无非在于个别命令行指令的区别，读者只需作相应的调整即可。 1. 安装NodeJs​        hexo是基于NodeJs环境的静态博客，里面的npm工具很有用（个人感觉类似于python里面的pip或者anaconda里面的conda，是一个包管理工具），所以说NodeJs是">
 
 
 
@@ -132,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/20/hexo博客如何迁移至其它电脑/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/02/利用hexo框架搭建个人博客(手把手教学)/">
 
 
 
 
 
-  <title>hexo博客如何迁移至其它电脑 | CodeMonkey · 程序猴</title>
+  <title>利用hexo框架搭建个人博客 | CodeMonkey · 程序猴</title>
   
 
 
@@ -311,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/20/hexo博客如何迁移至其它电脑/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/02/利用hexo框架搭建个人博客(手把手教学)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CodeMonkey">
@@ -328,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo博客如何迁移至其它电脑</h1>
+          <h1 class="post-title" itemprop="name headline">利用hexo框架搭建个人博客</h1>
         
 
         <div class="post-meta">
@@ -340,8 +335,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-20T19:06:35+08:00">
-                2019-07-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-02T21:29:43+08:00">
+                2019-07-02
               </time>
             
 
@@ -359,8 +354,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-20T20:20:18+08:00">
-                2019-07-20
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-06T20:13:35+08:00">
+                2020-02-06
               </time>
             
           </span>
@@ -409,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  860
+                  1.2k
                 </span>
               
 
@@ -425,7 +420,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -446,72 +441,62 @@
       
 
       
-        <p>​        当你在一台电脑上写博客写的蛮爽的，但突然有一天你的电脑坏了或者被偷了咋办？你那些本地的博客可咋整！一想到这种有可能发生的危险，我就夜不能寐呀。于是我就开始疯狂地查找资料，但网上的资料良莠不齐。于是本人就自己慢慢的摸索嘛，这是一个程序员最基本的素质(其实还是自己太菜了)。下面我就把我的总结写一下，希望能对以后的自己和大家有帮助。</p>
-<h1 id="1、在新电脑上安装NodeJs和Git"><a href="#1、在新电脑上安装NodeJs和Git" class="headerlink" title="1、在新电脑上安装NodeJs和Git"></a>1、在新电脑上安装NodeJs和Git</h1><p>​        这一步很简单，具体怎么安装，可以参见我的上一篇博文：利用hexo框架搭建个人博客(手把手教学)</p>
-<h1 id="2、GitHub新建分支"><a href="#2、GitHub新建分支" class="headerlink" title="2、GitHub新建分支"></a>2、GitHub新建分支</h1><p>​        在pringce.github.io仓库下：</p>
-<img src="/2019/07/20/hexo博客如何迁移至其它电脑/20190720191707.png">
-<p>这里的分支名可以任意设置。</p>
-<h1 id="3、设置分支为默认仓库"><a href="#3、设置分支为默认仓库" class="headerlink" title="3、设置分支为默认仓库"></a>3、设置分支为默认仓库</h1><p>当前仓库-&gt;Settings-&gt;Branches-&gt;Default Branch</p>
-<img src="/2019/07/20/hexo博客如何迁移至其它电脑/20190720192207.png">
-<h1 id="4、clone至本地"><a href="#4、clone至本地" class="headerlink" title="4、clone至本地"></a>4、clone至本地</h1><p>​        将该分支克隆至本地</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:<span class="comment">//github.com/pringce/pringce.github.io.git</span></span><br></pre></td></tr></table></figure>
-<p>​        cd进入 clone 下来的pringce.github.io文件夹，在此文件夹目录下git bash执行git branch命令，应该是新建的分支名 new。</p>
-<h1 id="5、新电脑生成ssh-key并添加至GitHub"><a href="#5、新电脑生成ssh-key并添加至GitHub" class="headerlink" title="5、新电脑生成ssh key并添加至GitHub"></a>5、新电脑生成ssh key并添加至GitHub</h1><p>​    依次按照下述步骤生成本机ssh key：</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​        本文是在Windows 10环境下搭建个人博客，对于Linux和Mac环境，搭建工作基本类似，区别无非在于个别命令行指令的区别，读者只需作相应的调整即可。</p>
+<h1 id="1-安装NodeJs"><a href="#1-安装NodeJs" class="headerlink" title="1. 安装NodeJs"></a>1. 安装NodeJs</h1><p>​        hexo是基于NodeJs环境的<strong>静态博客</strong>，里面的npm工具很有用（个人感觉类似于python里面的pip或者anaconda里面的conda，是一个包管理工具），所以说NodeJs是搭建个人博客的第一步。</p>
+<p>下载地址：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></p>
+<p>下载下图的10.16.0 LTS即可。</p>
+
+<p>然后点击下载的安装包，无脑点yes安装即可。至此NodeJs已经全部安装完成。</p>
+<h1 id="2-安装Git-Bash"><a href="#2-安装Git-Bash" class="headerlink" title="2. 安装Git Bash"></a>2. 安装Git Bash</h1><p>​        由于本人使用的是Windows环境，cmd指令过于难用（也难怪众多开发者投入了Linux的怀抱）。所以本人下载了Git Bash（其实也就是下载了Git工具）。在网上搜索Git可以下载一个下面这个应用程序：</p>
+
+<p>​        然后依旧无脑点yes，安装完成后，在左面点击鼠标右键，如果出现了Git Bash和Git GUI即代表Git安装成功。</p>
+<p>​        然后打开Git Bash可以查看NodeJs和npm的版本：</p>
 <ol>
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email <span class="string">"GitHub注册并验证时的邮箱"</span></span><br></pre></td></tr></table></figure>
+<li><p>NodeJs版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ node -v</span><br></pre></td></tr></table></figure>
 </li>
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"GitHub用户名"</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen <span class="comment">// 一直按enter就行</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在本机目录“C:\Users\10530\.ssh”会生成两个文件：id_rsa(私钥)和id_rsa.pub(公钥)。打开id_rsa.pub，复制里面的内容到GitHub:</p>
-<p>Settings -&gt; SSH and GPG keys -&gt; (填写)Title -&gt; (粘贴)Key -&gt; Add SSH Key</p>
-<img src="/2019/07/20/hexo博客如何迁移至其它电脑/20190720193605.png">
-</li>
-<li><p>测试是否成功：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git<span class="meta">@github</span>.com</span><br></pre></td></tr></table></figure>
-<p><strong>输出 You’ve successfully authenticated 表示添加key 成功。</strong></p>
+<li><p>npm版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm -v</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h1 id="6、安装hexo"><a href="#6、安装hexo" class="headerlink" title="6、安装hexo"></a>6、安装hexo</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
-<h1 id="7、将原博客文件拷贝至pringce-github-io文件夹"><a href="#7、将原博客文件拷贝至pringce-github-io文件夹" class="headerlink" title="7、将原博客文件拷贝至pringce.github.io文件夹"></a>7、将原博客文件拷贝至pringce.github.io文件夹</h1><p>​        将原博客文件夹下的文件拷贝至pringce.github.io，需要拷贝6个：_config.yml（站点配置文件）、themes\（主题）、source\（博客源文件）、scaffolds\（文章的模板）、package.json、.gitignore。</p>
-<img src="/2019/07/20/hexo博客如何迁移至其它电脑/20190720194114.png">
-<p><strong>此时，我们不需要再用hexo init来生成博客了，因为需要的文件我们已经拷贝过来了。</strong></p>
-<h1 id="8、提交本地至new分支"><a href="#8、提交本地至new分支" class="headerlink" title="8、提交本地至new分支"></a>8、提交本地至new分支</h1><p>​        进入pringce.github.io文件夹，依次执行</p>
-<ol>
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;新电脑&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>
-<p><strong>这样，master分支用于保存博客静态资源，提供博客页面供人访问；new分支用于备份博客部署文件，供自己修改和更新，两者在一个GitHub仓库内互不冲突。</strong></p>
-</li>
-</ol>
-<h1 id="9、安装hexo依赖的包"><a href="#9、安装hexo依赖的包" class="headerlink" title="9、安装hexo依赖的包"></a>9、安装hexo依赖的包</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
-<p>​    所依赖的包都在上一步中的package.json备份文件里，所以直接这一个命令就可以了。就可以把你以前配置的那些包都安装上了。</p>
-<h1 id="10、新旧电脑更新博客"><a href="#10、新旧电脑更新博客" class="headerlink" title="10、新旧电脑更新博客"></a>10、新旧电脑更新博客</h1><p>​        依次按照以下步骤来更新博客：</p>
-<ol>
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;name&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s(测试时候在localhost看一下)</span><br></pre></td></tr></table></figure>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d(部署)</span><br></pre></td></tr></table></figure>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;新电脑&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push //保证new分支版本为最新</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>因此，如果我们电脑又坏了或者又被偷了。。。那我们可以先获得新电脑的ssh key，然后添加到GitHub。然后把new分支下文件git clone下来，然后再新建、编辑、部署一步一步来即可。</p>
-<p>好啦，心理的最大隐患解除了，可以安心睡觉啦。大家晚安！！</p>
+<h1 id="3-安装hexo"><a href="#3-安装hexo" class="headerlink" title="3. 安装hexo"></a>3. 安装hexo</h1><p>​        我们是需要借助npm来安装hexo框架的。但是由于墙的原因，国内使用npm的下载速度很慢。因此我们需要更换源（使用淘宝的那个源），利用npm来安装一个cnpm。安装完成后，后面完全可以用cnpm全面取代npm。</p>
+<p>​        如何安装cnpm？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g  cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<p>​        安装完成后，可以查看一下cnpm的版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm -v</span><br></pre></td></tr></table></figure>
+<p>​        随后，开始正式安装hexo框架</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>​        如何判断hexo是否安装成功，我们只需要查看hexo的版本，如果出现版本信息，则代表hexo安装成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo -v</span><br></pre></td></tr></table></figure>
+<h1 id="4-开始正式搭建博客"><a href="#4-开始正式搭建博客" class="headerlink" title="4. 开始正式搭建博客"></a>4. 开始正式搭建博客</h1><p>​        首先我们需要先建立一个空的目录，存储我们的博客信息。这样的好处就是，一旦这个博客出错了或者你不想要了，直接把这个文件夹删除即可，不会影响其他的文件，保持独立性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir blog</span><br><span class="line">$ cd blog</span><br></pre></td></tr></table></figure>
+<p>​        随后在blog目录下利用hexo生成博客，很简单</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
+<p>​        可以看到，生成完成后会出现下面这些文件</p>
+
+<p>​        随后启动博客</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+<p>​        可以看到，博客可以在本地的4000端口进行访问</p>
+
+<p>​        我们利用浏览器打开该端口，即可访问到我们最初始的博客。该博客默认有一篇hello word的博文</p>
+
+<p>​        随后我们可以新建一篇文章，里面写上我们想要的内容即可。如何新建一篇文章？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new &quot;我的第一篇文章&quot;</span><br></pre></td></tr></table></figure>
+<p>​        生成完成后，便可以在blog/source/_post目录下找到我们生成的这篇文章，文件名为”我的第一篇文章.md”。随后便可以用Typora来写该博客了（markdown语法）。</p>
+<p>​        因为我们现在新建了一篇文章，如何把它上传呢？（即在浏览器中也可以看到改文章）。这里就要用到hexo中著名的“素质三连”指令了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean (清理)</span><br><span class="line">$ hexo g (生成)</span><br><span class="line">$ hexo s (启动)</span><br></pre></td></tr></table></figure>
+<p>​        随后便可以在本地4000端口看见我们刚才新建的那篇文章了。</p>
+<p><strong><em>一切都是这么简单，一切都是这么优雅！</em></strong></p>
+<h1 id="5-远端部署"><a href="#5-远端部署" class="headerlink" title="5. 远端部署"></a>5. 远端部署</h1><p>​        我们写个人博客的目的不是为了只自己访问，也希望别人能看见，因此需要部署到远端服务器。这里有一种免费的部署方式，即把我们的博客部署到github上公开使用。</p>
+<h2 id="5-1-新建仓库"><a href="#5-1-新建仓库" class="headerlink" title="5.1 新建仓库"></a>5.1 新建仓库</h2>
+<p>​        一定要注意仓库的命名方式，仓库的名称一定要和你的github昵称保持一致，否则将无法访问。例如我的github昵称为<strong>pringce</strong>，那么仓库的名称一定要命名为<strong>pringce.github.io</strong>。如下图</p>
+
+<h2 id="5-2-安装Git部署插件"><a href="#5-2-安装Git部署插件" class="headerlink" title="5.2 安装Git部署插件"></a>5.2 安装Git部署插件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<h2 id="5-3-配置config文件"><a href="#5-3-配置config文件" class="headerlink" title="5.3 配置config文件"></a>5.3 配置config文件</h2><p>​        在我们的blog目录下，找到<strong>_config.yml</strong>这个文件，然后到文件的最底部，写入如下配置</p>
+
+<h2 id="5-4-部署到远端"><a href="#5-4-部署到远端" class="headerlink" title="5.4 部署到远端"></a>5.4 部署到远端</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+<p>​        随后输入”<a href="https://pringce.github.io&quot;，即可访问我们部署到远端服务器上的博客了。至此任何人都可以访问你的博客了，博客的部署工作完成。" target="_blank" rel="noopener">https://pringce.github.io&quot;，即可访问我们部署到远端服务器上的博客了。至此任何人都可以访问你的博客了，博客的部署工作完成。</a></p>
+<p><strong><em>一切都是这么简单，一切都是这么优雅！</em></strong></p>
 
       
     </div>
@@ -544,8 +529,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/20/决策树全解析/" rel="next" title="决策树全解析">
-                <i class="fa fa-chevron-left"></i> 决策树全解析
+              <a href="/2019/07/02/利用hexo框架搭建个人博客/" rel="next" title="利用hexo框架搭建个人博客">
+                <i class="fa fa-chevron-left"></i> 利用hexo框架搭建个人博客
               </a>
             
           </div>
@@ -554,8 +539,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/28/MySQL初始化与启动那些事/" rel="prev" title="MySQL初始化与启动那些事">
-                MySQL初始化与启动那些事 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/20/决策树全解析/" rel="prev" title="决策树全解析">
+                决策树全解析 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -727,7 +712,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、在新电脑上安装NodeJs和Git"><span class="nav-number">1.</span> <span class="nav-text">1、在新电脑上安装NodeJs和Git</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2、GitHub新建分支"><span class="nav-number">2.</span> <span class="nav-text">2、GitHub新建分支</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3、设置分支为默认仓库"><span class="nav-number">3.</span> <span class="nav-text">3、设置分支为默认仓库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4、clone至本地"><span class="nav-number">4.</span> <span class="nav-text">4、clone至本地</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5、新电脑生成ssh-key并添加至GitHub"><span class="nav-number">5.</span> <span class="nav-text">5、新电脑生成ssh key并添加至GitHub</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6、安装hexo"><span class="nav-number">6.</span> <span class="nav-text">6、安装hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7、将原博客文件拷贝至pringce-github-io文件夹"><span class="nav-number">7.</span> <span class="nav-text">7、将原博客文件拷贝至pringce.github.io文件夹</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8、提交本地至new分支"><span class="nav-number">8.</span> <span class="nav-text">8、提交本地至new分支</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9、安装hexo依赖的包"><span class="nav-number">9.</span> <span class="nav-text">9、安装hexo依赖的包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10、新旧电脑更新博客"><span class="nav-number">10.</span> <span class="nav-text">10、新旧电脑更新博客</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-安装NodeJs"><span class="nav-number">2.</span> <span class="nav-text">1. 安装NodeJs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-安装Git-Bash"><span class="nav-number">3.</span> <span class="nav-text">2. 安装Git Bash</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-安装hexo"><span class="nav-number">4.</span> <span class="nav-text">3. 安装hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-开始正式搭建博客"><span class="nav-number">5.</span> <span class="nav-text">4. 开始正式搭建博客</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-远端部署"><span class="nav-number">6.</span> <span class="nav-text">5. 远端部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-新建仓库"><span class="nav-number">6.1.</span> <span class="nav-text">5.1 新建仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-安装Git部署插件"><span class="nav-number">6.2.</span> <span class="nav-text">5.2 安装Git部署插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-配置config文件"><span class="nav-number">6.3.</span> <span class="nav-text">5.3 配置config文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-部署到远端"><span class="nav-number">6.4.</span> <span class="nav-text">5.4 部署到远端</span></a></li></ol></li></ol></div>
             
 
           </div>
