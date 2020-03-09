@@ -86,19 +86,19 @@
 
 
 
-<meta name="description" content="1、my.ini是什么？my.ini是MySQL数据库中使用的配置文件，修改这个文件可以达到更新配置的目的。 2、my.ini存放在哪里？my.ini存放在MySql安装的根目录，如图所示：  3、my.ini具体内容介绍12345678910111213141516# CLIENT SECTION# ------------------------------------------------">
+<meta name="description" content="my.ini是什么？my.ini是MySQL数据库中使用的配置文件，修改这个文件可以达到更新配置的目的。 my.ini存放在哪里？my.ini存放在MySql安装的根目录，如图所示：  my.ini具体内容介绍12345678910111213141516# CLIENT SECTION# ------------------------------------------------------">
 <meta name="keywords" content="MySQL,个人博客">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL配置文件my.ini介绍">
 <meta property="og:url" content="http://yoursite.com/2020/03/09/MySQL配置文件my-ini介绍/index.html">
 <meta property="og:site_name" content="CodeMonkey · 程序猴">
-<meta property="og:description" content="1、my.ini是什么？my.ini是MySQL数据库中使用的配置文件，修改这个文件可以达到更新配置的目的。 2、my.ini存放在哪里？my.ini存放在MySql安装的根目录，如图所示：  3、my.ini具体内容介绍12345678910111213141516# CLIENT SECTION# ------------------------------------------------">
+<meta property="og:description" content="my.ini是什么？my.ini是MySQL数据库中使用的配置文件，修改这个文件可以达到更新配置的目的。 my.ini存放在哪里？my.ini存放在MySql安装的根目录，如图所示：  my.ini具体内容介绍12345678910111213141516# CLIENT SECTION# ------------------------------------------------------">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2020/03/09/MySQL配置文件my-ini介绍/微信图片_20200309172553.png">
-<meta property="og:updated_time" content="2020-03-09T09:52:32.171Z">
+<meta property="og:updated_time" content="2020-03-09T10:53:38.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL配置文件my.ini介绍">
-<meta name="twitter:description" content="1、my.ini是什么？my.ini是MySQL数据库中使用的配置文件，修改这个文件可以达到更新配置的目的。 2、my.ini存放在哪里？my.ini存放在MySql安装的根目录，如图所示：  3、my.ini具体内容介绍12345678910111213141516# CLIENT SECTION# ------------------------------------------------">
+<meta name="twitter:description" content="my.ini是什么？my.ini是MySQL数据库中使用的配置文件，修改这个文件可以达到更新配置的目的。 my.ini存放在哪里？my.ini存放在MySql安装的根目录，如图所示：  my.ini具体内容介绍12345678910111213141516# CLIENT SECTION# ------------------------------------------------------">
 <meta name="twitter:image" content="http://yoursite.com/2020/03/09/MySQL配置文件my-ini介绍/微信图片_20200309172553.png">
 
 
@@ -356,7 +356,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-09T17:52:32+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-09T18:53:38+08:00">
                 2020-03-09
               </time>
             
@@ -443,10 +443,10 @@
       
 
       
-        <h1 id="1、my-ini是什么？"><a href="#1、my-ini是什么？" class="headerlink" title="1、my.ini是什么？"></a><strong>1、my.ini是什么？</strong></h1><p>my.ini是MySQL数据库中使用的配置文件，修改这个文件可以达到更新配置的目的。</p>
-<h1 id="2、my-ini存放在哪里？"><a href="#2、my-ini存放在哪里？" class="headerlink" title="2、my.ini存放在哪里？"></a><strong>2、my.ini存放在哪里？</strong></h1><p>my.ini存放在MySql安装的根目录，如图所示：</p>
+        <h2 id="my-ini是什么？"><a href="#my-ini是什么？" class="headerlink" title="my.ini是什么？"></a><strong>my.ini是什么？</strong></h2><p>my.ini是MySQL数据库中使用的配置文件，修改这个文件可以达到更新配置的目的。</p>
+<h2 id="my-ini存放在哪里？"><a href="#my-ini存放在哪里？" class="headerlink" title="my.ini存放在哪里？"></a><strong>my.ini存放在哪里？</strong></h2><p>my.ini存放在MySql安装的根目录，如图所示：</p>
 <img src="/2020/03/09/MySQL配置文件my-ini介绍/微信图片_20200309172553.png">
-<h1 id="3、my-ini具体内容介绍"><a href="#3、my-ini具体内容介绍" class="headerlink" title="3、my.ini具体内容介绍"></a><strong>3、my.ini具体内容介绍</strong></h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># CLIENT SECTION</span><br><span class="line"># ----------------------------------------------------------------------</span><br><span class="line">#</span><br><span class="line"># The following options will be read by MySQL client applications.</span><br><span class="line"># Note that only client applications shipped by MySQL are guaranteed</span><br><span class="line"># to read this section. If you want your own MySQL client program to</span><br><span class="line"># honor these values, you need to specify it as an option during the</span><br><span class="line"># MySQL client library initialization.</span><br><span class="line">#</span><br><span class="line">[client]</span><br><span class="line"></span><br><span class="line">port=<span class="number">3306</span></span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line"></span><br><span class="line"><span class="keyword">default</span>-character-set=gb2312</span><br></pre></td></tr></table></figure>
+<h2 id="my-ini具体内容介绍"><a href="#my-ini具体内容介绍" class="headerlink" title="my.ini具体内容介绍"></a><strong>my.ini具体内容介绍</strong></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># CLIENT SECTION</span><br><span class="line"># ----------------------------------------------------------------------</span><br><span class="line">#</span><br><span class="line"># The following options will be read by MySQL client applications.</span><br><span class="line"># Note that only client applications shipped by MySQL are guaranteed</span><br><span class="line"># to read this section. If you want your own MySQL client program to</span><br><span class="line"># honor these values, you need to specify it as an option during the</span><br><span class="line"># MySQL client library initialization.</span><br><span class="line">#</span><br><span class="line">[client]</span><br><span class="line"></span><br><span class="line">port=<span class="number">3306</span></span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line"></span><br><span class="line"><span class="keyword">default</span>-character-set=gb2312</span><br></pre></td></tr></table></figure>
 <p>上面显示的是客户端的参数，[client]和[mysql]都是客户端，下面是参数简介：</p>
 <p>　　1.port参数表示的是MySQL数据库的端口，默认的端口是3306，如果你需要更改端口号的话，就可以通过在这里修改。</p>
 <p>　　2.default-character-set参数是客户端默认的字符集，如果你希望它支持中文，可以设置成gbk或者utf8。</p>
@@ -689,7 +689,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、my-ini是什么？"><span class="nav-number">1.</span> <span class="nav-text">1、my.ini是什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2、my-ini存放在哪里？"><span class="nav-number">2.</span> <span class="nav-text">2、my.ini存放在哪里？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3、my-ini具体内容介绍"><span class="nav-number">3.</span> <span class="nav-text">3、my.ini具体内容介绍</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#my-ini是什么？"><span class="nav-number">1.</span> <span class="nav-text">my.ini是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#my-ini存放在哪里？"><span class="nav-number">2.</span> <span class="nav-text">my.ini存放在哪里？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#my-ini具体内容介绍"><span class="nav-number">3.</span> <span class="nav-text">my.ini具体内容介绍</span></a></li></ol></div>
             
 
           </div>
