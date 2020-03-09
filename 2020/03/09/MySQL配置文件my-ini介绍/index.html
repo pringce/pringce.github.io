@@ -86,18 +86,20 @@
 
 
 
-<meta name="description" content="​        创建表的时候首先需要描述清楚这个表是什么样的，它有哪些列，这些列都是用来存什么类型的数据等等。表中的一行叫做一条记录，一列就做一个字段。 展示当前数据库的表​        下面的语句用于展示当前数据库中有哪些表： 1mysql&amp;gt; SHOW TABLES; 创建表1、基本语法创建一个表时至少需要完成下列事情： （1）给表起个名 （2）给表定义一些列，并且给这些列都起个名 （">
+<meta name="description" content="1、my.ini是什么？ my.ini是MySQL数据库中使用的配置文件，修改这个文件可以达到更新配置的目的。 2、my.ini存放在哪里？ my.ini存放在MySql安装的根目录，如图所示：  3、my.ini具体内容介绍 12345678910111213141516# CLIENT SECTION# ---------------------------------------------">
 <meta name="keywords" content="MySQL,个人博客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL表的基本操作">
-<meta property="og:url" content="http://yoursite.com/2019/11/13/MySQL表的基本操作/index.html">
+<meta property="og:title" content="MySQL配置文件my.ini介绍">
+<meta property="og:url" content="http://yoursite.com/2020/03/09/MySQL配置文件my-ini介绍/index.html">
 <meta property="og:site_name" content="CodeMonkey · 程序猴">
-<meta property="og:description" content="​        创建表的时候首先需要描述清楚这个表是什么样的，它有哪些列，这些列都是用来存什么类型的数据等等。表中的一行叫做一条记录，一列就做一个字段。 展示当前数据库的表​        下面的语句用于展示当前数据库中有哪些表： 1mysql&amp;gt; SHOW TABLES; 创建表1、基本语法创建一个表时至少需要完成下列事情： （1）给表起个名 （2）给表定义一些列，并且给这些列都起个名 （">
+<meta property="og:description" content="1、my.ini是什么？ my.ini是MySQL数据库中使用的配置文件，修改这个文件可以达到更新配置的目的。 2、my.ini存放在哪里？ my.ini存放在MySql安装的根目录，如图所示：  3、my.ini具体内容介绍 12345678910111213141516# CLIENT SECTION# ---------------------------------------------">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-13T08:12:24.792Z">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/MySQL配置文件my-ini介绍/微信图片_20200309172553.png">
+<meta property="og:updated_time" content="2020-03-09T09:37:39.021Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL表的基本操作">
-<meta name="twitter:description" content="​        创建表的时候首先需要描述清楚这个表是什么样的，它有哪些列，这些列都是用来存什么类型的数据等等。表中的一行叫做一条记录，一列就做一个字段。 展示当前数据库的表​        下面的语句用于展示当前数据库中有哪些表： 1mysql&amp;gt; SHOW TABLES; 创建表1、基本语法创建一个表时至少需要完成下列事情： （1）给表起个名 （2）给表定义一些列，并且给这些列都起个名 （">
+<meta name="twitter:title" content="MySQL配置文件my.ini介绍">
+<meta name="twitter:description" content="1、my.ini是什么？ my.ini是MySQL数据库中使用的配置文件，修改这个文件可以达到更新配置的目的。 2、my.ini存放在哪里？ my.ini存放在MySql安装的根目录，如图所示：  3、my.ini具体内容介绍 12345678910111213141516# CLIENT SECTION# ---------------------------------------------">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/09/MySQL配置文件my-ini介绍/微信图片_20200309172553.png">
 
 
 
@@ -127,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/11/13/MySQL表的基本操作/">
+  <link rel="canonical" href="http://yoursite.com/2020/03/09/MySQL配置文件my-ini介绍/">
 
 
 
 
 
-  <title>MySQL表的基本操作 | CodeMonkey · 程序猴</title>
+  <title>MySQL配置文件my.ini介绍 | CodeMonkey · 程序猴</title>
   
 
 
@@ -306,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/13/MySQL表的基本操作/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/09/MySQL配置文件my-ini介绍/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CodeMonkey">
@@ -323,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MySQL表的基本操作</h1>
+          <h1 class="post-title" itemprop="name headline">MySQL配置文件my.ini介绍</h1>
         
 
         <div class="post-meta">
@@ -335,8 +337,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-13T10:46:34+08:00">
-                2019-11-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-09T17:23:18+08:00">
+                2020-03-09
               </time>
             
 
@@ -354,8 +356,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-11-13T16:12:24+08:00">
-                2019-11-13
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-09T17:37:39+08:00">
+                2020-03-09
               </time>
             
           </span>
@@ -404,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  713
+                  1.9k
                 </span>
               
 
@@ -420,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  9
                 </span>
               
             </div>
@@ -441,36 +443,45 @@
       
 
       
-        <p>​        创建表的时候首先需要描述清楚这个表是什么样的，它有哪些列，这些列都是用来存什么类型的数据等等。表中的一行叫做一条<strong>记录</strong>，一列就做一个<strong>字段</strong>。</p>
-<h4 id="展示当前数据库的表"><a href="#展示当前数据库的表" class="headerlink" title="展示当前数据库的表"></a>展示当前数据库的表</h4><p>​        下面的语句用于展示当前数据库中有哪些表：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW TABLES;</span><br></pre></td></tr></table></figure>
-<h4 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h4><h5 id="1、基本语法"><a href="#1、基本语法" class="headerlink" title="1、基本语法"></a>1、基本语法</h5><p>创建一个表时至少需要完成下列事情：</p>
-<p>（1）<strong>给表起个名</strong></p>
-<p>（2）<strong>给表定义一些列，并且给这些列都起个名</strong></p>
-<p>（3）<strong>每个列都需要定义一种数据类型</strong></p>
-<p>（4）<strong>如果有需要的话，可以给这些列定义一些列的属性，比如不许存储NULL，设置默认值等，具体列可以设置哪些属性可以在后面再详细说一下</strong></p>
-<p>创建表的基本语法如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名(</span><br><span class="line">	列名<span class="number">1</span> 数据类型 [列的属性],</span><br><span class="line">	列名<span class="number">2</span> 数据类型 [列的属性],</span><br><span class="line">	...</span><br><span class="line">	列名n 数据类型 [列的属性],</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p><strong>注意事项</strong>：</p>
-<ul>
-<li>在<strong>CREATE TABLE</strong>后写清楚我们要创建的表的名称</li>
-<li>在小括号 () 中定义这个表各个列的信息，包括列的名称、列的数据类型，如果有需要的话也可以定义这个列的属性(列的属性用中括号 [] 包起来的意思是这部分是可选的)</li>
-<li>列名、数据类型、列属性之间用空白字符分开就好，然后各个列的信息之间用逗号分隔开</li>
-</ul>
-<p>下面我们建个表为例展示一下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">CREATE TABLE <span class="title">first_table</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">	first_column INT,</span></span></span><br><span class="line"><span class="function"><span class="params">	second_column VARCHAR(<span class="number">100</span>)</span></span></span><br><span class="line"><span class="function">)</span>;</span><br></pre></td></tr></table></figure>
-<p>执行结果如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="function">CREATE TABLE <span class="title">first_table</span> <span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    -&gt;     first_column INT,</span></span></span><br><span class="line"><span class="function"><span class="params">    -&gt;     second_column VARCHAR(<span class="number">100</span>)</span></span></span><br><span class="line"><span class="function">    -&gt; )</span>;</span><br><span class="line">Query OK, <span class="number">0</span> <span class="function">rows <span class="title">affected</span> <span class="params">(<span class="number">0.02</span> sec)</span></span></span><br></pre></td></tr></table></figure>
-<h5 id="2、为建表语句添加注释"><a href="#2、为建表语句添加注释" class="headerlink" title="2、为建表语句添加注释"></a>2、为建表语句添加注释</h5><p>​        我们可以在创建表时将该表的用处以注释的形式添加到语句中，只要在建表语句最后加上<strong>COMMIT</strong>语句即可：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名 (</span><br><span class="line">    各个列的信息 ...</span><br><span class="line">) COMMENT <span class="string">'表的注释信息'</span>;</span><br></pre></td></tr></table></figure>
-<p>比如我们可以这样写first_table的建表语句：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">CREATE TABLE <span class="title">first_table</span> <span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    first_column INT,</span></span></span><br><span class="line"><span class="function"><span class="params">    second_column VARCHAR(<span class="number">100</span>)</span></span></span><br><span class="line"><span class="function">) COMMENT '第一个表'</span>;</span><br></pre></td></tr></table></figure>
-<p>注释没必要太长，言简意赅即可，毕竟是给人看的，让人看明白是个啥意思就好了。为了我们自己的方便，也为了阅读你创建的人的方便，请遵守一下职业道德，写个注释吧～</p>
-<h5 id="3、IF-NOT-EXISTS"><a href="#3、IF-NOT-EXISTS" class="headerlink" title="3、IF NOT EXISTS"></a>3、IF NOT EXISTS</h5><p>​        和重复创建数据库一样，如果创建一个已经存在的表的话是会报错的，我们来试试重复创建一下first_table表：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="function">CREATE TABLE <span class="title">first_table</span> <span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    -&gt;     first_column INT,</span></span></span><br><span class="line"><span class="function"><span class="params">    -&gt;     second_column VARCHAR(<span class="number">100</span>)</span></span></span><br><span class="line"><span class="function">    -&gt; ) COMMENT '第一个表'</span>;</span><br><span class="line">ERROR <span class="number">1050</span> (<span class="number">42</span>S01): Table <span class="string">'first_table'</span> already exists</span><br></pre></td></tr></table></figure>
-<p>如果想要避免这种错误发生，可以在创建表的时候使用这种形式：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE IF NOT EXISTS 表名(</span><br><span class="line">    各个列的信息 ...</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
+        <p><strong>1、my.ini是什么？</strong></p>
+<p>my.ini是MySQL数据库中使用的配置文件，修改这个文件可以达到更新配置的目的。</p>
+<p><strong>2、my.ini存放在哪里？</strong></p>
+<p>my.ini存放在MySql安装的根目录，如图所示：</p>
+<img src="/2020/03/09/MySQL配置文件my-ini介绍/微信图片_20200309172553.png">
+<p><strong>3、my.ini具体内容介绍</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># CLIENT SECTION</span><br><span class="line"># ----------------------------------------------------------------------</span><br><span class="line">#</span><br><span class="line"># The following options will be read by MySQL client applications.</span><br><span class="line"># Note that only client applications shipped by MySQL are guaranteed</span><br><span class="line"># to read this section. If you want your own MySQL client program to</span><br><span class="line"># honor these values, you need to specify it as an option during the</span><br><span class="line"># MySQL client library initialization.</span><br><span class="line">#</span><br><span class="line">[client]</span><br><span class="line"></span><br><span class="line">port=<span class="number">3306</span></span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line"></span><br><span class="line"><span class="keyword">default</span>-character-set=gb2312</span><br></pre></td></tr></table></figure>
+<p>上面显示的是客户端的参数，[client]和[mysql]都是客户端，下面是参数简介：</p>
+<p>　　1.port参数表示的是MySQL数据库的端口，默认的端口是3306，如果你需要更改端口号的话，就可以通过在这里修改。</p>
+<p>　　2.default-character-set参数是客户端默认的字符集，如果你希望它支持中文，可以设置成gbk或者utf8。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"># SERVER SECTION</span><br><span class="line"># ----------------------------------------------------------------------</span><br><span class="line">#</span><br><span class="line"># The following options will be read by the MySQL Server. Make sure that</span><br><span class="line"># you have installed the server correctly (see above) so it reads this </span><br><span class="line"># file.</span><br><span class="line">#</span><br><span class="line">[mysqld]</span><br><span class="line"></span><br><span class="line"># The TCP/IP Port the MySQL Server will listen on</span><br><span class="line">port=<span class="number">3306</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#Path to installation directory. All paths are usually resolved relative to this.</span><br><span class="line">basedir=<span class="string">"E:/Java/Mysql/"</span></span><br><span class="line"></span><br><span class="line">#Path to the database root</span><br><span class="line">datadir=<span class="string">"C:/ProgramData/MySQL/MySQL Server 5.5/Data/"</span></span><br><span class="line"></span><br><span class="line"># The default character set that will be used when a new schema or table is</span><br><span class="line"># created and no character set is defined</span><br><span class="line">character-set-server=gb2312</span><br><span class="line"></span><br><span class="line"># The default storage engine that will be used when create new tables when</span><br><span class="line"><span class="keyword">default</span>-storage-engine=INNODB</span><br><span class="line"></span><br><span class="line"># Set the SQL mode to strict</span><br><span class="line">sql-mode=<span class="string">"STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"</span></span><br><span class="line"></span><br><span class="line"># The maximum amount of concurrent sessions the MySQL server will</span><br><span class="line"># allow. One of these connections will be reserved for a user with</span><br><span class="line"># SUPER privileges to allow the administrator to login even if the</span><br><span class="line"># connection limit has been reached.</span><br><span class="line">max_connections=<span class="number">100</span></span><br><span class="line"></span><br><span class="line"># Query cache is used to cache SELECT results and later return them</span><br><span class="line"># without actual executing the same query once again. Having the query</span><br><span class="line"># cache enabled may result in significant speed improvements, if your</span><br><span class="line"># have a lot of identical queries and rarely changing tables. See the</span><br><span class="line"># "Qcache_lowmem_prunes" status variable to check if the current value</span><br><span class="line"># is high enough for your load.</span><br><span class="line"># Note: In case your tables change very often or if your queries are</span><br><span class="line"># textually different every time, the query cache may result in a</span><br><span class="line"># slowdown instead of a performance improvement.</span><br><span class="line">query_cache_size=<span class="number">0</span></span><br><span class="line"></span><br><span class="line"># The number of open tables for all threads. Increasing this value</span><br><span class="line"># increases the number of file descriptors that mysqld requires.</span><br><span class="line"># Therefore you have to make sure to set the amount of open files</span><br><span class="line"># allowed to at least 4096 in the variable "open-files-limit" in</span><br><span class="line"># section [mysqld_safe]</span><br><span class="line">table_cache=<span class="number">256</span></span><br><span class="line"></span><br><span class="line"># Maximum size for internal (in-memory) temporary tables. If a table</span><br><span class="line"># grows larger than this value, it is automatically converted to disk</span><br><span class="line"># based table This limitation is for a single table. There can be many</span><br><span class="line"># of them.</span><br><span class="line">tmp_table_size=<span class="number">35</span>M</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># How many threads we should keep in a cache for reuse. When a client</span><br><span class="line"># disconnects, the client's threads are put in the cache if there aren't</span><br><span class="line"># more than thread_cache_size threads from before.  This greatly reduces</span><br><span class="line"># the amount of thread creations needed if you have a lot of new</span><br><span class="line"># connections. (Normally this doesn't give a notable performance</span><br><span class="line"># improvement if you have a good thread implementation.)</span><br><span class="line">thread_cache_size=<span class="number">8</span></span><br><span class="line"></span><br><span class="line">#*** MyISAM Specific options</span><br><span class="line"></span><br><span class="line"># The maximum size of the temporary file MySQL is allowed to use while</span><br><span class="line"># recreating the index (during REPAIR, ALTER TABLE or LOAD DATA INFILE.</span><br><span class="line"># If the file-size would be bigger than this, the index will be created</span><br><span class="line"># through the key cache (which is slower).</span><br><span class="line">myisam_max_sort_file_size=<span class="number">100</span>G</span><br><span class="line"></span><br><span class="line"># If the temporary file used for fast index creation would be bigger</span><br><span class="line"># than using the key cache by the amount specified here, then prefer the</span><br><span class="line"># key cache method.  This is mainly used to force long character keys in</span><br><span class="line"># large tables to use the slower key cache method to create the index.</span><br><span class="line">myisam_sort_buffer_size=<span class="number">69</span>M</span><br><span class="line"></span><br><span class="line"># Size of the Key Buffer, used to cache index blocks for MyISAM tables.</span><br><span class="line"># Do not set it larger than 30% of your available memory, as some memory</span><br><span class="line"># is also required by the OS to cache rows. Even if you're not using</span><br><span class="line"># MyISAM tables, you should still set it to 8-64M as it will also be</span><br><span class="line"># used for internal temporary disk tables.</span><br><span class="line">key_buffer_size=<span class="number">55</span>M</span><br><span class="line"></span><br><span class="line"># Size of the buffer used for doing full table scans of MyISAM tables.</span><br><span class="line"># Allocated per thread, if a full scan is needed.</span><br><span class="line">read_buffer_size=<span class="number">64</span>K</span><br><span class="line">read_rnd_buffer_size=<span class="number">256</span>K</span><br><span class="line"></span><br><span class="line"># This buffer is allocated when MySQL needs to rebuild the index in</span><br><span class="line"># REPAIR, OPTIMZE, ALTER table statements as well as in LOAD DATA INFILE</span><br><span class="line"># into an empty table. It is allocated per thread so be careful with</span><br><span class="line"># large settings.</span><br><span class="line">sort_buffer_size=<span class="number">256</span>K</span><br></pre></td></tr></table></figure>
+<p>上面是服务器断参数，以下是参数的简介：</p>
+<p>　　1.port参数也是表示数据库的端口，默认3306。</p>
+<p>　　2.basedir参数表示MySQL的安装路径。</p>
+<p>　　3.datadir参数表示MySQL数据文件的存储位置，也是数据库表的存放位置。</p>
+<p>　　4.default-character-set参数表示默认的字符集，这个字符集是服务器端的。</p>
+<p>　　5.default-storage-engine参数默认的存储引擎。</p>
+<p>　　6.sql-mode参数表示SQL模式的参数，通过这个参数可以设置检验SQL语句的严格程度。</p>
+<p>　　7.max_connections参数表示允许同时访问MySQL服务器的最大连接数，其中一个连接是保留的，留给管理员专用的。</p>
+<p>　　8.query_cache_size参数表示查询时的缓存大小，缓存中可以存储以前通过select语句查询过的信息，再次查询时就可以直接从缓存中拿出信息。</p>
+<p>　　9.table_cache参数表示所有进程打开表的总数。</p>
+<p>　　10.tmp_table_size参数表示内存中临时表的总数。</p>
+<p>　　11.thread_cache_size参数表示保留客户端线程的缓存。</p>
+<p>　　12.myisam_max_sort_file_size参数表示MySQL重建索引时所允许的最大临时文件的大小。</p>
+<p>　　13.myisam_sort_buffer_size参数表示重建索引时的缓存大小。</p>
+<p>　　14.key_buffer_size参数表示关键词的缓存大小。</p>
+<p>　　15.read_buffer_size参数表示MyISAM表全表扫描的缓存大小。</p>
+<p>　　16.read_rnd_buffer_size参数表示将排序好的数据存入该缓存中。</p>
+<p>　　17.sort_buffer_size参数表示用于排序的缓存大小</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">#*** INNODB Specific options ***</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Use this option if you have a MySQL server with InnoDB support enabled</span><br><span class="line"># but you do not plan to use it. This will save memory and disk space</span><br><span class="line"># and speed up some things.</span><br><span class="line">#skip-innodb</span><br><span class="line"></span><br><span class="line"># Additional memory pool that is used by InnoDB to store metadata</span><br><span class="line"># information.  If InnoDB requires more memory for this purpose it will</span><br><span class="line"># start to allocate it from the OS.  As this is fast enough on most</span><br><span class="line"># recent operating systems, you normally do not need to change this</span><br><span class="line"># value. SHOW INNODB STATUS will display the current amount used.</span><br><span class="line">innodb_additional_mem_pool_size=<span class="number">3</span>M</span><br><span class="line"></span><br><span class="line"># If set to 1, InnoDB will flush (fsync) the transaction logs to the</span><br><span class="line"># disk at each commit, which offers full ACID behavior. If you are</span><br><span class="line"># willing to compromise this safety, and you are running small</span><br><span class="line"># transactions, you may set this to 0 or 2 to reduce disk I/O to the</span><br><span class="line"># logs. Value 0 means that the log is only written to the log file and</span><br><span class="line"># the log file flushed to disk approximately once per second. Value 2</span><br><span class="line"># means the log is written to the log file at each commit, but the log</span><br><span class="line"># file is only flushed to disk approximately once per second.</span><br><span class="line">innodb_flush_log_at_trx_commit=<span class="number">1</span></span><br><span class="line"></span><br><span class="line"># The size of the buffer InnoDB uses for buffering log data. As soon as</span><br><span class="line"># it is full, InnoDB will have to flush it to disk. As it is flushed</span><br><span class="line"># once per second anyway, it does not make sense to have it very large</span><br><span class="line"># (even with long transactions).</span><br><span class="line">innodb_log_buffer_size=<span class="number">2</span>M</span><br><span class="line"></span><br><span class="line"># InnoDB, unlike MyISAM, uses a buffer pool to cache both indexes and</span><br><span class="line"># row data. The bigger you set this the less disk I/O is needed to</span><br><span class="line"># access data in tables. On a dedicated database server you may set this</span><br><span class="line"># parameter up to 80% of the machine physical memory size. Do not set it</span><br><span class="line"># too large, though, because competition of the physical memory may</span><br><span class="line"># cause paging in the operating system.  Note that on 32bit systems you</span><br><span class="line"># might be limited to 2-3.5G of user level memory per process, so do not</span><br><span class="line"># set it too high.</span><br><span class="line">innodb_buffer_pool_size=<span class="number">107</span>M</span><br><span class="line"></span><br><span class="line"># Size of each log file in a log group. You should set the combined size</span><br><span class="line"># of log files to about 25%-100% of your buffer pool size to avoid</span><br><span class="line"># unneeded buffer pool flush activity on log file overwrite. However,</span><br><span class="line"># note that a larger logfile size will increase the time needed for the</span><br><span class="line"># recovery process.</span><br><span class="line">innodb_log_file_size=<span class="number">54</span>M</span><br><span class="line"></span><br><span class="line"># Number of threads allowed inside the InnoDB kernel. The optimal value</span><br><span class="line"># depends highly on the application, hardware as well as the OS</span><br><span class="line"># scheduler properties. A too high value may lead to thread thrashing.</span><br><span class="line">innodb_thread_concurrency=<span class="number">18</span></span><br></pre></td></tr></table></figure>
+<p>上面是InnoDB存储引擎使用的参数，一下是参数的简介：</p>
+<p>　　1.innodb_additional_mem_pool_size参数表示附加的内存池，用来存储InnoDB表的内容。</p>
+<p>　　2.innodb_flush_log_at_trx_commit参数是设置提交日志的时机，若设置为1，InnoDB会在每次提交后将事务日志写到磁盘上。</p>
+<p>　　3.innodb_log_buffer_size参数表示用来存储日志数据的缓存区的大小。</p>
+<p>　　4.innodb_buffer_pool_size参数表示缓存的大小，InnoDB使用一个缓冲池类保存索引和原始数据。</p>
+<p>　　5.innodb_log_file_size参数表示日志文件的大小。</p>
+<p>　　6.innodb_thread_concurrency参数表示在InnoDB存储引擎允许的线程最大数。</p>
+<p><strong>注意：每次修改参数后，必须重新启动MySQL服务才会有效。</strong>操作如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net stop mysql80</span><br><span class="line">net start mysql80</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -502,8 +513,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/05/数据库层面基本操作/" rel="next" title="数据库层面基本操作">
-                <i class="fa fa-chevron-left"></i> 数据库层面基本操作
+              <a href="/2020/03/09/MySQL客户端与服务器连接过程/" rel="next" title="MySQL客户端与服务器连接过程">
+                <i class="fa fa-chevron-left"></i> MySQL客户端与服务器连接过程
               </a>
             
           </div>
@@ -511,10 +522,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/02/06/一、Java入门/" rel="prev" title="一、Java入门">
-                一、Java入门 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -575,17 +582,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -675,22 +673,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#展示当前数据库的表"><span class="nav-number">1.</span> <span class="nav-text">展示当前数据库的表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建表"><span class="nav-number">2.</span> <span class="nav-text">创建表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、基本语法"><span class="nav-number">2.1.</span> <span class="nav-text">1、基本语法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、为建表语句添加注释"><span class="nav-number">2.2.</span> <span class="nav-text">2、为建表语句添加注释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、IF-NOT-EXISTS"><span class="nav-number">2.3.</span> <span class="nav-text">3、IF NOT EXISTS</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -1227,26 +1209,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
