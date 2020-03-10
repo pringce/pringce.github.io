@@ -97,7 +97,9 @@
 <meta property="og:image" content="http://yoursite.com/2020/02/06/一、Java入门/微信图片_20200206145352.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/06/一、Java入门/微信图片_20200206150256.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/06/一、Java入门/微信图片_20200206151238.png">
-<meta property="og:updated_time" content="2020-03-09T07:50:41.121Z">
+<meta property="og:image" content="http://yoursite.com/2020/02/06/一、Java入门/微信图片_20200310135053.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/06/一、Java入门/微信图片_20200310135337.png">
+<meta property="og:updated_time" content="2020-03-10T05:56:53.641Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一、Java入门">
 <meta name="twitter:description" content="1. Java介绍​        Java是目前全球Top 1的程序开发语言，是SUN公司James Gosling为手持设备开发的嵌入式编程语言，原名Oak，1995年改名为Java正式推出，有最大的开发社区；目前广泛应用于企业和互联网后端开发、Android开发和大数据开发。 1.1 Java的特点 一种面向对象的跨平台编程语言，语法比C++简单 以字节码的形式运行在虚拟机上 自带功能齐全的">
@@ -358,8 +360,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-09T15:50:41+08:00">
-                2020-03-09
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-10T13:56:53+08:00">
+                2020-03-10
               </time>
             
           </span>
@@ -408,7 +410,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3.5k
+                  4.8k
                 </span>
               
 
@@ -424,7 +426,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  13
+                  18
                 </span>
               
             </div>
@@ -700,6 +702,165 @@
 <li>数组变量是引用类型，数组大小不可变，可指向不同的数组对象</li>
 <li>数组元素是值类型（如int[]）或引用类型（如String[]）</li>
 </ul>
+<h1 id="3-流程控制"><a href="#3-流程控制" class="headerlink" title="3. 流程控制"></a>3. 流程控制</h1><h2 id="3-1-输入和输出"><a href="#3-1-输入和输出" class="headerlink" title="3.1 输入和输出"></a>3.1 输入和输出</h2><p><strong>输出</strong>：</p>
+<ul>
+<li>输出并换行</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出但不换行</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.print()</span><br></pre></td></tr></table></figure>
+<p><strong>输入</strong>:</p>
+<ul>
+<li>导入java.util.Scanner</li>
+<li>创建Scanner并传入System.in</li>
+<li>使用scanner.nextLine()读字符串</li>
+<li>使用scanner.nextInt()读整数</li>
+<li>使用scanner.nextDouble()读长整型</li>
+<li>……</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">hello</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        System.out.println(<span class="string">"Input your name:"</span>);</span><br><span class="line">        String name = scanner.nextLine();</span><br><span class="line">        System.out.println(<span class="string">"Input your age:"</span>);</span><br><span class="line">        <span class="keyword">int</span> age = scanner.nextInt();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>格式化输出</strong>：</p>
+<ul>
+<li>格式化输出使用System.out.printf()</li>
+<li>使用占位符%###</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.printf(<span class="string">"%s is %d years old\n"</span>,<span class="string">"Bob"</span>,<span class="number">12</span>);</span><br></pre></td></tr></table></figure>
+<p>常用占位符：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">占位符</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">%d</td>
+<td style="text-align:center">整数</td>
+</tr>
+<tr>
+<td style="text-align:center">%x</td>
+<td style="text-align:center">十六进制整数</td>
+</tr>
+<tr>
+<td style="text-align:center">%f</td>
+<td style="text-align:center">浮点数</td>
+</tr>
+<tr>
+<td style="text-align:center">%s</td>
+<td style="text-align:center">字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">%%</td>
+<td style="text-align:center">百分号字符本身</td>
+</tr>
+<tr>
+<td style="text-align:center">%e</td>
+<td style="text-align:center">科学计数法表示浮点数</td>
+</tr>
+<tr>
+<td style="text-align:center">%c</td>
+<td style="text-align:center">字符</td>
+</tr>
+<tr>
+<td style="text-align:center">%b</td>
+<td style="text-align:center">布尔值</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">hello</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">double</span> d = <span class="number">3.1415926</span>;</span><br><span class="line">        System.out.println(d);</span><br><span class="line">        System.out.printf(<span class="string">"PI = %.2f\n"</span>,d);</span><br><span class="line">        System.out.printf(<span class="string">"PI = %7.2f\n"</span>,d);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.1415926</span></span><br><span class="line">PI = <span class="number">3.14</span></span><br><span class="line">PI =    <span class="number">3.14</span> <span class="comment">//3前面补充了三个空格</span></span><br></pre></td></tr></table></figure>
+<p><strong>格式标识符解释</strong></p>
+<p><strong>%7.2f</strong>：  </p>
+<p>7为域宽度.输出的浮点数条目宽度至少为7,包括小数点和小数点后两位数字.这样,给小数点前分配了5位数字.<br>如果该条目小数点前的位数小于5,就在数字前面加空格.<br>如果该条目小数点前的位数大于5,则自动增加宽度.</p>
+<p>2为精度().即想要输出的小数点的长度.</p>
+<p>f为转换码  </p>
+<p><strong>指定宽度和精度的例子</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>举例</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%5c</td>
+<td>输出字符并在这个字符条目前面加4个空格</td>
+</tr>
+<tr>
+<td>%6b</td>
+<td>输出字符并在这个字符条目前面加4个空格</td>
+</tr>
+<tr>
+<td>%5d</td>
+<td>输出整个条目,宽度至少为5.如果该条目的数字位数小于5,就在数字前面加空格.如果该条目的位数大于5,则自动增加宽度</td>
+</tr>
+<tr>
+<td>%10.2f</td>
+<td>输出的浮点条目宽度至少为10,包括小数点、和小数点后两位数字.这样,给小数点前分配了7位数字. 如果该条目小数点前的位数小于7,就在数字前面加空格. 如果该条目小数点前的位数大于7,则自动增加宽度.</td>
+</tr>
+<tr>
+<td>%10.2e</td>
+<td>输出的浮点条目的宽度至少为10,包括小数点、小数点后面两位数字和指数部分(包括e、正负号和指数数字).如果按科学计数法显示的数字位数小于10,就给数字前加空格</td>
+</tr>
+<tr>
+<td>%12s</td>
+<td>输出的字符串至少为12个字符.如果该字符串条目小于12个字符,就在该字符串前加空格.如果该字符串条目多余12个字符,则自动增加宽度</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>注意的问题</strong>：</p>
+<ul>
+<li>默认情况下,输出是右对齐的（即如果宽度不够，在左边补齐空格）.可以在格式标识符中放一个符号(-),表明该条目在特定区域中的输出是左对齐的.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">System.out.printf(<span class="string">"%8.4f"</span>,<span class="number">1.12</span>);</span><br><span class="line">System.out.printf(<span class="string">"%-8.4f"</span>,<span class="number">1.12</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line">  <span class="number">1.1200</span></span><br><span class="line"><span class="number">1.1200</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>使用符号%来标记格式标识符,要在格式字符串里输出直接量%,需要使用%%</p>
+</li>
+<li><p>如果在补齐时不希望以空格进行补齐，而希望以0进行补齐，如下所示：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">System.out.printf(<span class="string">"PI = %08d\n"</span>,<span class="number">1234</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line"><span class="number">00001234</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果想显示符号位，如下所示：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">System.out.printf(<span class="string">"PI = %+8d\n"</span>,<span class="number">1234</span>);</span><br><span class="line"><span class="comment">// 无论正负都可以用上述形式显示符号位</span></span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line">   +<span class="number">1234</span> <span class="comment">//符号也占一位</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>如何控制输出顺序</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// #$表示第几个变量</span></span><br><span class="line">System.out.printf(<span class="string">"%2$d, %1$d"</span>,<span class="number">13</span>,<span class="number">14</span>);</span><br><span class="line">System.out.printf(<span class="string">"%2$s, %1$s"</span>,<span class="string">"a"</span>,<span class="string">"b"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line"><span class="number">14</span>, <span class="number">13</span></span><br><span class="line">b, a</span><br></pre></td></tr></table></figure>
+<h2 id="3-2-引用类型判断是否相等"><a href="#3-2-引用类型判断是否相等" class="headerlink" title="3.2 引用类型判断是否相等"></a>3.2 引用类型判断是否相等</h2><ul>
+<li>判断两个引用是否指向堆中的同一个实例，用”==”</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String a = <span class="string">"hello"</span>;</span><br><span class="line">String b = <span class="string">"world"</span>;</span><br><span class="line">Sytsem.out.println(a==b);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>判断两个引用指向的实例是否相等，用equals。如果变量为null，调用equals()会报错，利用短路运算符&amp;&amp;解决。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String a = <span class="string">"hello"</span>;</span><br><span class="line">String b = <span class="string">"world"</span>;</span><br><span class="line"><span class="keyword">if</span>(a!=<span class="keyword">null</span> &amp;&amp; a.equals(b))</span><br><span class="line">    System.out.println(<span class="string">"yes"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="3-3-Switch语句"><a href="#3-3-Switch语句" class="headerlink" title="3.3 Switch语句"></a>3.3 Switch语句</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> opt = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">switch</span>(opt)&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">        System.out.println(<span class="string">"1"</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">        System.out.println(<span class="string">"2"</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">        System.out.println(<span class="string">"3"</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        System.out.println(<span class="string">"none"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>注意case语句没有{}</li>
+<li>case语句具有”穿透性”，如果不加break会导致意想不到的结果。当opt=2，如果不写break导致case2、case3和default顺序执行</li>
+<li>switch的计算结果必须是整形、字符串（字符串比较内容相等）或枚举类型</li>
+</ul>
+<p><strong>如何避免漏写break和default？</strong></p>
+<ul>
+<li>打开eclipse中的窗口-&gt;首选项</li>
+</ul>
+<img src="/2020/02/06/一、Java入门/微信图片_20200310135053.png">
+<ul>
+<li>Java-&gt;编译器-&gt;错误/警告-&gt;可能的编程问题，修改如下</li>
+</ul>
+<img src="/2020/02/06/一、Java入门/微信图片_20200310135337.png">
+<p>这样以后如果忘了写break或default时会有警告</p>
 
       
     </div>
@@ -913,7 +1074,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Java介绍"><span class="nav-number">1.</span> <span class="nav-text">1. Java介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Java的特点"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Java的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Java的优缺点"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Java的优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Java的版本"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Java的版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-Java的规范"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 Java的规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-Java平台"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 Java平台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-Java为什么可以跨平台运行？"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 Java为什么可以跨平台运行？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-7-Java安装"><span class="nav-number">1.7.</span> <span class="nav-text">1.7 Java安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Java程序基础"><span class="nav-number">2.</span> <span class="nav-text">2. Java程序基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Java程序基本结构"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Java程序基本结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-变量"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-基本数据类型"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-整形"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1 整形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-浮点类型"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.3.2 浮点类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-3-布尔类型"><span class="nav-number">2.3.3.</span> <span class="nav-text">2.3.3 布尔类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-4-字符类型"><span class="nav-number">2.3.4.</span> <span class="nav-text">2.3.4 字符类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-常量"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-基本类型和引用类型"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 基本类型和引用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-引用类型"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 引用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-整数运算"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 整数运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8-浮点数运算"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 浮点数运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-9-布尔运算"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 布尔运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-10-字符和字符串"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 字符和字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-11-数组类型"><span class="nav-number">2.11.</span> <span class="nav-text">2.11 数组类型</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Java介绍"><span class="nav-number">1.</span> <span class="nav-text">1. Java介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Java的特点"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Java的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Java的优缺点"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Java的优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Java的版本"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Java的版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-Java的规范"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 Java的规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-Java平台"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 Java平台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-Java为什么可以跨平台运行？"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 Java为什么可以跨平台运行？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-7-Java安装"><span class="nav-number">1.7.</span> <span class="nav-text">1.7 Java安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Java程序基础"><span class="nav-number">2.</span> <span class="nav-text">2. Java程序基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Java程序基本结构"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Java程序基本结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-变量"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-基本数据类型"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-整形"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1 整形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-浮点类型"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.3.2 浮点类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-3-布尔类型"><span class="nav-number">2.3.3.</span> <span class="nav-text">2.3.3 布尔类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-4-字符类型"><span class="nav-number">2.3.4.</span> <span class="nav-text">2.3.4 字符类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-常量"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-基本类型和引用类型"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 基本类型和引用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-引用类型"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 引用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-整数运算"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 整数运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8-浮点数运算"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 浮点数运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-9-布尔运算"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 布尔运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-10-字符和字符串"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 字符和字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-11-数组类型"><span class="nav-number">2.11.</span> <span class="nav-text">2.11 数组类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-流程控制"><span class="nav-number">3.</span> <span class="nav-text">3. 流程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-输入和输出"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 输入和输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-引用类型判断是否相等"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 引用类型判断是否相等</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-Switch语句"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Switch语句</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -943,7 +1104,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共21.7k字</span>
+  <span class="post-count">博客全站共22.9k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -959,7 +1120,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">21.7k</span>
+    <span title="Site words total count">22.9k</span>
   
 </div>
 
