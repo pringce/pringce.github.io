@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="CodeMonkey · 程序猴">
 <meta property="og:description" content="回顾一下建表语句： 123456CREATE TABLE 表名(	列名1 数据类型 [列的属性],	列名2 数据类型 [列的属性],	...	列名n 数据类型 [列的属性],); 表中的每个列都可以有一些属性，至于这些属性是什么以及怎么在创建表的时候把它们定义出来就是本章接下来的内容哈。 默认值我们在书写INSERT语句插入记录的时候可以只指定部分的列，那些没有被显式指定的列的值将被设置为NULL">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-11T08:49:57.644Z">
+<meta property="og:updated_time" content="2020-03-11T09:25:01.220Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="列的属性">
 <meta name="twitter:description" content="回顾一下建表语句： 123456CREATE TABLE 表名(	列名1 数据类型 [列的属性],	列名2 数据类型 [列的属性],	...	列名n 数据类型 [列的属性],); 表中的每个列都可以有一些属性，至于这些属性是什么以及怎么在创建表的时候把它们定义出来就是本章接下来的内容哈。 默认值我们在书写INSERT语句插入记录的时候可以只指定部分的列，那些没有被显式指定的列的值将被设置为NULL">
@@ -354,7 +354,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-11T16:49:57+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-11T17:25:01+08:00">
                 2020-03-11
               </time>
             
@@ -446,7 +446,7 @@
 <p>表中的每个列都可以有一些属性，至于这些属性是什么以及怎么在创建表的时候把它们定义出来就是本章接下来的内容哈。</p>
 <h1 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h1><p>我们在书写<strong>INSERT</strong>语句插入记录的时候可以只指定部分的列，那些没有被显式指定的列的值将被设置为NULL，换一种说法就是列的默认值为NULL，NULL的含义是这个列的值还没有被设置。如果我们不想让默认值为NULL，而是设置成某个有意义的值，可以在定义列的时候给该列增加一个<strong>DEFAULT</strong>属性，就像这样：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">列名 列的类型 DEFAULT 默认值</span><br></pre></td></tr></table></figure>
-<p>比如我们把first_table的second_column列的默认值指定为’abc，创建一下这个表：</p>
+<p>比如我们把first_table的second_column列的默认值指定为’abc’，创建一下这个表：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="function">CREATE TABLE <span class="title">first_table</span> <span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    -&gt;     first_column INT,</span></span></span><br><span class="line"><span class="function"><span class="params">    -&gt;     second_column VARCHAR(<span class="number">100</span>)</span> DEFAULT 'abc'</span></span><br><span class="line"><span class="function">    -&gt; )</span>;</span><br><span class="line">Query OK, <span class="number">0</span> <span class="function">rows <span class="title">affected</span> <span class="params">(<span class="number">0.02</span> sec)</span></span></span><br></pre></td></tr></table></figure>
 <p><strong>如果我们不设置默认值，其实就相当于指定的默认值为NULL</strong>，比如first_table表并没有设置first_column列的默认值，那它的默认值就是NULL，也就是说上边的表定义语句和下边这个是等价的：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">CREATE TABLE <span class="title">first_table</span> <span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    first_column INT DEFAULT NULL,</span></span></span><br><span class="line"><span class="function"><span class="params">    second_column VARCHAR(<span class="number">100</span>)</span> DEFAULT 'abc'</span></span><br><span class="line"><span class="function">)</span>;</span><br></pre></td></tr></table></figure>
