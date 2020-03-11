@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/10/27/MySQL数据类型/16d6779ad10263a2.png">
 <meta property="og:image" content="http://yoursite.com/2019/10/27/MySQL数据类型/16d6779ad21ff99f.png">
 <meta property="og:image" content="http://yoursite.com/2019/10/27/MySQL数据类型/16d6779ad395a41d.png">
-<meta property="og:updated_time" content="2019-11-01T06:36:27.656Z">
+<meta property="og:updated_time" content="2020-03-11T08:25:23.566Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL数据类型">
 <meta name="twitter:description" content="​        MySQL支持所有的SQL数据类型，主要分为以下四类：  数值类型 字符串类型 时间日期类型 二进制类型  一、数值类型​        MySQL数值类型有9种，其中整数类型有5种（INTEGER、TINYINT、SMALLINT、MEDIUMINT和BIGINT）、浮点类型2种（float(M,D)、double(M,D)）、定点数1种（decimal(M,D)）和bit(M">
@@ -362,8 +362,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-11-01T14:36:27+08:00">
-                2019-11-01
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-11T16:25:23+08:00">
+                2020-03-11
               </time>
             
           </span>
@@ -412,7 +412,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5.8k
+                  6k
                 </span>
               
 
@@ -428,7 +428,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  21
+                  22
                 </span>
               
             </div>
@@ -513,7 +513,7 @@
 </table>
 </div>
 <p>以<strong>TINYINT</strong>为例，用1个字节，也就是8位表示有符号数的话，就是既可以表示正数，也可以表示负数的话，需要有一个比特位表示正负号。但是如果表示无符号数的话，也就是只表示非负数的话，就不需要表示正负号，这就是有符号数和无符号数的区别。</p>
-<p>注意，对于<strong>INT(M)</strong>类型，<strong>M值不代表可以存储的数字长度，代表的是数据在显示时显式的最小长度。</strong></p>
+<p>注意，对于<strong>INT(M)</strong>类型，<strong>M值不代表可以存储的数字长度，代表的是数据在显示时显式的最小长度。</strong>在 INT(M) 中，M 的值跟 INT(M) 所占多少存储空间并无任何关系。 INT(3)、INT(4)、INT(8) 在磁盘上都是占用 4 btyes 的存储空间。说白了，除了显示给用户的方式有点不同外，INT(M) 跟 INT 数据类型是相同的。当数据长度超过M时，相当于啥也没发生，正常显示。如果数据长度小于M，需要指定某个字符来填充。<strong>要查看出不同效果记得在创建类型的时候加 zerofill（见”列的属性”一节）这个值，表示用0填充，否则看不出效果的</strong></p>
 <ul>
 <li><p><strong>浮点数类型</strong></p>
 <p>​    浮点数是用来表示小数的，平时用的十进制小数也可以转换成二进制后被计算机存储。比如9.875，这个小数可以被表示成这样：</p>
@@ -612,6 +612,35 @@
 <p>小数点后有几个十进制数字，D的值就是什么</p>
 </li>
 </ul>
+<p>举个例子看一下，设置了M和D的单精度浮点数的取值范围的变化：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">取值范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">FLOAT(4,1)</td>
+<td style="text-align:center">-999.9~999.9</td>
+</tr>
+<tr>
+<td style="text-align:center">FLOAT(5,1)</td>
+<td style="text-align:center">-9999.9~9999.9</td>
+</tr>
+<tr>
+<td style="text-align:center">FLOAT(4,0)</td>
+<td style="text-align:center">-9999~9999</td>
+</tr>
+<tr>
+<td style="text-align:center">FLOAT(4,2)</td>
+<td style="text-align:center">-99.99~99.99</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>M取值范围为<strong>0~255</strong>。<strong>FLOAT只保证6位有效数字的准确性</strong>，所以FLOAT(M,D)中，M&lt;=6时，数字通常是准确的。如果M和D都有明确定义，其超出范围后的处理同decimal。</p>
 <p>D取值范围为<strong>0~30</strong>，同时必须<strong>&lt;=M</strong>。<strong>double只保证16位有效数字的准确性</strong>，所以DOUBLE(M,D)中，M&lt;=16时，数字通常是准确的。如果M和D都有明确定义，其超出范围后的处理同decimal。</p>
 <p><strong>FLOAT和DOUBLE中，若M的定义分别超出7和17，则多出的有效数字部分，取值是不定的，通常数值上会发生错误。因为浮点数是不准确的，所以我们要避免使用“=”来判断两个数是否相等。</strong></p>
@@ -1087,7 +1116,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1200,7 +1229,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共22.9k字</span>
+  <span class="post-count">博客全站共27.5k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -1216,7 +1245,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">22.9k</span>
+    <span title="Site words total count">27.5k</span>
   
 </div>
 

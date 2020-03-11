@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="CodeMonkey · 程序猴">
 <meta property="og:description" content="​        创建表的时候首先需要描述清楚这个表是什么样的，它有哪些列，这些列都是用来存什么类型的数据等等。表中的一行叫做一条记录，一列就做一个字段。 展示当前数据库的表​        下面的语句用于展示当前数据库中有哪些表： 1mysql&amp;gt; SHOW TABLES; 创建表1、基本语法创建一个表时至少需要完成下列事情： （1）给表起个名 （2）给表定义一些列，并且给这些列都起个名 （">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-13T08:12:24.792Z">
+<meta property="og:updated_time" content="2020-03-10T12:16:11.501Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL表的基本操作">
 <meta name="twitter:description" content="​        创建表的时候首先需要描述清楚这个表是什么样的，它有哪些列，这些列都是用来存什么类型的数据等等。表中的一行叫做一条记录，一列就做一个字段。 展示当前数据库的表​        下面的语句用于展示当前数据库中有哪些表： 1mysql&amp;gt; SHOW TABLES; 创建表1、基本语法创建一个表时至少需要完成下列事情： （1）给表起个名 （2）给表定义一些列，并且给这些列都起个名 （">
@@ -354,8 +354,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-11-13T16:12:24+08:00">
-                2019-11-13
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-10T20:16:11+08:00">
+                2020-03-10
               </time>
             
           </span>
@@ -404,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  713
+                  1.5k
                 </span>
               
 
@@ -420,7 +420,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  5
                 </span>
               
             </div>
@@ -461,6 +461,8 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">CREATE TABLE <span class="title">first_table</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">	first_column INT,</span></span></span><br><span class="line"><span class="function"><span class="params">	second_column VARCHAR(<span class="number">100</span>)</span></span></span><br><span class="line"><span class="function">)</span>;</span><br></pre></td></tr></table></figure>
 <p>执行结果如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="function">CREATE TABLE <span class="title">first_table</span> <span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    -&gt;     first_column INT,</span></span></span><br><span class="line"><span class="function"><span class="params">    -&gt;     second_column VARCHAR(<span class="number">100</span>)</span></span></span><br><span class="line"><span class="function">    -&gt; )</span>;</span><br><span class="line">Query OK, <span class="number">0</span> <span class="function">rows <span class="title">affected</span> <span class="params">(<span class="number">0.02</span> sec)</span></span></span><br></pre></td></tr></table></figure>
+<p><strong>如何查看已建立的表的列属性信息？</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show create table first_table;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 结果如下</span></span><br><span class="line">CREATE TABLE `first_table` (</span><br><span class="line">  `first_column` <span class="keyword">int</span>(<span class="number">11</span>) DEFAULT NULL,</span><br><span class="line">  `second_column` varchar(<span class="number">100</span>) DEFAULT NULL</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4</span><br></pre></td></tr></table></figure>
 <h5 id="2、为建表语句添加注释"><a href="#2、为建表语句添加注释" class="headerlink" title="2、为建表语句添加注释"></a>2、为建表语句添加注释</h5><p>​        我们可以在创建表时将该表的用处以注释的形式添加到语句中，只要在建表语句最后加上<strong>COMMIT</strong>语句即可：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名 (</span><br><span class="line">    各个列的信息 ...</span><br><span class="line">) COMMENT <span class="string">'表的注释信息'</span>;</span><br></pre></td></tr></table></figure>
 <p>比如我们可以这样写first_table的建表语句：</p>
@@ -470,6 +472,33 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="function">CREATE TABLE <span class="title">first_table</span> <span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    -&gt;     first_column INT,</span></span></span><br><span class="line"><span class="function"><span class="params">    -&gt;     second_column VARCHAR(<span class="number">100</span>)</span></span></span><br><span class="line"><span class="function">    -&gt; ) COMMENT '第一个表'</span>;</span><br><span class="line">ERROR <span class="number">1050</span> (<span class="number">42</span>S01): Table <span class="string">'first_table'</span> already exists</span><br></pre></td></tr></table></figure>
 <p>如果想要避免这种错误发生，可以在创建表的时候使用这种形式：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE IF NOT EXISTS 表名(</span><br><span class="line">    各个列的信息 ...</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h5 id="4、简单的查询和插入语句"><a href="#4、简单的查询和插入语句" class="headerlink" title="4、简单的查询和插入语句"></a><strong>4、简单的查询和插入语句</strong></h5><p><strong>简单的查询语句</strong></p>
+<p>如果我们想查看某个表里已经存储了哪些数据，可以用下边这个语句：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM 表名;</span><br></pre></td></tr></table></figure>
+<p>比如我们想看看前边创建的first_table表中有哪些数据，可以这么写：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM first_table;</span><br><span class="line"><span class="function">Empty <span class="title">set</span> <span class="params">(<span class="number">0.01</span> sec)</span></span></span><br></pre></td></tr></table></figure>
+<p>很遗憾，我们从来没有向表中插入过数据，所以查询结果显示的是Empty set，表示什么都没查出来～</p>
+<p><strong>简单的插入语句</strong></p>
+<p>MySQL插入数据的时候是以行为单位的，语法格式如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO 表名(列<span class="number">1</span>, 列<span class="number">2</span>, ...) VALUES(列<span class="number">1</span>的值，列<span class="number">2</span>的值, ...);</span><br></pre></td></tr></table></figure>
+<p>也就是说我们可以在表名后边的括号中指定要插入数据的列，然后在VALUES后边的括号中<strong>按指定的列顺序</strong>填入对应的值，我们来为first_table表插入第一行数据：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="function">INSERT INTO <span class="title">first_table</span><span class="params">(first_column, second_column)</span> <span class="title">VALUES</span><span class="params">(<span class="number">1</span>, <span class="string">'aaa'</span>)</span></span>;</span><br><span class="line">Query OK, <span class="number">1</span> <span class="function">row <span class="title">affected</span> <span class="params">(<span class="number">0.00</span> sec)</span></span></span><br></pre></td></tr></table></figure>
+<p>这个语句的意思就是我们要向first_table表中插入一行数据，first_column列的值是1，second_colum列的值是’aaa’。看一下现在表中的数据：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM first_table;</span><br><span class="line">+--------------+---------------+</span><br><span class="line">| first_column | second_column |</span><br><span class="line">+--------------+---------------+</span><br><span class="line">|            <span class="number">1</span> | aaa           |</span><br><span class="line">+--------------+---------------+</span><br><span class="line"><span class="number">1</span> <span class="function">row in <span class="title">set</span> <span class="params">(<span class="number">0.00</span> sec)</span></span></span><br></pre></td></tr></table></figure>
+<p>我们也可以只指定部分的列，没有显式指定的列的值将被设置为NULL，NULL的意思就是此列的值尚不确定。比如这样写：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="function">INSERT INTO <span class="title">first_table</span><span class="params">(first_column)</span> <span class="title">VALUES</span><span class="params">(<span class="number">2</span>)</span></span>;</span><br><span class="line">Query OK, <span class="number">1</span> <span class="function">row <span class="title">affected</span> <span class="params">(<span class="number">0.00</span> sec)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">mysql&gt; INSERT INTO <span class="title">first_table</span><span class="params">(second_column)</span> <span class="title">VALUES</span><span class="params">(<span class="string">'ccc'</span>)</span></span>;</span><br><span class="line">Query OK, <span class="number">1</span> <span class="function">row <span class="title">affected</span> <span class="params">(<span class="number">0.00</span> sec)</span></span></span><br></pre></td></tr></table></figure>
+<p>这两条语句的意思就是：</p>
+<ul>
+<li>第一条插入语句我们只指定了first_column列的值是2，而没有指定second_column的值，所以second_colum的值就是NULL。</li>
+<li>第二条插入语句我们只指定了second_column的值是’ccc’，而没有指定first_column的值，所以first_column的值就是NULL。</li>
+</ul>
+<p>执行完这两条语句后，再看一下现在表中的数据：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM first_table;</span><br><span class="line">+--------------+---------------+</span><br><span class="line">| first_column | second_column |</span><br><span class="line">+--------------+---------------+</span><br><span class="line">|            <span class="number">1</span> | aaa           |</span><br><span class="line">|            <span class="number">2</span> | NULL          |</span><br><span class="line">|         NULL | ccc           |</span><br><span class="line">+--------------+---------------+</span><br><span class="line"><span class="number">3</span> <span class="function">rows in <span class="title">set</span> <span class="params">(<span class="number">0.00</span> sec)</span></span></span><br></pre></td></tr></table></figure>
+<p><strong>批量插入</strong></p>
+<p>每插入一行数据写一条语句也不是不行，但是对人来说太烦了，而且每插入一行数据就向服务器提交一个请求远没有一次把所有插入的数据提交给服务器效率高，所以MySQL为我们提供了批量插入记录的语句：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO 表名(列<span class="number">1</span>,列<span class="number">2</span>, ...) VAULES(列<span class="number">1</span>的值，列<span class="number">2</span>的值, ...), (列<span class="number">1</span>的值，列<span class="number">2</span>的值, ...), (列<span class="number">1</span>的值，列<span class="number">2</span>的值, ...), ...;</span><br></pre></td></tr></table></figure>
+<p>也就是在原来的单条插入语句后边多写几条记录的内容，用逗号分隔开就好了，举个例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="function">INSERT INTO <span class="title">first_table</span><span class="params">(first_column, second_column)</span> <span class="title">VALUES</span><span class="params">(<span class="number">4</span>, <span class="string">'ddd'</span>)</span>, <span class="params">(<span class="number">5</span>, <span class="string">'eee'</span>)</span>, <span class="params">(<span class="number">6</span>, <span class="string">'fff'</span>)</span></span>;</span><br><span class="line">Query OK, <span class="number">3</span> <span class="function">rows <span class="title">affected</span> <span class="params">(<span class="number">0.00</span> sec)</span></span></span><br><span class="line"><span class="function">Records: 3  Duplicates: 0  Warnings: 0</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">mysql&gt; SELECT * FROM first_table</span>;</span><br><span class="line">+--------------+---------------+</span><br><span class="line">| first_column | second_column |</span><br><span class="line">+--------------+---------------+</span><br><span class="line">|            <span class="number">1</span> | aaa           |</span><br><span class="line">|            <span class="number">2</span> | NULL          |</span><br><span class="line">|         NULL | ccc           |</span><br><span class="line">|            <span class="number">4</span> | ddd           |</span><br><span class="line">|            <span class="number">5</span> | eee           |</span><br><span class="line">|            <span class="number">6</span> | fff           |</span><br><span class="line">+--------------+---------------+</span><br><span class="line"><span class="number">6</span> <span class="function">rows in <span class="title">set</span> <span class="params">(<span class="number">0.01</span> sec)</span></span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -602,7 +631,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -685,7 +714,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#展示当前数据库的表"><span class="nav-number">1.</span> <span class="nav-text">展示当前数据库的表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建表"><span class="nav-number">2.</span> <span class="nav-text">创建表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、基本语法"><span class="nav-number">2.1.</span> <span class="nav-text">1、基本语法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、为建表语句添加注释"><span class="nav-number">2.2.</span> <span class="nav-text">2、为建表语句添加注释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、IF-NOT-EXISTS"><span class="nav-number">2.3.</span> <span class="nav-text">3、IF NOT EXISTS</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#展示当前数据库的表"><span class="nav-number">1.</span> <span class="nav-text">展示当前数据库的表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建表"><span class="nav-number">2.</span> <span class="nav-text">创建表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、基本语法"><span class="nav-number">2.1.</span> <span class="nav-text">1、基本语法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、为建表语句添加注释"><span class="nav-number">2.2.</span> <span class="nav-text">2、为建表语句添加注释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、IF-NOT-EXISTS"><span class="nav-number">2.3.</span> <span class="nav-text">3、IF NOT EXISTS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、简单的查询和插入语句"><span class="nav-number">2.4.</span> <span class="nav-text">4、简单的查询和插入语句</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -715,7 +744,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共22.9k字</span>
+  <span class="post-count">博客全站共27.5k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -731,7 +760,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">22.9k</span>
+    <span title="Site words total count">27.5k</span>
   
 </div>
 
