@@ -99,7 +99,10 @@
 <meta property="og:image" content="http://yoursite.com/2020/02/06/一、Java入门/微信图片_20200206151238.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/06/一、Java入门/微信图片_20200310135053.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/06/一、Java入门/微信图片_20200310135337.png">
-<meta property="og:updated_time" content="2020-03-10T06:02:16.191Z">
+<meta property="og:image" content="http://yoursite.com/2020/02/06/一、Java入门/微信图片_20200312103806.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/06/一、Java入门/微信图片_20200312105221.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/06/一、Java入门/微信图片_20200312105351.png">
+<meta property="og:updated_time" content="2020-03-12T03:03:42.531Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一、Java入门">
 <meta name="twitter:description" content="1. Java介绍​        Java是目前全球Top 1的程序开发语言，是SUN公司James Gosling为手持设备开发的嵌入式编程语言，原名Oak，1995年改名为Java正式推出，有最大的开发社区；目前广泛应用于企业和互联网后端开发、Android开发和大数据开发。 1.1 Java的特点 一种面向对象的跨平台编程语言，语法比C++简单 以字节码的形式运行在虚拟机上 自带功能齐全的">
@@ -360,8 +363,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-10T14:02:16+08:00">
-                2020-03-10
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-12T11:03:42+08:00">
+                2020-03-12
               </time>
             
           </span>
@@ -410,7 +413,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4.8k
+                  5.6k
                 </span>
               
 
@@ -426,7 +429,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  18
+                  22
                 </span>
               
             </div>
@@ -861,6 +864,83 @@
 </ul>
 <img src="/2020/02/06/一、Java入门/微信图片_20200310135337.png">
 <p>这样以后如果忘了写break或default时会有警告</p>
+<h2 id="3-4-While循环"><a href="#3-4-While循环" class="headerlink" title="3.4 While循环"></a>3.4 While循环</h2><ul>
+<li>while循环首先判断条件</li>
+<li>条件满足时循环</li>
+<li>条件不满足时退出</li>
+<li>可能一次都不循环</li>
+<li>注意逻辑，避免无限死循环</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> n = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span>(n&lt;<span class="number">10</span>)&#123;</span><br><span class="line">    sum = sum+n;</span><br><span class="line">    n++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-5-do-while循环"><a href="#3-5-do-while循环" class="headerlink" title="3.5 do-while循环"></a>3.5 do-while循环</h2><ul>
+<li>do-while先执行循环，再判断条件</li>
+<li>条件满足时继续循环</li>
+<li>条件不满足时退出</li>
+<li>至少循环一次</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> n = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">    sum += n;</span><br><span class="line">    n++;</span><br><span class="line">&#125; <span class="keyword">while</span>(n&lt;<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="3-6-for循环"><a href="#3-6-for循环" class="headerlink" title="3.6 for循环"></a>3.6 for循环</h2><p>for循环分别设置：</p>
+<ul>
+<li>计数器初始值</li>
+<li>循环前检测条件</li>
+<li>每次循环后如何更新计数器</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] ns = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;ns.length;i++)&#123;</span><br><span class="line">    System.out.println(ns[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>初始化计数器总是被执行</li>
+<li>可能循环0次</li>
+</ul>
+<p><strong>for each循环</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] ns = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(n:ns)&#123;</span><br><span class="line">    System.out.println(n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>for each循环可以更简单的遍历数组</li>
+<li>for each循环能够遍历数组和”可迭代”数据类型，包括List、Map等</li>
+<li>for each循环无法指定遍历顺序</li>
+<li><strong>for each循环无法获取数组索引，因此无法同时遍历多个数组</strong>。只能通过for循环</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] ns1 = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="keyword">int</span>[] ns2 = &#123;<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;ns1.length;i++)&#123;</span><br><span class="line">    ns2[i] = ns1[i]*ns1[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="break和continue"><a href="#break和continue" class="headerlink" title="break和continue"></a>break和continue</h2><p>在循环中，可以使用break语句和continue语句。</p>
+<h3 id="break跳出循环"><a href="#break跳出循环" class="headerlink" title="break跳出循环"></a>break跳出循环</h3><ul>
+<li>循环过程中，可以使用break语句跳出循环</li>
+<li>如果有多层循环嵌套，break语句总是跳出最近的一层循环。</li>
+<li>break通常配合if，在满足条件时提前结束循环</li>
+</ul>
+<h3 id="continue提前结束当前循环"><a href="#continue提前结束当前循环" class="headerlink" title="continue提前结束当前循环"></a>continue提前结束当前循环</h3><ul>
+<li>continue可提前结束本轮循环，直接继续下次循环</li>
+<li>continue通常配合if，在满足条件时提前结束本轮循环</li>
+</ul>
+<h1 id="数组操作"><a href="#数组操作" class="headerlink" title="数组操作"></a>数组操作</h1><h2 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h2><ul>
+<li>for循环可以遍历数组</li>
+<li>for(;;)循环通过下标遍历数组</li>
+<li>for each循环直接遍历数组元素</li>
+</ul>
+<p>直接打印数组变量，得到的是数组在JVM中的引用地址。for each循环打印也很麻烦。Arrays.toString()可以快速打印数组内容</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span>[] ns = &#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">8</span>&#125;;</span><br><span class="line">System.out.println(Arrays.toString(ns));</span><br></pre></td></tr></table></figure>
+<h2 id="数组排序"><a href="#数组排序" class="headerlink" title="数组排序"></a>数组排序</h2><p>有两种方法：</p>
+<ul>
+<li>自己写排序算法，比如冒泡排序、快排等</li>
+<li>使用JDK的Arrays.sort()排序。<strong>使用ctrl+鼠标左键可以快速查看JDK源码</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span>[] ns = &#123;<span class="number">28</span>,<span class="number">12</span>,<span class="number">89</span>,<span class="number">73</span>,<span class="number">65</span>&#125;;</span><br><span class="line">Arrays.sort(ns);</span><br><span class="line">System.out.println(Arrays.toString(ns));</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对数组排序修改了数组本身</li>
+</ul>
+<h2 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h2><h3 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a>二维数组</h3><ul>
+<li>二维数组就是数组的数组</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[][] ns = &#123;</span><br><span class="line">    &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;,</span><br><span class="line">    &#123;<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>&#125;,</span><br><span class="line">    &#123;<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>二维数组的内存空间分配如图所示：</p>
+<img src="/2020/02/06/一、Java入门/微信图片_20200312103806.png">
+<p>数组变量分配在栈内存中，其指向一个三维数组，该三维分配在堆内存上。每一维数组元素由指向一个一维数组，同样分配在堆内存上。</p>
+<ul>
+<li>访问二维数组元素使用array[rows] [cols]</li>
+<li>二维数组每个数组元素长度不要求相同</li>
+</ul>
+<img src="/2020/02/06/一、Java入门/微信图片_20200312105221.png">
+<h3 id="三维数组"><a href="#三维数组" class="headerlink" title="三维数组"></a>三维数组</h3><p>与二维数组类似，内存分配如图所示</p>
+<img src="/2020/02/06/一、Java入门/微信图片_20200312105351.png">
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[][][] ns = &#123;</span><br><span class="line">    &#123;</span><br><span class="line">        &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;,</span><br><span class="line">        &#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;,</span><br><span class="line">        &#123;<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        &#123;<span class="number">10</span>,<span class="number">11</span>&#125;,</span><br><span class="line">        &#123;<span class="number">12</span>,<span class="number">13</span>&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        &#123;<span class="number">14</span>,<span class="number">15</span>,<span class="number">16</span>&#125;,</span><br><span class="line">        &#123;<span class="number">17</span>,<span class="number">18</span>&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>其余多维数组类似</p>
 
       
     </div>
@@ -1074,7 +1154,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Java介绍"><span class="nav-number">1.</span> <span class="nav-text">1. Java介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Java的特点"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Java的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Java的优缺点"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Java的优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Java的版本"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Java的版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-Java的规范"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 Java的规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-Java平台"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 Java平台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-Java为什么可以跨平台运行？"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 Java为什么可以跨平台运行？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-7-Java安装"><span class="nav-number">1.7.</span> <span class="nav-text">1.7 Java安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Java程序基础"><span class="nav-number">2.</span> <span class="nav-text">2. Java程序基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Java程序基本结构"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Java程序基本结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-变量"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-基本数据类型"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-整形"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1 整形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-浮点类型"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.3.2 浮点类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-3-布尔类型"><span class="nav-number">2.3.3.</span> <span class="nav-text">2.3.3 布尔类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-4-字符类型"><span class="nav-number">2.3.4.</span> <span class="nav-text">2.3.4 字符类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-常量"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-基本类型和引用类型"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 基本类型和引用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-引用类型"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 引用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-整数运算"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 整数运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8-浮点数运算"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 浮点数运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-9-布尔运算"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 布尔运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-10-字符和字符串"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 字符和字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-11-数组类型"><span class="nav-number">2.11.</span> <span class="nav-text">2.11 数组类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-流程控制"><span class="nav-number">3.</span> <span class="nav-text">3. 流程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-输入和输出"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 输入和输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-引用类型判断是否相等"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 引用类型判断是否相等</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-Switch语句"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Switch语句</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Java介绍"><span class="nav-number">1.</span> <span class="nav-text">1. Java介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Java的特点"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Java的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Java的优缺点"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Java的优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Java的版本"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Java的版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-Java的规范"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 Java的规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-Java平台"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 Java平台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-Java为什么可以跨平台运行？"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 Java为什么可以跨平台运行？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-7-Java安装"><span class="nav-number">1.7.</span> <span class="nav-text">1.7 Java安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Java程序基础"><span class="nav-number">2.</span> <span class="nav-text">2. Java程序基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Java程序基本结构"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Java程序基本结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-变量"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-基本数据类型"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-整形"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1 整形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-浮点类型"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.3.2 浮点类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-3-布尔类型"><span class="nav-number">2.3.3.</span> <span class="nav-text">2.3.3 布尔类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-4-字符类型"><span class="nav-number">2.3.4.</span> <span class="nav-text">2.3.4 字符类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-常量"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-基本类型和引用类型"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 基本类型和引用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-引用类型"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 引用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-整数运算"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 整数运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8-浮点数运算"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 浮点数运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-9-布尔运算"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 布尔运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-10-字符和字符串"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 字符和字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-11-数组类型"><span class="nav-number">2.11.</span> <span class="nav-text">2.11 数组类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-流程控制"><span class="nav-number">3.</span> <span class="nav-text">3. 流程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-输入和输出"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 输入和输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-引用类型判断是否相等"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 引用类型判断是否相等</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-Switch语句"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Switch语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-While循环"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 While循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-do-while循环"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 do-while循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6-for循环"><span class="nav-number">3.6.</span> <span class="nav-text">3.6 for循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#break和continue"><span class="nav-number">3.7.</span> <span class="nav-text">break和continue</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#break跳出循环"><span class="nav-number">3.7.1.</span> <span class="nav-text">break跳出循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#continue提前结束当前循环"><span class="nav-number">3.7.2.</span> <span class="nav-text">continue提前结束当前循环</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组操作"><span class="nav-number">4.</span> <span class="nav-text">数组操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历数组"><span class="nav-number">4.1.</span> <span class="nav-text">遍历数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组排序"><span class="nav-number">4.2.</span> <span class="nav-text">数组排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多维数组"><span class="nav-number">4.3.</span> <span class="nav-text">多维数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二维数组"><span class="nav-number">4.3.1.</span> <span class="nav-text">二维数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三维数组"><span class="nav-number">4.3.2.</span> <span class="nav-text">三维数组</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1104,7 +1184,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共27.5k字</span>
+  <span class="post-count">博客全站共28.3k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -1120,7 +1200,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">27.5k</span>
+    <span title="Site words total count">28.3k</span>
   
 </div>
 
