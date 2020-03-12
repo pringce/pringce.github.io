@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="CodeMonkey · 程序猴">
 <meta property="og:description" content="回顾一下建表语句： 123456CREATE TABLE 表名(	列名1 数据类型 [列的属性],	列名2 数据类型 [列的属性],	...	列名n 数据类型 [列的属性],); 表中的每个列都可以有一些属性，至于这些属性是什么以及怎么在创建表的时候把它们定义出来就是本章接下来的内容哈。 默认值我们在书写INSERT语句插入记录的时候可以只指定部分的列，那些没有被显式指定的列的值将被设置为NULL">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-12T08:24:53.131Z">
+<meta property="og:updated_time" content="2020-03-12T08:30:21.585Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="列的属性">
 <meta name="twitter:description" content="回顾一下建表语句： 123456CREATE TABLE 表名(	列名1 数据类型 [列的属性],	列名2 数据类型 [列的属性],	...	列名n 数据类型 [列的属性],); 表中的每个列都可以有一些属性，至于这些属性是什么以及怎么在创建表的时候把它们定义出来就是本章接下来的内容哈。 默认值我们在书写INSERT语句插入记录的时候可以只指定部分的列，那些没有被显式指定的列的值将被设置为NULL">
@@ -354,7 +354,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-12T16:24:53+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-12T16:30:21+08:00">
                 2020-03-12
               </time>
             
@@ -522,7 +522,7 @@
 <li>该列的实际值的位数必须小于显示宽度</li>
 </ul>
 </li>
-<li><p><strong>在创建表的时候，如果声明了ZEROFILL属性的列没有声明UNSIGNED属性，那MySQL会为该列自动生UNSIGNED属性。</strong>（<!--MySQL现在只支持对无符号整数进行自动补0操作-->）</p>
+<li><p><strong>在创建表的时候，如果声明了ZEROFILL属性的列没有声明UNSIGNED属性，那MySQL会为该列自动生UNSIGNED属性。</strong>（<strong>MySQL现在只支持对无符号整数进行自动补0操作</strong>）</p>
 </li>
 <li>显示宽度并不会影响实际类型的实际存储空间。显示宽度仅仅是在展示查询结果时，如果整数的位数不够显示宽度的情况下起作用</li>
 <li>只有列的实际值的位数小于显示宽度时才会补0，实际值的位数大于显示宽度时照原样输出。</li>
