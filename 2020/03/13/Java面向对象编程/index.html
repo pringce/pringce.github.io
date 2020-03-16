@@ -95,7 +95,7 @@
 <meta property="og:description" content="什么是OOP？ 面向对象编程：Object-Oriented Programming 对现实世界建立计算机模型的一种编程方法  面向对象的三大特性：封装、继承、多态。 对象的概念    现实世界 计算机模型 Java代码     人 类/class class Person{}   小明 实例/ming Person ming = new Preson()   小红 实例/hong Person">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2020/03/13/Java面向对象编程/微信图片_20200314144110.png">
-<meta property="og:updated_time" content="2020-03-15T04:16:59.895Z">
+<meta property="og:updated_time" content="2020-03-16T07:14:11.328Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java面向对象编程">
 <meta name="twitter:description" content="什么是OOP？ 面向对象编程：Object-Oriented Programming 对现实世界建立计算机模型的一种编程方法  面向对象的三大特性：封装、继承、多态。 对象的概念    现实世界 计算机模型 Java代码     人 类/class class Person{}   小明 实例/ming Person ming = new Preson()   小红 实例/hong Person">
@@ -356,8 +356,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-15T12:16:59+08:00">
-                2020-03-15
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-16T15:14:11+08:00">
+                2020-03-16
               </time>
             
           </span>
@@ -732,7 +732,7 @@
 <li>对于返回类型是引用类型，返回类型可替换成该类型的 子类型;</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ParentClass</span></span>&#123;<span class="comment">//父类</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">count</span><span class="params">()</span> </span>&#123;<span class="comment">//</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function">Object <span class="title">method</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"aa"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ChildClass</span> <span class="keyword">extends</span> <span class="title">ParentClass</span></span>&#123;<span class="comment">//子类</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">count</span><span class="params">()</span> </span>&#123;<span class="comment">//重写count()方法，由于返回类型是基本类型，不能变，必须是一致</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">method</span><span class="params">()</span> </span>&#123;<span class="comment">//重写method()：访问权限增大，返回类型是Object的子类String</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"aa"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="隐藏"><a href="#隐藏" class="headerlink" title="隐藏"></a>隐藏</h4><p>隐藏是针对于<strong>父类的成员变量和静态方法</strong>而言的。子类中声明了和父类相同的变量名或静态方法(方法名相同、参数列表相同、返回类型相同)则实现了对父类成员变量和静态方法的隐藏。当子类中出现与父类相同的方法时，重写是子类与父类只保持一份，但方法隐藏则是子类与父类各自独立保持一份，也就两份。从父类继承下来的成员中，除了部分方法是可以重写外，其余成员都是隐藏，如变量、内部类、静态方法等。</p>
+<h4 id="隐藏"><a href="#隐藏" class="headerlink" title="隐藏"></a>隐藏</h4><p>隐藏是针对于<strong>父类的成员变量和静态方法</strong>而言的。子类中声明了和父类相同的变量名或静态方法(方法名相同、参数列表相同、返回类型相同)则实现了对父类成员变量和静态方法的隐藏。从父类继承下来的成员中，除了部分方法是可以重写外，其余成员都是隐藏，如变量、内部类、静态方法等。</p>
 <p><strong>注意：final方法既不能被重写，也不能被隐藏</strong></p>
 <p><strong>JAVA中方法和变量在继承时的覆盖和隐藏规则</strong></p>
 <ul>
@@ -740,8 +740,9 @@
 <li>父类的静态方法被子类的同名静态方法<strong>隐藏</strong></li>
 <li>父类的实例方法被子类的同名实例方法<strong>覆盖</strong></li>
 </ul>
+<p><strong>换言之，多态是基于重写实现的，针对实例方法。变量、static方法、final方法和private方法不能重写。其中final方法和private方法不能隐藏。</strong></p>
 <h3 id="多态举例"><a href="#多态举例" class="headerlink" title="多态举例"></a>多态举例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Father</span></span>&#123; <span class="comment">// 父类</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Father</span><span class="params">()</span></span>&#123;</span><br><span class="line">        age = <span class="number">40</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"父亲在吃饭"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Father</span></span>&#123;  <span class="comment">// 子类</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Child</span><span class="params">()</span></span>&#123;</span><br><span class="line">        age = <span class="number">18</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"孩子在吃饭"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">play</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"孩子在打CS"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Father f = <span class="keyword">new</span> Child(); <span class="comment">// 父类引用指向子类对象，多态实现形式</span></span><br><span class="line">        f.eat();</span><br><span class="line">        <span class="comment">//f.play(); 编译错误</span></span><br><span class="line">        System.out.println(<span class="string">"年龄："</span>+f.age );</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>结论：</strong>当满足Java多态的三个条件时，可以发现f.eat()调用的实际上是子类的eat，但f.age调用的还是父类的age，而f.play()则不会通过编译。(<strong>多态实现机制可看另一篇文章：从JVM角度看多态</strong>)</p>
+<p><strong>结论：</strong>当满足Java多态的三个条件时，可以发现f.eat()调用的实际上是子类的eat，但f.age调用的还是父类的age，而f.play()则不会通过编译。(<strong>多态实现机制可看另一篇文章：从JVM角度看Java多态</strong>)</p>
 
       
     </div>
@@ -781,6 +782,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/15/从JVM角度看Java多态/" rel="prev" title="从JVM角度看Java多态">
+                从JVM角度看Java多态 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -868,7 +873,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -981,7 +986,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共32.7k字</span>
+  <span class="post-count">博客全站共35.4k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -997,7 +1002,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">32.7k</span>
+    <span title="Site words total count">35.4k</span>
   
 </div>
 
