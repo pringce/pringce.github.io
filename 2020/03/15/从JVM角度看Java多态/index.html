@@ -96,7 +96,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2020/03/15/从JVM角度看Java多态/823435-20170514185548363-901763715.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/15/从JVM角度看Java多态/823435-20170514193200941-1234924738.png">
-<meta property="og:updated_time" content="2020-03-16T07:43:58.579Z">
+<meta property="og:updated_time" content="2020-03-16T08:05:46.772Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从JVM角度看Java多态">
 <meta name="twitter:description" content="多态举例如下： 12345678910111213141516171819202122232425262728293031public class Father&amp;#123; // 父类    protected int age;    public Father()&amp;#123;        age = 40;    &amp;#125;    void eat()&amp;#123;        System">
@@ -357,7 +357,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-16T15:43:58+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-16T16:05:46+08:00">
                 2020-03-16
               </time>
             
@@ -407,7 +407,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.7k
+                  2.8k
                 </span>
               
 
@@ -452,7 +452,7 @@
 <p>这个表示class文件的类型信息结构体大概由以下几部分构成：</p>
 <ul>
 <li>常量池（较为复杂，存放该类型所用到的常量的有序集合，包括直接常量（字符串、整数、浮点数）和对其他类的字段、方法的符号引用）</li>
-<li>类变量（静态变量）</li>
+<li>类变量（静态变量，<strong>只包含本类所定义的，不包含继承自父类的，下面字段信息、方法信息类似</strong>）</li>
 <li>字段信息</li>
 <li>方法信息</li>
 <li>类型信息</li>
