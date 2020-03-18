@@ -102,7 +102,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/02/06/Java入门（含Java基本介绍、数据类型、流程控制和数组操作）/微信图片_20200312103806.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/06/Java入门（含Java基本介绍、数据类型、流程控制和数组操作）/微信图片_20200312105221.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/06/Java入门（含Java基本介绍、数据类型、流程控制和数组操作）/微信图片_20200312105351.png">
-<meta property="og:updated_time" content="2020-03-12T03:20:35.590Z">
+<meta property="og:updated_time" content="2020-03-18T08:38:16.625Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java入门（含Java基本介绍、数据类型、流程控制和数组操作）">
 <meta name="twitter:description" content="1. Java介绍​        Java是目前全球Top 1的程序开发语言，是SUN公司James Gosling为手持设备开发的嵌入式编程语言，原名Oak，1995年改名为Java正式推出，有最大的开发社区；目前广泛应用于企业和互联网后端开发、Android开发和大数据开发。 1.1 Java的特点 一种面向对象的跨平台编程语言，语法比C++简单 以字节码的形式运行在虚拟机上 自带功能齐全的">
@@ -363,8 +363,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-12T11:20:35+08:00">
-                2020-03-12
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-18T16:38:16+08:00">
+                2020-03-18
               </time>
             
           </span>
@@ -413,7 +413,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5.6k
+                  5.9k
                 </span>
               
 
@@ -429,7 +429,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  22
+                  23
                 </span>
               
             </div>
@@ -469,23 +469,43 @@
 <li>无法直接操作硬件(不适用于底层操作系统的开发)</li>
 <li>GUI效果不佳(不适用于桌面应用程序的开发)</li>
 </ul>
-<h2 id="1-3-Java的版本"><a href="#1-3-Java的版本" class="headerlink" title="1.3 Java的版本"></a>1.3 Java的版本</h2><ul>
+<h2 id="1-3-Java语言特性-开源、免费、纯面向对象、跨平台"><a href="#1-3-Java语言特性-开源、免费、纯面向对象、跨平台" class="headerlink" title="1.3 Java语言特性(开源、免费、纯面向对象、跨平台)"></a>1.3 Java语言特性(开源、免费、纯面向对象、跨平台)</h2><ul>
+<li>简单性</li>
+</ul>
+<p>相对而言的，例如Java中不再支持多继承，C++是支持多继承的，多继承比较复杂。C++中右指针，Java中屏蔽了指针的概念。Java语言底层是C++实现的，不是C语言。</p>
+<ul>
+<li>面向对象</li>
+<li>可移植性（跨平台）</li>
+</ul>
+<p><strong>一次编译，到处运行</strong></p>
+<ul>
+<li>多线程</li>
+<li>健壮性</li>
+</ul>
+<p>和自动垃圾回收机制有关，自动垃圾回收机制简称GC机制。Java语言运行产生的垃圾是自动回收的，不需要程序员惯性</p>
+<ul>
+<li>安全性</li>
+</ul>
+<h2 id="1-4-Java的版本"><a href="#1-4-Java的版本" class="headerlink" title="1.4 Java的版本"></a>1.4 Java的版本</h2><ul>
 <li>Java SE: Standard Edition(标准版)</li>
 <li>Java EE: Enterprise Edition(企业版)</li>
 <li>Java ME: Micro Edition(移动版)</li>
 </ul>
 <img src="/2020/02/06/Java入门（含Java基本介绍、数据类型、流程控制和数组操作）/微信图片_20200206145352.png">
-<h2 id="1-4-Java的规范"><a href="#1-4-Java的规范" class="headerlink" title="1.4 Java的规范"></a>1.4 Java的规范</h2><p>什么是规范？</p>
+<h2 id="1-45Java的规范"><a href="#1-45Java的规范" class="headerlink" title="1.45Java的规范"></a>1.45Java的规范</h2><p>什么是规范？</p>
 <p>​        比如USB就是一个规范，它规定了电源的正负极、信号线等等</p>
 <p>​        Java的规范是Java Specification Request，简称<strong>JSR</strong>。有个组织Java Community Process(<strong>JCP</strong>)，它负责维护JSR规范。</p>
 <img src="/2020/02/06/Java入门（含Java基本介绍、数据类型、流程控制和数组操作）/微信图片_20200206150256.png">
-<h2 id="1-5-Java平台"><a href="#1-5-Java平台" class="headerlink" title="1.5 Java平台"></a>1.5 Java平台</h2><p>​        Java本身是一种面向对象的语言，最显著的特性有两个方面，一是所谓的“<strong>一次编译，到处执行</strong>”（Compile once, run anywhere），能够非常容易地获得跨平台能力；另外就是<strong>垃圾收集</strong>（GC, Garbage Collection），Java通过垃圾收集器（Garbage Collector）回收分配内存，大部分情况下，程序员不需要自己操心内存的分配和回收。</p>
+<h2 id="1-6-Java平台"><a href="#1-6-Java平台" class="headerlink" title="1.6 Java平台"></a>1.6 Java平台</h2><p>​        Java本身是一种面向对象的语言，最显著的特性有两个方面，一是所谓的“<strong>一次编译，到处执行</strong>”（Compile once, run anywhere），能够非常容易地获得跨平台能力；另外就是<strong>垃圾收集</strong>（GC, Garbage Collection），Java通过垃圾收集器（Garbage Collector）回收分配内存，大部分情况下，程序员不需要自己操心内存的分配和回收。</p>
 <p><strong>Java平台实际上就是运行在各种操作系统上的JVM(虚拟机)</strong></p>
 <img src="/2020/02/06/Java入门（含Java基本介绍、数据类型、流程控制和数组操作）/微信图片_20200206151238.png">
-<h2 id="1-6-Java为什么可以跨平台运行？"><a href="#1-6-Java为什么可以跨平台运行？" class="headerlink" title="1.6 Java为什么可以跨平台运行？"></a>1.6 Java为什么可以跨平台运行？</h2><p>​        1.首先开发好的java文件经过编译器Compiler的编译变为.class文件，然而这个.class文件并不是真正的本地可以执行的指令 我们可以把这个.class文件称之为“中间码”</p>
-<p>​        2.不同的计算机操作系统有着相应的JVM 比如win32位的、win64位的、linux系统的，.class文件经过Interpreter（解释器，也就是JVM）的解释（或者称之为翻译），变为真正的本地可执行指令（“00101001001…”）</p>
-<p><strong>总结</strong>：“一处编译，到处运行”是因为程序的中间码.class文件是标准的，一致的，在各个系统对应的JVM上都可以被识别解释然后运行，所以可以实现跨平台</p>
-<h2 id="1-7-Java安装"><a href="#1-7-Java安装" class="headerlink" title="1.7 Java安装"></a>1.7 Java安装</h2><ol>
+<h2 id="1-7-Java为什么可以跨平台运行？"><a href="#1-7-Java为什么可以跨平台运行？" class="headerlink" title="1.7 Java为什么可以跨平台运行？"></a>1.7 Java为什么可以跨平台运行？</h2><p><strong>Windows操作系统内核和Linux操作系统内核肯定不同，它们执行指令的方式也不同</strong>。因此Java程序不能直接和操作系统打交道，因为Java程序只有一份，操作系统执行原理却不同。</p>
+<p><strong>Sun团队让Java程序运行在一台虚拟机上，简称JVM（可认为是Java程序和操作系统之间的介质，屏蔽操作系统的差异）。JVM再和底层的操作系统打交道。</strong></p>
+<p>​        </p>
+<p>​        1.首先开发好的java文件经过编译器Compiler的编译变为.class文件（<strong>字节码文件，非二进制文件</strong>），然而这个.class文件并不是真正的本地可以执行的指令 我们可以把这个.class文件称之为“中间码”</p>
+<p>​        2.不同的计算机操作系统有着相应的JVM 比如win32位的、win64位的、linux系统的，.class文件经过<strong>Interpreter</strong>（<strong>解释器</strong>，也就是JVM）的解释（或者称之为翻译），变为真正的本地可执行指令（“00101001001…”）</p>
+<p><strong>总结</strong>：“一处编译，到处运行”是因为程序的<strong>中间码.class文件是标准的，一致的</strong>，在各个系统对应的JVM上都可以被识别解释然后运行，所以可以实现跨平台</p>
+<h2 id="1-8-Java安装"><a href="#1-8-Java安装" class="headerlink" title="1.8 Java安装"></a>1.8 Java安装</h2><ol>
 <li><p>上官网下载对应版本的JDK</p>
 <p>官网网址：<a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p>
 </li>
@@ -1071,7 +1091,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1154,7 +1174,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Java介绍"><span class="nav-number">1.</span> <span class="nav-text">1. Java介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Java的特点"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Java的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Java的优缺点"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Java的优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Java的版本"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Java的版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-Java的规范"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 Java的规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-Java平台"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 Java平台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-Java为什么可以跨平台运行？"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 Java为什么可以跨平台运行？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-7-Java安装"><span class="nav-number">1.7.</span> <span class="nav-text">1.7 Java安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Java程序基础"><span class="nav-number">2.</span> <span class="nav-text">2. Java程序基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Java程序基本结构"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Java程序基本结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-变量"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-基本数据类型"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-整形"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1 整形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-浮点类型"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.3.2 浮点类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-3-布尔类型"><span class="nav-number">2.3.3.</span> <span class="nav-text">2.3.3 布尔类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-4-字符类型"><span class="nav-number">2.3.4.</span> <span class="nav-text">2.3.4 字符类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-常量"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-基本类型和引用类型"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 基本类型和引用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-引用类型"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 引用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-整数运算"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 整数运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8-浮点数运算"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 浮点数运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-9-布尔运算"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 布尔运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-10-字符和字符串"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 字符和字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-11-数组类型"><span class="nav-number">2.11.</span> <span class="nav-text">2.11 数组类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-流程控制"><span class="nav-number">3.</span> <span class="nav-text">3. 流程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-输入和输出"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 输入和输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-引用类型判断是否相等"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 引用类型判断是否相等</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-Switch语句"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Switch语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-While循环"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 While循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-do-while循环"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 do-while循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6-for循环"><span class="nav-number">3.6.</span> <span class="nav-text">3.6 for循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#break和continue"><span class="nav-number">3.7.</span> <span class="nav-text">break和continue</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#break跳出循环"><span class="nav-number">3.7.1.</span> <span class="nav-text">break跳出循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#continue提前结束当前循环"><span class="nav-number">3.7.2.</span> <span class="nav-text">continue提前结束当前循环</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组操作"><span class="nav-number">4.</span> <span class="nav-text">数组操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历数组"><span class="nav-number">4.1.</span> <span class="nav-text">遍历数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组排序"><span class="nav-number">4.2.</span> <span class="nav-text">数组排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多维数组"><span class="nav-number">4.3.</span> <span class="nav-text">多维数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二维数组"><span class="nav-number">4.3.1.</span> <span class="nav-text">二维数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三维数组"><span class="nav-number">4.3.2.</span> <span class="nav-text">三维数组</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Java介绍"><span class="nav-number">1.</span> <span class="nav-text">1. Java介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Java的特点"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Java的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Java的优缺点"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Java的优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Java语言特性-开源、免费、纯面向对象、跨平台"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Java语言特性(开源、免费、纯面向对象、跨平台)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-Java的版本"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 Java的版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-45Java的规范"><span class="nav-number">1.5.</span> <span class="nav-text">1.45Java的规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-Java平台"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 Java平台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-7-Java为什么可以跨平台运行？"><span class="nav-number">1.7.</span> <span class="nav-text">1.7 Java为什么可以跨平台运行？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-8-Java安装"><span class="nav-number">1.8.</span> <span class="nav-text">1.8 Java安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Java程序基础"><span class="nav-number">2.</span> <span class="nav-text">2. Java程序基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Java程序基本结构"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Java程序基本结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-变量"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-基本数据类型"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-整形"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1 整形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-浮点类型"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.3.2 浮点类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-3-布尔类型"><span class="nav-number">2.3.3.</span> <span class="nav-text">2.3.3 布尔类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-4-字符类型"><span class="nav-number">2.3.4.</span> <span class="nav-text">2.3.4 字符类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-常量"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-基本类型和引用类型"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 基本类型和引用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-引用类型"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 引用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-整数运算"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 整数运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8-浮点数运算"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 浮点数运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-9-布尔运算"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 布尔运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-10-字符和字符串"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 字符和字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-11-数组类型"><span class="nav-number">2.11.</span> <span class="nav-text">2.11 数组类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-流程控制"><span class="nav-number">3.</span> <span class="nav-text">3. 流程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-输入和输出"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 输入和输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-引用类型判断是否相等"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 引用类型判断是否相等</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-Switch语句"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Switch语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-While循环"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 While循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-do-while循环"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 do-while循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6-for循环"><span class="nav-number">3.6.</span> <span class="nav-text">3.6 for循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#break和continue"><span class="nav-number">3.7.</span> <span class="nav-text">break和continue</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#break跳出循环"><span class="nav-number">3.7.1.</span> <span class="nav-text">break跳出循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#continue提前结束当前循环"><span class="nav-number">3.7.2.</span> <span class="nav-text">continue提前结束当前循环</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组操作"><span class="nav-number">4.</span> <span class="nav-text">数组操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历数组"><span class="nav-number">4.1.</span> <span class="nav-text">遍历数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组排序"><span class="nav-number">4.2.</span> <span class="nav-text">数组排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多维数组"><span class="nav-number">4.3.</span> <span class="nav-text">多维数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二维数组"><span class="nav-number">4.3.1.</span> <span class="nav-text">二维数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三维数组"><span class="nav-number">4.3.2.</span> <span class="nav-text">三维数组</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1184,7 +1204,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共35.6k字</span>
+  <span class="post-count">博客全站共36.4k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -1200,7 +1220,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">35.6k</span>
+    <span title="Site words total count">36.4k</span>
   
 </div>
 
