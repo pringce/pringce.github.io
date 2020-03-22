@@ -86,20 +86,18 @@
 
 
 
-<meta name="description" content="Java程序的运行包含两个非常重要的阶段  编译阶段 运行阶段   编译阶段编译阶段主要的任务是检查Java源程序是否符合Java语法，符合Java语法则能够生成正常的字节码文件（xxx.class）;不符合Java语法规则则无法生成字节码文件。 字节码文件中不是纯粹的二进制，这种文件无法在操作系统中直接执行。 编译阶段的过程： 程序员在硬盘的某个位置新建一个.java扩展名的文件，该文件被称为J">
+<meta name="description" content="一个源文件中可以定义多个类，每个class定义会生成一个对应的字节码文件  123456789// Test.java源文件class A&amp;#123;&amp;#125;class B&amp;#123;    &amp;#125;class C&amp;#123;&amp;#125; 上述java源文件编译后，会生成A.class、B.class和C.class三个字节码文件  如果源文件中有被public关键字修饰所修饰的类，那么">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java的加载与执行">
-<meta property="og:url" content="http://yoursite.com/2020/03/18/Java的加载与执行/index.html">
+<meta property="og:title" content="源文件名和类名的关系">
+<meta property="og:url" content="http://yoursite.com/2020/03/21/源文件名和类名的关系/index.html">
 <meta property="og:site_name" content="CodeMonkey · 程序猴">
-<meta property="og:description" content="Java程序的运行包含两个非常重要的阶段  编译阶段 运行阶段   编译阶段编译阶段主要的任务是检查Java源程序是否符合Java语法，符合Java语法则能够生成正常的字节码文件（xxx.class）;不符合Java语法规则则无法生成字节码文件。 字节码文件中不是纯粹的二进制，这种文件无法在操作系统中直接执行。 编译阶段的过程： 程序员在硬盘的某个位置新建一个.java扩展名的文件，该文件被称为J">
+<meta property="og:description" content="一个源文件中可以定义多个类，每个class定义会生成一个对应的字节码文件  123456789// Test.java源文件class A&amp;#123;&amp;#125;class B&amp;#123;    &amp;#125;class C&amp;#123;&amp;#125; 上述java源文件编译后，会生成A.class、B.class和C.class三个字节码文件  如果源文件中有被public关键字修饰所修饰的类，那么">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2020/03/18/Java的加载与执行/微信图片_20200318165157.png">
-<meta property="og:updated_time" content="2020-03-18T09:05:45.345Z">
+<meta property="og:updated_time" content="2020-03-21T03:02:47.640Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java的加载与执行">
-<meta name="twitter:description" content="Java程序的运行包含两个非常重要的阶段  编译阶段 运行阶段   编译阶段编译阶段主要的任务是检查Java源程序是否符合Java语法，符合Java语法则能够生成正常的字节码文件（xxx.class）;不符合Java语法规则则无法生成字节码文件。 字节码文件中不是纯粹的二进制，这种文件无法在操作系统中直接执行。 编译阶段的过程： 程序员在硬盘的某个位置新建一个.java扩展名的文件，该文件被称为J">
-<meta name="twitter:image" content="http://yoursite.com/2020/03/18/Java的加载与执行/微信图片_20200318165157.png">
+<meta name="twitter:title" content="源文件名和类名的关系">
+<meta name="twitter:description" content="一个源文件中可以定义多个类，每个class定义会生成一个对应的字节码文件  123456789// Test.java源文件class A&amp;#123;&amp;#125;class B&amp;#123;    &amp;#125;class C&amp;#123;&amp;#125; 上述java源文件编译后，会生成A.class、B.class和C.class三个字节码文件  如果源文件中有被public关键字修饰所修饰的类，那么">
 
 
 
@@ -129,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/03/18/Java的加载与执行/">
+  <link rel="canonical" href="http://yoursite.com/2020/03/21/源文件名和类名的关系/">
 
 
 
 
 
-  <title>Java的加载与执行 | CodeMonkey · 程序猴</title>
+  <title>源文件名和类名的关系 | CodeMonkey · 程序猴</title>
   
 
 
@@ -308,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/18/Java的加载与执行/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/21/源文件名和类名的关系/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CodeMonkey">
@@ -325,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java的加载与执行</h1>
+          <h1 class="post-title" itemprop="name headline">源文件名和类名的关系</h1>
         
 
         <div class="post-meta">
@@ -337,8 +335,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-18T16:38:32+08:00">
-                2020-03-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-21T10:44:46+08:00">
+                2020-03-21
               </time>
             
 
@@ -356,8 +354,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-18T17:05:45+08:00">
-                2020-03-18
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-21T11:02:47+08:00">
+                2020-03-21
               </time>
             
           </span>
@@ -406,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  500
+                  467
                 </span>
               
 
@@ -443,45 +441,21 @@
       
 
       
-        <p>Java程序的运行包含两个非常重要的阶段</p>
+        <ul>
+<li><strong>一个源文件中可以定义多个类，每个class定义会生成一个对应的字节码文件</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Test.java源文件</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span></span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述java源文件编译后，会生成A.class、B.class和C.class三个字节码文件</p>
 <ul>
-<li>编译阶段</li>
-<li>运行阶段</li>
+<li><strong>如果源文件中有被public关键字修饰所修饰的类，那么源文件名必须与public所修饰的类同名</strong></li>
+<li><strong>源文件中定义的类，最多只能有一个类被public关键字修饰</strong>（可以这么理解，如果有两个public类，它们都需要和源文件同名，这显然是不可能的）</li>
+<li><strong>如果源文件中没有public修饰的类，源文件可任意命名</strong></li>
+<li><strong>每一个class当中都可以编写main方法，都可以设定程序的入口。可以在所有类里都写上 main 方法，给程序提供N多个入口，但是最后你运行程序的时候也只能从其中的一个入口进去</strong>（程序员在做单元测试时，会往自己做的很多类里面添加 main 方法，因为他要为自己做的东西添加运行入口，从而能方便测试）</li>
 </ul>
-<img src="/2020/03/18/Java的加载与执行/微信图片_20200318165157.png">
-<h2 id="编译阶段"><a href="#编译阶段" class="headerlink" title="编译阶段"></a>编译阶段</h2><p>编译阶段主要的任务是检查Java源程序是否符合Java语法，符合Java语法则能够生成正常的字节码文件（xxx.class）;不符合Java语法规则则无法生成字节码文件。</p>
-<p>字节码文件中不是纯粹的二进制，这种文件无法在操作系统中直接执行。</p>
-<h3 id="编译阶段的过程："><a href="#编译阶段的过程：" class="headerlink" title="编译阶段的过程："></a>编译阶段的过程：</h3><ul>
-<li>程序员在硬盘的某个位置新建一个.java扩展名的文件，该文件被称为Java源文件，源文件当中编写的是Java源代码，必须符合Java语法规范</li>
-<li>Java程序员使用 JDK当中自带的javac.exe命令进行Java程序的编译<ul>
-<li>javac怎么用？在哪用？<ul>
-<li>在DOS命令窗口使用</li>
-<li>javac使用规则：javac 源文件.java</li>
-</ul>
-</li>
-<li>javac是一个java编译器工具/命令</li>
-</ul>
-</li>
-<li><strong>一个java源文件可以编译生成多个.class文件（由文件中所定义的类的数量决定，class文件的名字即为类名）</strong></li>
-<li>字节码文件/class文件是最终要执行的文件，所以class文件生成之后，java源文件删除并不会影响java程序的运行</li>
-</ul>
-<h2 id="运行阶段"><a href="#运行阶段" class="headerlink" title="运行阶段"></a>运行阶段</h2><p>JDK安装之后，除了自带一个javac.exe之外，还有另一个工具，叫做java.exe，它主要负责运行阶段</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A.java源文件</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"A's main method!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"B's main method!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"C's main method!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码编译后会生成三个字节码文件：A.class、B.class和C.class。在DOS界面执行 java A会输出 “A‘s main method！”。同样的，执行 java B会输出 “B’s main method!”。C类似</p>
 <ul>
-<li>java.exe在哪里？怎么用？<ul>
-<li>在DOS窗口使用</li>
-<li>使用方法：java 类名<ul>
-<li>例如：硬盘上有一个A.class，就是java A</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="运行阶段的过程："><a href="#运行阶段的过程：" class="headerlink" title="运行阶段的过程："></a>运行阶段的过程：</h3><ul>
-<li>打开DOS窗口，输入java A</li>
-<li>java.exe命令会启动JVM，JVM会启动类加载器ClassLoader</li>
-<li>ClassLoader会去硬盘搜索A.class文件，找到文件后将该字节码文件装载到JVM中</li>
-<li>JVM中的解释器将A.class字节码文件解释称二进制数据文件</li>
-<li>然后操作系统执行二进制文件和底层硬件平台进行交互</li>
+<li><strong>当在命令窗口执行 java x的时候，要求定义x这个类当中必须有main方法。没有main方法会出现运行阶段的错误</strong></li>
 </ul>
 
       
@@ -513,8 +487,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/16/class文件反汇编/" rel="next" title="class文件反汇编">
-                <i class="fa fa-chevron-left"></i> class文件反汇编
+              <a href="/2020/03/20/Java环境变量那些事儿/" rel="next" title="Java环境变量那些事儿">
+                <i class="fa fa-chevron-left"></i> Java环境变量那些事儿
               </a>
             
           </div>
@@ -523,8 +497,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/03/20/JDK和JRE间的那些事儿/" rel="prev" title="JDK和JRE间的那些事儿">
-                JDK和JRE间的那些事儿 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/03/22/彻底弄懂Unicode编码那些事儿/" rel="prev" title="彻底弄懂Unicode编码那些事儿">
+                彻底弄懂Unicode编码那些事儿 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -586,17 +560,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -686,22 +651,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译阶段"><span class="nav-number">1.</span> <span class="nav-text">编译阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编译阶段的过程："><span class="nav-number">1.1.</span> <span class="nav-text">编译阶段的过程：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行阶段"><span class="nav-number">2.</span> <span class="nav-text">运行阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#运行阶段的过程："><span class="nav-number">2.1.</span> <span class="nav-text">运行阶段的过程：</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="CodeMonkey · 程序猴">
 <meta property="og:description" content="回顾一下建表语句： 123456CREATE TABLE 表名(	列名1 数据类型 [列的属性],	列名2 数据类型 [列的属性],	...	列名n 数据类型 [列的属性],); 表中的每个列都可以有一些属性，至于这些属性是什么以及怎么在创建表的时候把它们定义出来就是本章接下来的内容哈。 默认值我们在书写INSERT语句插入记录的时候可以只指定部分的列，那些没有被显式指定的列的值将被设置为NULL">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-12T08:30:21.585Z">
+<meta property="og:updated_time" content="2020-03-22T09:01:43.388Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="列的属性">
 <meta name="twitter:description" content="回顾一下建表语句： 123456CREATE TABLE 表名(	列名1 数据类型 [列的属性],	列名2 数据类型 [列的属性],	...	列名n 数据类型 [列的属性],); 表中的每个列都可以有一些属性，至于这些属性是什么以及怎么在创建表的时候把它们定义出来就是本章接下来的内容哈。 默认值我们在书写INSERT语句插入记录的时候可以只指定部分的列，那些没有被显式指定的列的值将被设置为NULL">
@@ -354,8 +354,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-12T16:30:21+08:00">
-                2020-03-12
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-22T17:01:43+08:00">
+                2020-03-22
               </time>
             
           </span>
@@ -481,7 +481,7 @@
 </li>
 </ol>
 <p>其实每当我们为某个列添加了一个UNIQUE属性，就像是在孙悟空头上带了个紧箍咒一样，从此我们插入的记录的该列的值就不能重复，所以为某个列添加一个UNIQUE属性也可以认为是为这个表添加了一个<strong>约束</strong>，我们就称之为UNIQUE约束。每个约束都可以有一个名字，像主键也算是一个约束，它的名字就是默认的PRIMARY。不过一个表中可以为不同的列添加多个UNIQUE属性，也就是添加多个UNIQUE约束，每添加一个UNIQUE约束，我们就可以给它起个名，这也是上边的约束名称的含义。<strong>不过约束名称是被中括号[]扩起来的，意味着我们写不写都可以</strong>，如果不写的话MySQL自己会帮我们起名。其实就像是自己生了个孩子，如果自己不起名的话，人家公安局的警察叔叔也得给孩子起个名上户口。</p>
-<p><strong>如果表中为某个列或者列组合定义了UNIQUE属性的话，MySQ会对我们插入的记录做校验，如果新插入记录在该列或者列组合的值已经在表中存在了，那就会报错！</strong></p>
+<p><strong>如果表中为某个列或者列组合定义了UNIQUE属性的话，MySQL会对我们插入的记录做校验，如果新插入记录在该列或者列组合的值已经在表中存在了，那就会报错！</strong></p>
 <p><strong>主键和UNIQUE约束的区别</strong>：<br>主键和UNIQUE约束都能保证某个列或者列组合的唯一性，但是：</p>
 <ul>
 <li>一张表中只能定义一个主键，却可以定义多个UNIQUE约束！</li>
@@ -678,7 +678,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -689,7 +689,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -700,7 +700,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -791,7 +791,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共39.6k字</span>
+  <span class="post-count">博客全站共46k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -807,7 +807,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">39.6k</span>
+    <span title="Site words total count">46k</span>
   
 </div>
 

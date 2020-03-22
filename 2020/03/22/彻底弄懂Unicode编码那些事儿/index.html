@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Java,">
+  <meta name="keywords" content="Java,字符编码,">
 
 
 
@@ -86,20 +86,18 @@
 
 
 
-<meta name="description" content="Java程序的运行包含两个非常重要的阶段  编译阶段 运行阶段   编译阶段编译阶段主要的任务是检查Java源程序是否符合Java语法，符合Java语法则能够生成正常的字节码文件（xxx.class）;不符合Java语法规则则无法生成字节码文件。 字节码文件中不是纯粹的二进制，这种文件无法在操作系统中直接执行。 编译阶段的过程： 程序员在硬盘的某个位置新建一个.java扩展名的文件，该文件被称为J">
-<meta name="keywords" content="Java">
+<meta name="description" content="Java中是采用Unicode编码方式的，作为万国码，它的应用非常广泛，因此下面我们就开始彻底弄懂它吧！ ASCII码在学校学 C 语言的时候，了解到一些计算机内部的机制，知道所有的信息最终都表示为一个二进制的字符串，每一个二进制位有 0 和 1 两种状态，通过不同的排列组合，使用 0 和 1 就可以表示世界上所有的东西，感觉有点中国“太极”的感觉——“太极生两仪，两仪生四象，四象生八卦”。 在计">
+<meta name="keywords" content="Java,字符编码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java的加载与执行">
-<meta property="og:url" content="http://yoursite.com/2020/03/18/Java的加载与执行/index.html">
+<meta property="og:title" content="彻底弄懂Unicode编码那些事儿">
+<meta property="og:url" content="http://yoursite.com/2020/03/22/彻底弄懂Unicode编码那些事儿/index.html">
 <meta property="og:site_name" content="CodeMonkey · 程序猴">
-<meta property="og:description" content="Java程序的运行包含两个非常重要的阶段  编译阶段 运行阶段   编译阶段编译阶段主要的任务是检查Java源程序是否符合Java语法，符合Java语法则能够生成正常的字节码文件（xxx.class）;不符合Java语法规则则无法生成字节码文件。 字节码文件中不是纯粹的二进制，这种文件无法在操作系统中直接执行。 编译阶段的过程： 程序员在硬盘的某个位置新建一个.java扩展名的文件，该文件被称为J">
+<meta property="og:description" content="Java中是采用Unicode编码方式的，作为万国码，它的应用非常广泛，因此下面我们就开始彻底弄懂它吧！ ASCII码在学校学 C 语言的时候，了解到一些计算机内部的机制，知道所有的信息最终都表示为一个二进制的字符串，每一个二进制位有 0 和 1 两种状态，通过不同的排列组合，使用 0 和 1 就可以表示世界上所有的东西，感觉有点中国“太极”的感觉——“太极生两仪，两仪生四象，四象生八卦”。 在计">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2020/03/18/Java的加载与执行/微信图片_20200318165157.png">
-<meta property="og:updated_time" content="2020-03-18T09:05:45.345Z">
+<meta property="og:updated_time" content="2020-03-22T08:23:27.148Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java的加载与执行">
-<meta name="twitter:description" content="Java程序的运行包含两个非常重要的阶段  编译阶段 运行阶段   编译阶段编译阶段主要的任务是检查Java源程序是否符合Java语法，符合Java语法则能够生成正常的字节码文件（xxx.class）;不符合Java语法规则则无法生成字节码文件。 字节码文件中不是纯粹的二进制，这种文件无法在操作系统中直接执行。 编译阶段的过程： 程序员在硬盘的某个位置新建一个.java扩展名的文件，该文件被称为J">
-<meta name="twitter:image" content="http://yoursite.com/2020/03/18/Java的加载与执行/微信图片_20200318165157.png">
+<meta name="twitter:title" content="彻底弄懂Unicode编码那些事儿">
+<meta name="twitter:description" content="Java中是采用Unicode编码方式的，作为万国码，它的应用非常广泛，因此下面我们就开始彻底弄懂它吧！ ASCII码在学校学 C 语言的时候，了解到一些计算机内部的机制，知道所有的信息最终都表示为一个二进制的字符串，每一个二进制位有 0 和 1 两种状态，通过不同的排列组合，使用 0 和 1 就可以表示世界上所有的东西，感觉有点中国“太极”的感觉——“太极生两仪，两仪生四象，四象生八卦”。 在计">
 
 
 
@@ -129,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/03/18/Java的加载与执行/">
+  <link rel="canonical" href="http://yoursite.com/2020/03/22/彻底弄懂Unicode编码那些事儿/">
 
 
 
 
 
-  <title>Java的加载与执行 | CodeMonkey · 程序猴</title>
+  <title>彻底弄懂Unicode编码那些事儿 | CodeMonkey · 程序猴</title>
   
 
 
@@ -308,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/18/Java的加载与执行/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/22/彻底弄懂Unicode编码那些事儿/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CodeMonkey">
@@ -325,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java的加载与执行</h1>
+          <h1 class="post-title" itemprop="name headline">彻底弄懂Unicode编码那些事儿</h1>
         
 
         <div class="post-meta">
@@ -337,8 +335,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-18T16:38:32+08:00">
-                2020-03-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-22T10:58:35+08:00">
+                2020-03-22
               </time>
             
 
@@ -356,8 +354,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-18T17:05:45+08:00">
-                2020-03-18
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-22T16:23:27+08:00">
+                2020-03-22
               </time>
             
           </span>
@@ -377,6 +375,17 @@
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Java/" itemprop="url" rel="index">
                     <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/字符编码/" itemprop="url" rel="index">
+                    <span itemprop="name">字符编码</span>
                   </a>
                 </span>
 
@@ -406,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  500
+                  4k
                 </span>
               
 
@@ -422,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  14
                 </span>
               
             </div>
@@ -443,46 +452,135 @@
       
 
       
-        <p>Java程序的运行包含两个非常重要的阶段</p>
+        <p>Java中是采用Unicode编码方式的，作为<strong>万国码</strong>，它的应用非常广泛，因此下面我们就开始彻底弄懂它吧！</p>
+<h1 id="ASCII码"><a href="#ASCII码" class="headerlink" title="ASCII码"></a>ASCII码</h1><p>在学校学 C 语言的时候，了解到一些计算机内部的机制，知道所有的信息最终都表示为一个二进制的字符串，每一个二进制位有 0 和 1 两种状态，通过不同的排列组合，使用 0 和 1 就可以表示世界上所有的东西，感觉有点中国“太极”的感觉——“太极生两仪，两仪生四象，四象生八卦”。</p>
+<p>在计算机种中，1 字节对应 8 位二进制数，而每位二进制数有 0、1 两种状态，因此 1 字节可以组合出 256 种状态。如果这 256 中状态每一个都对应一个符号，就能通过 1 字节的数据表示 256 个字符。美国人于是就制定了一套编码（其实就是个字典），描述英语中的字符和这 8 位二进制数的对应关系，这被称为 ASCII 码，即<strong>ASCII码用一个字节完成字符表示</strong>。</p>
+<p><strong>ASCII 码一共定义了 128 个字符</strong>，例如大写的字母 A 是 对应的ASCII码是65（这是十进制数，对应二进制是0100 0001）。这 128 个字符只使用了 8 位二进制数中的后面 7 位，最前面的一位统一规定为 0。</p>
+<h1 id="历史遗留问题"><a href="#历史遗留问题" class="headerlink" title="历史遗留问题"></a><strong>历史遗留问题</strong></h1><p>英语用 128 个字符来编码完全是足够的，但是用来表示其他语言，128 个字符是远远不够的。于是，一些欧洲的国家就决定，<strong>将 ASCII 码中闲置的最高位利用起来</strong>，这样一来就能表示 256 个字符。但是，这里又有了一个问题，那就是不同的国家的字符集可能不同，就算它们都能用 256 个字符表示全，但是同一个码点（也就是 8 位二进制数）表示的字符可能可能不同。例如，144 在阿拉伯人的 ASCII 码中是 <strong>گ</strong>，而在俄罗斯的 ASCII 码中是 <strong>ђ</strong>。</p>
+<p>因此，ASCII码的问题在于尽管所有人都在 0 - 127 号字符上达成了一致，但对于 128 - 255 号字符上却有很多种不同的解释。与此同时，亚洲语言有更多的字符需要被存储，一个字节已经不够用了。于是，人们开始使用两个字节来存储字符。</p>
+<p>各种各样的编码方式成了系统开发者的噩梦，因为他们想把软件卖到国外。于是，他们提出了一个“内码表”的概念，可以切换到相应语言的一个内码表，这样才能显示相应语言的字母。在这种情况下，如果使用多语种，那么就需要频繁的在内码表内进行切换。</p>
+<h1 id="Unicode编码"><a href="#Unicode编码" class="headerlink" title="Unicode编码"></a>Unicode编码</h1><p>最终，人们意识到应该提出一种标准方案来展示世界上所有语言中的所有字符，出于这个目的，Unicode诞生了。</p>
+<p>Unicode相当于是一本很厚的字典，记录着世界上所有字符对应的一个数字。具体是怎样的对应关系，又或者说是如何进行划分的，就不是我们考虑的问题了，即Unicode没有说明如何用二进制存储这些字符。我们只用知道 <strong>Unicode 给所有的字符指定了一个数字（后面可以看到，这个数字叫码点）用来表示该字符。</strong></p>
+<p>Unicode是计算机领域的一项行业标准，它对世界上绝大部分的文字的进行整理和统一编码，Unicode的编码空间可以划分为17个平面（plane），每个平面包含2的16次方（65536）个码位。在Unicode编码标准中，码点采用十六 进制书写，并加上前缀U+ 例如：U+0041就是A的码点。17个平面的码位可表示为从U+0000到U+10FFFF，共计1114112个码位，第一个平面称为基本多语言平面（Basic Multilingual Plane, BMP），或称第零平面（Plane 0）。其他平面称为辅助平面（Supplementary Planes）。基本多语言平面内，从U+D800到U+DFFF之间的码位区段是永久保留不映射到Unicode字符，所以有效码位为1112064个。</p>
+<p>对于 Unicode 有一些误解，它仅仅只是一个字符集，规定了符合对应的二进制代码，至于这个二进制代码如何存储则没有任何规定。它的想法很简单，就是为每个字符规定一个用来表示该字符的数字，仅此而已。</p>
+<h1 id="Unicode编码方式"><a href="#Unicode编码方式" class="headerlink" title="Unicode编码方式"></a>Unicode编码方式</h1><p>之前提到，Unicode没有规定其中的字符对应的二进制码点如何存储。以汉字“汉”为例，它的 Unicode 码点是 0x6c49，对应的二进制数是 110110001001001，二进制数有 15 位，这也就说明了它至少需要 2 个字节来表示。可以想象，在 Unicode 字典中往后的字符可能就需要 3 个字节或者 4 个字节，甚至更多字节来表示了。</p>
+<p>这就导致了一些问题，<strong>计算机怎么知道你这个 2 个字节表示的是一个字符，而不是分别表示两个字符呢？</strong>这里我们可能会想到，那就取个最大的，假如 Unicode 中最大的字符用 4 字节就可以表示了，那么我们就将所有的字符都用 4 个字节来表示，不够的就往前面补 0。这样确实可以解决编码问题，但是却造成了空间的极大浪费，如果是一个英文文档，那文件大小就大出了 3 倍，这显然是无法接受的。</p>
+<p>于是，为了较好的解决 Unicode 的编码问题， <strong>UTF-8</strong> 和 <strong>UTF-16</strong> 两种当前比较流行的编码方式诞生了。当然还有一个 UTF-32 的编码方式，也就是上述那种定长编码，字符统一使用 4 个字节，虽然看似方便，但是却不如另外两种编码方式使用广泛。</p>
+<h2 id="UTF-8"><a href="#UTF-8" class="headerlink" title="UTF-8"></a>UTF-8</h2><p>UTF-8 是一个非常惊艳的编码方式，漂亮的实现了对 ASCII 码的向后兼容，以保证 Unicode 可以被大众接受。</p>
+<p>UTF-8是目前互联网上使用最广泛的一种Unicode编码方式，它的特点是<strong>可变长</strong>。它可以使用1-4个字节来存储一个字符，根据字符的不同而变换长度。编码规则如下：</p>
 <ul>
-<li>编译阶段</li>
-<li>运行阶段</li>
+<li>对于单个字节的字符<strong>（码点范围是0 ~ 127）</strong>，第一位设为 0，后面的 7 位对应这个字符的 Unicode 码点。因此，<strong>对于英文中的 0 - 127 号字符</strong>，与 ASCII 码完全相同，即可兼容ASCII码。这意味着 ASCII 码那个年代的文档用 UTF-8 编码打开完全没有问题。</li>
+<li>对于需要使用 N 个字节来表示的字符（N &gt; 1），第一个字节的前 N 位都设为 1，第 N + 1 位设为0，剩余的 N - 1 个字节的前两位都设位 10，剩下的二进制位则使用这个字符的 Unicode 码点来填充</li>
 </ul>
-<img src="/2020/03/18/Java的加载与执行/微信图片_20200318165157.png">
-<h2 id="编译阶段"><a href="#编译阶段" class="headerlink" title="编译阶段"></a>编译阶段</h2><p>编译阶段主要的任务是检查Java源程序是否符合Java语法，符合Java语法则能够生成正常的字节码文件（xxx.class）;不符合Java语法规则则无法生成字节码文件。</p>
-<p>字节码文件中不是纯粹的二进制，这种文件无法在操作系统中直接执行。</p>
-<h3 id="编译阶段的过程："><a href="#编译阶段的过程：" class="headerlink" title="编译阶段的过程："></a>编译阶段的过程：</h3><ul>
-<li>程序员在硬盘的某个位置新建一个.java扩展名的文件，该文件被称为Java源文件，源文件当中编写的是Java源代码，必须符合Java语法规范</li>
-<li>Java程序员使用 JDK当中自带的javac.exe命令进行Java程序的编译<ul>
-<li>javac怎么用？在哪用？<ul>
-<li>在DOS命令窗口使用</li>
-<li>javac使用规则：javac 源文件.java</li>
+<p>编码规则如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Unicode十六进制码点范围</th>
+<th style="text-align:center">UTF-8二进制模板</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0000 0000 - 0000 007F</td>
+<td style="text-align:center">0xxxxxxx</td>
+</tr>
+<tr>
+<td style="text-align:center">0000 0080 - 0000 07FF</td>
+<td style="text-align:center">110xxxxx 10xxxxxx</td>
+</tr>
+<tr>
+<td style="text-align:center">0000 0800 - 0000 FFFF</td>
+<td style="text-align:center">1110xxxx 10xxxxxx 10xxxxxx</td>
+</tr>
+<tr>
+<td style="text-align:center">0001 0000 - 0010 FFFF</td>
+<td style="text-align:center">11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>根据上面编码规则对照表，进行 UTF-8 编码和解码就简单多了。下面以汉字“汉”为利，具体说明如何进行 UTF-8 编码和解码。</p>
+<p>“汉”的 Unicode 码点是 0x6c49（110 1100 0100 1001），通过上面的对照表可以发现，<code>0x0000 6c49</code> 位于第三行的范围，那么得出其格式为 <code>1110xxxx 10xxxxxx 10xxxxxx</code>。接着，从“汉”的二进制数最后一位开始，<strong>从后向前</strong>依次填充对应格式中的 x，<strong>多出的 x 用 0 补上</strong>。这样，就得到了“汉”的 UTF-8 编码为 <code>11100110 10110001 10001001</code>，转换成十六进制就是 <code>0xE6 0xB7 0x89</code>。</p>
+<p>解码的过程也十分简单：<strong>如果一个字节的第一位是 0 ，则说明这个字节对应一个字符；如果一个字节的第一位1，那么连续有多少个 1，就表示该字符占用多少个字节。</strong></p>
+<h2 id="UTF-16"><a href="#UTF-16" class="headerlink" title="UTF-16"></a>UTF-16</h2><p>在了解UTF-16编码方式前，先了解以下另外一个概念——<strong>“平面”</strong></p>
+<p>在上面的介绍中，提到了 Unicode 是一本很厚的字典，她将全世界所有的字符定义在一个集合里。这么多的字符不是一次性定义的，而是<strong>分区</strong>定义。每个区可以存放 65536 个（<code>2^16</code>）字符，称为一个平面（plane）。目前，一共有 17 个平面，也就是说，整个 Unicode 字符集的大小现在是17*65536=1114112。</p>
+<p>最前面的 65536 个字符位，称为<strong>基本平面（简称 BMP ）</strong>，它的码点范围是从 0 到 <code>2^16-1</code>，写成 16 进制就是从 U+0000 到 U+FFFF。<strong>所有最常见的字符都放在这个平面</strong>，这是 Unicode 最先定义和公布的一个平面。剩下的字符都放在<strong>辅助平面（简称 SMP ）</strong>，码点范围从 U+010000 到 U+10FFFF。</p>
+<p>基本了解了平面的概念后，再说回到 UTF-16。UTF-16 编码介于 UTF-32 与 UTF-8 之间，同时结合了定长和变长两种编码方法的特点。它的编码规则很简单：<strong>基本平面的字符占用 2 个字节，辅助平面的字符占用 4 个字节。也就是说，UTF-16 的编码长度要么是 2 个字节（U+0000 到 U+FFFF），要么是 4 个字节（U+010000 到 U+10FFFF）</strong>。那么问题来了，当我们遇到两个字节时，到底是把这两个字节当作一个字符还是与后面的两个字节一起当作一个字符呢？</p>
+<p>这里有一个很巧妙的地方，在基本平面内，从 <strong>U+D800</strong> 到 <strong>U+DFFF</strong> 是一个空段，即这些码点不对应任何字符。因此，这个空段可以用来映射辅助平面的字符。</p>
+<p>辅助平面的字符位共有 <code>2^20</code> 个，因此表示这些字符至少需要 20 个二进制位。<strong>UTF-16 将这 20 个二进制位分成两半，前 10 位映射在 U+D800 到 U+DBFF，称为高位（H），后 10 位映射在 U+DC00 到 U+DFFF，称为低位（L）</strong>。这意味着，一个辅助平面的字符，被拆成两个基本平面的字符表示。</p>
+<p>因此，当我们遇到两个字节，发现它的码点在 U+D800 到 U+DBFF 之间，就可以断定，紧跟在后面的两个字节的码点，应该在 U+DC00 到 U+DFFF 之间，这四个字节必须放在一起解读。</p>
+<p>接下来，以汉字”𠮷”为例，说明 UTF-16 编码方式是如何工作的。</p>
+<p>汉字”𠮷”的 Unicode 码点为 <code>0x20BB7</code>，该码点显然超出了基本平面的范围（0x0000 - 0xFFFF），因此需要使用四个字节表示。首先用 <code>0x20BB7 - 0x10000</code> 计算出超出的部分，然后将其用 20 个二进制位表示（不足前面补 0 ），结果为<code>0001000010 1110110111</code>。接着，将前 10 位映射到 U+D800 到 U+DBFF 之间，后 10 位映射到 U+DC00 到 U+DFFF 即可。<code>U+D800</code> 对应的二进制数为 <code>1101100000000000</code>，直接填充后面的 10 个二进制位即可，得到 <code>1101100001000010</code>，转成 16 进制数则为 <code>0xD842</code>。同理可得，低位为 <code>0xDFB7</code>。因此得出汉字”𠮷”的 UTF-16 编码为 <code>0xD842 0xDFB7</code>。</p>
+<h2 id="UTF-32"><a href="#UTF-32" class="headerlink" title="UTF-32"></a>UTF-32</h2><p>UTF-32是一种<strong>定长编码</strong>，使用一个32bit的码元，其值域Unicode码点值相等。举例如下</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字符</th>
+<th style="text-align:center">Unicode码点值</th>
+<th style="text-align:center">UTF-32编码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">U+0041</td>
+<td style="text-align:center">0x00 0x00 0x00 0x41</td>
+</tr>
+<tr>
+<td style="text-align:center">破</td>
+<td style="text-align:center">U+7834</td>
+<td style="text-align:center">0x00 0x00 0x78 0x34</td>
+</tr>
+<tr>
+<td style="text-align:center">晓</td>
+<td style="text-align:center">U+6653</td>
+<td style="text-align:center">0x00 0x00 0x66 0x53</td>
+</tr>
+<tr>
+<td style="text-align:center">𪚥</td>
+<td style="text-align:center">U+2A6A5</td>
+<td style="text-align:center">0x00 0x02 0xA6 0xA5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="UTF-8、UTF-16和UTF-32的比较"><a href="#UTF-8、UTF-16和UTF-32的比较" class="headerlink" title="UTF-8、UTF-16和UTF-32的比较"></a>UTF-8、UTF-16和UTF-32的比较</h1><p>这三种编码方案各有优缺点，下面分别介绍</p>
+<h2 id="UTF-8-1"><a href="#UTF-8-1" class="headerlink" title="UTF-8"></a>UTF-8</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>兼容 ASCII</li>
+<li>没有字节序问题</li>
+<li>以英文和西文符号比较多的场景下（例如 HTML/XML），编码较短</li>
+<li>由于是变长，字符空间足够大，未来 Unicode 新标准收录更多字符，UTF-8 也能妥妥的兼容，因此不会再出现 UTF-16 那样的尴尬</li>
+<li>容错性高，局部的字节错误（丢失、增加、改变）不会导致连锁性的错误，因为 UTF-8 的字符边界很容易检测出来，这是一个巨大的优点（正是为了实现这一点，咱们中日韩人民不得不忍受 3 字节 1 个字符的苦日子）</li>
 </ul>
-</li>
-<li>javac是一个java编译器工具/命令</li>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>文化上的不平衡——对于欧美地区一些以英语为母语的国家 UTF-8 简直是太棒了，因为它和 ASCII 一样，一个字符只占一个字节，没有任何额外的存储负担；但是对于中日韩等国家来说，UTF-8 实在是太冗余，一个字符竟然要占用 3 个字节，存储和传输的效率不但没有提升，反而下降了。所以欧美人民常常毫不犹豫的采用 UTF-8，而我们却老是要犹豫一会儿。</li>
+<li>变长字节表示带来的效率问题——大家对 UTF-8 疑虑重重的一个问题就是在于其因为是变长字节表示，因此无论是计算字符数，还是<strong>执行索引操作效率都不高</strong>。为了解决这个问题，常常会考虑把 UTF-8 先转换为 UTF-16 或者 UTF-32 后再操作，操作完毕后再转换回去。而这显然是一种性能负担。</li>
 </ul>
-</li>
-<li><strong>一个java源文件可以编译生成多个.class文件（由文件中所定义的类的数量决定，class文件的名字即为类名）</strong></li>
-<li>字节码文件/class文件是最终要执行的文件，所以class文件生成之后，java源文件删除并不会影响java程序的运行</li>
+<h2 id="UTF-16-1"><a href="#UTF-16-1" class="headerlink" title="UTF-16"></a>UTF-16</h2><h3 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>最流行的操作系统和 UI framework 的内部字符串表达都是 UTF-16</li>
+<li>曾经在计算字符串长度、执行索引操作时速度很快。（但随着Unicode收录的字符超过了65536个，UTF-16也从定长变成了变长，就没那么快了）</li>
 </ul>
-<h2 id="运行阶段"><a href="#运行阶段" class="headerlink" title="运行阶段"></a>运行阶段</h2><p>JDK安装之后，除了自带一个javac.exe之外，还有另一个工具，叫做java.exe，它主要负责运行阶段</p>
+<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>UTF-16 能表示的字符数有 65536，看起来很多，但是实际上目前 Unicode 5.0 收录的字符已经达到 99024 个字符，早已超过 UTF-16 的存储范围；这直接导致 UTF-16 地位颇为尴尬——如果谁还在想着只要使用 UTF-16 的定常特性就可以高枕无忧的话，恐怕要失望了。</li>
+<li>UTF-16 存在大小端字节序问题，这个问题在进行信息交换时特别突出——如果字节序未协商好，将导致乱码；如果协商好，但是双方一个采用大端一个采用小端，则必然有一方要进行大小端转换，性能损失不可避免（大小端问题其实不像看起来那么简单，有时会涉及硬件、操作系统、上层软件多个层次，可能会进行多次转换）。</li>
+<li>另外，容错性低有时候也是一大问题——局部的字节错误，特别是丢失或增加可能导致所有后续字符全部错乱，错乱后要想恢复，可能很简单，也可能会非常困难。（这一点在日常生活里大家感觉似乎无关紧要，但是在很多特殊环境下却是巨大的缺陷）。</li>
+</ul>
+<h2 id="UTF-32-1"><a href="#UTF-32-1" class="headerlink" title="UTF-32"></a>UTF-32</h2><h3 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>定长编码，UTF-32 表示任何字符都用 4 字节，读到内存中是个均匀的整形数组，于是我们可以很方便地随机访问任何一个字符</li>
+<li>由于是定长，索引比变长的要快，你想访问一个字符串中的第 n 个字符，UTF-32 直接偏移 n 个整型距离即可，UTF-8 得从第一个字节一个字一个字地往后蹦，非常蛋疼。</li>
+</ul>
+<h3 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>太占内存啦</li>
+</ul>
+<p><strong>那么在实际使用中，该如何选择上述编码方式呢？</strong></p>
 <ul>
-<li>java.exe在哪里？怎么用？<ul>
-<li>在DOS窗口使用</li>
-<li>使用方法：java 类名<ul>
-<li>例如：硬盘上有一个A.class，就是java A</li>
+<li>UTF-8，用于存储及传输</li>
+<li>UTF-32，用于程序内存中</li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="运行阶段的过程："><a href="#运行阶段的过程：" class="headerlink" title="运行阶段的过程："></a>运行阶段的过程：</h3><ul>
-<li>打开DOS窗口，输入java A</li>
-<li>java.exe命令会启动JVM，JVM会启动类加载器ClassLoader</li>
-<li>ClassLoader会去硬盘搜索A.class文件，找到文件后将该字节码文件装载到JVM中</li>
-<li>JVM中的解释器将A.class字节码文件解释称二进制数据文件</li>
-<li>然后操作系统执行二进制文件和底层硬件平台进行交互</li>
-</ul>
+<p>因为UTF-8灵活，在互联网通信中被编码影响小，兼容性强。UTF-32定长，在内存中程序处理优秀，查询快。</p>
 
       
     </div>
@@ -502,6 +600,8 @@
           
             <a href="/tags/Java/" rel="tag"># Java</a>
           
+            <a href="/tags/字符编码/" rel="tag"># 字符编码</a>
+          
         </div>
       
 
@@ -513,8 +613,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/16/class文件反汇编/" rel="next" title="class文件反汇编">
-                <i class="fa fa-chevron-left"></i> class文件反汇编
+              <a href="/2020/03/21/源文件名和类名的关系/" rel="next" title="源文件名和类名的关系">
+                <i class="fa fa-chevron-left"></i> 源文件名和类名的关系
               </a>
             
           </div>
@@ -522,10 +622,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/20/JDK和JRE间的那些事儿/" rel="prev" title="JDK和JRE间的那些事儿">
-                JDK和JRE间的那些事儿 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -696,7 +792,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译阶段"><span class="nav-number">1.</span> <span class="nav-text">编译阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编译阶段的过程："><span class="nav-number">1.1.</span> <span class="nav-text">编译阶段的过程：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行阶段"><span class="nav-number">2.</span> <span class="nav-text">运行阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#运行阶段的过程："><span class="nav-number">2.1.</span> <span class="nav-text">运行阶段的过程：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ASCII码"><span class="nav-number">1.</span> <span class="nav-text">ASCII码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#历史遗留问题"><span class="nav-number">2.</span> <span class="nav-text">历史遗留问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Unicode编码"><span class="nav-number">3.</span> <span class="nav-text">Unicode编码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Unicode编码方式"><span class="nav-number">4.</span> <span class="nav-text">Unicode编码方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UTF-8"><span class="nav-number">4.1.</span> <span class="nav-text">UTF-8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UTF-16"><span class="nav-number">4.2.</span> <span class="nav-text">UTF-16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UTF-32"><span class="nav-number">4.3.</span> <span class="nav-text">UTF-32</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UTF-8、UTF-16和UTF-32的比较"><span class="nav-number">5.</span> <span class="nav-text">UTF-8、UTF-16和UTF-32的比较</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UTF-8-1"><span class="nav-number">5.1.</span> <span class="nav-text">UTF-8</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">5.1.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">5.1.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UTF-16-1"><span class="nav-number">5.2.</span> <span class="nav-text">UTF-16</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点-1"><span class="nav-number">5.2.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点-1"><span class="nav-number">5.2.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UTF-32-1"><span class="nav-number">5.3.</span> <span class="nav-text">UTF-32</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点-2"><span class="nav-number">5.3.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点-2"><span class="nav-number">5.3.2.</span> <span class="nav-text">缺点</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
