@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/02/06/Java入门（含Java基本介绍、数据类型、流程控制和数组操作）/微信图片_20200312103806.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/06/Java入门（含Java基本介绍、数据类型、流程控制和数组操作）/微信图片_20200312105221.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/06/Java入门（含Java基本介绍、数据类型、流程控制和数组操作）/微信图片_20200312105351.png">
-<meta property="og:updated_time" content="2020-03-22T08:57:47.141Z">
+<meta property="og:updated_time" content="2020-03-23T07:04:29.824Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java入门（含Java基本介绍、数据类型、流程控制和数组操作）">
 <meta name="twitter:description" content="1. Java介绍​        Java是目前全球Top 1的程序开发语言，是SUN公司James Gosling为手持设备开发的嵌入式编程语言，原名Oak，1995年改名为Java正式推出，有最大的开发社区；目前广泛应用于企业和互联网后端开发、Android开发和大数据开发。 1.1 Java的特点 一种面向对象的跨平台编程语言，语法比C++简单 以字节码的形式运行在虚拟机上 自带功能齐全的">
@@ -364,8 +364,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-22T16:57:47+08:00">
-                2020-03-22
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-23T15:04:29+08:00">
+                2020-03-23
               </time>
             
           </span>
@@ -414,7 +414,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  8.1k
+                  9.1k
                 </span>
               
 
@@ -430,7 +430,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  31
+                  34
                 </span>
               
             </div>
@@ -558,12 +558,22 @@
 <li>变量类型 变量名 = 字面值; （初始化）</li>
 </ul>
 </li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">hello</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i;</span><br><span class="line">        System.out.println(i); <span class="comment">//报错，因为没有赋值</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
 <li>变量的分类：<ul>
 <li>根据变量声明的位置类分类<ul>
 <li>局部变量：在方法体当中声明的变量叫局部变量</li>
 <li>成员变量：在方法体外（类体内）声明的变量叫成员变量</li>
 </ul>
 </li>
+</ul>
+</li>
+<li><strong>成员变量没有手动赋值，系统会默认赋值。而局部变量不会，如果没有赋值就访问，会报错</strong>。八种数据类型默认值：<ul>
+<li>byte、short、int、long：<strong>0</strong></li>
+<li>float、double：<strong>0.0</strong></li>
+<li>boolean：<strong>false</strong></li>
+<li>char：<strong>‘\u0000’</strong></li>
 </ul>
 </li>
 </ul>
@@ -584,9 +594,23 @@
 <h3 id="2-4-1-整形"><a href="#2-4-1-整形" class="headerlink" title="2.4.1 整形"></a>2.4.1 整形</h3><ul>
 <li>byte：8位，1字节</li>
 <li>short：16位，2字节</li>
-<li>int：32位，4字节</li>
+<li>int：32位，4字节 </li>
 <li>long：64位，8字节</li>
 </ul>
+<p><strong>Java语言当中的”整数型字面值”默认是int型，要让这个字面值被当做是long型，需要在后面加L</strong></p>
+<p>Java语言中的整数型字面值有三种表示方式</p>
+<ul>
+<li><strong>十进制</strong>，是一种缺省 默认的方式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>八进制</strong>，需要以0开始</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> b = <span class="number">010</span>; <span class="comment">// 8</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>十六进制</strong>，需要以0x开始</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> c = <span class="number">0x10</span>; <span class="comment">// 16</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">byte</span> b = <span class="number">127</span>; <span class="comment">//byte范围：-128 ~ 127</span></span><br><span class="line"><span class="keyword">short</span> s = <span class="number">32767</span>; <span class="comment">//short范围：-32768 ~ 32767</span></span><br><span class="line"><span class="keyword">int</span> i = <span class="number">2147483647</span>;</span><br><span class="line"><span class="keyword">int</span> i2 = -<span class="number">2147483648</span>;</span><br><span class="line"><span class="keyword">int</span> i3 = <span class="number">2_000_000_000</span>; <span class="comment">//加下划线更容易识别</span></span><br><span class="line"><span class="keyword">int</span> i4 = <span class="number">0xff0000</span>; <span class="comment">//16进制表示的16711680</span></span><br><span class="line"><span class="keyword">int</span> i5 = <span class="number">0b1000000000</span>; <span class="comment">//2进制表示的512</span></span><br><span class="line"><span class="comment">// 同一个数的不同进制表示完全相同</span></span><br><span class="line"><span class="keyword">long</span> l = <span class="number">9000000000000000000L</span>; <span class="comment">//由于java默认类型为int，因此需要在结尾加L</span></span><br></pre></td></tr></table></figure>
 <p>有个小问题，java默认整数都是int型。按理说int型是不能赋值给short、byte、char类型的，但是下面却可以编译通过。这是为什么？在java中10这个常量到底是怎么存放的呢？</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">short</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">byte</span> b = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">char</span> c = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
@@ -599,8 +623,9 @@
 <h3 id="2-4-3-布尔类型"><a href="#2-4-3-布尔类型" class="headerlink" title="2.4.3 布尔类型"></a>2.4.3 布尔类型</h3><p>只有true和false两个值，通常是计算结果，占用1个字节</p>
 <p>不可以0或非 0 的整数替代false和true，这点和C语言不同</p>
 <p><strong>boolean类型不可以转换为其它的数据类型</strong></p>
-<h3 id="2-4-4-字符类型"><a href="#2-4-4-字符类型" class="headerlink" title="2.4.4 字符类型"></a>2.4.4 字符类型</h3><p>char：保存一个字符，用单引号表示，占用2个字节，取值范围是 0 ~ 65535。如果输入多个字符编译器将会报错。注意区分字符类型和字符串类型的区别。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> c1 = <span class="string">'A'</span>;</span><br><span class="line"><span class="keyword">char</span> c2 = <span class="string">'中'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="2-4-4-字符类型"><a href="#2-4-4-字符类型" class="headerlink" title="2.4.4 字符类型"></a>2.4.4 字符类型</h3><p>char：保存一个字符，用单引号表示，<strong>占用2个字节</strong>，取值范围是 0 ~ 65535。如果输入多个字符编译器将会报错。注意区分字符类型和字符串类型的区别。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> c1 = <span class="string">'A'</span>;</span><br><span class="line"><span class="comment">// 或 char c1 = '\u0041';</span></span><br><span class="line"><span class="keyword">char</span> c2 = <span class="string">'中'</span>;</span><br></pre></td></tr></table></figure>
+<p>short和char所表示的种类总数是一样的，只不过char可以表示更大的正整数，因为char没有负数</p>
 <p>char类型表示的是现实世界中的文字，文字和计算机二进制之间默认情况下不存在转换关系。为了让计算机可以表示现实世界中的文字，我们需要人为干涉，需要人提前制定好文字和二进制之间的对照关系，这种对照关系被称为：<strong>字符编码</strong>。计算机最初<strong>只支持英文</strong>，最先出现的字符编码是<strong>ASCII码</strong>：</p>
 <p>‘a’ —&gt; 97</p>
 <p>‘A’ —&gt; 65</p>
@@ -615,6 +640,14 @@
 <p><strong>Java中用两个字节表示char，在char中存储的是字符的Unicode码点，char只能表示 BMP子符（BMP的定义见另一篇文章：<a href="https://pringce.github.io/2020/03/22/彻底弄懂Unicode编码那些事儿/#more" target="_blank" rel="noopener">彻底弄懂Unicode编码那些事儿</a>）。</strong></p>
 <p>这里我也疑惑很久Java是如何表示单个的补充码字符（即SMP中的字符），后来明白Java给出的方式就是 “表示不了” ，这样也很合理，65536个字符几乎已经涵盖世界主流语言用到的所有字符了，没必要为了极少出现的字符而构建一个复杂的char类型。</p>
 <p><strong>Java中的char本质上是UTF-16编码</strong>。而UTF-16实际上也是一个变长编码（2字节或4字节）。如果一个抽象的字符在UTF-16编码下占4字节，显然它是不能放到char中的。换言之，char中只能放UTF-16编码下只占2字节的那些字符，即BMP中的字符。</p>
+<h4 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h4><p>反斜杠 \ 在 Java语言中具有转义功能，转义字符出现在特殊字符前，会将特殊字符转义成普通字符</p>
+<p>\n：换行符</p>
+<p>\t：制表符（Table键，与空格不同）</p>
+<p>\\\\：反斜杠字符（’\\’这种会报错，因为\有转义功能，会与后面的单引号配对成转义字符，因此前面的单引号没人与它配对）</p>
+<p>\\’：单引号字符（’’’会报错，原因类似上面，后面两个单引号会配对）</p>
+<p>\\”：双引号字符。这里需要注意一点</p>
+<p>\u####：代表后面的一串是一个字符的Unicode编码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"\"Helloworld\""</span>); <span class="comment">//输出:"Helloworld"</span></span><br><span class="line"><span class="comment">//System.out.println(""Helloworld""); //报错</span></span><br><span class="line"><span class="comment">// 因此在字符串中表示双引号需要加反斜杠</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> c = <span class="string">'"'</span>; <span class="comment">// 代表双引号，无需加反斜杠，因为没人跟他配对，这里需要多注意</span></span><br></pre></td></tr></table></figure>
 <h2 id="2-5-数据类型转换"><a href="#2-5-数据类型转换" class="headerlink" title="2.5 数据类型转换"></a>2.5 数据类型转换</h2><p>关于基本数据类型之间的互相转换，<strong>转换规则</strong>如下：</p>
 <ul>
 <li><p>8种基本数据类型当中除boolean类型外，剩下的7种类型之间都可以互相转换</p>
@@ -627,13 +660,13 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">long</span> b = a;</span><br><span class="line"><span class="keyword">long</span> c = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>大容量不能直接转换为小容量，需要加强制类型转换符，称为<strong>强制类型转换</strong>。但是在运行阶段可能会损失精度，所以谨慎使用。</li>
+<li>大容量不能直接转换为小容量，需要加强制类型转换符，称为<strong>强制类型转换</strong>。但是在运行阶段<strong>可能会损失精度</strong>，所以谨慎使用。<strong>强转原理：将左边的二进制位砍掉</strong></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> a = <span class="number">100L</span>;</span><br><span class="line"><span class="comment">// int b = a; // 编译错误</span></span><br><span class="line"><span class="keyword">int</span> b = (<span class="keyword">int</span>)a; <span class="comment">//编译正确</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>当整数字面值没有超过byte、short、char的取值范围，可以直接赋值给byte、short和char类型的变量</li>
+<li>当整数字面值没有超过byte、short、char的取值范围，可以直接赋值给byte、short和char类型的变量。但整型变量不能直接赋值给short、byte和char变量，也需要强制类型转换符</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// byte a = 1000; // 错误，因为1000超出了byte的范围</span></span><br><span class="line"><span class="keyword">byte</span> a = <span class="number">20</span>; <span class="comment">// 正确，因为20没有超出byte范围</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// byte a = 1000; // 错误，因为1000超出了byte的范围</span></span><br><span class="line"><span class="keyword">byte</span> a = <span class="number">20</span>; <span class="comment">// 正确，因为20没有超出byte范围</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">int r = 20;</span></span><br><span class="line"><span class="comment">short t = r; // 编译错误</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>byte、short和char类型混合运算的时候，各自先转换成int类型再做运算</li>
 </ul>
@@ -671,7 +704,8 @@
 <li>引用是一种数据类型（保存在stack中），保存了对象在内存（heap，堆空间）中的地址，这种类型即不是我们平时所说的简单数据类型也不是类实例(对象)；</li>
 <li>不同的引用可能指向同一个对象，换句话说，一个对象可以有多个引用，即该类类型的变量。</li>
 </ul>
-<h2 id="2-9-整数运算"><a href="#2-9-整数运算" class="headerlink" title="2.9 整数运算"></a>2.9 整数运算</h2><p>运算规则：</p>
+<h2 id="2-9-整数运算"><a href="#2-9-整数运算" class="headerlink" title="2.9 整数运算"></a>2.9 整数运算</h2><p>计算机数字运算均是基于<strong>补码</strong>的。</p>
+<p>运算规则：</p>
 <ul>
 <li>基本四则运算法则</li>
 <li>除法结果为整数</li>
@@ -683,7 +717,19 @@
 <p>Java源码中经常会使用移位运算来代替乘除运算，因为移位运算的性能比乘除运算的高（PS：对于计算机而言，移位运算只是移了个位置），所以了解移位运算的计算过程对于我们阅读源码会有一定的帮助。</p>
 <p><strong>原码</strong>：第一位表示符号, 其余位表示值</p>
 <p><strong>反码</strong>：正数的反码是其本身，负数的反码是在其原码的基础上, 符号位不变，其余各个位取反</p>
-<p><strong>补码</strong>：正数的补码就是其本身，负数的补码是在其原码的基础上, 符号位不变, 其余各位取反, 最后+1. (即在反码的基础上+1)</p>
+<p><strong>补码</strong>：正数的补码就是其本身，负数的补码是在其原码的基础上, 符号位不变, 其余各位取反, 最后+1. (即在反码的基础上+1)。<strong>通常上述这种解释谁也看不懂，下面介绍一种别的说法。</strong>举一个生活中的例子来说明这个问题：</p>
+<p>如果说现在时针现在停在10点钟，那么什么时候时针会停在八点钟呢？简单，过去隔两个小时的时候，是八点钟。未来过十个小时的时候也是八点钟。也就是说时间正拨10小时，或是倒拨2小时都是八点钟。也就是10-2=8，而10+10=8（10+10=10+2+8=12+8=8）这个时候满12说明时针在走第二圈了，又走了8小时，所以时针正好又停在八点钟。也就是说， 10-2和10+10从另一个角度来看是等效的，它都使时针指向了八点钟。既然是等效的，那在时钟运算中，减去一个数，其实就相当于加上另外一个数（这个数与减数相加正好等于12）。这里12被称为<strong>模</strong>，本质上是将<strong>溢出的部分舍去</strong>而不改变结果。易得，<strong>单字节(8位)运算的模为256=2^8。</strong>故可以得到以下结论：</p>
+<p><strong>负数的补码为模减去该数的绝对值的二进制</strong>。</p>
+<p>如-5的补码为：</p>
+<p>-5=256-5=251=1111 1011(二进制，此时不考虑符号位，单纯二进制表示)</p>
+<p>同样的，临界值-128也可以表示出来：</p>
+<p>-128=256-128=128=1000 0000(二进制)</p>
+<p>计算负数补码当然可以用上面的方法，也可以用下面我们介绍的小技巧，口算就能算出负数补码</p>
+<p><strong>计算负数反码的小技巧：</strong>首先记住该数的数据类型字节大小对应的<strong>负数补码原点</strong>。例如对于4位，-8是补码远点；对于8位，负数补码原点是-128；十六位可以把-32768当补码原点。<strong>负数补码原点总是最高位是<code>1</code>，其他位是<code>0</code></strong></p>
+<p>如果我们把-8当成负数的原点。那么-5的补码是多少呢？</p>
+<p>-5 = -8 + 3</p>
+<p>1000（-8） +0011（3）=1011(-5)</p>
+<p>所以可口算出-5的补码是1011</p>
 <p>移位运算（3种）：</p>
 <ul>
 <li>左移&lt;&lt;：丢弃左边指定位数，右边补0</li>
@@ -1261,7 +1307,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Java介绍"><span class="nav-number">1.</span> <span class="nav-text">1. Java介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Java的特点"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Java的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Java的优缺点"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Java的优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Java语言特性-开源、免费、纯面向对象、跨平台"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Java语言特性(开源、免费、纯面向对象、跨平台)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-Java的版本"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 Java的版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-Java的规范"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 Java的规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-Java平台"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 Java平台</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK和JRE的区别"><span class="nav-number">1.6.1.</span> <span class="nav-text">JDK和JRE的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-7-Java为什么可以跨平台运行？"><span class="nav-number">1.7.</span> <span class="nav-text">1.7 Java为什么可以跨平台运行？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-8-Java安装"><span class="nav-number">1.8.</span> <span class="nav-text">1.8 Java安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Java程序基础"><span class="nav-number">2.</span> <span class="nav-text">2. Java程序基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Java程序基本结构"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Java程序基本结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-变量"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-数据类型"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-基本数据类型"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1-整形"><span class="nav-number">2.4.1.</span> <span class="nav-text">2.4.1 整形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-2-浮点类型"><span class="nav-number">2.4.2.</span> <span class="nav-text">2.4.2 浮点类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-3-布尔类型"><span class="nav-number">2.4.3.</span> <span class="nav-text">2.4.3 布尔类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-4-字符类型"><span class="nav-number">2.4.4.</span> <span class="nav-text">2.4.4 字符类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-数据类型转换"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 数据类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-常量"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-基本类型和引用类型"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 基本类型和引用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8-引用类型"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 引用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-9-整数运算"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 整数运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-10-浮点数运算"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 浮点数运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-11-布尔运算"><span class="nav-number">2.11.</span> <span class="nav-text">2.11 布尔运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-12-字符和字符串"><span class="nav-number">2.12.</span> <span class="nav-text">2.12 字符和字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-13-数组类型"><span class="nav-number">2.13.</span> <span class="nav-text">2.13 数组类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-流程控制"><span class="nav-number">3.</span> <span class="nav-text">3. 流程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-输入和输出"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 输入和输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-引用类型判断是否相等"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 引用类型判断是否相等</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-Switch语句"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Switch语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-While循环"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 While循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-do-while循环"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 do-while循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6-for循环"><span class="nav-number">3.6.</span> <span class="nav-text">3.6 for循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#break和continue"><span class="nav-number">3.7.</span> <span class="nav-text">break和continue</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#break跳出循环"><span class="nav-number">3.7.1.</span> <span class="nav-text">break跳出循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#continue提前结束当前循环"><span class="nav-number">3.7.2.</span> <span class="nav-text">continue提前结束当前循环</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组操作"><span class="nav-number">4.</span> <span class="nav-text">数组操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历数组"><span class="nav-number">4.1.</span> <span class="nav-text">遍历数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组排序"><span class="nav-number">4.2.</span> <span class="nav-text">数组排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多维数组"><span class="nav-number">4.3.</span> <span class="nav-text">多维数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二维数组"><span class="nav-number">4.3.1.</span> <span class="nav-text">二维数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三维数组"><span class="nav-number">4.3.2.</span> <span class="nav-text">三维数组</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Java介绍"><span class="nav-number">1.</span> <span class="nav-text">1. Java介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Java的特点"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Java的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Java的优缺点"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Java的优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Java语言特性-开源、免费、纯面向对象、跨平台"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Java语言特性(开源、免费、纯面向对象、跨平台)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-Java的版本"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 Java的版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-Java的规范"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 Java的规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-Java平台"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 Java平台</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK和JRE的区别"><span class="nav-number">1.6.1.</span> <span class="nav-text">JDK和JRE的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-7-Java为什么可以跨平台运行？"><span class="nav-number">1.7.</span> <span class="nav-text">1.7 Java为什么可以跨平台运行？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-8-Java安装"><span class="nav-number">1.8.</span> <span class="nav-text">1.8 Java安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Java程序基础"><span class="nav-number">2.</span> <span class="nav-text">2. Java程序基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Java程序基本结构"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Java程序基本结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-变量"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-数据类型"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-基本数据类型"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1-整形"><span class="nav-number">2.4.1.</span> <span class="nav-text">2.4.1 整形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-2-浮点类型"><span class="nav-number">2.4.2.</span> <span class="nav-text">2.4.2 浮点类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-3-布尔类型"><span class="nav-number">2.4.3.</span> <span class="nav-text">2.4.3 布尔类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-4-字符类型"><span class="nav-number">2.4.4.</span> <span class="nav-text">2.4.4 字符类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#转义字符"><span class="nav-number">2.4.4.1.</span> <span class="nav-text">转义字符</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-数据类型转换"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 数据类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-常量"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-基本类型和引用类型"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 基本类型和引用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8-引用类型"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 引用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-9-整数运算"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 整数运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-10-浮点数运算"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 浮点数运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-11-布尔运算"><span class="nav-number">2.11.</span> <span class="nav-text">2.11 布尔运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-12-字符和字符串"><span class="nav-number">2.12.</span> <span class="nav-text">2.12 字符和字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-13-数组类型"><span class="nav-number">2.13.</span> <span class="nav-text">2.13 数组类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-流程控制"><span class="nav-number">3.</span> <span class="nav-text">3. 流程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-输入和输出"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 输入和输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-引用类型判断是否相等"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 引用类型判断是否相等</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-Switch语句"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Switch语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-While循环"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 While循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-do-while循环"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 do-while循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6-for循环"><span class="nav-number">3.6.</span> <span class="nav-text">3.6 for循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#break和continue"><span class="nav-number">3.7.</span> <span class="nav-text">break和continue</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#break跳出循环"><span class="nav-number">3.7.1.</span> <span class="nav-text">break跳出循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#continue提前结束当前循环"><span class="nav-number">3.7.2.</span> <span class="nav-text">continue提前结束当前循环</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组操作"><span class="nav-number">4.</span> <span class="nav-text">数组操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历数组"><span class="nav-number">4.1.</span> <span class="nav-text">遍历数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组排序"><span class="nav-number">4.2.</span> <span class="nav-text">数组排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多维数组"><span class="nav-number">4.3.</span> <span class="nav-text">多维数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二维数组"><span class="nav-number">4.3.1.</span> <span class="nav-text">二维数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三维数组"><span class="nav-number">4.3.2.</span> <span class="nav-text">三维数组</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1291,7 +1337,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共46k字</span>
+  <span class="post-count">博客全站共47.1k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -1307,7 +1353,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">46k</span>
+    <span title="Site words total count">47.1k</span>
   
 </div>
 
