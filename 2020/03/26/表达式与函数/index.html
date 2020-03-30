@@ -1,0 +1,1783 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MySQL,个人博客,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="表达式如果拥有小学学历，就知道将数字和运算符连接起来的组合称之为表达式，比方说这样： 121 + 14 * 3 其中的数字称之为操作数，运算符可以称之为操作符。特殊的，单个操作数也可以被看作是一个特殊的表达式。 在MySQL中也有表达式的概念，不过操作数和操作符的含义有了扩充。下边详细看一下。 操作数MySQL中操作数可以是下边这几种类型：  常数：常数很好理解，我们平时用到的数字、字符串、时间值">
+<meta name="keywords" content="MySQL,个人博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="表达式与函数">
+<meta property="og:url" content="http://yoursite.com/2020/03/26/表达式与函数/index.html">
+<meta property="og:site_name" content="CodeMonkey · 程序猴">
+<meta property="og:description" content="表达式如果拥有小学学历，就知道将数字和运算符连接起来的组合称之为表达式，比方说这样： 121 + 14 * 3 其中的数字称之为操作数，运算符可以称之为操作符。特殊的，单个操作数也可以被看作是一个特殊的表达式。 在MySQL中也有表达式的概念，不过操作数和操作符的含义有了扩充。下边详细看一下。 操作数MySQL中操作数可以是下边这几种类型：  常数：常数很好理解，我们平时用到的数字、字符串、时间值">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-30T03:25:12.360Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="表达式与函数">
+<meta name="twitter:description" content="表达式如果拥有小学学历，就知道将数字和运算符连接起来的组合称之为表达式，比方说这样： 121 + 14 * 3 其中的数字称之为操作数，运算符可以称之为操作符。特殊的，单个操作数也可以被看作是一个特殊的表达式。 在MySQL中也有表达式的概念，不过操作数和操作符的含义有了扩充。下边详细看一下。 操作数MySQL中操作数可以是下边这几种类型：  常数：常数很好理解，我们平时用到的数字、字符串、时间值">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/26/表达式与函数/">
+
+
+
+
+
+  <title>表达式与函数 | CodeMonkey · 程序猴</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 爆炸红心效果 -->
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+  <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+  <script type="text/javascript" src="/js/src/firework.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/pringce" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CodeMonkey · 程序猴</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">You are more than what you have become now!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/26/表达式与函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CodeMonkey">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/images.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CodeMonkey · 程序猴">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">表达式与函数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-26T16:28:57+08:00">
+                2020-03-26
+              </time>
+            
+
+            
+
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T11:25:12+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h1><p>如果拥有小学学历，就知道将数字和运算符连接起来的组合称之为<code>表达式</code>，比方说这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1 + 1</span><br><span class="line">4 * 3</span><br></pre></td></tr></table></figure>
+<p>其中的数字称之为<code>操作数</code>，运算符可以称之为<code>操作符</code>。特殊的，<strong>单个操作数也可以被看作是一个特殊的表达式。</strong></p>
+<p>在<code>MySQL</code>中也有表达式的概念，不过<code>操作数</code>和<code>操作符</code>的含义有了扩充。下边详细看一下。</p>
+<h2 id="操作数"><a href="#操作数" class="headerlink" title="操作数"></a>操作数</h2><p><code>MySQL</code>中<code>操作数</code>可以是下边这几种类型：</p>
+<ul>
+<li>常数：常数很好理解，我们平时用到的<strong>数字、字符串、时间值</strong>什么的都可以被称为常数，它是一个确定的值，比如数字<code>1</code>，字符串<code>&#39;abc&#39;</code>，时间值2019-08-16 17:10:43啥的。</li>
+<li>列名：针对某个具体的表，它的列名可以被当作表达式的一部分，比如对于<code>student_info</code>表来说，<code>number</code>、<code>name</code>都可以作为<code>操作数</code>。</li>
+<li>函数调用：<code>MySQL</code>中有<code>函数</code>的概念，比方说获取当前时间的函数<code>NOW</code>，而在函数后边加个小括号就算是一个<code>函数调用</code>，比如<code>NOW()</code>。</li>
+<li>标量子查询或行子查询</li>
+<li>其它表达式：一个表达式也可以作为一个操作数与另一个操作数来形成一个更复杂的表达式，比方说（假设<code>col</code>是一个列名）：<ul>
+<li>(1 + 1) <em> 2 + col </em> 3</li>
+</ul>
+</li>
+</ul>
+<h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><ul>
+<li><strong>算数操作符</strong>：就是加减乘除法那一堆，我们看一下<code>MySQL</code>中都支持哪些</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">操作符</th>
+<th style="text-align:center">示例</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">+</td>
+<td style="text-align:center">a + b</td>
+<td style="text-align:center">加法</td>
+</tr>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:center">a - b</td>
+<td style="text-align:center">减法</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">a * b</td>
+<td style="text-align:center">乘法</td>
+</tr>
+<tr>
+<td style="text-align:center">/</td>
+<td style="text-align:center">a / b</td>
+<td style="text-align:center">除法</td>
+</tr>
+<tr>
+<td style="text-align:center">DIV</td>
+<td style="text-align:center">a DIV b</td>
+<td style="text-align:center">除法，取商的整数部分</td>
+</tr>
+<tr>
+<td style="text-align:center">%</td>
+<td style="text-align:center">a % b</td>
+<td style="text-align:center">取余数</td>
+</tr>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-a</td>
+<td style="text-align:center">负号</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>在使用<code>MySQL</code>中的<code>算术操作符</code>时需要注意，<code>DIV</code>和<code>/</code>都表示除法操作符，但是<code>DIV</code>只会取商的整数部分，<code>/</code>会保留商的小数部分。比如表达式 <code>2 DIV 3</code>的结果是<code>0</code>，而<code>2 / 3</code>的结果是<code>0.6667</code>。</p>
+<ul>
+<li><strong>比较操作符</strong>：就是在<code>搜索条件</code>中我们已经看过的<code>比较操作符</code>，我们把常用的都抄下来看一下：</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">操作符</th>
+<th style="text-align:center">示例</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">=</td>
+<td style="text-align:center">a = b</td>
+<td style="text-align:center">a等于b</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;&gt; 或 !=</td>
+<td style="text-align:center">a &lt;&gt; b</td>
+<td style="text-align:center">a不等于b</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;</td>
+<td style="text-align:center">a &lt; b</td>
+<td style="text-align:center">a小于b</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;=</td>
+<td style="text-align:center">a &lt;= b</td>
+<td style="text-align:center">a小于等于b</td>
+</tr>
+<tr>
+<td style="text-align:center">&gt;</td>
+<td style="text-align:center">a &gt; b</td>
+<td style="text-align:center">a大于b</td>
+</tr>
+<tr>
+<td style="text-align:center">>=</td>
+<td style="text-align:center">a &gt;= b</td>
+<td style="text-align:center">a大于等于b</td>
+</tr>
+<tr>
+<td style="text-align:center">BETWEEN</td>
+<td style="text-align:center">a BETWEEN b AND c</td>
+<td style="text-align:center">b &lt;= a &lt;= c</td>
+</tr>
+<tr>
+<td style="text-align:center">NOT BETWEEN</td>
+<td style="text-align:center">a NOT BETWEEN b AND c</td>
+<td style="text-align:center">不满足b &lt;= a &lt;= c</td>
+</tr>
+<tr>
+<td style="text-align:center">IN</td>
+<td style="text-align:center">a IN (b1,b2,…)</td>
+<td style="text-align:center">a是b1,b2,…中的某一个</td>
+</tr>
+<tr>
+<td style="text-align:center">NOT IN</td>
+<td style="text-align:center">a NOT IN (b1,b2,…)</td>
+<td style="text-align:center">a不是b1,b2,…中的任意一个</td>
+</tr>
+<tr>
+<td style="text-align:center">IS NULL</td>
+<td style="text-align:center">a IS NULL</td>
+<td style="text-align:center">a是NULL</td>
+</tr>
+<tr>
+<td style="text-align:center">IS NOT NULL</td>
+<td style="text-align:center">a IS NOT NULL</td>
+<td style="text-align:center">a不是NULL</td>
+</tr>
+<tr>
+<td style="text-align:center">LIKE</td>
+<td style="text-align:center">a LIKE b</td>
+<td style="text-align:center">a匹配b</td>
+</tr>
+<tr>
+<td style="text-align:center">NOT LIKE</td>
+<td style="text-align:center">a NOT LIKE b</td>
+<td style="text-align:center">a不匹配b</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>由<code>比较操作符</code>连接而成的表达式也称为<code>布尔表达式</code>，表示<code>真</code>或者<code>假</code>，也可以称为<code>TRUE</code>或者<code>FALSE</code>。比如<code>1 &gt; 3</code>就代表<code>FALSE</code>，<code>3 != 2</code>就代表<code>TRUE</code>。</p>
+<ul>
+<li><strong>逻辑操作符</strong>：逻辑操作符是用来将多个<code>布尔表达式</code>连接起来，我们需要了解这几个<code>逻辑操作符</code>：</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">操作符</th>
+<th style="text-align:center">示例</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">AND</td>
+<td style="text-align:center">a AND b</td>
+<td style="text-align:center">只有a和b同时为真，表达式才为真</td>
+</tr>
+<tr>
+<td style="text-align:center">OR</td>
+<td style="text-align:center">a OR b</td>
+<td style="text-align:center">只要a或b有任意一个为真，表达式就为真</td>
+</tr>
+<tr>
+<td style="text-align:center">XOR</td>
+<td style="text-align:center">a XOR b</td>
+<td style="text-align:center">a和b有且只有一个为真，表达式为真</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="表达式的使用"><a href="#表达式的使用" class="headerlink" title="表达式的使用"></a>表达式的使用</h1><p>只要把这些<code>操作数</code>和<code>操作符</code>相互组合起来就可以组成一个<code>表达式</code>。<code>表达式</code>主要以下边这<strong>两种方式</strong>使用：</p>
+<ul>
+<li><strong>放在查询列表中</strong></li>
+</ul>
+<p>我们前边都是将列名放在查询列表中的(<code>*</code>号代表所有的列名～)。列名只是<code>表达式</code>中超级简单的一种，我们可以将任意一个表达式作为查询列表的一部分来处理，比方说我们可以在查询<code>student_score</code>表时把<code>score</code>字段的数据都加<code>100</code>，就像这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT  number, subject, score + 100 FROM student_score;</span><br><span class="line">+----------+-----------------------------+-------------+</span><br><span class="line">| number   | subject                     | score + 100 |</span><br><span class="line">+----------+-----------------------------+-------------+</span><br><span class="line">| 20180101 | 母猪的产后护理              |         178 |</span><br><span class="line">| 20180101 | 论萨达姆的战争准备          |         188 |</span><br><span class="line">| 20180102 | 母猪的产后护理              |         200 |</span><br><span class="line">| 20180102 | 论萨达姆的战争准备          |         198 |</span><br><span class="line">| 20180103 | 母猪的产后护理              |         159 |</span><br><span class="line">| 20180103 | 论萨达姆的战争准备          |         161 |</span><br><span class="line">| 20180104 | 母猪的产后护理              |         155 |</span><br><span class="line">| 20180104 | 论萨达姆的战争准备          |         146 |</span><br><span class="line">+----------+-----------------------------+-------------+</span><br><span class="line">8 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>其中的<code>number</code>、<code>subject</code>、<code>score + 100</code>都是表达式，结果集中的列的名称也将默认使用这些表达式的名称，所以如果你觉得原名称不好，我们可以使用别名：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT  number, subject, score + 100 AS score FROM student_score;</span><br><span class="line">+----------+-----------------------------+-------+</span><br><span class="line">| number   | subject                     | score |</span><br><span class="line">+----------+-----------------------------+-------+</span><br><span class="line">| 20180101 | 母猪的产后护理              |   178 |</span><br><span class="line">| 20180101 | 论萨达姆的战争准备          |   188 |</span><br><span class="line">| 20180102 | 母猪的产后护理              |   200 |</span><br><span class="line">| 20180102 | 论萨达姆的战争准备          |   198 |</span><br><span class="line">| 20180103 | 母猪的产后护理              |   159 |</span><br><span class="line">| 20180103 | 论萨达姆的战争准备          |   161 |</span><br><span class="line">| 20180104 | 母猪的产后护理              |   155 |</span><br><span class="line">| 20180104 | 论萨达姆的战争准备          |   146 |</span><br><span class="line">+----------+-----------------------------+-------+</span><br><span class="line">8 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，<strong>放在查询列表的表达式也可以不涉及列名</strong>，就像这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT 1 FROM student_info;</span><br><span class="line">+---+</span><br><span class="line">| 1 |</span><br><span class="line">+---+</span><br><span class="line">| 1 |</span><br><span class="line">| 1 |</span><br><span class="line">| 1 |</span><br><span class="line">| 1 |</span><br><span class="line">| 1 |</span><br><span class="line">| 1 |</span><br><span class="line">+---+</span><br><span class="line">6 rows in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+<p>因为<code>student_info</code>中有6条记录，所以结果集中也就展示了6条结果，不过我们的查询列表处只有一个常数<code>1</code>，所以所有的结果的值也都是常数<code>1</code>。这种查询列表中不涉及列名的情况下，我们甚至可以省略掉<code>FROM</code>子句后边的表名，就像这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT 1;</span><br><span class="line">+---+</span><br><span class="line">| 1 |</span><br><span class="line">+---+</span><br><span class="line">| 1 |</span><br><span class="line">+---+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>作为搜索条件</strong></li>
+</ul>
+<p>我们在介绍搜索条件的时候介绍的都是带有列名的表达式，<strong>搜索条件也可以不带列名</strong>，比如这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT number, name, id_number, major FROM student_info WHERE 2 &gt; 1;</span><br><span class="line">+----------+-----------+--------------------+--------------------------+</span><br><span class="line">| number   | name      | id_number          | major                    |</span><br><span class="line">+----------+-----------+--------------------+--------------------------+</span><br><span class="line">| 20180101 | 杜子腾    | 158177199901044792 | 计算机科学与工程         |</span><br><span class="line">| 20180102 | 杜琦燕    | 151008199801178529 | 计算机科学与工程         |</span><br><span class="line">| 20180103 | 范统      | 17156319980116959X | 软件工程                 |</span><br><span class="line">| 20180104 | 史珍香    | 141992199701078600 | 软件工程                 |</span><br><span class="line">| 20180105 | 范剑      | 181048199308156368 | 飞行器设计               |</span><br><span class="line">| 20180106 | 朱逸群    | 197995199501078445 | 电子信息                 |</span><br><span class="line">+----------+-----------+--------------------+--------------------------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>由于我们的搜索条件是<code>2 &gt; 1</code>，这个条件对于表中的每一条记录都成立，所以最后的查询结果就是全部的记录。不过这么写有点儿傻哈，没有一毛钱卵用，没一点实际意义～ 所以通常情况下搜索条件中都会包含列名的。</p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>如果我们想使用函数，可以在函数名后加一个小括号<code>()</code>就好，表示调用一下这个函数，简称<code>函数调用</code>。比方说<code>NOW()</code>就代表调用<code>NOW</code>函数来获取当前日期和时间。针对某些包含参数的函数，我们也可以在小括号<code>()</code>里将参数填入，比方说<code>UPPER(&#39;abc&#39;)</code>表示将字符串<code>&#39;abc&#39;</code>转换为大写格式。</p>
+<p>下边来介绍一些常用的<code>MySQL</code>内置函数：</p>
+<h2 id="文本处理函数"><a href="#文本处理函数" class="headerlink" title="文本处理函数"></a>文本处理函数</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">调用示例</th>
+<th style="text-align:center">示例结果</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">LEFT</td>
+<td style="text-align:center">LEFT(‘abc123’,3)</td>
+<td style="text-align:center">abc</td>
+<td style="text-align:center">给定字符串从左边取指定长度的子串</td>
+</tr>
+<tr>
+<td style="text-align:center">RIGHT</td>
+<td style="text-align:center">RIGHT(‘abc123’,3)</td>
+<td style="text-align:center">123</td>
+<td style="text-align:center">给定字符串从右边取指定长度的子串</td>
+</tr>
+<tr>
+<td style="text-align:center">LENGTH</td>
+<td style="text-align:center">LENGTH(‘abc’)</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">给定字符串的长度</td>
+</tr>
+<tr>
+<td style="text-align:center">LOWER</td>
+<td style="text-align:center">LOWER(‘ABC’)</td>
+<td style="text-align:center">abc</td>
+<td style="text-align:center">给定字符串的小写格式</td>
+</tr>
+<tr>
+<td style="text-align:center">UPPER</td>
+<td style="text-align:center">UPPER(‘abc’)</td>
+<td style="text-align:center">ABC</td>
+<td style="text-align:center">给定字符串的大写格式</td>
+</tr>
+<tr>
+<td style="text-align:center">LTRIM</td>
+<td style="text-align:center">LTRIM(‘  abc’)</td>
+<td style="text-align:center">abc</td>
+<td style="text-align:center">给定字符串左边空格去除后的格式</td>
+</tr>
+<tr>
+<td style="text-align:center">RTRIM</td>
+<td style="text-align:center">RTRIM(‘abc  ‘)</td>
+<td style="text-align:center">abc</td>
+<td style="text-align:center">给定字符串右边空格去除后的格式</td>
+</tr>
+<tr>
+<td style="text-align:center">SUBSTRING</td>
+<td style="text-align:center">SUBSTRING(‘abc123’,2,3)</td>
+<td style="text-align:center">bc1</td>
+<td style="text-align:center">给定字符串从指定位置截取指定长度的子串</td>
+</tr>
+<tr>
+<td style="text-align:center">CONCAT</td>
+<td style="text-align:center">CONCAT(‘abc’,’123’,’xyz’)</td>
+<td style="text-align:center">abc123xyz</td>
+<td style="text-align:center">将给定的各个字符串拼接成一个新字符串</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>我们以<code>SUBSTRING</code>函数为例试一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT SUBSTRING(&apos;abc123&apos;, 2, 3);</span><br><span class="line">+---------------------------+</span><br><span class="line">| SUBSTRING(&apos;abc123&apos;, 2, 3) |</span><br><span class="line">+---------------------------+</span><br><span class="line">| bc1                       |</span><br><span class="line">+---------------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>我们前边在唠叨<code>表达式</code>的说过，<code>函数调用</code>也算是一种表达式的<code>操作数</code>，<strong>它可以和其他操作数用操作符连接起来组成一个表达式来作为查询列表的一部分或者放到搜索条件中</strong>。我们来以<code>CONCAT</code>函数为例来看一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT CONCAT(&apos;学号为&apos;, number, &apos;的学生在《&apos;, subject, &apos;》课程的成绩是：&apos;, score) AS 成绩描述 FROM student_score;</span><br><span class="line">+---------------------------------------------------------------------------------------+</span><br><span class="line">| 成绩描述                                                                              |</span><br><span class="line">+---------------------------------------------------------------------------------------+</span><br><span class="line">| 学号为20180101的学生在《母猪的产后护理》课程的成绩是：78                              |</span><br><span class="line">| 学号为20180101的学生在《论萨达姆的战争准备》课程的成绩是：88                          |</span><br><span class="line">| 学号为20180102的学生在《母猪的产后护理》课程的成绩是：100                             |</span><br><span class="line">| 学号为20180102的学生在《论萨达姆的战争准备》课程的成绩是：98                          |</span><br><span class="line">| 学号为20180103的学生在《母猪的产后护理》课程的成绩是：59                              |</span><br><span class="line">| 学号为20180103的学生在《论萨达姆的战争准备》课程的成绩是：61                          |</span><br><span class="line">| 学号为20180104的学生在《母猪的产后护理》课程的成绩是：55                              |</span><br><span class="line">| 学号为20180104的学生在《论萨达姆的战争准备》课程的成绩是：46                          |</span><br><span class="line">+---------------------------------------------------------------------------------------+</span><br><span class="line">8 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h2 id="日期和时间处理函数"><a href="#日期和时间处理函数" class="headerlink" title="日期和时间处理函数"></a>日期和时间处理函数</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">调用示例</th>
+<th style="text-align:center">示例结果</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">NOW</td>
+<td style="text-align:center">NOW()</td>
+<td style="text-align:center">2019-08-16 17:10:43</td>
+<td style="text-align:center">返回当前日期和时间</td>
+</tr>
+<tr>
+<td style="text-align:center">CURDATE</td>
+<td style="text-align:center">CURDATE()</td>
+<td style="text-align:center">2019-08-16</td>
+<td style="text-align:center">返回当前日期</td>
+</tr>
+<tr>
+<td style="text-align:center">CURTIME</td>
+<td style="text-align:center">CURTIME()</td>
+<td style="text-align:center">17:10:43</td>
+<td style="text-align:center">返回当前时间</td>
+</tr>
+<tr>
+<td style="text-align:center">DATE</td>
+<td style="text-align:center">DATE(‘2019-08-16 17:10:43’)</td>
+<td style="text-align:center">2019-08-16</td>
+<td style="text-align:center">将给定日期和时间值的日期提取出来</td>
+</tr>
+<tr>
+<td style="text-align:center">DATE_ADD</td>
+<td style="text-align:center">DATE_ADD(‘2019-08-16 17:10:43’, INTERVAL 2 DAY)</td>
+<td style="text-align:center">2019-08-18 17:10:43</td>
+<td style="text-align:center">将给定的日期和时间值添加指定的时间间隔</td>
+</tr>
+<tr>
+<td style="text-align:center">DATE_SUB</td>
+<td style="text-align:center">DATE_SUB(‘2019-08-16 17:10:43’, INTERVAL 2 DAY)</td>
+<td style="text-align:center">2019-08-14 17:10:43</td>
+<td style="text-align:center">将给定的日期和时间值减去指定的时间间隔</td>
+</tr>
+<tr>
+<td style="text-align:center">DATEDIFF</td>
+<td style="text-align:center">DATEDIFF(‘2019-08-16’, ‘2019-08-17’);</td>
+<td style="text-align:center">-1</td>
+<td style="text-align:center">返回两个日期之间的天数（负数代表前一个参数代表的日期比较小）</td>
+</tr>
+<tr>
+<td style="text-align:center">DATE_FORMAT</td>
+<td style="text-align:center">DATE_FORMAT(NOW(),’%m-%d-%Y’)</td>
+<td style="text-align:center">08-16-2019</td>
+<td style="text-align:center">用给定的格式显示日期和时间</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>在使用这些函数时需要注意一些地方：</p>
+<ul>
+<li><p>在使用<code>DATE_ADD</code>和<code>DATE_SUB</code>这两个函数时需要注意，增加或减去的时间间隔单位可以自己定义，下边是<code>MySQL</code>支持的一些时间单位：</p>
+<p>|  时间单位   | 描述 |<br>| :————-: | :—: |<br>| MICROSECOND | 毫秒 |<br>|   SECOND    |  秒  |<br>|   MINUTE    | 分钟 |<br>|    HOUR     | 小时 |<br>|     DAY     |  天  |<br>|    WEEK     | 星期 |<br>|    MONTH    |  月  |<br>|   QUARTER   | 季度 |<br>|    YEAR     |  年  |</p>
+</li>
+</ul>
+<p>如果我们相让<code>2019-08-16 17:10:43</code>这个时间值增加2分钟，可以这么写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT DATE_ADD(&apos;2019-08-16 17:10:43&apos;, INTERVAL 2 MINUTE);</span><br><span class="line">+----------------------------------------------------+</span><br><span class="line">| DATE_ADD(&apos;2019-08-16 17:10:43&apos;, INTERVAL 2 MINUTE) |</span><br><span class="line">+----------------------------------------------------+</span><br><span class="line">| 2019-08-16 17:12:43                                |</span><br><span class="line">+----------------------------------------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在使用<code>DATE_FORMAT</code>函数时需要注意，我们可以通过一些所谓的<code>格式符</code>来自定义日期和时间的显示格式，下边是<code>MySQL</code>中常用的一些日期和时间的格式符以及它们对应的含义：</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">格式符</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">%b</td>
+<td style="text-align:center">简写的月份名称（Jan、Feb、…、Dec)</td>
+</tr>
+<tr>
+<td style="text-align:center">%D</td>
+<td style="text-align:center">带有英文后缀的月份中的日期（0th、1st、2nd、…、31st)）</td>
+</tr>
+<tr>
+<td style="text-align:center">%d</td>
+<td style="text-align:center">数字格式的月份中的日期(00、01、02、…、31)</td>
+</tr>
+<tr>
+<td style="text-align:center">%f</td>
+<td style="text-align:center">微秒（000000-999999）</td>
+</tr>
+<tr>
+<td style="text-align:center">%H</td>
+<td style="text-align:center">二十四小时制的小时 (00-23)</td>
+</tr>
+<tr>
+<td style="text-align:center">%h</td>
+<td style="text-align:center">十二小时制的小时 (01-12)</td>
+</tr>
+<tr>
+<td style="text-align:center">%i</td>
+<td style="text-align:center">数值格式的分钟(00-59)</td>
+</tr>
+<tr>
+<td style="text-align:center">%M</td>
+<td style="text-align:center">月份名（January、February、…、December）</td>
+</tr>
+<tr>
+<td style="text-align:center">%m</td>
+<td style="text-align:center">数值形式的月份(00-12)</td>
+</tr>
+<tr>
+<td style="text-align:center">%p</td>
+<td style="text-align:center">上午或下午（AM代表上午、PM代表下午）</td>
+</tr>
+<tr>
+<td style="text-align:center">%S</td>
+<td style="text-align:center">秒(00-59)</td>
+</tr>
+<tr>
+<td style="text-align:center">%s</td>
+<td style="text-align:center">秒(00-59)</td>
+</tr>
+<tr>
+<td style="text-align:center">%W</td>
+<td style="text-align:center">星期名（Sunday、Monday、…、Saturday）</td>
+</tr>
+<tr>
+<td style="text-align:center">%w</td>
+<td style="text-align:center">周内第几天 （0=星期日、1=星期一、 6=星期六）</td>
+</tr>
+<tr>
+<td style="text-align:center">%Y</td>
+<td style="text-align:center">4位数字形式的年（例如2019）</td>
+</tr>
+<tr>
+<td style="text-align:center">%y</td>
+<td style="text-align:center">2位数字形式的年（例如19）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>我们可以把我们想要的显示格式用对应的格式符描述出来，就像这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT DATE_FORMAT(NOW(),&apos;%b %d %Y %h:%i %p&apos;);</span><br><span class="line">+----------------------------------------+</span><br><span class="line">| DATE_FORMAT(NOW(),&apos;%b %d %Y %h:%i %p&apos;) |</span><br><span class="line">+----------------------------------------+</span><br><span class="line">| Mar 30 2020 10:54 AM                   |</span><br><span class="line">+----------------------------------------+</span><br><span class="line">1 row in set</span><br></pre></td></tr></table></figure>
+<h2 id="数值处理函数"><a href="#数值处理函数" class="headerlink" title="数值处理函数"></a>数值处理函数</h2><p>下边列举一些数学上常用到的函数，在遇到需要数学计算的业务时会很有用：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">调用示例</th>
+<th style="text-align:center">示例结果</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ABS</td>
+<td style="text-align:center">ABS(-1)</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">取绝对值</td>
+</tr>
+<tr>
+<td style="text-align:center">Pi</td>
+<td style="text-align:center">PI()</td>
+<td style="text-align:center">3.141593</td>
+<td style="text-align:center">返回圆周率</td>
+</tr>
+<tr>
+<td style="text-align:center">COS</td>
+<td style="text-align:center">COS(PI())</td>
+<td style="text-align:center">-1</td>
+<td style="text-align:center">返回一个角度的余弦</td>
+</tr>
+<tr>
+<td style="text-align:center">EXP</td>
+<td style="text-align:center">EXP(1)</td>
+<td style="text-align:center">2.718281828459045</td>
+<td style="text-align:center">返回e的指定次方</td>
+</tr>
+<tr>
+<td style="text-align:center">MOD</td>
+<td style="text-align:center">MOD(5,2)</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">返回除法的余数</td>
+</tr>
+<tr>
+<td style="text-align:center">RAND</td>
+<td style="text-align:center">RAND()</td>
+<td style="text-align:center">0.7537623539136372</td>
+<td style="text-align:center">返回一个随机数</td>
+</tr>
+<tr>
+<td style="text-align:center">SIN</td>
+<td style="text-align:center">SIN(PI()/2)</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">返回一个角度的正弦</td>
+</tr>
+<tr>
+<td style="text-align:center">SQRT</td>
+<td style="text-align:center">SQRT(9)</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">返回一个数的平方根</td>
+</tr>
+<tr>
+<td style="text-align:center">TAN</td>
+<td style="text-align:center">TAN(0)</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">返回一个角度的正切</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="聚集函数"><a href="#聚集函数" class="headerlink" title="聚集函数"></a>聚集函数</h2><p>有些函数是用来统计数据的，比方说统计一下表中的行数，某一列数据的最大值是什么，我们把这种函数称之为<code>聚集函数</code>，下边介绍<code>MySQL</code>中常用的几种<code>聚集函数</code>：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数名</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">COUNT</td>
+<td style="text-align:center">返回某列的行数</td>
+</tr>
+<tr>
+<td style="text-align:center">MAX</td>
+<td style="text-align:center">返回某列的最大值</td>
+</tr>
+<tr>
+<td style="text-align:center">MIN</td>
+<td style="text-align:center">返回某列的最小值</td>
+</tr>
+<tr>
+<td style="text-align:center">SUM</td>
+<td style="text-align:center">返回某列值之和</td>
+</tr>
+<tr>
+<td style="text-align:center">AVG</td>
+<td style="text-align:center">返回某列的平均值</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>注意：在mysql中除了count(*)为特例（不忽略null值）外，其余聚集函数是忽略null值</strong></p>
+<h3 id="COUNT函数"><a href="#COUNT函数" class="headerlink" title="COUNT函数"></a>COUNT函数</h3><p><code>COUNT</code>函数使用来统计行数的，它有下边两种使用方式：</p>
+<ol>
+<li><code>COUNT(*)</code>：对表中行的数目进行计数，不管列的值是不是<code>NULL</code>。</li>
+<li><code>COUNT(列名)</code>：对特定的列进行计数，会忽略掉该列为<code>NULL</code>的行。</li>
+</ol>
+<p><strong>两者的区别是会不会忽略统计列的值为NULL的行！两者的区别是会不会忽略统计列的值为NULL的行！两者的区别是会不会忽略统计列的值为NULL的行！</strong>重要的事情说3遍</p>
+<h3 id="MAX函数"><a href="#MAX函数" class="headerlink" title="MAX函数"></a>MAX函数</h3><p><code>MAX</code>函数是用来查询某列中数据的最大值，以<code>student_score</code>表中的<code>score</code>列为例来看一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT MAX(score) FROM student_score;</span><br><span class="line">+------------+</span><br><span class="line">| MAX(score) |</span><br><span class="line">+------------+</span><br><span class="line">|        100 |</span><br><span class="line">+------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h3 id="MIN函数"><a href="#MIN函数" class="headerlink" title="MIN函数"></a>MIN函数</h3><p><code>MIN</code>函数是用来查询某列中数据的最小值，以<code>student_score</code>表中的<code>score</code>列为例来看一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT MIN(score) FROM student_score;</span><br><span class="line">+------------+</span><br><span class="line">| MIN(score) |</span><br><span class="line">+------------+</span><br><span class="line">|         46 |</span><br><span class="line">+------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h3 id="SUM函数"><a href="#SUM函数" class="headerlink" title="SUM函数"></a>SUM函数</h3><p><code>SUM</code>函数是用来计算某列数据的和，还是以<code>student_score</code>表中的<code>score</code>列为例来看一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT SUM(score) FROM student_score;</span><br><span class="line">+------------+</span><br><span class="line">| SUM(score) |</span><br><span class="line">+------------+</span><br><span class="line">|        585 |</span><br><span class="line">+------------+</span><br><span class="line">1 row in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+<h3 id="AVG函数"><a href="#AVG函数" class="headerlink" title="AVG函数"></a>AVG函数</h3><p><code>AVG</code>函数是用来计算某列数据的平均数，还是以<code>student_score</code>表中的<code>score</code>列为例来看一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT AVG(score) FROM student_score;</span><br><span class="line">+------------+</span><br><span class="line">| AVG(score) |</span><br><span class="line">+------------+</span><br><span class="line">|    73.1250 |</span><br><span class="line">+------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h3 id="给定搜索条件下聚集函数的使用"><a href="#给定搜索条件下聚集函数的使用" class="headerlink" title="给定搜索条件下聚集函数的使用"></a>给定搜索条件下聚集函数的使用</h3><p>聚集函数并不是一定要统计一个表中的所有记录，我们也可以指定搜索条件来限定这些聚集函数作用的范围。比方说我们只想统计<code>&#39;母猪的产后护理&#39;</code>这门课程的平均分可以这么写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT AVG(score) FROM student_score WHERE subject = &apos;母猪的产后护理&apos;;</span><br><span class="line">+------------+</span><br><span class="line">| AVG(score) |</span><br><span class="line">+------------+</span><br><span class="line">|    73.0000 |</span><br><span class="line">+------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>换句话说就是：<strong>不在搜索条件中的那些记录是不参与统计的。</strong></p>
+<h3 id="聚集函数中DISTINCT的使用"><a href="#聚集函数中DISTINCT的使用" class="headerlink" title="聚集函数中DISTINCT的使用"></a>聚集函数中DISTINCT的使用</h3><p>默认情况下，上边介绍的聚集函数将计算指定列的所有非<code>NULL</code>数据，如果我们指定的列中有重复数据的话，可以选择使用<code>DISTINCT</code>来过滤掉这些重复数据。比方说我们想查看一下<code>student_info</code>表中存储了多少个专业的学生信息，就可以这么写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT COUNT(DISTINCT major) FROM student_info;</span><br><span class="line">+-----------------------+</span><br><span class="line">| COUNT(DISTINCT major) |</span><br><span class="line">+-----------------------+</span><br><span class="line">|                     4 |</span><br><span class="line">+-----------------------+</span><br><span class="line">1 row in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+<h3 id="组合聚集函数"><a href="#组合聚集函数" class="headerlink" title="组合聚集函数"></a>组合聚集函数</h3><p>这些聚集函数也可以集中在一个查询中使用，比如这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT COUNT(*) AS 成绩记录总数, MAX(score) AS 最高成绩, MIN(score) AS 最低成绩, AVG(score) AS 平均成绩 FROM student_score;</span><br><span class="line">+--------------------+--------------+--------------+--------------+</span><br><span class="line">| 成绩记录总数       | 最高成绩     | 最低成绩     | 平均成绩     |</span><br><span class="line">+--------------------+--------------+--------------+--------------+</span><br><span class="line">|                  8 |          100 |           46 |      73.1250 |</span><br><span class="line">+--------------------+--------------+--------------+--------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+            <a href="/tags/个人博客/" rel="tag"># 个人博客</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/24/MySQL之使用通配符进行模糊查询/" rel="next" title="MySQL之使用通配符进行模糊查询">
+                <i class="fa fa-chevron-left"></i> MySQL之使用通配符进行模糊查询
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/30/隐式类型转换/" rel="prev" title="隐式类型转换">
+                隐式类型转换 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  <div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------ 本文结束------</div>
+    
+</div>
+    
+ </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/images.jpg" alt="CodeMonkey">
+            
+              <p class="site-author-name" itemprop="name">CodeMonkey</p>
+              <p class="site-description motion-element" itemprop="description">Biter & Developer</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/pringce" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:bit_ljy@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/guihenao4010" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://music.163.com/#/playlist?id=147734978" target="_blank" title="Music">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Music</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#表达式"><span class="nav-number">1.</span> <span class="nav-text">表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#操作数"><span class="nav-number">1.1.</span> <span class="nav-text">操作数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作符"><span class="nav-number">1.2.</span> <span class="nav-text">操作符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表达式的使用"><span class="nav-number">2.</span> <span class="nav-text">表达式的使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-number">3.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文本处理函数"><span class="nav-number">3.1.</span> <span class="nav-text">文本处理函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日期和时间处理函数"><span class="nav-number">3.2.</span> <span class="nav-text">日期和时间处理函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值处理函数"><span class="nav-number">3.3.</span> <span class="nav-text">数值处理函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚集函数"><span class="nav-number">3.4.</span> <span class="nav-text">聚集函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#COUNT函数"><span class="nav-number">3.4.1.</span> <span class="nav-text">COUNT函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MAX函数"><span class="nav-number">3.4.2.</span> <span class="nav-text">MAX函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MIN函数"><span class="nav-number">3.4.3.</span> <span class="nav-text">MIN函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SUM函数"><span class="nav-number">3.4.4.</span> <span class="nav-text">SUM函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AVG函数"><span class="nav-number">3.4.5.</span> <span class="nav-text">AVG函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#给定搜索条件下聚集函数的使用"><span class="nav-number">3.4.6.</span> <span class="nav-text">给定搜索条件下聚集函数的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚集函数中DISTINCT的使用"><span class="nav-number">3.4.7.</span> <span class="nav-text">聚集函数中DISTINCT的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合聚集函数"><span class="nav-number">3.4.8.</span> <span class="nav-text">组合聚集函数</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共58.2k字</span>
+</div>
+<div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CodeMonkey</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">58.2k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
+
+

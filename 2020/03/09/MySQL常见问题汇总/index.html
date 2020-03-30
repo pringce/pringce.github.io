@@ -96,7 +96,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2020/03/09/MySQL常见问题汇总/微信图片_20200309194035.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/09/MySQL常见问题汇总/微信图片_20200309194148.png">
-<meta property="og:updated_time" content="2020-03-10T02:49:59.659Z">
+<meta property="og:updated_time" content="2020-03-24T02:06:11.035Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL常见问题汇总">
 <meta name="twitter:description" content="本文主要记录在学习和应用MySQL中碰到的各种问题和解决方法，以备查用。 1. 如何查看端口号？一般有两种方法可查看数据库：  查看MySQL配置文件my.ini  123456mysql&amp;gt; show variables like &apos;port&apos;;+---------------+-------+| Variable_name | Value |+---------------+-------">
@@ -357,8 +357,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-10T10:49:59+08:00">
-                2020-03-10
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-24T10:06:11+08:00">
+                2020-03-24
               </time>
             
           </span>
@@ -407,7 +407,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  389
+                  447
                 </span>
               
 
@@ -457,7 +457,10 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net stop mysql80</span><br></pre></td></tr></table></figure>
 <ul>
-<li>打开MySQL根目录下my.ini文件，修改文件中的port值，注意两个地方[client]和[mysqld]</li>
+<li>打开MySQL根目录下my.ini文件，修改文件中的port值，注意两个地方[client]和[mysqld]<ul>
+<li><strong>注意，如果要修改一定要同步修改为同一个值。服务器的端口号和客户端的端口号一定要保持一致，这样才能保证它两能顺利建立TCP/IP连接</strong></li>
+</ul>
+</li>
 <li>重启mysql服务</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net start mysql80</span><br></pre></td></tr></table></figure>
@@ -607,7 +610,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -720,7 +723,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共47.1k字</span>
+  <span class="post-count">博客全站共58.2k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -736,7 +739,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">47.1k</span>
+    <span title="Site words total count">58.2k</span>
   
 </div>
 

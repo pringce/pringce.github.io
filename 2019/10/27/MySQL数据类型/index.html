@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/10/27/MySQL数据类型/16d6779ad10263a2.png">
 <meta property="og:image" content="http://yoursite.com/2019/10/27/MySQL数据类型/16d6779ad21ff99f.png">
 <meta property="og:image" content="http://yoursite.com/2019/10/27/MySQL数据类型/16d6779ad395a41d.png">
-<meta property="og:updated_time" content="2020-03-23T10:08:34.476Z">
+<meta property="og:updated_time" content="2020-03-23T14:00:48.942Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL数据类型">
 <meta name="twitter:description" content="​        MySQL支持所有的SQL数据类型，主要分为以下四类：  数值类型 字符串类型 时间日期类型 二进制类型  一、数值类型​        MySQL数值类型有9种，其中整数类型有5种（INTEGER、TINYINT、SMALLINT、MEDIUMINT和BIGINT）、浮点类型2种（float(M,D)、double(M,D)）、定点数1种（decimal(M,D)）和bit(M">
@@ -362,7 +362,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-23T18:08:34+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-23T22:00:48+08:00">
                 2020-03-23
               </time>
             
@@ -412,7 +412,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  6k
+                  6.4k
                 </span>
               
 
@@ -428,7 +428,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  22
+                  23
                 </span>
               
             </div>
@@ -857,6 +857,7 @@
 <p>表示不同的字符所需要的字节数量是不同的。比如<strong>utf8</strong>编码方案采用1-3个字节来编码一个字符，<strong>gb2312</strong>采用1-2个字节来编码一个字符。    </p>
 </li>
 </ul>
+<p><strong>注意：正儿八经的UTF-8编码占用1~ 4个字节，这里的utf8占用1~3个字节是阉割版的。如果我们之后有存储使用4个字节来编码的字符的情景，可以使用一种称之为utf8mb4的字符集，它才是正宗的utf8字符集。</strong></p>
 <p><strong>MySQL的字符串类型</strong></p>
 <p>​        下表示MySQL中提供的字符串类型，其中<strong>M</strong>代表该数据类型最多能存储的字符数量，<strong>L</strong>代表实际向该类型中存储的字符串在特定字符集下所占的字节数，<strong>W</strong>代表该特定字符集下，编码一个字符最多需要的字节数：</p>
 <div class="table-container">
@@ -922,7 +923,7 @@
 </li>
 <li><p><strong>VARCHAR(M)</strong></p>
 <p>​    如果某个列存储的字符串长短不一，那么使用CHAR(M)可能会浪费很多存储空间，因此可以使用VARCHAR(M)。</p>
-<p>​    VARCHAR(M)中的M也是代表该类型最多可以存储的字符数量，理论上的取值范围是1-65535。但是，<strong>MySQL中有一个规定，表中某一行包含的所有列中存储的数据大小总共不能超过65535个字节，也就是说VARCHAR(M)类型实际能够容纳的字符数量是小于65535的。</strong></p>
+<p>​    VARCHAR(M)中的M也是代表该类型最多可以存储的字符数量，理论上的取值范围是0-65535。但是，<strong>MySQL中有一个规定，表中某一行包含的所有列中存储的数据大小总共不能超过65535个字节，也就是说VARCHAR(M)类型实际能够容纳的字符数量是小于65535的。</strong></p>
 <p>​    VARCHAR(M)类型表示的数据由以下两部分组成：</p>
 <p>1、真正的字符串内容</p>
 <p>​        假设真正的字符串在特定字符集编码后占用的字节数为L</p>
@@ -942,16 +943,18 @@
 </li>
 <li><p><strong>ENUM类型和SET类型</strong></p>
 <ul>
-<li><p>ENUM类型称为<strong>枚举类型</strong>，它表示在给定的字符串列表里选择一个。比如性别，只能在’男’和’女’里面选一个，相当于一个单选框</p>
+<li><p>ENUM类型称为<strong>枚举类型</strong>，它表示在给定的字符串列表里<strong>选择一个</strong>。比如性别，只能在’男’和’女’里面选一个，相当于一个单选框</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ENUM(<span class="string">'str1'</span>,<span class="string">'str2'</span>,<span class="string">'str3'</span>,...)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>SET类型表示可以在给定的字符串列表里选择多个。比如兴趣列表，相当于一个多选框</p>
+<li><p>SET类型表示可以在给定的字符串列表里<strong>选择多个</strong>。比如兴趣列表，相当于一个多选框</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET(<span class="string">'str1'</span>,<span class="string">'str2'</span>,<span class="string">'str3'</span>,...)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>综上所述，<strong>ENUM和SET类型都是一种特殊的字符串类型，在从字符串列表中单选或多选元素的时候会用得到它们。</strong></p>
+<p><strong>SET类型怎么insert</strong>？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="function">create table <span class="title">enum_set_table</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    -&gt; id <span class="keyword">int</span> auto_increment primary key,</span></span></span><br><span class="line"><span class="function"><span class="params">    -&gt; gender <span class="keyword">enum</span>(<span class="string">'M'</span>,<span class="string">'F'</span>)</span>,</span></span><br><span class="line"><span class="function">    -&gt; hobby <span class="title">set</span><span class="params">(<span class="string">'music'</span>,<span class="string">'movie'</span>,<span class="string">'swimming'</span>,<span class="string">'footbal'</span>)</span></span></span><br><span class="line"><span class="function">    -&gt; )</span>;</span><br><span class="line">Query OK, <span class="number">0</span> <span class="function">rows <span class="title">affected</span> <span class="params">(<span class="number">0.01</span> sec)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">/* 一个enum值，一个set值，二者均使用选项的字符串格式 */</span></span></span><br><span class="line"><span class="function">mysql&gt; insert into <span class="title">enum_set_table</span><span class="params">(id,gender,hobby)</span> <span class="title">values</span><span class="params">(<span class="keyword">null</span>,<span class="string">'M'</span>,<span class="string">'music'</span>)</span></span>;</span><br><span class="line">Query OK, <span class="number">1</span> <span class="function">row <span class="title">affected</span> <span class="params">(<span class="number">0.01</span> sec)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">/* 一个enum值，多个set值，二者均使用选项的字符串格式 */</span></span></span><br><span class="line"><span class="function"><span class="comment">// 这种同时输入多个set值的方法要注意</span></span></span><br><span class="line"><span class="function">mysql&gt; insert into <span class="title">enum_set_table</span><span class="params">(id,gender,hobby)</span> <span class="title">values</span><span class="params">(<span class="keyword">null</span>,<span class="string">'F'</span>,<span class="string">'music,movie,footbal'</span>)</span></span>;</span><br><span class="line">Query OK, <span class="number">1</span> <span class="function">row <span class="title">affected</span> <span class="params">(<span class="number">0.00</span> sec)</span></span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<p>  综上所述，<strong>ENUM和SET类型都是一种特殊的字符串类型，在从字符串列表中单选或多选元素的时候会用得到它们。</strong></p>
 <h3 id="四、二进制类型"><a href="#四、二进制类型" class="headerlink" title="四、二进制类型"></a>四、二进制类型</h3><ul>
 <li><p><strong>BIT类型</strong></p>
 <p>​    有时候我们有存储单个或者多个比特位的需求，此时就可以用到下边这种类型：</p>
@@ -978,10 +981,10 @@
 <p>  M默认为1，M的取值范围为1~64，M可以省略，即BIT和BIT(1)一样。</p>
 <ul>
 <li><p><strong>BINARY(M)和VARBINARY(M)</strong></p>
-<p>​    前者是固定长度的类型，后者是可变长度的类型，其中M代表该类型最多能存放的字节数量。</p>
+<p>​    前者是固定长度的类型，后者是可变长度的类型，其中M代表该类型最多能存放的字节数量。<code>BINARY(M)</code>和<code>VARBINARY(M)</code>对应于我们前边提到的<code>CHAR(M)</code>和<code>VARCHAR(M)</code>，都是前者是固定长度的类型，后者是可变长度的类型，只不过<code>BINARY(M)</code>和<code>VARBINARY(M)</code>是用来存放字节的，其中的<code>M</code>代表该类型最多能存放的字节数量，而<code>CHAR(M)</code>和<code>VARCHAR(M)</code>是用来存储字符的，其中的<code>M</code>代表该类型最多能存放的字符数量。它们M的取值范围一样，对于CHAR 和BINARY是0 ~ 255；对于VARCHAR和VARBINARY是0 ~ 65535。</p>
 </li>
 <li><p><strong>其它的二进制类型</strong></p>
-<p>​    <strong>TINYBLOB</strong>、<strong>BLOB</strong>、<strong>MEDIUMBLOB</strong>、<strong>LONGBLOB</strong>是针对数据量很大的二进制数据提出的，比如图片、音乐、压缩文件啥的。</p>
+<p>​    <strong>TINYBLOB</strong>、<strong>BLOB</strong>、<strong>MEDIUMBLOB</strong>、<strong>LONGBLOB</strong>是针对数据量很大的二进制数据提出的，比如图片、音乐、压缩文件啥的。<strong>BLOB和TEXT一样也是变长的，有相同的最大长度和存储需求。</strong></p>
 </li>
 </ul>
 
@@ -1116,7 +1119,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1229,7 +1232,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共47.1k字</span>
+  <span class="post-count">博客全站共58.2k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -1245,7 +1248,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">47.1k</span>
+    <span title="Site words total count">58.2k</span>
   
 </div>
 
