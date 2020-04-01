@@ -95,7 +95,7 @@
 <meta property="og:description" content="什么是OOP？ 面向对象编程：Object-Oriented Programming 对现实世界建立计算机模型的一种编程方法  面向对象的三大特性：封装、继承、多态。 对象的概念    现实世界 计算机模型 Java代码     人 类/class class Person{}   小明 实例/ming Person ming = new Preson()   小红 实例/hong Person">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2020/03/13/Java面向对象编程/微信图片_20200314144110.png">
-<meta property="og:updated_time" content="2020-03-16T07:14:11.328Z">
+<meta property="og:updated_time" content="2020-04-01T04:09:05.434Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java面向对象编程">
 <meta name="twitter:description" content="什么是OOP？ 面向对象编程：Object-Oriented Programming 对现实世界建立计算机模型的一种编程方法  面向对象的三大特性：封装、继承、多态。 对象的概念    现实世界 计算机模型 Java代码     人 类/class class Person{}   小明 实例/ming Person ming = new Preson()   小红 实例/hong Person">
@@ -356,8 +356,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-16T15:14:11+08:00">
-                2020-03-16
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-01T12:09:05+08:00">
+                2020-04-01
               </time>
             
           </span>
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3.9k
+                  4.2k
                 </span>
               
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  15
+                  16
                 </span>
               
             </div>
@@ -545,19 +545,33 @@
 <li>外部代码不可访问private字段</li>
 <li>外部代码只能通过调用public方法间接设置和获取private字段</li>
 <li>public方法封装了数据访问</li>
+<li>方法体中不能再定义方法</li>
 <li>通过方法访问实例字段更安全</li>
 <li>通过<strong>变量.方法名()</strong>来调用实例方法</li>
 </ul>
 <h3 id="定义方法"><a href="#定义方法" class="headerlink" title="定义方法"></a>定义方法</h3><ul>
-<li>public修饰符</li>
-<li>方法返回值</li>
-<li>方法名称</li>
-<li>方法参数列表</li>
-<li>方法返回值通过return语句实现，如果没有返回值（void）可以省略return</li>
+<li>修饰符列表</li>
+<li>返回值类型<ul>
+<li>返回值类型可以是java中任意一种类型，包括基本数据类型和所有的引用数据类型</li>
+</ul>
+</li>
+<li>方法名称：合法的标识符即可</li>
+<li>方法参数列表<ul>
+<li>形参是局部变量</li>
+<li>形参中起决定作用的是形参的数据类型，形参的名字就是局部变量的名字</li>
+<li>方法在调用的时候，实际给这个方法传递的真实数据被称为实参</li>
+<li>形参列表和实参列表必须满足：<ul>
+<li>数量和类型对应相同</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>方法返回值通过return语句实现，如果没有返回值（void）可以省略return。<strong>只要带有return关键字的语句执行，return语句所在的方法结束。</strong></li>
+<li><strong>当一个方法有返回值时，在调用该方法时可以选择接受也可以选择不接收返回值。但是大部分条件下都是选择接收</strong></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>方法内部可以使用隐式变量this，<strong>this指向当前实例</strong>，this.field可以方法当前实例的字段</li>
+<li>方法内部可以使用隐式变量this，<strong>this指向当前实例</strong>，this.field可以表示当前实例的字段</li>
 <li>在不引起歧义的情况下，可省略this</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name; <span class="comment">//this.name</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
@@ -570,9 +584,13 @@
 <li>可以忽略方法返回值</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Person ming = <span class="keyword">new</span> Person();</span><br><span class="line">ming.setName(<span class="string">"小明"</span>); <span class="comment">// 没有返回值</span></span><br><span class="line">String s = ming.getName(); <span class="comment">//返回值为String</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>类内部调用方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">hello</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 完整调用格式</span></span><br><span class="line">        hello.qq();</span><br><span class="line">        <span class="comment">// 省略调用格式</span></span><br><span class="line">        qq();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 编译正确</span></span><br><span class="line">        A.a();</span><br><span class="line">        <span class="comment">// a(); 编译错误</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 注意同一个类中调用方法可以省略类名，不同的类中调用方法不能省略类名</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">qq</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.ptintln(<span class="string">"xixi"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">a</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.ptintln(<span class="string">"haha"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="方法参数"><a href="#方法参数" class="headerlink" title="方法参数"></a>方法参数</h3><ul>
 <li>方法参数用于接收传递给方法的变量值</li>
-<li>方法参数可为基本类型参数或引用类型参数。可简单理解诶基本类型是值传递，引用类型是址传递</li>
+<li>方法参数可为基本类型参数或引用类型参数。<strong>可简单理解为基本类型是值传递，引用类型是址传递</strong></li>
 </ul>
 <h3 id="private方法"><a href="#private方法" class="headerlink" title="private方法"></a>private方法</h3><ul>
 <li>外部代码不可访问private方法</li>
@@ -873,7 +891,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -986,7 +1004,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共58.2k字</span>
+  <span class="post-count">博客全站共60.9k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -1002,7 +1020,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">58.2k</span>
+    <span title="Site words total count">60.9k</span>
   
 </div>
 
