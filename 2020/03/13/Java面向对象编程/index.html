@@ -86,19 +86,19 @@
 
 
 
-<meta name="description" content="什么是OOP？ 面向对象编程：Object-Oriented Programming 对现实世界建立计算机模型的一种编程方法  面向对象的三大特性：封装、继承、多态。 对象的概念    现实世界 计算机模型 Java代码     人 类/class class Person{}   小明 实例/ming Person ming = new Preson()   小红 实例/hong Person">
+<meta name="description" content="什么是OOP？ 面向对象编程：Object-Oriented Programming 对现实世界建立计算机模型的一种编程方法  面向过程和面向对象的区别？  面向过程：主要关注点是实现的具体过程，因果关系 优点：对于业务逻辑比较简单的程序，可以达到快速开发，前期投入成本较低 缺点：采用面向过程的方式很难解决非常复杂的业务逻辑，另外面向过程的方式导致软件元素之间的耦合度非常高。只要其中一环出问题，整">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java面向对象编程">
 <meta property="og:url" content="http://yoursite.com/2020/03/13/Java面向对象编程/index.html">
 <meta property="og:site_name" content="CodeMonkey · 程序猴">
-<meta property="og:description" content="什么是OOP？ 面向对象编程：Object-Oriented Programming 对现实世界建立计算机模型的一种编程方法  面向对象的三大特性：封装、继承、多态。 对象的概念    现实世界 计算机模型 Java代码     人 类/class class Person{}   小明 实例/ming Person ming = new Preson()   小红 实例/hong Person">
+<meta property="og:description" content="什么是OOP？ 面向对象编程：Object-Oriented Programming 对现实世界建立计算机模型的一种编程方法  面向过程和面向对象的区别？  面向过程：主要关注点是实现的具体过程，因果关系 优点：对于业务逻辑比较简单的程序，可以达到快速开发，前期投入成本较低 缺点：采用面向过程的方式很难解决非常复杂的业务逻辑，另外面向过程的方式导致软件元素之间的耦合度非常高。只要其中一环出问题，整">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2020/03/13/Java面向对象编程/微信图片_20200314144110.png">
-<meta property="og:updated_time" content="2020-04-01T04:09:05.434Z">
+<meta property="og:updated_time" content="2020-04-04T06:23:18.588Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java面向对象编程">
-<meta name="twitter:description" content="什么是OOP？ 面向对象编程：Object-Oriented Programming 对现实世界建立计算机模型的一种编程方法  面向对象的三大特性：封装、继承、多态。 对象的概念    现实世界 计算机模型 Java代码     人 类/class class Person{}   小明 实例/ming Person ming = new Preson()   小红 实例/hong Person">
+<meta name="twitter:description" content="什么是OOP？ 面向对象编程：Object-Oriented Programming 对现实世界建立计算机模型的一种编程方法  面向过程和面向对象的区别？  面向过程：主要关注点是实现的具体过程，因果关系 优点：对于业务逻辑比较简单的程序，可以达到快速开发，前期投入成本较低 缺点：采用面向过程的方式很难解决非常复杂的业务逻辑，另外面向过程的方式导致软件元素之间的耦合度非常高。只要其中一环出问题，整">
 <meta name="twitter:image" content="http://yoursite.com/2020/03/13/Java面向对象编程/微信图片_20200314144110.png">
 
 
@@ -356,8 +356,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-01T12:09:05+08:00">
-                2020-04-01
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-04T14:23:18+08:00">
+                2020-04-04
               </time>
             
           </span>
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4.2k
+                  5.6k
                 </span>
               
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  16
+                  21
                 </span>
               
             </div>
@@ -447,8 +447,53 @@
 <li>面向对象编程：Object-Oriented Programming</li>
 <li>对现实世界建立计算机模型的一种编程方法</li>
 </ul>
+<p>面向过程和面向对象的区别？</p>
+<ul>
+<li>面向过程：主要关注点是实现的具体过程，因果关系<ul>
+<li>优点：对于业务逻辑比较简单的程序，可以达到快速开发，前期投入成本较低</li>
+<li>缺点：采用面向过程的方式很难解决非常复杂的业务逻辑，另外面向过程的方式导致软件元素之间的耦合度非常高。只要其中一环出问题，整个系统受到影响。导致最终的软件扩展力低。另外，由于没有独立体的概念，所以无法达到组件复用</li>
+</ul>
+</li>
+<li>面向对象：主要关注对象（独立体）能完成那些功能<ul>
+<li>优点：耦合度低，扩展力强。更容易解决现实世界中更复杂的业务逻辑，组件复用性强</li>
+<li>缺点：前期投入成本较高，需要进行独立体的抽取，存在大量的系统分析与设计</li>
+</ul>
+</li>
+</ul>
 <p>面向对象的三大特性：<strong>封装、继承、多态</strong>。</p>
-<h2 id="对象的概念"><a href="#对象的概念" class="headerlink" title="对象的概念"></a>对象的概念</h2><div class="table-container">
+<p>采用面向对象的方式开发一个软件，生命周期当中存在：</p>
+<ul>
+<li>面向对象分析OOA</li>
+<li>面向对象设计OOD</li>
+<li>面向对象编程OOP</li>
+</ul>
+<h2 id="类和对象的概念"><a href="#类和对象的概念" class="headerlink" title="类和对象的概念"></a>类和对象的概念</h2><p>​        <strong>类</strong>在现实世界中是不存在，是一个模板，是一个概念，是人类大脑思考抽象的结果。类代表了一类事物。在现实世界中，对象A和对象B之间具有共同的特征，进行抽象总结出一个模板，这个模板被称为类</p>
+<p>​        <strong>对象</strong>是现实世界实际存在的个体</p>
+<p>在Java程序中<strong>通过类创建对象</strong></p>
+<ul>
+<li>类 ——&gt;  (<strong>实例化</strong>) ——&gt; 对象（<strong>对象又被称为实例</strong>）</li>
+<li>对象 ——&gt;（<strong>抽象</strong>）——&gt; 类</li>
+<li>类描述的是对象的共同特征</li>
+</ul>
+<p>一个类主要描述什么信息？</p>
+<ul>
+<li><p>状态+动作</p>
+<ul>
+<li>状态信息：名字、身高、性别等</li>
+<li>动作信息：吃、唱歌、学习等</li>
+</ul>
+</li>
+<li><p>状态 ——&gt; 一个类的属性</p>
+</li>
+<li><p>动作 ——&gt; 一个类的方法</p>
+</li>
+<li><p>类{</p>
+<p>​    属性 // 描述对象的状态信息</p>
+<p>​    方法 // 描述对象的动作信息</p>
+<p>}</p>
+</li>
+</ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -504,7 +549,7 @@
 </tbody>
 </table>
 </div>
-<h2 id="对象-实例（class-instance）"><a href="#对象-实例（class-instance）" class="headerlink" title="对象/实例（class/instance）"></a><strong>对象/实例（class/instance）</strong></h2><p>class是对象模板</p>
+<h2 id="类-实例（class-instance）"><a href="#类-实例（class-instance）" class="headerlink" title="类/实例（class/instance）"></a><strong>类/实例（class/instance）</strong></h2><p>class是对象模板</p>
 <ul>
 <li>class定义了如何创建实例</li>
 <li>class名字就是数据类型</li>
@@ -516,12 +561,18 @@
 <li>各个instance类型相同，但各自属性可能不同</li>
 </ul>
 <h2 id="定义class"><a href="#定义class" class="headerlink" title="定义class"></a><strong>定义class</strong></h2><ul>
-<li>一个class可以包含多个field（字段），field用来描述一个class的特征</li>
-<li>class实现了<strong>数据封装</strong></li>
+<li><p>语法结构：</p>
+<p>[修饰符列表] class 类名{</p>
+<p>}</p>
+</li>
+<li><p>一个class可以包含多个field（字段），field用来描述一个class的特征</p>
+</li>
+<li><p>class实现了<strong>数据封装</strong></p>
+</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Book</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    <span class="keyword">public</span> String author;</span><br><span class="line">    <span class="keyword">public</span> String isbn;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="创建实例"><a href="#创建实例" class="headerlink" title="创建实例"></a>创建实例</h2><ul>
-<li><strong>new操作符</strong>可以创建一个实例</li>
+<li><strong>new操作符</strong>可以创建一个实例，new运算符的作用是创建对象，在JVM堆内存当中开辟新的内存空间</li>
 <li>定义一个引用类型变量来指向实例</li>
 <li>通过变量来操作实例</li>
 <li>通过<strong>变量.字段</strong>来访问实例字段</li>
@@ -588,9 +639,9 @@
 <li>类内部调用方法</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">hello</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 完整调用格式</span></span><br><span class="line">        hello.qq();</span><br><span class="line">        <span class="comment">// 省略调用格式</span></span><br><span class="line">        qq();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 编译正确</span></span><br><span class="line">        A.a();</span><br><span class="line">        <span class="comment">// a(); 编译错误</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 注意同一个类中调用方法可以省略类名，不同的类中调用方法不能省略类名</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">qq</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.ptintln(<span class="string">"xixi"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">a</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.ptintln(<span class="string">"haha"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="方法参数"><a href="#方法参数" class="headerlink" title="方法参数"></a>方法参数</h3><ul>
+<h3 id="方法参数传递"><a href="#方法参数传递" class="headerlink" title="方法参数传递"></a>方法参数传递</h3><ul>
 <li>方法参数用于接收传递给方法的变量值</li>
-<li>方法参数可为基本类型参数或引用类型参数。<strong>可简单理解为基本类型是值传递，引用类型是址传递</strong></li>
+<li>方法参数可为基本类型参数或引用类型参数。<strong>可简单理解为基本类型是值传递，引用类型是址传递（但是无论是基本类西行还是引用类型，都是传递的是变量中保存的值，只不过有的是字面值，有的是Java对象在堆内存中的地址，所以才会有值传递和址传递的区别，但本质上都是一样的）</strong>。见<a href="https://pringce.github.io/2020/04/04/方法调用时的参数传递问题/#more" target="_blank" rel="noopener">方法调用时的参数传递问题</a></li>
 </ul>
 <h3 id="private方法"><a href="#private方法" class="headerlink" title="private方法"></a>private方法</h3><ul>
 <li>外部代码不可访问private方法</li>
@@ -600,23 +651,66 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Person ming = <span class="keyword">new</span> Person(); <span class="comment">// 创建对象实例</span></span><br><span class="line"><span class="comment">// 初始化对象实例</span></span><br><span class="line">ming.setName(<span class="string">"小明"</span>);</span><br><span class="line">ming.setAge(<span class="number">12</span>);</span><br></pre></td></tr></table></figure>
 <p>能否在创建对象实例时就把内部字段全部初始化为合适的值？如下所示</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Person ming = <span class="keyword">new</span> Person(<span class="string">"小明"</span>,<span class="number">12</span>);</span><br></pre></td></tr></table></figure>
-<p>答案当然是肯定的！需要引入<strong>构造方法</strong>。构造方法用于初始化实例</p>
+<p>答案当然是肯定的！需要引入<strong>构造方法（又被称为构造函数/ 构造器，constructor）</strong>。构造方法用于创建对象</p>
 <ul>
-<li>构造方法可以在创建对象实例时初始化对象实例</li>
-<li>构造方法名就是类名</li>
-<li>构造方法的参数没有限制</li>
-<li>构造方法没有返回值(也没有void)</li>
-<li>必须用new操作符调用构造方法</li>
+<li><p>构造方法的作用</p>
+<ul>
+<li>创建对象</li>
+<li>创建对象的同时，初始化<strong>实例变量</strong>的内存空间<ul>
+<li>成员变量之实例变量，属于对象级别的变量，这种变量必须先有对象才能有实例变量</li>
+<li>实例变量没有手动赋值的时候，系统默认赋值，那么这个系统默认赋值是在什么时候完成的？是在类加载的时候么？<ul>
+<li>不是！因为类加载的时候只加载了代码片段，还没来得及创建对象，所以此时实例变量并没有初始化。</li>
+<li>实际上，实例变量的内存空间是在构造方法执行过程中完成开辟、初始化的。系统在默认赋值的时候，也是在构造方法执行过程当中完成的赋值</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>构造方法语法结构</strong></p>
+<ul>
+<li><p>[修饰符列表] 构造方法名（形参列表）{</p>
+<p>​        构造方法体；</p>
+<p>}</p>
+</li>
+</ul>
+</li>
+<li><p><strong>普通方法语法结构</strong></p>
+<ul>
+<li><p>[修饰符列表] 返回值类型 构造方法名（形参列表）{</p>
+<p>​        方法体；</p>
+<p>}</p>
+</li>
+</ul>
+</li>
+<li><p>构造方法可以在创建对象实例时初始化对象实例</p>
+</li>
+<li><p><strong>构造方法名就是类名，必须保持一致</strong></p>
+</li>
+<li><p>构造方法的参数没有限制</p>
+</li>
+<li><p><strong>构造方法没有返回值(类型也没有void)</strong> ，只要写上返回值类型就是普通方法了（不写返回值类型不代表没有返回值）</p>
+</li>
+<li><p><strong>必须用new操作符调用构造方法</strong></p>
+<ul>
+<li>调用方法：new 构造方法名(实参列表)</li>
+</ul>
+</li>
+<li><p>构造方法调用后有返回值么？</p>
+<ul>
+<li>每一个构造方法实际上执行结束后都有返回值，但是不需要写，构造方法结束的时候java程序自动返回值，返回的是对象在堆内存中的地址。并且返回值类型是构造方法所在类的类型。由于构造方法的返回值类型就是类本身，所以返回值类型不需要编写</li>
+</ul>
+</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">   </span><br><span class="line">    <span class="comment">// 构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name, <span class="keyword">int</span> age)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>如果一个类没有定义构造方法，编译器会自动生成一个默认构造方法：</strong></p>
+<p><strong>如果一个类没有定义构造方法，编译器会自动生成一个默认构造方法，这个构造方法被称为缺省构造器：</strong></p>
 <ul>
 <li>无参数</li>
 <li>无执行语句</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>如果自定义了构造方法，编译器就不再自动创建默认构造方法</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name, <span class="keyword">int</span> age)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person ming = <span class="keyword">new</span> Person(); <span class="comment">// 编译错误</span></span><br></pre></td></tr></table></figure>
+<p><strong>如果自定义了构造方法，编译器就不再自动创建默认构造方法。建议开发中手动的为当前类提供无参数构造方法，因为无参数构造方法太常用了</strong>。所以构造方法支持重载机制，在一个类中编写多个构造方法，这多个构造方法显然已经构成方法重载机制</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name, <span class="keyword">int</span> age)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">        <span class="comment">// 如果自己写的构造函数中没有对所有的实例变量赋值，那么那些没有被赋值的实例变量会被系统赋默认值</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person ming = <span class="keyword">new</span> Person(); <span class="comment">// 编译错误</span></span><br><span class="line"><span class="comment">// 因为此时没有默认构造方法了</span></span><br></pre></td></tr></table></figure>
 <p><strong>初始化顺序</strong>：</p>
 <ul>
 <li>先初始化字段</li>
@@ -628,35 +722,42 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 构造代码: new person("xiaoming",12);</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name, <span class="keyword">int</span> age)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 构造代码: new person("xiaoming");</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = <span class="number">18</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 构造代码: new person();</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>一个构造方法可以调用其他构造方法，便于代码复用。调用其他构造方法的语法是<strong>this(…)</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name, <span class="keyword">int</span> age)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(name,<span class="number">18</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(<span class="string">"unnamed"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>方法重载（Overload）是指：</p>
+<h2 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h2><h3 id="什么时候考虑方法重载？"><a href="#什么时候考虑方法重载？" class="headerlink" title="什么时候考虑方法重载？"></a>什么时候考虑方法重载？</h3><p>功能相似的时候，尽可能让方法名相同</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>方法重载（Overload）是指：</p>
 <ul>
-<li>多个方法的方法名相同</li>
+<li><p><strong>在同一个类中</strong></p>
+</li>
+<li><p>多个方法的方法名相同</p>
+</li>
 <li><p>但各自参数不同</p>
 <ul>
 <li>参数个数不同</li>
-<li>参数类型不同</li>
-<li>参数位置不同</li>
 </ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">m1</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">m1</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>方法返回值类型通常是相同的</p>
+</ul>
+<ul>
+<li><p>参数类型不同</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">m2</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">m2</span><span class="params">(<span class="keyword">double</span> a)</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>参数位置不同</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">m3</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">double</span> b)</span></span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">m3</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">int</span> b)</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>方法重载<strong>只和方法名+参数列表有关</strong>，与返回值类型无关，与修饰符列表无关</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">q</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">q</span><span class="params">()</span></span>&#123;&#125; <span class="comment">// 编译报错，因为就是同一个方法，没有构成重载</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="方法重载的目的"><a href="#方法重载的目的" class="headerlink" title="方法重载的目的"></a>方法重载的目的</h3><ul>
 <li>相同功能的方法使用统一名字</li>
 <li>便于调用</li>
 </ul>
-<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><ul>
-<li>重载方法应该完成相同的功能，参考String的indexOf()</li>
-<li>重载方法主要依靠参数类型和数量区分</li>
-<li><p>不要去交换参数顺序区分</p>
-<ul>
-<li>indexOf(String str, int fromIndex)</li>
-<li>indexOf(int fromIndex, String str)</li>
-</ul>
-</li>
-<li><p>重载方法返回值类型应该相同</p>
-</li>
-</ul>
+<h2 id="方法递归"><a href="#方法递归" class="headerlink" title="方法递归"></a>方法递归</h2><h3 id="什么是递归"><a href="#什么是递归" class="headerlink" title="什么是递归"></a>什么是递归</h3><p>方法自身调用自身</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">doSome</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"begin"</span>);</span><br><span class="line">    doSome();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>递归很耗费栈内存，递归算法可以不用的时候尽量别用。容易发生爆栈错误：java.lang.StackOverflowError。因此递归必须有结束条件，否则肯定会发生爆栈</p>
 <h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> /* <span class="keyword">extends</span> <span class="title">Object</span> */ </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;...&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> score;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setScore</span><span class="params">(<span class="keyword">int</span> score)</span> </span>&#123;...&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getScore</span><span class="params">()</span> </span>&#123;...&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Student可以从Person继承</li>
@@ -891,7 +992,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -974,7 +1075,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是OOP？"><span class="nav-number">1.</span> <span class="nav-text">什么是OOP？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的概念"><span class="nav-number">1.1.</span> <span class="nav-text">对象的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象-实例（class-instance）"><span class="nav-number">1.2.</span> <span class="nav-text">对象/实例（class/instance）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义class"><span class="nav-number">1.3.</span> <span class="nav-text">定义class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建实例"><span class="nav-number">1.4.</span> <span class="nav-text">创建实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.5.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据封装"><span class="nav-number">2.</span> <span class="nav-text">数据封装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法"><span class="nav-number">2.1.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义方法"><span class="nav-number">2.1.1.</span> <span class="nav-text">定义方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用方法"><span class="nav-number">2.1.2.</span> <span class="nav-text">调用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法参数"><span class="nav-number">2.1.3.</span> <span class="nav-text">方法参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#private方法"><span class="nav-number">2.1.4.</span> <span class="nav-text">private方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造方法"><span class="nav-number">2.2.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法重载"><span class="nav-number">2.3.</span> <span class="nav-text">方法重载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">2.3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法重载的目的"><span class="nav-number">2.3.2.</span> <span class="nav-text">方法重载的目的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结-1"><span class="nav-number">2.3.3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">2.4.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#继承树"><span class="nav-number">2.4.1.</span> <span class="nav-text">继承树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#protected"><span class="nav-number">2.4.2.</span> <span class="nav-text">protected</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#super"><span class="nav-number">2.4.3.</span> <span class="nav-text">super</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向上转型"><span class="nav-number">2.4.4.</span> <span class="nav-text">向上转型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向下转型"><span class="nav-number">2.4.5.</span> <span class="nav-text">向下转型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多态"><span class="nav-number">2.5.</span> <span class="nav-text">多态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多态的优点"><span class="nav-number">2.5.1.</span> <span class="nav-text">多态的优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态的弊端"><span class="nav-number">2.5.2.</span> <span class="nav-text">多态的弊端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态的类型"><span class="nav-number">2.5.3.</span> <span class="nav-text">多态的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态的前提条件"><span class="nav-number">2.5.4.</span> <span class="nav-text">多态的前提条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法重载、重写与隐藏"><span class="nav-number">2.5.5.</span> <span class="nav-text">方法重载、重写与隐藏</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#重载（Overload）"><span class="nav-number">2.5.5.1.</span> <span class="nav-text">重载（Overload）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重写（Override）"><span class="nav-number">2.5.5.2.</span> <span class="nav-text">重写（Override）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#隐藏"><span class="nav-number">2.5.5.3.</span> <span class="nav-text">隐藏</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态举例"><span class="nav-number">2.5.6.</span> <span class="nav-text">多态举例</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是OOP？"><span class="nav-number">1.</span> <span class="nav-text">什么是OOP？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#类和对象的概念"><span class="nav-number">1.1.</span> <span class="nav-text">类和对象的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类-实例（class-instance）"><span class="nav-number">1.2.</span> <span class="nav-text">类/实例（class/instance）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义class"><span class="nav-number">1.3.</span> <span class="nav-text">定义class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建实例"><span class="nav-number">1.4.</span> <span class="nav-text">创建实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.5.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据封装"><span class="nav-number">2.</span> <span class="nav-text">数据封装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法"><span class="nav-number">2.1.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义方法"><span class="nav-number">2.1.1.</span> <span class="nav-text">定义方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用方法"><span class="nav-number">2.1.2.</span> <span class="nav-text">调用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法参数传递"><span class="nav-number">2.1.3.</span> <span class="nav-text">方法参数传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#private方法"><span class="nav-number">2.1.4.</span> <span class="nav-text">private方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造方法"><span class="nav-number">2.2.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法重载"><span class="nav-number">2.3.</span> <span class="nav-text">方法重载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么时候考虑方法重载？"><span class="nav-number">2.3.1.</span> <span class="nav-text">什么时候考虑方法重载？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">2.3.2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法重载的目的"><span class="nav-number">2.3.3.</span> <span class="nav-text">方法重载的目的</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法递归"><span class="nav-number">2.4.</span> <span class="nav-text">方法递归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是递归"><span class="nav-number">2.4.1.</span> <span class="nav-text">什么是递归</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">2.5.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#继承树"><span class="nav-number">2.5.1.</span> <span class="nav-text">继承树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#protected"><span class="nav-number">2.5.2.</span> <span class="nav-text">protected</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#super"><span class="nav-number">2.5.3.</span> <span class="nav-text">super</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向上转型"><span class="nav-number">2.5.4.</span> <span class="nav-text">向上转型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向下转型"><span class="nav-number">2.5.5.</span> <span class="nav-text">向下转型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多态"><span class="nav-number">2.6.</span> <span class="nav-text">多态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多态的优点"><span class="nav-number">2.6.1.</span> <span class="nav-text">多态的优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态的弊端"><span class="nav-number">2.6.2.</span> <span class="nav-text">多态的弊端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态的类型"><span class="nav-number">2.6.3.</span> <span class="nav-text">多态的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态的前提条件"><span class="nav-number">2.6.4.</span> <span class="nav-text">多态的前提条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法重载、重写与隐藏"><span class="nav-number">2.6.5.</span> <span class="nav-text">方法重载、重写与隐藏</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#重载（Overload）"><span class="nav-number">2.6.5.1.</span> <span class="nav-text">重载（Overload）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重写（Override）"><span class="nav-number">2.6.5.2.</span> <span class="nav-text">重写（Override）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#隐藏"><span class="nav-number">2.6.5.3.</span> <span class="nav-text">隐藏</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态举例"><span class="nav-number">2.6.6.</span> <span class="nav-text">多态举例</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1004,7 +1105,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共60.9k字</span>
+  <span class="post-count">博客全站共65.7k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -1020,7 +1121,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">60.9k</span>
+    <span title="Site words total count">65.7k</span>
   
 </div>
 
