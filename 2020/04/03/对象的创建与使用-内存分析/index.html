@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/04/03/对象的创建与使用-内存分析/2.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/03/对象的创建与使用-内存分析/3.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/03/对象的创建与使用-内存分析/4.png">
-<meta property="og:updated_time" content="2020-04-04T04:58:49.524Z">
+<meta property="og:updated_time" content="2020-04-06T06:58:30.408Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="对象的创建与使用-内存分析">
 <meta name="twitter:description" content="首先定义一个学生类，学生类是一个模板，描述了所有学生的共同特征（状态+行为）： 1234567891011121314151617181920212223// student是类，属于引用数据类型，这个类型名就是studentpublic class student&amp;#123;    // 类体：属性+方法        // 学号    int number;    // 属性（存储数据采用变量">
@@ -359,8 +359,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-04T12:58:49+08:00">
-                2020-04-04
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-06T14:58:30+08:00">
+                2020-04-06
               </time>
             
           </span>
@@ -409,7 +409,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2k
+                  2.1k
                 </span>
               
 
@@ -425,7 +425,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7
+                  8
                 </span>
               
             </div>
@@ -522,6 +522,8 @@
 </ul>
 <p>下面看一个情况</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// customer.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">customer</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> id;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// test.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        customer c = <span class="keyword">new</span> customer();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 空引用</span></span><br><span class="line">        c = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">// 以下程序编译可以通过，因为符合语法</span></span><br><span class="line">        <span class="comment">// 运行出现空指针异常：java.lang.NullPointerException</span></span><br><span class="line">        <span class="comment">// 空引用访问“实例相关的数据”一定会出现空指针异常</span></span><br><span class="line">        <span class="comment">// 实例相关的数据表示这个数据访问的时候必须要有对象的参与，比如实例变量。但对于静态变量是可以的</span></span><br><span class="line">        System.out.println(c.id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        test t = <span class="keyword">new</span> test();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/* doSome是静态函数，这里不会出现空指针异常。</span></span><br><span class="line"><span class="comment">        *  静态方法既可以采用类名的方式访问，也可以采用引用的方式访问。</span></span><br><span class="line"><span class="comment">        *  但是即使采用引用的方式访问，实际上执行的时候和引用指向的对象无关。</span></span><br><span class="line"><span class="comment">        *  可以简单的认为在执行的时候还是把前面的引用换成了类，本质还是类名的方式访问</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        t = <span class="keyword">null</span>;</span><br><span class="line">        t.doSome();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">doSome</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"x"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -652,7 +654,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -765,7 +767,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共65.7k字</span>
+  <span class="post-count">博客全站共82.8k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -781,7 +783,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">65.7k</span>
+    <span title="Site words total count">82.8k</span>
   
 </div>
 

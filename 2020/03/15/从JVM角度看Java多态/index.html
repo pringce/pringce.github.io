@@ -96,7 +96,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2020/03/15/从JVM角度看Java多态/823435-20170514185548363-901763715.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/15/从JVM角度看Java多态/823435-20170514193200941-1234924738.png">
-<meta property="og:updated_time" content="2020-03-16T08:05:46.772Z">
+<meta property="og:updated_time" content="2020-04-08T09:18:07.458Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从JVM角度看Java多态">
 <meta name="twitter:description" content="多态举例如下： 12345678910111213141516171819202122232425262728293031public class Father&amp;#123; // 父类    protected int age;    public Father()&amp;#123;        age = 40;    &amp;#125;    void eat()&amp;#123;        System">
@@ -357,8 +357,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-16T16:05:46+08:00">
-                2020-03-16
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-08T17:18:07+08:00">
+                2020-04-08
               </time>
             
           </span>
@@ -407,7 +407,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.8k
+                  3.4k
                 </span>
               
 
@@ -423,7 +423,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  10
+                  12
                 </span>
               
             </div>
@@ -448,7 +448,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Father</span></span>&#123; <span class="comment">// 父类</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Father</span><span class="params">()</span></span>&#123;</span><br><span class="line">        age = <span class="number">40</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"父亲在吃饭"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Father</span></span>&#123;  <span class="comment">// 子类</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Child</span><span class="params">()</span></span>&#123;</span><br><span class="line">        age = <span class="number">18</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"孩子在吃饭"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">play</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"孩子在打CS"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Father f = <span class="keyword">new</span> Child(); <span class="comment">// 父类引用指向子类对象，多态实现形式</span></span><br><span class="line">        f.eat(); <span class="comment">// 调用子类eat()</span></span><br><span class="line">        <span class="comment">//f.play(); 编译错误</span></span><br><span class="line">        System.out.println(<span class="string">"年龄："</span>+f.age ); <span class="comment">// 父类age</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>下面从JVM的角度解释上面这种现象，从下面这句代码切入</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Father f = <span class="keyword">new</span> Child();</span><br></pre></td></tr></table></figure>
-<p>这句代码首先会执行new Child()，在堆中分配一个对象。当然在分类Child类的实例时，先要通过JVM的类加载器将Child类对应的class文件加载到JVM中，然后JVM根据class文件中的字节流产生一个表示class文件的<strong>类型信息结构体</strong>。</p>
+<p>这句代码首先会执行new Child()，在堆中分配一个对象。当然在创建Child类的实例前，先要通过JVM的类加载器将Child类对应的class文件加载到JVM中，然后JVM根据class文件中的字节流产生一个表示class文件的<strong>类型信息结构体</strong>。</p>
 <p>这个表示class文件的类型信息结构体大概由以下几部分构成：</p>
 <ul>
 <li>常量池（较为复杂，存放该类型所用到的常量的有序集合，包括直接常量（字符串、整数、浮点数）和对其他类的字段、方法的符号引用）</li>
@@ -459,10 +459,11 @@
 <li>指向类加载器的引用</li>
 <li>指向class实例的引用</li>
 <li>方法表</li>
+<li>父类信息引用</li>
 </ul>
-<p>之后，JVM会根据上面这个结构体生成一个叫做<strong>虚方法表(vtable)</strong>的东西。这个方法表是实现Java多态的一个关键。方法表中欧冠包含的是实例方法（<strong>就是相对于静态方法而言的，用对象访问的那些方法，即不包含static、final和private修饰的方法</strong>）的直接饮用，也就是说通过这个方法表就能够访问到该类的实例方法。</p>
+<p>之后，JVM会根据上面这个结构体生成一个叫做<strong>虚方法表(vtable)</strong>的东西。这个方法表是实现Java多态的一个关键。方法表中包含的是实例方法（<strong>就是相对于静态方法而言的，用对象访问的那些方法，即不包含static、final和private修饰的方法</strong>）的直接引用，也就是说通过这个方法表就能够访问到该类的实例方法。</p>
 <p>而且，这些实例方法<strong>不仅包括本类的方法，还包括其父类的实例方法，以及父类的父类的实例方法（就是一直到Object）</strong>。</p>
-<p>方法表中的这些直接应用会指向到JVM中表示类型信息的那个结构体（就是上面那个结构体）的相应的方法信息（就是上面结构体中第4块的某个位置），当然这只是本类的方法，方法表中还有父类的方法，相应地指向父类类型信息结构体的具体位置。如图所示</p>
+<p>方法表中的这些直接引用会指向到JVM中表示类型信息的那个结构体（就是上面那个结构体）的相应的方法信息（就是上面结构体中第4块的某个位置），当然这只是本类的方法，方法表中还有父类的方法，相应地指向父类类型信息结构体的具体位置。如图所示</p>
 <img src="/2020/03/15/从JVM角度看Java多态/823435-20170514185548363-901763715.png">
 <p>上面提到过，<strong>方法表中不仅包括本类的方法，还包括父类的方法</strong>，方法表值这样产生的，以Child类的方法表为例：</p>
 <ul>
@@ -498,20 +499,54 @@
 <li>完成了StaticCall类常量池索引项13的常量表的解析之后，JVM就可以调用f1()方法，并开始解释执行f1()方法中的指令了。</li>
 </ul>
 <p>通过上面的过程，我们发现经过常量池解析之后，JVM就能够确定要调用的f1()方法具体在内存的什么位置上了。实际上，这个信息在编译阶段就已经在StaticCall类的常量池中记录了下来。这种在编译阶段就能够确定调用哪个方法的方式，我们叫做<strong>静态绑定机制</strong> 。</p>
-<p>　　<strong>除了被static 修饰的静态方法，所有被private 修饰的私有方法、被final 修饰的禁止子类覆盖的方法都会被编译成invokestatic指令。</strong></p>
 <h3 id="2-调用实例方法"><a href="#2-调用实例方法" class="headerlink" title="2. 调用实例方法"></a>2. 调用实例方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span></span>&#123;</span><br><span class="line">　　<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">f1</span><span class="params">()</span></span>&#123;</span><br><span class="line">　　System.out.println(<span class="string">"father-f1()"</span>); </span><br><span class="line">  &#125; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">f1</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">　　System.out.println(<span class="string">"father-f1() para-int "</span>+i);</span><br><span class="line">　　&#125; </span><br><span class="line">&#125; <span class="comment">//被调用的子类</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span></span>&#123;</span><br><span class="line">　　<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">f1</span><span class="params">()</span></span>&#123;</span><br><span class="line">　　<span class="comment">//覆盖父类的方法</span></span><br><span class="line">　　System.out.println(<span class="string">"Son-f1()"</span>);</span><br><span class="line">  &#125; </span><br><span class="line">&#125; <span class="comment">//调用方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AutoCall</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Father father=<span class="keyword">new</span> Son();</span><br><span class="line">        father.f1();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>对于上面的源代码，编译器首先会把main方法编译成下面的字节码指令：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span> <span class="keyword">new</span> Son [<span class="number">13</span>] <span class="comment">//在堆中开辟一个Son对象的内存空间，并将对象引用压入操作数栈</span></span><br><span class="line"><span class="number">3</span> dup</span><br><span class="line">4 invokespecial #7 [15] // 调用初始化方法来初始化堆中的Son对象</span><br><span class="line"><span class="number">7</span> astore_1 <span class="comment">//弹出操作数栈的Son对象引用压入局部变量1中</span></span><br><span class="line"><span class="number">8</span> aload_1 <span class="comment">//取出局部变量1中的对象引用压入操作数栈</span></span><br><span class="line">9 invokevirtual #15 //调用f1()方法</span><br><span class="line"><span class="number">12</span> <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span> <span class="keyword">new</span> Son [<span class="number">13</span>] <span class="comment">//在堆中开辟一个Son对象的内存空间，并将对象引用压入操作数栈</span></span><br><span class="line"><span class="number">3</span> dup</span><br><span class="line">4 invokespecial #7 [15] </span><br><span class="line"><span class="number">7</span> astore_1 <span class="comment">//弹出操作数栈的Son对象引用压入局部变量1中</span></span><br><span class="line"><span class="number">8</span> aload_1 <span class="comment">//取出局部变量1中的对象引用压入操作数栈</span></span><br><span class="line">9 invokevirtual #15 //调用f1()方法</span><br><span class="line"><span class="number">12</span> <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
 <p>其中<strong>invokevirtua</strong>l指令的详细调用过程是这样的：</p>
 <ul>
 <li>invokevirtual指令中的#15指的是AutoCall类的常量池中第15个常量表的索引项。这个常量表(CONSTATN_Methodref_info) 记录的是方法f1信息的符号引用(包括f1所在的类名，方法名和返回类型)。JVM会首先根据这个符号引用找到调用方法f1的类的全限定名:Father。这是因为调用方法f1的类的对象father声明为Father类型。</li>
-<li>在Father类型的方法表中查找方法f1，如果找到，则将方法f1在方法表中的索引项记录到AutoCall类的常量池中第15个常量表中(常量池解析 )。这里有一点要注意：如果Father类型方法表中没有方法f1，那么即使Son类型中方法表有，编译的时候也通过不了。因为调用方法f1的类的对象father的声明为Father类型。</li>
+<li>在Father类型的<strong>虚方法表</strong>中查找方法f1，如果找到，则将方法f1在方法表中的索引项记录到AutoCall类的常量池中第15个常量表中(常量池解析 )。这里有一点要注意：如果Father类型方法表中没有方法f1，那么即使Son类型中方法表有，编译的时候也通过不了。因为调用方法f1的类的对象father的声明为Father类型。</li>
 <li>在调用invokevirtual指令前有一个aload_1指令，它会将开始创建在堆中的Son对象的引用压入操作数栈。然后invokevirtual指令会根据这个Son对象的引用首先找到堆中的Son对象，然后进一步找到Son对象所属类型的方法表。</li>
 <li>这是通过第(2)步中解析完成的#15常量表中的方法表的索引项11，可以定位到Son类型方法表中的方法f1()，然后通过直接地址找到该方法字节码所在的内存空间</li>
 </ul>
 <p>上述即为多态的实现机制，即<strong>动态绑定</strong>。</p>
 <h3 id="3-调用变量"><a href="#3-调用变量" class="headerlink" title="3. 调用变量"></a>3. 调用变量</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Father 父类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Father</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> age = <span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> age = <span class="number">20</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Son 子类</span></span><br><span class="line">Father f = <span class="keyword">new</span> Son();</span><br><span class="line">System.out.println(f.age); <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
 <p>这里主要涉及到 Java里面一个<strong>字段隐藏</strong>的概念。父类和子类定义了一个同名的字段，不会报错。<strong>但对于同一个对象，用父类的引用去取值，会取到父类的字段；用子类的引用去取值会取到子类字段的值</strong>。在实际开发中，要尽量避免子类和父类使用相同的字段名，否则很容易引入一些不容易发现的bug。</p>
+<p><strong>总结</strong></p>
+<p>Java程序用于都分为<strong>编译阶段</strong>和<strong>运行阶段</strong></p>
+<ul>
+<li>实例变量：编译和运行都参考左边（静态绑定）</li>
+<li>静态变量：编译和运行都参考左边（静态绑定）</li>
+<li>静态方法、private方法和final方法：编译和运行都参考左边（静态绑定）</li>
+<li>实例方法：编译参考左边，运行参考右边（动态绑定）</li>
+</ul>
+<p>对上面的说法举个例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">animal</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"动物吃饭"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">dog</span> <span class="keyword">extends</span> <span class="title">animal</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"狗吃饭"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">study</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"狗学习"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        animal a = <span class="keyword">new</span> dog();</span><br><span class="line">        a.eat();</span><br><span class="line">        a.study();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>注意</p>
+<ul>
+<li>java程序永远分为编译阶段和运行阶段</li>
+<li>先分析编译阶段，再分析运行阶段，编译无法通过，根本是无法运行的</li>
+<li>编译阶段编译器检查a这个引用的数据类型为animal，由于animal.class字节码当中有eat()方法，所以编译通过了。这个过程为静态绑定，编译阶段绑定。只有静态绑定成功之后才有后续的运行</li>
+<li>在程序运行阶段，JVM堆内存当中真实创建的对象是dog对象，那么程序在运行阶段一定会调用dog对象的eat()方法，此时发生了动态绑定，运行阶段确定</li>
+<li>无论是dog类有没有重写eat()方法，运行阶段一定调用的是dog对象的eat方法(因为继承了)，因为底层真实对象就是dog对象</li>
+<li>父类型引用指向子类型对象这种机制导致程序在编译阶段绑定和运行阶段绑定两种不同的状态，这种机制称为多态语法机制</li>
+</ul>
+</li>
+<li><p>对于上面的a.eat()</p>
+<ul>
+<li>编译时：由于a的类型为animal，所以编译时先去检查animal类的方法区中有没有eat()方法，如果没有则报错。这就是所谓的<strong>编译看左边</strong></li>
+<li>运行时：直接去dog类方法区中找到eat()方法；如果dog类中没有，再去父类中查找eat()方法。如果一直找到Object类都没有，则报错。这就是所谓的<strong>运行看右边</strong></li>
+</ul>
+</li>
+<li><p>对于a.study()</p>
+<ul>
+<li>编译时：由于a的类型时animal，先去animal类的方法区中查找study()方法，结果animal类方法区中没有study()方法，所以就在编译时期就报错</li>
+<li>如果想执行study方法，该怎么办？—&gt; <strong>向下转型</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dog d = (dog)a;</span><br><span class="line">d.study();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
       
     </div>
@@ -642,7 +677,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -755,7 +790,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共65.7k字</span>
+  <span class="post-count">博客全站共82.8k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -771,7 +806,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">65.7k</span>
+    <span title="Site words total count">82.8k</span>
   
 </div>
 

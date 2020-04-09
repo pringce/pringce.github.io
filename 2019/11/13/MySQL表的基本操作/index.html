@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="CodeMonkey · 程序猴">
 <meta property="og:description" content="​        创建表的时候首先需要描述清楚这个表是什么样的，它有哪些列，这些列都是用来存什么类型的数据等等。表中的一行叫做一条记录，一列就做一个字段。 展示当前数据库的表​        下面的语句用于展示当前数据库中有哪些表： 1mysql&amp;gt; SHOW TABLES; 创建表1、基本语法创建一个表时至少需要完成下列事情： （1）给表起个名 （2）给表定义一些列，并且给这些列都起个名 （">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-10T12:16:11.501Z">
+<meta property="og:updated_time" content="2020-04-09T03:51:30.852Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL表的基本操作">
 <meta name="twitter:description" content="​        创建表的时候首先需要描述清楚这个表是什么样的，它有哪些列，这些列都是用来存什么类型的数据等等。表中的一行叫做一条记录，一列就做一个字段。 展示当前数据库的表​        下面的语句用于展示当前数据库中有哪些表： 1mysql&amp;gt; SHOW TABLES; 创建表1、基本语法创建一个表时至少需要完成下列事情： （1）给表起个名 （2）给表定义一些列，并且给这些列都起个名 （">
@@ -354,8 +354,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-10T20:16:11+08:00">
-                2020-03-10
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-09T11:51:30+08:00">
+                2020-04-09
               </time>
             
           </span>
@@ -443,14 +443,14 @@
       
         <p>​        创建表的时候首先需要描述清楚这个表是什么样的，它有哪些列，这些列都是用来存什么类型的数据等等。表中的一行叫做一条<strong>记录</strong>，一列就做一个<strong>字段</strong>。</p>
 <h4 id="展示当前数据库的表"><a href="#展示当前数据库的表" class="headerlink" title="展示当前数据库的表"></a>展示当前数据库的表</h4><p>​        下面的语句用于展示当前数据库中有哪些表：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW TABLES;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW TABLES;</span><br></pre></td></tr></table></figure>
 <h4 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h4><h5 id="1、基本语法"><a href="#1、基本语法" class="headerlink" title="1、基本语法"></a>1、基本语法</h5><p>创建一个表时至少需要完成下列事情：</p>
 <p>（1）<strong>给表起个名</strong></p>
 <p>（2）<strong>给表定义一些列，并且给这些列都起个名</strong></p>
 <p>（3）<strong>每个列都需要定义一种数据类型</strong></p>
 <p>（4）<strong>如果有需要的话，可以给这些列定义一些列的属性，比如不许存储NULL，设置默认值等，具体列可以设置哪些属性可以在后面再详细说一下</strong></p>
 <p>创建表的基本语法如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名(</span><br><span class="line">	列名<span class="number">1</span> 数据类型 [列的属性],</span><br><span class="line">	列名<span class="number">2</span> 数据类型 [列的属性],</span><br><span class="line">	...</span><br><span class="line">	列名n 数据类型 [列的属性],</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名(</span><br><span class="line">	列名1 数据类型 [列的属性],</span><br><span class="line">	列名2 数据类型 [列的属性],</span><br><span class="line">	...</span><br><span class="line">	列名n 数据类型 [列的属性],</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <p><strong>注意事项</strong>：</p>
 <ul>
 <li>在<strong>CREATE TABLE</strong>后写清楚我们要创建的表的名称</li>
@@ -458,11 +458,11 @@
 <li>列名、数据类型、列属性之间用空白字符分开就好，然后各个列的信息之间用逗号分隔开</li>
 </ul>
 <p>下面我们建个表为例展示一下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">CREATE TABLE <span class="title">first_table</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">	first_column INT,</span></span></span><br><span class="line"><span class="function"><span class="params">	second_column VARCHAR(<span class="number">100</span>)</span></span></span><br><span class="line"><span class="function">)</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE first_table(</span><br><span class="line">	first_column INT,</span><br><span class="line">	second_column VARCHAR(100)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <p>执行结果如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="function">CREATE TABLE <span class="title">first_table</span> <span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    -&gt;     first_column INT,</span></span></span><br><span class="line"><span class="function"><span class="params">    -&gt;     second_column VARCHAR(<span class="number">100</span>)</span></span></span><br><span class="line"><span class="function">    -&gt; )</span>;</span><br><span class="line">Query OK, <span class="number">0</span> <span class="function">rows <span class="title">affected</span> <span class="params">(<span class="number">0.02</span> sec)</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE first_table (</span><br><span class="line">    -&gt;     first_column INT,</span><br><span class="line">    -&gt;     second_column VARCHAR(100)</span><br><span class="line">    -&gt; );</span><br><span class="line">Query OK, 0 rows affected (0.02 sec)</span><br></pre></td></tr></table></figure>
 <p><strong>如何查看已建立的表的列属性信息？</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show create table first_table;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 结果如下</span></span><br><span class="line">CREATE TABLE `first_table` (</span><br><span class="line">  `first_column` <span class="keyword">int</span>(<span class="number">11</span>) DEFAULT NULL,</span><br><span class="line">  `second_column` varchar(<span class="number">100</span>) DEFAULT NULL</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一种方式,这种方式可以查看表的创建语句</span></span><br><span class="line">mysql&gt; show create table first_table;</span><br><span class="line"><span class="comment">// 结果如下</span></span><br><span class="line">CREATE TABLE `first_table` (</span><br><span class="line">  `first_column` <span class="keyword">int</span>(<span class="number">11</span>) DEFAULT NULL,</span><br><span class="line">  `second_column` varchar(<span class="number">100</span>) DEFAULT NULL</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二种方式，这种方式可以查看已创建的表的结构，但看不到创建语句</span></span><br><span class="line">mysql&gt; desc first_table;</span><br></pre></td></tr></table></figure>
 <h5 id="2、为建表语句添加注释"><a href="#2、为建表语句添加注释" class="headerlink" title="2、为建表语句添加注释"></a>2、为建表语句添加注释</h5><p>​        我们可以在创建表时将该表的用处以注释的形式添加到语句中，只要在建表语句最后加上<strong>COMMIT</strong>语句即可：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名 (</span><br><span class="line">    各个列的信息 ...</span><br><span class="line">) COMMENT <span class="string">'表的注释信息'</span>;</span><br></pre></td></tr></table></figure>
 <p>比如我们可以这样写first_table的建表语句：</p>
@@ -631,7 +631,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -744,7 +744,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共65.7k字</span>
+  <span class="post-count">博客全站共82.8k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -760,7 +760,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">65.7k</span>
+    <span title="Site words total count">82.8k</span>
   
 </div>
 

@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="CodeMonkey · 程序猴">
 <meta property="og:description" content="对于使用MySQL的我们来说，平时使用频率最高的还是查询功能，就是按照我们给定的要求将数据给查出来。 查询查询单个列查看某个表中的某一列的数据的通用格式是这样： 1SELECT 列名 FROM 表名; 也就是说把需要查询的列名放到单词SELECT后边就好了，比如查看student_info表中的number列的数据可以这么写： 123456789101112mysql&amp;gt; SELECT num">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-24T03:18:20.126Z">
+<meta property="og:updated_time" content="2020-04-09T13:01:40.179Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL之查询、去重、限制条数、排序">
 <meta name="twitter:description" content="对于使用MySQL的我们来说，平时使用频率最高的还是查询功能，就是按照我们给定的要求将数据给查出来。 查询查询单个列查看某个表中的某一列的数据的通用格式是这样： 1SELECT 列名 FROM 表名; 也就是说把需要查询的列名放到单词SELECT后边就好了，比如查看student_info表中的number列的数据可以这么写： 123456789101112mysql&amp;gt; SELECT num">
@@ -354,8 +354,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-24T11:18:20+08:00">
-                2020-03-24
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-09T21:01:40+08:00">
+                2020-04-09
               </time>
             
           </span>
@@ -404,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.1k
+                  2.2k
                 </span>
               
 
@@ -420,7 +420,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7
+                  8
                 </span>
               
             </div>
@@ -462,8 +462,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT number AS 学号 FROM student_info;</span><br><span class="line">+----------+</span><br><span class="line">| 学号     |</span><br><span class="line">+----------+</span><br><span class="line">| 20180104 |</span><br><span class="line">| 20180102 |</span><br><span class="line">| 20180101 |</span><br><span class="line">| 20180103 |</span><br><span class="line">| 20180105 |</span><br><span class="line">| 20180106 |</span><br><span class="line">+----------+</span><br><span class="line">6 rows in set</span><br></pre></td></tr></table></figure>
 <p>看到黑框框里的结果集中显示的列名就不再是<code>number</code>，而是我们刚刚定义的别名<code>学号</code>了。不过需要注意的是：<strong>别名只是在本次查询的到的结果集中展示，而不会改变真实表中的列名</strong>。下一次查询中你对<code>number</code>列取其他的别名也可以。</p>
 <h2 id="查询多个列"><a href="#查询多个列" class="headerlink" title="查询多个列"></a>查询多个列</h2><p>如果想查询多个列的数据，可以在<code>SELECT</code>后边写多个列名，用逗号<code>,</code>分隔开就好：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名1, 列名2, ... 列名n FROM 表名;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT 列名1, 列名2, ... 列名n FROM 表名;</span><br></pre></td></tr></table></figure>
 <p>我们把<code>SELECT</code>语句后边跟随的多个列统称为<code>查询列表</code>，<strong>需要注意的是，查询列表中的列名可以按任意顺序摆放，结果集将按照我们摆放的列名顺序显示</strong></p>
+<p>注意，查询多个列也能分别加别名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT 列名1 as a, 列名2 as b, ... 列名n as n FROM 表名;</span><br></pre></td></tr></table></figure>
 <h2 id="查询所有列"><a href="#查询所有列" class="headerlink" title="查询所有列"></a>查询所有列</h2><p>如果需要把记录中的所有列都查出来，<code>MySQL</code>也提供一个省事儿的办法，我们之前也介绍过，就是直接用星号<code>*</code>来表示要查询的东西，就像这样：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM 表名;</span><br></pre></td></tr></table></figure>
 <p><strong>注意</strong>：除非你确实需要表中的每个列，否则一般最好别使用星号<code>*</code>来查询所有列，虽然星号<code>*</code>看起来很方便，不用明确列出所需的列，但是查询不需要的列通常会降低性能。</p>
@@ -490,13 +492,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ORDER BY 列名 ASC|DESC</span><br></pre></td></tr></table></figure>
 <p><code>ASC</code>和<code>DESC</code>指的是排序方向。<code>ASC</code>是指按照指定列的值进行由小到大进行排序，也叫做<code>升序</code>，<code>DESC</code>是指按照指定列的值进行由大到小进行排序，也叫做<code>降序</code>，中间的<code>|</code>表示这两种方式只能选一个。这回我们用<code>student_score</code>表测试一下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM student_score ORDER BY score ASC;</span><br><span class="line">+----------+-----------------------------+-------+</span><br><span class="line">| number   | subject                     | score |</span><br><span class="line">+----------+-----------------------------+-------+</span><br><span class="line">| 20180104 | 论萨达姆的战争准备          |    46 |</span><br><span class="line">| 20180104 | 母猪的产后护理              |    55 |</span><br><span class="line">| 20180103 | 母猪的产后护理              |    59 |</span><br><span class="line">| 20180103 | 论萨达姆的战争准备          |    61 |</span><br><span class="line">| 20180101 | 母猪的产后护理              |    78 |</span><br><span class="line">| 20180101 | 论萨达姆的战争准备          |    88 |</span><br><span class="line">| 20180102 | 论萨达姆的战争准备          |    98 |</span><br><span class="line">| 20180102 | 母猪的产后护理              |   100 |</span><br><span class="line">+----------+-----------------------------+-------+</span><br><span class="line">8 rows in set (0.01 sec)</span><br></pre></td></tr></table></figure>
-<p>可以看到输出的记录就是按照成绩由小到大进行排序的。如果省略了 ORDER BY 语句中的排序方向，则<strong>默认按照从小到大的顺序进行排序</strong>，也就是说<code>ORDER BY 列名</code>和<code>ORDER BY 列名 ASC</code>的语义是一样的，</p>
+<p>可以看到输出的记录就是按照成绩由小到大进行排序的。如果省略了 ORDER BY 语句中的排序方向，则<strong>默认按照从小到大的顺序进行排序</strong>，也就是说<code>ORDER BY 列名</code>和<code>ORDER BY 列名 ASC</code>的语义是一样的</p>
 <h2 id="按照多个列的值排序"><a href="#按照多个列的值排序" class="headerlink" title="按照多个列的值排序"></a><strong>按照多个列的值排序</strong></h2><p>我们也可以同时指定多个排序的列，多个排序列之间用逗号<code>,</code>隔开就好了，就是这样：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ORDER BY 列1 ASC|DESC, 列2 ASC|DESC ...</span><br></pre></td></tr></table></figure>
 <p>它的意思是根据顺序依次进行排序，比如先按列1排序，排完之后再按照列2排序，以此类推。</p>
 <p>比如我们想让对<code>student_score</code>的查询结果先按照<code>subjuect</code>排序，再按照<code>score</code>值从大到小的顺序进行排列，可以这么写：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM student_score ORDER BY subject, score DESC;</span><br><span class="line">+----------+-----------------------------+-------+</span><br><span class="line">| number   | subject                     | score |</span><br><span class="line">+----------+-----------------------------+-------+</span><br><span class="line">| 20180102 | 母猪的产后护理              |   100 |</span><br><span class="line">| 20180101 | 母猪的产后护理              |    78 |</span><br><span class="line">| 20180103 | 母猪的产后护理              |    59 |</span><br><span class="line">| 20180104 | 母猪的产后护理              |    55 |</span><br><span class="line">| 20180102 | 论萨达姆的战争准备          |    98 |</span><br><span class="line">| 20180101 | 论萨达姆的战争准备          |    88 |</span><br><span class="line">| 20180103 | 论萨达姆的战争准备          |    61 |</span><br><span class="line">| 20180104 | 论萨达姆的战争准备          |    46 |</span><br><span class="line">+----------+-----------------------------+-------+</span><br><span class="line">8 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<p><strong>注意：MySQL中用order by排序的字段不一定要在select语句中</strong></p>
+<p><strong>注意：MySQL中用order by排序的字段不一定要在select语句中，而且order by后面还可以跟聚集函数</strong></p>
 <p>我们还可以让<code>ORDER BY</code>语句和<code>LIMIT</code>语句结合使用，不过 ORDER BY 语句必须放在 LIMIT 语句前边</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM student_score ORDER BY score LIMIT 1;</span><br><span class="line">+----------+-----------------------------+-------+</span><br><span class="line">| number   | subject                     | score |</span><br><span class="line">+----------+-----------------------------+-------+</span><br><span class="line">| 20180104 | 论萨达姆的战争准备          |    46 |</span><br><span class="line">+----------+-----------------------------+-------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
 <p>这样就能找出成绩最低的那条记录了</p>
@@ -632,7 +634,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -745,7 +747,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共65.7k字</span>
+  <span class="post-count">博客全站共82.8k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -761,7 +763,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">65.7k</span>
+    <span title="Site words total count">82.8k</span>
   
 </div>
 

@@ -95,7 +95,7 @@
 <meta property="og:description" content="​        前两天我在用MySQL的时候，出现了一个小问题：就是我在注册完windows服务后，然后用net start MySQL80登录到数据库服务器，却无法使得客户端连接到服务器，即在输入完mysql -uroot -p后，会报如下的错误：  (这种问题一般是由于密码错误引起的) ​        于是我就查了一个解决方法，特此记录一下： 1、首先打开一个cmd窗口A：  首先关闭My">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/09/28/MySQL密码错误如何修改？/20190605145711972.png">
-<meta property="og:updated_time" content="2019-09-28T12:05:26.700Z">
+<meta property="og:updated_time" content="2020-04-09T01:52:35.288Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL密码错误如何修改？">
 <meta name="twitter:description" content="​        前两天我在用MySQL的时候，出现了一个小问题：就是我在注册完windows服务后，然后用net start MySQL80登录到数据库服务器，却无法使得客户端连接到服务器，即在输入完mysql -uroot -p后，会报如下的错误：  (这种问题一般是由于密码错误引起的) ​        于是我就查了一个解决方法，特此记录一下： 1、首先打开一个cmd窗口A：  首先关闭My">
@@ -356,8 +356,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-28T20:05:26+08:00">
-                2019-09-28
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-09T09:52:35+08:00">
+                2020-04-09
               </time>
             
           </span>
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  283
+                  306
                 </span>
               
 
@@ -471,18 +471,19 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>设置加密的密码</p>
+<li><p>设置加密的密码 </p>
 <ul>
 <li>​    以caching_sha2_password加密密码并设置</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER user &apos;root&apos;@&apos;localhost&apos; IDENTIFIED WITH caching_sha2_password BY &apos;新密码&apos;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER user &apos;root&apos;@&apos;localhost&apos; IDENTIFIED WITH mysql_native_password BY &apos;新密码&apos;;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>​    刷新</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>关闭上面打开的两个cmd窗口。然后再打开一个cmd窗口，启动mysql服务：net start mysql80。然后再正常的用刚才重新设置的密码登录即可。</p>
+</li>
 </ul>
-<p>  这样修改完之后，就可以设置新的密码了，也就可以解决上述问题。</p>
 
       
     </div>
@@ -606,7 +607,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -703,7 +704,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共65.7k字</span>
+  <span class="post-count">博客全站共82.8k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -719,7 +720,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">65.7k</span>
+    <span title="Site words total count">82.8k</span>
   
 </div>
 
