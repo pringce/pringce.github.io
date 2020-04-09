@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/04/09/分组查询/2.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/09/分组查询/3.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/09/分组查询/4.png">
-<meta property="og:updated_time" content="2020-04-09T13:29:13.323Z">
+<meta property="og:updated_time" content="2020-04-09T13:39:31.834Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分组查询">
 <meta name="twitter:description" content="进行分组查询主要有两个关键字：  group by：按照某个字段或者某些字段进行分组 having：having是对分组后的数据再次过滤（注意和where的区别，where子句的作用是在分组前就对数据进行过滤，having子句的作用是筛选满足条件的组，即在分组后过滤数据）  分组数据复杂的数据统计前边介绍了一些用来统计数据的聚集函数，我们可以方便的使用这些函数来统计出某列数据的行数、最大值、最小值">
@@ -359,7 +359,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-09T21:29:13+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-09T21:39:31+08:00">
                 2020-04-09
               </time>
             
@@ -493,11 +493,11 @@
 <p>那么问题来了，having子句后面可以跟什么东西来进行组筛选呢？</p>
 <p>有两种：</p>
 <ul>
-<li>分组列：也就是说我们可以把group by中用于分组的列放到<code>HAVING</code>子句的条件中，比如这样：</li>
+<li><strong>分组列</strong>：也就是说我们可以把group by中用于分组的列放到<code>HAVING</code>子句的条件中，比如这样：</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT subject, AVG(score) FROM student_score GROUP BY subject having subject = &apos;母猪的产后护理&apos;;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>聚集函数：当然，并不是<code>HAVING</code>子句中只能放置在select列表出现的那些聚集函数，只要是针对这个分组进行统计的聚集函数都可以，比方说老师想查询最高分大于98分的课程的平均分，可以这么写：</li>
+<li><strong>聚集函数</strong>：当然，并不是<code>HAVING</code>子句中只能放置在select列表出现的那些聚集函数，只要是针对这个分组进行统计的聚集函数都可以，比方说老师想查询最高分大于98分的课程的平均分，可以这么写：</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT subject, AVG(score) FROM student_score GROUP BY subject HAVING MAX(score) &gt; 98;</span><br><span class="line">+-----------------------+------------+</span><br><span class="line">| subject               | AVG(score) |</span><br><span class="line">+-----------------------+------------+</span><br><span class="line">| 母猪的产后护理        |    73.0000 |</span><br><span class="line">+-----------------------+------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
 <p>其中的<code>MAX(score)</code>这个聚集函数并没有出现在查询列表中，但仍然可以作为<code>HAVING</code>子句中表达式的一部分。</p>
