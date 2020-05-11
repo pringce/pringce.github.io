@@ -86,19 +86,19 @@
 
 
 
-<meta name="description" content="先看一段代码： 123456789101112131415161718192021222324252627282930313233// customer.javapublic class customer&amp;#123;    // 姓名    String name; // 实例变量必须采用“引用.”的方法访问    // 构造方法    public customer()&amp;#123;">
+<meta name="description" content="先看一段代码： 1234567891011121314151617181920212223242526272829303132// customer.javapublic class customer&amp;#123;    // 姓名    String name; // 实例变量必须采用“引用.”的方法访问    // 构造方法    public customer()&amp;#123;    &amp;#125">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="this关键字">
 <meta property="og:url" content="http://yoursite.com/2020/04/06/this关键字/index.html">
 <meta property="og:site_name" content="CodeMonkey · 程序猴">
-<meta property="og:description" content="先看一段代码： 123456789101112131415161718192021222324252627282930313233// customer.javapublic class customer&amp;#123;    // 姓名    String name; // 实例变量必须采用“引用.”的方法访问    // 构造方法    public customer()&amp;#123;">
+<meta property="og:description" content="先看一段代码： 1234567891011121314151617181920212223242526272829303132// customer.javapublic class customer&amp;#123;    // 姓名    String name; // 实例变量必须采用“引用.”的方法访问    // 构造方法    public customer()&amp;#123;    &amp;#125">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2020/04/06/this关键字/1.png">
-<meta property="og:updated_time" content="2020-04-06T07:01:01.352Z">
+<meta property="og:updated_time" content="2020-04-20T13:25:21.534Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="this关键字">
-<meta name="twitter:description" content="先看一段代码： 123456789101112131415161718192021222324252627282930313233// customer.javapublic class customer&amp;#123;    // 姓名    String name; // 实例变量必须采用“引用.”的方法访问    // 构造方法    public customer()&amp;#123;">
+<meta name="twitter:description" content="先看一段代码： 1234567891011121314151617181920212223242526272829303132// customer.javapublic class customer&amp;#123;    // 姓名    String name; // 实例变量必须采用“引用.”的方法访问    // 构造方法    public customer()&amp;#123;    &amp;#125">
 <meta name="twitter:image" content="http://yoursite.com/2020/04/06/this关键字/1.png">
 
 
@@ -356,8 +356,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-06T15:01:01+08:00">
-                2020-04-06
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-20T21:25:21+08:00">
+                2020-04-20
               </time>
             
           </span>
@@ -444,13 +444,13 @@
 
       
         <p>先看一段代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// customer.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">customer</span></span>&#123;</span><br><span class="line">    <span class="comment">// 姓名</span></span><br><span class="line">    String name; <span class="comment">// 实例变量必须采用“引用.”的方法访问</span></span><br><span class="line">    <span class="comment">// 构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">customer</span><span class="params">()</span></span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 不带有static关键字的一个方法</span></span><br><span class="line">    <span class="comment">// 顾客的购物行为，每一个顾客购物的最终结果是不一样的</span></span><br><span class="line">    <span class="comment">// 所以购物这个行为是属于对象级别的行为</span></span><br><span class="line">    <span class="comment">// 由于每一个对象在执行购物这个动作的时候最终结果不同，所以购物这个动作必须有“对象”的参与</span></span><br><span class="line">    <span class="comment">// 没有static的方法是实例方法，“引用.”的方式调用</span></span><br><span class="line">    <span class="comment">// 当一个行为执行中是需要对象参与的，那么一定要定义为实例方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shopping</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="keyword">this</span>.name + <span class="string">"在购物"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// customerTest.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">customerTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 创建customer对象</span></span><br><span class="line">        customer c1 = <span class="keyword">new</span> customer();</span><br><span class="line">        c1.name = <span class="string">"zhang"</span>;</span><br><span class="line">        c1.shopping(); <span class="comment">// zhang在购物</span></span><br><span class="line">        <span class="comment">// 创建customer对象</span></span><br><span class="line">        customer c2 = <span class="keyword">new</span> customer();</span><br><span class="line">        c2.name = <span class="string">"li"</span>;</span><br><span class="line">        c2.shopping(); <span class="comment">// li在购物</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// customer.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">customer</span></span>&#123;</span><br><span class="line">    <span class="comment">// 姓名</span></span><br><span class="line">    String name; <span class="comment">// 实例变量必须采用“引用.”的方法访问</span></span><br><span class="line">    <span class="comment">// 构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">customer</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 不带有static关键字的一个方法</span></span><br><span class="line">    <span class="comment">// 顾客的购物行为，每一个顾客购物的最终结果是不一样的</span></span><br><span class="line">    <span class="comment">// 所以购物这个行为是属于对象级别的行为</span></span><br><span class="line">    <span class="comment">// 由于每一个对象在执行购物这个动作的时候最终结果不同，所以购物这个动作必须有“对象”的参与</span></span><br><span class="line">    <span class="comment">// 没有static的方法是实例方法，“引用.”的方式调用</span></span><br><span class="line">    <span class="comment">// 当一个行为执行中是需要对象参与的，那么一定要定义为实例方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shopping</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="keyword">this</span>.name + <span class="string">"在购物"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// customerTest.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">customerTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 创建customer对象</span></span><br><span class="line">        customer c1 = <span class="keyword">new</span> customer();</span><br><span class="line">        c1.name = <span class="string">"zhang"</span>;</span><br><span class="line">        c1.shopping(); <span class="comment">// zhang在购物</span></span><br><span class="line">        <span class="comment">// 创建customer对象</span></span><br><span class="line">        customer c2 = <span class="keyword">new</span> customer();</span><br><span class="line">        c2.name = <span class="string">"li"</span>;</span><br><span class="line">        c2.shopping(); <span class="comment">// li在购物</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上述代码内存图如下所示：</p>
 <img src="/2020/04/06/this关键字/1.png">
 <p>关于Java语言当中的this关键字：</p>
 <ul>
 <li>this是一个关键字，翻译为这个</li>
-<li>this是一个引用，this是一个变量，this变量中保存了内存地址指向了自身，this存储在JVM堆内存Jav a对象内部</li>
+<li>this是一个引用，this是一个变量，this变量中保存了内存地址指向了自身，this存储在JVM堆内存Java对象内部</li>
 <li>this就是代表当前对象</li>
 <li>创建100个Java对象，每一个对象都有this，也就是说有100个不同的this</li>
 <li>this可以出现在<strong>实例方法</strong>当中，<strong>this指向当前正在执行这个动作的对象</strong></li>
@@ -603,7 +603,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -700,7 +700,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共82.8k字</span>
+  <span class="post-count">博客全站共116.6k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -716,7 +716,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">82.8k</span>
+    <span title="Site words total count">116.6k</span>
   
 </div>
 

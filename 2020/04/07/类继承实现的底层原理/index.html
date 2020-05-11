@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/04/07/类继承实现的底层原理/2.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/04/07/类继承实现的底层原理/3.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/04/07/类继承实现的底层原理/4.jpg">
-<meta property="og:updated_time" content="2020-04-09T00:41:33.032Z">
+<meta property="og:updated_time" content="2020-04-20T12:47:36.423Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="类继承实现的底层原理">
 <meta name="twitter:description" content="先定义一个基类 123456789101112131415161718192021222324252627282930// 基类代码public class base&amp;#123;    private static int s;    private int a;        static &amp;#123;        System.out.println(&quot;基类静态代码块, s: &quot;+s);">
@@ -359,8 +359,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-09T08:41:33+08:00">
-                2020-04-09
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-20T20:47:36+08:00">
+                2020-04-20
               </time>
             
           </span>
@@ -528,7 +528,7 @@
 <p>简单理解：<strong>new子类对象时，先开辟一片内存空间，先给父类的成员变量安排好内存单元，然后子类自己的数据接着来分配给予内存单元，相当于父类数据与子类数据合租一个房子，房子是子类的</strong></p>
 <ul>
 <li>子类可以继承父类的static变量和static方法，<strong>可以访问，但是不能覆盖，只能隐藏</strong><ul>
-<li>当子类没有与之同名的static变量（或方法时），子类的对象也可以操控这块内存空间。<strong>但是子类并没有继承父类中static修饰的变量和方法。因为static修饰的变量和方法是属于父类本身的</strong>。</li>
+<li>当子类没有与之同名的static变量（或方法时），子类的对象也可以操控这块内存空间。</li>
 <li><strong>即使子类和父类中都有同样的static方法和变量，他们是没有任何关系的，他们是相互独立的，他们是属于各自类本身的。因此也是不存在多态特性的</strong>，遵循静态绑定原则</li>
 <li><strong>总结</strong>：当子类没有重新定义同名变量时，子类父类共享该变量。当子类重新定义同名变量时，不共享，是两个不同变量，值不同。</li>
 </ul>
@@ -658,7 +658,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -755,7 +755,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共82.8k字</span>
+  <span class="post-count">博客全站共116.6k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -771,7 +771,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">82.8k</span>
+    <span title="Site words total count">116.6k</span>
   
 </div>
 

@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MySQL,个人博客,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="什么是连接查询？在实际开发中，大部分情况下都不是从单表中查询数据，一般都是多张表联合查询取出最终的结果。在实际开发中，一般一个业务都会对应多张表。比如：我们之前一直使用student_info和student_score两个表来分别存储学生的基本信息和学生的成绩信息，其实合并成一张表也不是不可以，假设将两张表合并后的新表名称为student_merge。student_merge中的每行记录可能是">
+<meta name="keywords" content="MySQL,个人博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="连接查询">
+<meta property="og:url" content="http://yoursite.com/2020/04/10/连接查询/index.html">
+<meta property="og:site_name" content="CodeMonkey · 程序猴">
+<meta property="og:description" content="什么是连接查询？在实际开发中，大部分情况下都不是从单表中查询数据，一般都是多张表联合查询取出最终的结果。在实际开发中，一般一个业务都会对应多张表。比如：我们之前一直使用student_info和student_score两个表来分别存储学生的基本信息和学生的成绩信息，其实合并成一张表也不是不可以，假设将两张表合并后的新表名称为student_merge。student_merge中的每行记录可能是">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-04-11T03:45:47.999Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="连接查询">
+<meta name="twitter:description" content="什么是连接查询？在实际开发中，大部分情况下都不是从单表中查询数据，一般都是多张表联合查询取出最终的结果。在实际开发中，一般一个业务都会对应多张表。比如：我们之前一直使用student_info和student_score两个表来分别存储学生的基本信息和学生的成绩信息，其实合并成一张表也不是不可以，假设将两张表合并后的新表名称为student_merge。student_merge中的每行记录可能是">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/04/10/连接查询/">
+
+
+
+
+
+  <title>连接查询 | CodeMonkey · 程序猴</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 爆炸红心效果 -->
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+  <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+  <script type="text/javascript" src="/js/src/firework.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/pringce" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CodeMonkey · 程序猴</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">You are more than what you have become now!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/10/连接查询/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CodeMonkey">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/images.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CodeMonkey · 程序猴">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">连接查询</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-10T11:42:27+08:00">
+                2020-04-10
+              </time>
+            
+
+            
+
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-11T11:45:47+08:00">
+                2020-04-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  19
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="什么是连接查询？"><a href="#什么是连接查询？" class="headerlink" title="什么是连接查询？"></a><strong>什么是连接查询？</strong></h2><p>在实际开发中，大部分情况下都不是从单表中查询数据，一般都是多张表联合查询取出最终的结果。在实际开发中，一般一个业务都会对应多张表。比如：我们之前一直使用<code>student_info</code>和<code>student_score</code>两个表来分别存储学生的基本信息和学生的成绩信息，其实合并成一张表也不是不可以，假设将两张表合并后的新表名称为<code>student_merge</code>。<code>student_merge</code>中的每行记录可能是一个人的多条信息（因为一个人有多个成绩）。由于一个学生可能会有很多门学科的成绩信息，也就是说每当我们想为一个学生增加一门学科的成绩信息时，我们必须把他的基本信息再抄一遍，这种同一个学生的基本信息被冗余存储会带来下边的问题：</p>
+<ul>
+<li><strong>问题一：浪费存储空间</strong>。</li>
+<li><strong>问题二：当修改某个学生的基本信息时必须修改多处，很容易造成信息的不一致，增大维护的困难。</strong></li>
+</ul>
+<p>所以为了尽可能少的存储冗余信息，一开始我们就把这个所谓的<code>student_merge</code>表拆分成了<code>student_info</code>和<code>student_score</code>表，但是这两张表之间有某种关系作为纽带，这里的<code>某种关系</code>指的就是两个表都拥有的<code>number</code>列。<strong>拆分之后的表的确解决了数据冗余问题，但是查询数据却成了一个问题。</strong></p>
+<h2 id="连接查询的分类"><a href="#连接查询的分类" class="headerlink" title="连接查询的分类"></a>连接查询的分类</h2><ul>
+<li><strong>根据语法出现的年代来划分</strong>，包括：<ul>
+<li>SQL92：一些老的DBA（数据库管理员）可能还在使用这种语法</li>
+<li>SQL99：比较新的语法</li>
+</ul>
+</li>
+<li><strong>根据表的连接方式来划分</strong>，包括：<ul>
+<li>内连接<ul>
+<li>等值连接</li>
+<li>非等值连接</li>
+<li>自连接</li>
+</ul>
+</li>
+<li>外连接<ul>
+<li>左外连接（又称为左连接）</li>
+<li>右外连接（又称为右连接）</li>
+</ul>
+</li>
+<li>全连接：很少很少用</li>
+</ul>
+</li>
+</ul>
+<h2 id="连接查询引入"><a href="#连接查询引入" class="headerlink" title="连接查询引入"></a>连接查询引入</h2><p>这里首先导入三张表，本节的内容全部是基于这三张表的：</p>
+<ul>
+<li><strong>员工信息表emp</strong>：字段从左到右依次为员工编号、员工姓名、职位、上级领导编号、入职日期、工资、补贴、部门编号</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from emp;</span><br><span class="line">+-------+--------+-----------+------+------------+---------+---------+--------+</span><br><span class="line">| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |</span><br><span class="line">+-------+--------+-----------+------+------------+---------+---------+--------+</span><br><span class="line">|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |</span><br><span class="line">|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |</span><br><span class="line">|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |</span><br><span class="line">|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |</span><br><span class="line">|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |</span><br><span class="line">|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |</span><br><span class="line">|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |</span><br><span class="line">|  7788 | SCOTT  | ANALYST   | 7566 | 1987-04-19 | 3000.00 |    NULL |     20 |</span><br><span class="line">|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |</span><br><span class="line">|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |</span><br><span class="line">|  7876 | ADAMS  | CLERK     | 7788 | 1987-05-23 | 1100.00 |    NULL |     20 |</span><br><span class="line">|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |</span><br><span class="line">|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |</span><br><span class="line">|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |</span><br><span class="line">+-------+--------+-----------+------+------------+---------+---------+--------+</span><br><span class="line">14 rows in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>部门信息表dept</strong>：字段从左到右依次为部门编号、部门名称、部门位置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from dept;</span><br><span class="line">+--------+------------+----------+</span><br><span class="line">| DEPTNO | DNAME      | LOC      |</span><br><span class="line">+--------+------------+----------+</span><br><span class="line">|     10 | ACCOUNTING | NEW YORK |</span><br><span class="line">|     20 | RESEARCH   | DALLAS   |</span><br><span class="line">|     30 | SALES      | CHICAGO  |</span><br><span class="line">|     40 | OPERATIONS | BOSTON   |</span><br><span class="line">+--------+------------+----------+</span><br><span class="line">4 rows in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>薪资登记表salgrade</strong>：字段从左到右依次为薪资等级、该等级最低薪资、该等级最高薪资</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from salgrade;</span><br><span class="line">+-------+-------+-------+</span><br><span class="line">| GRADE | LOSAL | HISAL |</span><br><span class="line">+-------+-------+-------+</span><br><span class="line">|     1 |   700 |  1200 |</span><br><span class="line">|     2 |  1201 |  1400 |</span><br><span class="line">|     3 |  1401 |  2000 |</span><br><span class="line">|     4 |  2001 |  3000 |</span><br><span class="line">|     5 |  3001 |  9999 |</span><br><span class="line">+-------+-------+-------+</span><br><span class="line">5 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>下面我们来个案例分析一下：<strong>找出每一个员工的部门名称，要求显示员工名和部门名</strong>。员工表中只有部门编号，没有部门名称。部门名称只存在于部门信息表中。下面我们先写一个连接查询语句（在<code>MySQL</code>中，<strong>连接查询的语法也很随意，只要在<code>FROM</code>语句后边跟多个用逗号<code>,</code>隔开的表名就好了</strong>）。</p>
+<p>连接查询的语法较为简单：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/*查询列表处的*代表从FROM语句后列出的表中选取每个列*/</span><br><span class="line">mysql&gt; select * from emp,dept;</span><br><span class="line"></span><br><span class="line">/*上面那种写法等效于下面这种写法*/</span><br><span class="line">mysql&gt; select emp.*,dept.* from emp,dept;</span><br><span class="line"></span><br><span class="line">/*如果只想查询出部分列*/</span><br><span class="line">/*如果两个表中没有同名字段，可以这么查(但无论是否重名，建议加上表名，这样执行效率较高)*/</span><br><span class="line">mysql&gt; select ename,sal,dname from emp,dept;</span><br><span class="line">/*如果两个表中有同名字段，可以这么查*/</span><br><span class="line">mysql&gt; select emp.ename,emp.sal,dept.dname from emp,dept;</span><br></pre></td></tr></table></figure>
+<p>在表的连接查询方面有一种现象被称为：<strong>笛卡尔积现象</strong>。</p>
+<p>举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select ename,dname from emp,dept;</span><br></pre></td></tr></table></figure>
+<p>最终上述语句会有56条查询结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">+--------+------------+</span><br><span class="line">| ename  | dname      |</span><br><span class="line">+--------+------------+</span><br><span class="line">| SMITH  | ACCOUNTING |</span><br><span class="line">| SMITH  | RESEARCH   |</span><br><span class="line">| SMITH  | SALES      |</span><br><span class="line">| SMITH  | OPERATIONS |</span><br><span class="line">| ALLEN  | ACCOUNTING |</span><br><span class="line">| ALLEN  | RESEARCH   |</span><br><span class="line">| ALLEN  | SALES      |</span><br><span class="line">| ALLEN  | OPERATIONS |</span><br><span class="line">| WARD   | ACCOUNTING |</span><br><span class="line">| WARD   | RESEARCH   |</span><br><span class="line">| WARD   | SALES      |</span><br><span class="line">| WARD   | OPERATIONS |</span><br><span class="line">| JONES  | ACCOUNTING |</span><br><span class="line">| JONES  | RESEARCH   |</span><br><span class="line">| JONES  | SALES      |</span><br><span class="line">| JONES  | OPERATIONS |</span><br><span class="line">| MARTIN | ACCOUNTING |</span><br><span class="line">| MARTIN | RESEARCH   |</span><br><span class="line">| MARTIN | SALES      |</span><br><span class="line">| MARTIN | OPERATIONS |</span><br><span class="line">| BLAKE  | ACCOUNTING |</span><br><span class="line">| BLAKE  | RESEARCH   |</span><br><span class="line">| BLAKE  | SALES      |</span><br><span class="line">| BLAKE  | OPERATIONS |</span><br><span class="line">| CLARK  | ACCOUNTING |</span><br><span class="line">| CLARK  | RESEARCH   |</span><br><span class="line">| CLARK  | SALES      |</span><br><span class="line">| CLARK  | OPERATIONS |</span><br><span class="line">| SCOTT  | ACCOUNTING |</span><br><span class="line">| SCOTT  | RESEARCH   |</span><br><span class="line">| SCOTT  | SALES      |</span><br><span class="line">| SCOTT  | OPERATIONS |</span><br><span class="line">| KING   | ACCOUNTING |</span><br><span class="line">| KING   | RESEARCH   |</span><br><span class="line">| KING   | SALES      |</span><br><span class="line">| KING   | OPERATIONS |</span><br><span class="line">| TURNER | ACCOUNTING |</span><br><span class="line">| TURNER | RESEARCH   |</span><br><span class="line">| TURNER | SALES      |</span><br><span class="line">| TURNER | OPERATIONS |</span><br><span class="line">| ADAMS  | ACCOUNTING |</span><br><span class="line">| ADAMS  | RESEARCH   |</span><br><span class="line">| ADAMS  | SALES      |</span><br><span class="line">| ADAMS  | OPERATIONS |</span><br><span class="line">| JAMES  | ACCOUNTING |</span><br><span class="line">| JAMES  | RESEARCH   |</span><br><span class="line">| JAMES  | SALES      |</span><br><span class="line">| JAMES  | OPERATIONS |</span><br><span class="line">| FORD   | ACCOUNTING |</span><br><span class="line">| FORD   | RESEARCH   |</span><br><span class="line">| FORD   | SALES      |</span><br><span class="line">| FORD   | OPERATIONS |</span><br><span class="line">| MILLER | ACCOUNTING |</span><br><span class="line">| MILLER | RESEARCH   |</span><br><span class="line">| MILLER | SALES      |</span><br><span class="line">| MILLER | OPERATIONS |</span><br><span class="line">+--------+------------+</span><br><span class="line">56 rows in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+<p>上面的连接查询结果显然是不符合要求的！因为一个人只会有一个部门，而上面一个人有四个部门，这显然是不可以的！</p>
+<p><code>连接</code>的本质就是<strong>把各个表中的记录都取出来，依次匹配的组合加入结果集并返回给用户</strong>。上述查询结果看起来就是把emp表的记录和dept表的记录连接起来组成新的更大的记录，<strong>这个查询过程称之为连接查询</strong>。连接查询的结果集中包含一个表中的每一个记录与另一个表中的每一条记录相互匹配的结果，像这样的结果集就可以称之为<code>笛卡尔积</code>。</p>
+<p>那么什么是<strong>笛卡尔积现象</strong>呢：<strong>当两张表进行连接查询的时候，没有任何条件进行限制，最终的查询结果是两张表记录条数的乘积！</strong></p>
+<p><strong>上面连接查询的内部过程</strong>：在emp表中取出一条记录和dept表的每条记录依次组合，这样的话emp中的一条记录会组合成四条记录。这样最终查询结束后会有14*4=56条记录，这就是笛卡尔积现象</p>
+<p>如果我们乐意，我们可以连接任意数量张表，但是如果没有任何限制条件的话，这些表连接起来产生的<code>笛卡尔积</code>可能是非常巨大的。比方说3个100行记录的表连接起来产生的<code>笛卡尔积</code>就有<code>100×100×100=1000000</code>行数据！所以在连接的时候过滤掉特定记录组合是有必要的</p>
+<h2 id="关于表的别名"><a href="#关于表的别名" class="headerlink" title="关于表的别名"></a>关于表的别名</h2><p>对于上面那个案例中的连接查询语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select ename,dname from emp,dept;</span><br></pre></td></tr></table></figure>
+<p>上述语句肯定能查出来结果，没有问题！<strong>但是我们要注意：它只是恰巧两个表中没有重复的字段名，如果emp和dept中都有ename，那该查询哪一个呢？</strong>比如有两个表t1和t2，表t1中有字段m1,n1；表t2中有m1,n2，其中两个表有同名字段m1。现在要连接查询t1的m1和t2的n2的话，就不能用上面那种方法了，必须显示地表示出来：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select t1.m1,t2.n2 from t1,t2;</span><br></pre></td></tr></table></figure>
+<p>如果表名特别长的情况下，可以为表来定义别名，让语句表达更清晰一些。</p>
+<p>表的别名语法：<strong>AS跟列别名一样，可以省略</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;select e.ename,d.dname from emp as e,dept as d;</span><br></pre></td></tr></table></figure>
+<p>表的别名有以下优点：</p>
+<ul>
+<li><strong>执行效率高</strong>：对于select ename,dname from emp,dept;这条连接查询语句而言，在找ename的时候既会去emp中找ename，也会去dept中找ename，这样效率较低。</li>
+<li><strong>可读性好</strong></li>
+</ul>
+<p>所以这里我们强调一下：<strong>连接查询一定要用表别名，这是一种好习惯！</strong></p>
+<p>这里一定要注意一点：<strong>如果使用别名来代表一个表，那么在定义别名后的所有查询语句中，都必须使用别名来代表表的全名，否则系统会出错</strong>。</p>
+<h2 id="怎么避免笛卡尔积现象"><a href="#怎么避免笛卡尔积现象" class="headerlink" title="怎么避免笛卡尔积现象"></a>怎么避免笛卡尔积现象</h2><p>当然是<strong>加条件进行过滤！</strong></p>
+<p>这里问个问题：<strong>避免了笛卡尔积现象，会减少记录的匹配次数么？</strong></p>
+<p><strong>答案</strong>：不会！上面的匹配次数还是56次，只不过显示的是有效记录。所以执行效率并没有提高</p>
+<p>现在对于上面那个案例：<strong>找出每一个员工的部门名称，要求显示员工名和部门名</strong>。怎么解决呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select e.ename,d.dname from emp as e,dept as d where e.deptno = d.deptno;</span><br><span class="line">+--------+------------+</span><br><span class="line">| ename  | dname      |</span><br><span class="line">+--------+------------+</span><br><span class="line">| SMITH  | RESEARCH   |</span><br><span class="line">| ALLEN  | SALES      |</span><br><span class="line">| WARD   | SALES      |</span><br><span class="line">| JONES  | RESEARCH   |</span><br><span class="line">| MARTIN | SALES      |</span><br><span class="line">| BLAKE  | SALES      |</span><br><span class="line">| CLARK  | ACCOUNTING |</span><br><span class="line">| SCOTT  | RESEARCH   |</span><br><span class="line">| KING   | ACCOUNTING |</span><br><span class="line">| TURNER | SALES      |</span><br><span class="line">| ADAMS  | RESEARCH   |</span><br><span class="line">| JAMES  | SALES      |</span><br><span class="line">| FORD   | RESEARCH   |</span><br><span class="line">| MILLER | ACCOUNTING |</span><br><span class="line">+--------+------------+</span><br><span class="line">14 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p><strong>上述代码就解决了我们的需求，避免了笛卡尔积现象！但是匹配此时还是56次，只不过是4选1。</strong>但是上面的语法是<strong>SQL92</strong>语法，已经过时了，我们一般不用它了，哈哈哈！别急，我们下面来讲<strong>SQL99（下面的内连接和外连接都是基于SQL99来讲的）</strong>！SQL99中的连接查询也可以称为join on语法</p>
+<h2 id="内连接"><a href="#内连接" class="headerlink" title="内连接"></a>内连接</h2><h3 id="等值连接"><a href="#等值连接" class="headerlink" title="等值连接"></a>等值连接</h3><p>最大的特点是：<strong>连接条件中的关系是等量关系（等号=）</strong></p>
+<p><strong>需求</strong>：<strong>找出每一个员工的部门名称，要求显示员工名和部门名</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select e.ename,d.dname from emp as e join dept as d on e.deptno = d.deptno;</span><br></pre></td></tr></table></figure>
+<p>注意上述语句和SQL92语句的区别！</p>
+<p>上面的语句还可以写成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select e.ename,d.dname from emp as e inner join dept as d on e.deptno = d.deptno;</span><br></pre></td></tr></table></figure>
+<p>它们的区别是：<strong>下面的语句在join前多了一个inner，代表内连接。inner可以省略，带上inner之后可读性更好！</strong></p>
+<p><strong>为什么一定要用SQL99呢？因为它优秀呀</strong>：</p>
+<ul>
+<li>SQL99表连接条件ON和进行数据过滤的条件where<strong>分离</strong>了。SQL92中把表连接条件和数据过滤条件全部融合在where中，语法结构不清晰；但是对于SQL99，表连接条件就在ON，数据过滤条件就在where，语法十分清晰</li>
+</ul>
+<h3 id="非等值连接"><a href="#非等值连接" class="headerlink" title="非等值连接"></a>非等值连接</h3><p>最大的特点：<strong>连接条件中的关系是非等量关系</strong></p>
+<p>再来个需求：<strong>找出每个员工的工资等级，要求显示员工名、工资和工资等级</strong></p>
+<p>上面需求的连接条件：emp表中员工的薪资sal，在salgrade表中薪资等级对应的最低和最高工资之间。</p>
+<p>根据上述条件，可以这么写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select e.ename,e.sal,s.grade from emp as e join salgrade as s on e.sal between s.losal and s.hisal;</span><br><span class="line">+--------+---------+-------+</span><br><span class="line">| ename  | sal     | grade |</span><br><span class="line">+--------+---------+-------+</span><br><span class="line">| SMITH  |  800.00 |     1 |</span><br><span class="line">| ALLEN  | 1600.00 |     3 |</span><br><span class="line">| WARD   | 1250.00 |     2 |</span><br><span class="line">| JONES  | 2975.00 |     4 |</span><br><span class="line">| MARTIN | 1250.00 |     2 |</span><br><span class="line">| BLAKE  | 2850.00 |     4 |</span><br><span class="line">| CLARK  | 2450.00 |     4 |</span><br><span class="line">| SCOTT  | 3000.00 |     4 |</span><br><span class="line">| KING   | 5000.00 |     5 |</span><br><span class="line">| TURNER | 1500.00 |     3 |</span><br><span class="line">| ADAMS  | 1100.00 |     1 |</span><br><span class="line">| JAMES  |  950.00 |     1 |</span><br><span class="line">| FORD   | 3000.00 |     4 |</span><br><span class="line">| MILLER | 1300.00 |     2 |</span><br><span class="line">+--------+---------+-------+</span><br><span class="line">14 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h3 id="自连接"><a href="#自连接" class="headerlink" title="自连接"></a>自连接</h3><p>最大的特点是：<strong>一张表硬看成两张表，自己连接自己，且一定要用表别名</strong></p>
+<p><strong>其实自连接既可以是内连接，也可以是外连接，它本质上还是两张表的连接，只不过自连接的两张表是同一张表</strong></p>
+<p><strong>需求：找出每个员工的上级领导，要求显示员工名和对应的领导名</strong></p>
+<p>所有员工（有的员工是领导）的信息都在员工信息表emp中，每个员工有对应的上级领导编号，而这个上级领导编号也是该领导的员工编号，这里好像有点绕~，但自己要理解一下</p>
+<p><strong>员工的上级领导编号 = 领导的员工编号</strong>（这句话一定要理解）</p>
+<p>所以这里我们可以认为有两张表，它们都是emp表，分别取别名a和b，我们自己可以认为a是员工表，b是领导表（a和b本质上是同一张表）</p>
+<p>SQL语句该这么写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;select a.ename as &apos;员工&apos;,b.ename as &apos;领导&apos; from emp as a join emp as b on a.mgr = b.empno;</span><br><span class="line">+--------+-------+</span><br><span class="line">| ename  | ename |</span><br><span class="line">+--------+-------+</span><br><span class="line">| SMITH  | FORD  |</span><br><span class="line">| ALLEN  | BLAKE |</span><br><span class="line">| WARD   | BLAKE |</span><br><span class="line">| JONES  | KING  |</span><br><span class="line">| MARTIN | BLAKE |</span><br><span class="line">| BLAKE  | KING  |</span><br><span class="line">| CLARK  | KING  |</span><br><span class="line">| SCOTT  | JONES |</span><br><span class="line">| TURNER | BLAKE |</span><br><span class="line">| ADAMS  | SCOTT |</span><br><span class="line">| JAMES  | BLAKE |</span><br><span class="line">| FORD   | JONES |</span><br><span class="line">| MILLER | CLARK |</span><br><span class="line">+--------+-------+</span><br><span class="line">13 rows in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>：<strong>为什么上面的结果只有</strong>13条记录呢？明明这个公司有14个人呀！仔细观察emp表可以发现，KING这个员工没有上级领导，他对应的上级领导编号为NULL，所以这里匹配不到！</p>
+<p><strong>注意：表的自连接既可以是等值连接，也可以是非等值连接</strong></p>
+<h2 id="外连接"><a href="#外连接" class="headerlink" title="外连接"></a>外连接</h2><p><strong>什么是外连接？和内连接有什么区别？</strong></p>
+<p>内连接：</p>
+<p>​        假设A和B表进行连接，使用<strong>内连接</strong>的话，凡是A表和B表能够匹配上的记录查询出来</p>
+<p>​        A表和B表没有主副之分，两张表是平等的</p>
+<p>​        <strong>对于内连接的两个表，如果A表中的记录在B表中找不到匹配的记录，该记录不会加入到最后的结果集</strong></p>
+<p>外连接：</p>
+<p>​        假设A和B表进行连接，使用<strong>外连接</strong>的话，A、B两张表中有一张表是主表，一张表是副表，主要查询主表中的数据，捎带着查询副表。当副表中的数据没有和主表中的数据匹配上，副表自动模拟出NULL与之匹配</p>
+<p>​        <strong>对于外连接的两个表，主表中的记录即使在副表中没有匹配的记录，也仍然需要加入到结果集，只不过该记录中对应的副表中的字段全部自动赋值为NULL</strong></p>
+<p><strong>外连接的分类</strong></p>
+<ul>
+<li>左外连接：表示左边的表是主表</li>
+<li>右外连接：表示右边的表是主表</li>
+<li><strong>任何一个左连接都有一个右连接的写法，任何一个右连接都有一个左连接的写法</strong></li>
+</ul>
+<p>​        </p>
+<h3 id="左连接"><a href="#左连接" class="headerlink" title="左连接"></a>左连接</h3><p><strong>需求：找出每个员工的上级领导，要求显示员工名和对应的领导名</strong></p>
+<p>上面用内连接解决这个需求的时候，只查出了13条记录，KING的员工记录不存在于最终的结果集中，这是不符合需求的。<strong>如果我们想查出全部14个员工的记录呢，此时就需要用外连接！</strong></p>
+<p>SQL语句怎么写？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select a.ename as &apos;员工&apos;,b.ename as &apos;领导&apos; from emp as a left join emp as b on a.mgr = b.empno;</span><br><span class="line">+--------+-------+</span><br><span class="line">| 员工    | 领导  |</span><br><span class="line">+--------+-------+</span><br><span class="line">| SMITH  | FORD  |</span><br><span class="line">| ALLEN  | BLAKE |</span><br><span class="line">| WARD   | BLAKE |</span><br><span class="line">| JONES  | KING  |</span><br><span class="line">| MARTIN | BLAKE |</span><br><span class="line">| BLAKE  | KING  |</span><br><span class="line">| CLARK  | KING  |</span><br><span class="line">| SCOTT  | JONES |</span><br><span class="line">| KING   | NULL  |</span><br><span class="line">| TURNER | BLAKE |</span><br><span class="line">| ADAMS  | SCOTT |</span><br><span class="line">| JAMES  | BLAKE |</span><br><span class="line">| FORD   | JONES |</span><br><span class="line">| MILLER | CLARK |</span><br><span class="line">+--------+-------+</span><br><span class="line">14 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>注意和内连接的区别，现在就是有14条记录了，KING对应的领导是NULL。<strong>由于我们想对所有的员工都有记录，所以要将a设置为主表，因此采用左连接。</strong></p>
+<p>注意：上面的左连接语句也是省略写法，完整写法是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select a.ename as &apos;员工&apos;,b.ename as &apos;领导&apos; from emp as a left  join emp as b on a.mgr = b.empno;</span><br></pre></td></tr></table></figure>
+<p><strong>outer可以省略</strong></p>
+<h3 id="右连接"><a href="#右连接" class="headerlink" title="右连接"></a>右连接</h3><p>需求和上面一样，右连接写法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select a.ename as &apos;员工&apos;,b.ename as &apos;领导&apos; from emp as b right join emp as a on a.mgr = b.empno;</span><br><span class="line">+--------+-------+</span><br><span class="line">| 员工   | 领导  |</span><br><span class="line">+--------+-------+</span><br><span class="line">| SMITH  | FORD  |</span><br><span class="line">| ALLEN  | BLAKE |</span><br><span class="line">| WARD   | BLAKE |</span><br><span class="line">| JONES  | KING  |</span><br><span class="line">| MARTIN | BLAKE |</span><br><span class="line">| BLAKE  | KING  |</span><br><span class="line">| CLARK  | KING  |</span><br><span class="line">| SCOTT  | JONES |</span><br><span class="line">| KING   | NULL  |</span><br><span class="line">| TURNER | BLAKE |</span><br><span class="line">| ADAMS  | SCOTT |</span><br><span class="line">| JAMES  | BLAKE |</span><br><span class="line">| FORD   | JONES |</span><br><span class="line">| MILLER | CLARK |</span><br><span class="line">+--------+-------+</span><br><span class="line">14 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p><strong>任何一个左连接都有一个右连接的写法，任何一个右连接都有一个左连接的写法</strong></p>
+<p>上面的右连接完整写法是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select a.ename as &apos;员工&apos;,b.ename as &apos;领导&apos; from emp as b right outer join emp as a on a.mgr = b.empno;</span><br></pre></td></tr></table></figure>
+<p><strong>outer可以省略</strong></p>
+<p><strong>区分内连接和外连接，不是靠的outer或inner，而是right或left。省略后，只要没有left或right一定是内连接；只要有了right或left一定是外连接</strong></p>
+<p><strong>实际开发中，外连接使用居多！！！</strong>因为内连接可能存在数据丢失！！！</p>
+<p><strong>外连接最重要的特点是：主表的数据无条件的全部查询出来</strong></p>
+<p>下面来个需求测试一下学习结果：<strong>找出哪个部门没有员工，并显示出该部门的信息</strong></p>
+<p>用外连接来写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select d.* from dept as d left join emp as e on d.deptno = e.deptno where e.ename is NULL;</span><br><span class="line">+--------+------------+--------+</span><br><span class="line">| DEPTNO | DNAME      | LOC    |</span><br><span class="line">+--------+------------+--------+</span><br><span class="line">|     40 | OPERATIONS | BOSTON |</span><br><span class="line">+--------+------------+--------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h2 id="多表连接查询"><a href="#多表连接查询" class="headerlink" title="多表连接查询"></a>多表连接查询</h2><p>多表连接查询语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from A join B on 连接条件1 join C on 连接条件2;</span><br></pre></td></tr></table></figure>
+<p>上面语法的解释：<strong>A先跟B连接查询（这里内连接、外连接均可），利用连接条件1进行筛选，这样A和B连接查询结果集中会有一个结果；然后这个结果再跟C表进行连接查询，利用连接条件2进行筛选。</strong></p>
+<p><strong>需求：找出每一个员工的部门名称以及工资等级</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select e.ename,d.dname,s.grade from emp as e join dept as d on e.deptno = d.deptno join salgrade as s on e.sal between s.losal and s.hisal;</span><br><span class="line">+--------+------------+-------+</span><br><span class="line">| ename  | dname      | grade |</span><br><span class="line">+--------+------------+-------+</span><br><span class="line">| SMITH  | RESEARCH   |     1 |</span><br><span class="line">| ALLEN  | SALES      |     3 |</span><br><span class="line">| WARD   | SALES      |     2 |</span><br><span class="line">| JONES  | RESEARCH   |     4 |</span><br><span class="line">| MARTIN | SALES      |     2 |</span><br><span class="line">| BLAKE  | SALES      |     4 |</span><br><span class="line">| CLARK  | ACCOUNTING |     4 |</span><br><span class="line">| SCOTT  | RESEARCH   |     4 |</span><br><span class="line">| KING   | ACCOUNTING |     5 |</span><br><span class="line">| TURNER | SALES      |     3 |</span><br><span class="line">| ADAMS  | RESEARCH   |     1 |</span><br><span class="line">| JAMES  | SALES      |     1 |</span><br><span class="line">| FORD   | RESEARCH   |     4 |</span><br><span class="line">| MILLER | ACCOUNTING |     2 |</span><br><span class="line">+--------+------------+-------+</span><br><span class="line">14 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>下面对上面的需求升级难度：<strong>找出每一个员工的部门名称、工资等级以及上级领导姓名</strong></p>
+<p>这个时候其实是四个表相连，而上面那个需求是三个表相连，并且这个要用到外连接。其实这个需求只需要在上个需求的基础上再连接一个表即可（自连接且左连接，注意left的位置不能放到前面的join，因为这里代表e和e1外连接，所以只能放在最后一个join前面）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select e.ename as &apos;员工&apos;,d.dname,s.grade,e1.ename as &apos;领导&apos; from emp as e join dept as d on e.deptno = d.deptno join salgrade as s on e.sal between s.losal and s.hisal left join emp as e1 on e.mgr = e1.empno;</span><br><span class="line">+--------+------------+-------+-------+</span><br><span class="line">| 员工   | dname      | grade | 领导  |</span><br><span class="line">+--------+------------+-------+-------+</span><br><span class="line">| SMITH  | RESEARCH   |     1 | FORD  |</span><br><span class="line">| ALLEN  | SALES      |     3 | BLAKE |</span><br><span class="line">| WARD   | SALES      |     2 | BLAKE |</span><br><span class="line">| JONES  | RESEARCH   |     4 | KING  |</span><br><span class="line">| MARTIN | SALES      |     2 | BLAKE |</span><br><span class="line">| BLAKE  | SALES      |     4 | KING  |</span><br><span class="line">| CLARK  | ACCOUNTING |     4 | KING  |</span><br><span class="line">| SCOTT  | RESEARCH   |     4 | JONES |</span><br><span class="line">| KING   | ACCOUNTING |     5 | NULL  |</span><br><span class="line">| TURNER | SALES      |     3 | BLAKE |</span><br><span class="line">| ADAMS  | RESEARCH   |     1 | SCOTT |</span><br><span class="line">| JAMES  | SALES      |     1 | BLAKE |</span><br><span class="line">| FORD   | RESEARCH   |     4 | JONES |</span><br><span class="line">| MILLER | ACCOUNTING |     2 | CLARK |</span><br><span class="line">+--------+------------+-------+-------+</span><br><span class="line">14 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+            <a href="/tags/个人博客/" rel="tag"># 个人博客</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/09/分组查询/" rel="next" title="分组查询">
+                <i class="fa fa-chevron-left"></i> 分组查询
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/10/子查询/" rel="prev" title="子查询">
+                子查询 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  <div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------ 本文结束------</div>
+    
+</div>
+    
+ </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/images.jpg" alt="CodeMonkey">
+            
+              <p class="site-author-name" itemprop="name">CodeMonkey</p>
+              <p class="site-description motion-element" itemprop="description">Biter & Developer</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/pringce" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:bit_ljy@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/guihenao4010" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://music.163.com/#/playlist?id=147734978" target="_blank" title="Music">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Music</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是连接查询？"><span class="nav-number">1.</span> <span class="nav-text">什么是连接查询？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接查询的分类"><span class="nav-number">2.</span> <span class="nav-text">连接查询的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接查询引入"><span class="nav-number">3.</span> <span class="nav-text">连接查询引入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于表的别名"><span class="nav-number">4.</span> <span class="nav-text">关于表的别名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么避免笛卡尔积现象"><span class="nav-number">5.</span> <span class="nav-text">怎么避免笛卡尔积现象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内连接"><span class="nav-number">6.</span> <span class="nav-text">内连接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#等值连接"><span class="nav-number">6.1.</span> <span class="nav-text">等值连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非等值连接"><span class="nav-number">6.2.</span> <span class="nav-text">非等值连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自连接"><span class="nav-number">6.3.</span> <span class="nav-text">自连接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#外连接"><span class="nav-number">7.</span> <span class="nav-text">外连接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#左连接"><span class="nav-number">7.1.</span> <span class="nav-text">左连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#右连接"><span class="nav-number">7.2.</span> <span class="nav-text">右连接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多表连接查询"><span class="nav-number">8.</span> <span class="nav-text">多表连接查询</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共116.6k字</span>
+</div>
+<div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CodeMonkey</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">116.6k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
+
+

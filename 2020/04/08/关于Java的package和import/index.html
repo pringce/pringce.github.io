@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="CodeMonkey · 程序猴">
 <meta property="og:description" content="关于java语言当中的包机制：  包又称为package，java引入package这种语法机制主要是为了方便程序的管理，不同功能的类被分别放到不同的软件包当中，查找比较方便，管理比较方法，易维护  怎么定义package？  在java源程序的第一行上编写package语句 package只能编写一个语句 语法结构 package 包名；     包名的命名规范：  公司域名倒序+项目名+模块名">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-08T08:41:22.662Z">
+<meta property="og:updated_time" content="2020-05-02T02:59:59.577Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Java的package和import">
 <meta name="twitter:description" content="关于java语言当中的包机制：  包又称为package，java引入package这种语法机制主要是为了方便程序的管理，不同功能的类被分别放到不同的软件包当中，查找比较方便，管理比较方法，易维护  怎么定义package？  在java源程序的第一行上编写package语句 package只能编写一个语句 语法结构 package 包名；     包名的命名规范：  公司域名倒序+项目名+模块名">
@@ -354,8 +354,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-08T16:41:22+08:00">
-                2020-04-08
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-02T10:59:59+08:00">
+                2020-05-02
               </time>
             
           </span>
@@ -443,7 +443,7 @@
       
         <p>关于java语言当中的包机制：</p>
 <ul>
-<li><p>包又称为package，java引入package这种语法机制主要是为了方便程序的管理，不同功能的类被分别放到不同的软件包当中，查找比较方便，管理比较方法，易维护</p>
+<li><p>包又称为package，java引入package这种语法机制主要是为了方便程序的管理，<strong>不同功能的类被分别放到不同的软件包当中</strong>，查找比较方便，管理比较方法，易维护</p>
 </li>
 <li><p>怎么定义package？</p>
 <ul>
@@ -482,18 +482,18 @@
 <ul>
 <li>javac -d 编译之后的存放路径 java源文件的路径，例：</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">javac -d . test.java</span><br><span class="line"><span class="comment">// 将当前目录下的test.java文件编译后放到当前目录下的com/bjpowernode/user/service目录中（自动创建，不用手动创建）</span></span><br><span class="line"><span class="comment">// 运行跟上面的方式一样</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">javac -d . test.java</span><br><span class="line"><span class="comment">// -d 带包编译</span></span><br><span class="line"><span class="comment">// . 代表变异之后生成的东西放到当前目录下</span></span><br><span class="line"><span class="comment">// 将当前目录下的test.java文件编译后放到当前目录下的com/bjpowernode/user/service目录中（自动创建，不用手动创建）</span></span><br><span class="line"><span class="comment">// 运行跟上面的方式一样</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
-<li><p><strong>使用eclipse完成包机制将会非常简单，直接建包即可</strong></p>
+<li><p><strong>使用IntelliJ IDEA完成包机制将会非常简单，直接建包即可</strong></p>
 </li>
 </ul>
 <p>下面举个例子：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// test01.java</span></span><br><span class="line"><span class="keyword">package</span> com.bjpowernode.user.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test01</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// test02.java</span></span><br><span class="line"><span class="keyword">package</span> com.bjpowernode.user.service;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test02</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 以下两种方式均可</span></span><br><span class="line">        <span class="comment">// 第一种，完整包名</span></span><br><span class="line">        com.bjpowernode.user.service.test01 t = <span class="keyword">new</span> com.bjpowernode.user.service.test01;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 第二种</span></span><br><span class="line">        <span class="comment">// 可以省略包名,因为test01和test02在同一个包中</span></span><br><span class="line">        test01 tt = <span class="keyword">new</span> test01();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// test03.java</span></span><br><span class="line"><span class="keyword">package</span> com.bjpowernode;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test03</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 这里的包名不能省略</span></span><br><span class="line">        <span class="comment">// 下面代码编译会报错：当省略包名后，会在当前包下找test01</span></span><br><span class="line">        <span class="comment">// 实际上编译器去找com.bjpowernode.test01了，这个类不存在</span></span><br><span class="line">        test01 t = <span class="keyword">new</span> test01();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 下面正确</span></span><br><span class="line">        com.bjpowernode.user.service.test01 t = <span class="keyword">new</span> com.bjpowernode.user.service.test01;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>什么时候包名可以省略？</p>
 <ul>
-<li>在同一个包下的时候可以省略</li>
+<li><strong>在同一个包下的时候可以省略</strong></li>
 </ul>
 <p>但是上面如果不在同一个包下，每次都需要加包名，这样太累了！于是就引入了<strong>import语法</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// test01.java</span></span><br><span class="line"><span class="keyword">package</span> com.bjpowernode.user.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test01</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// test02.java</span></span><br><span class="line"><span class="keyword">package</span> org.apache;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test02</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 不能省略，必须要写完整，太麻烦！</span></span><br><span class="line">        com.bjpowernode.user.service.test01 t = <span class="keyword">new</span> com.bjpowernode.user.service.test01;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// test03.java</span></span><br><span class="line"><span class="keyword">package</span> org.apache</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.bjpowernode.user.service.test01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test03</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 这里由于导入了包，所以可以省略包名</span></span><br><span class="line">        test01 t = <span class="keyword">new</span> test01();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -504,7 +504,7 @@
 <li>import 包名.*；(导入包中全部的类)</li>
 </ul>
 </li>
-<li>import需要编写在package语句下面，class语句上面</li>
+<li>import需要编写在package语句下面，class语句上面（<strong>一人之下，万人之上</strong>）</li>
 <li>但为什么String不用导入就可以直接使用呢？<ul>
 <li>String类属于java.lang包，java.lang.*不需要手动引入，系统自动引入</li>
 <li>java.lang：language语言包，是java语言的核心类，不需要手动引入</li>
@@ -512,7 +512,7 @@
 </ul>
 </li>
 <li>什么时候需要import？<ul>
-<li>不是java.lang包下，并且不再同一个包下的时候，需要import进行导入</li>
+<li><strong>不是java.lang包下，并且不再同一个包下的时候，需要import进行导入</strong></li>
 </ul>
 </li>
 </ul>
@@ -637,7 +637,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -734,7 +734,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共82.8k字</span>
+  <span class="post-count">博客全站共116.6k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -750,7 +750,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">82.8k</span>
+    <span title="Site words total count">116.6k</span>
   
 </div>
 

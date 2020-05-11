@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/04/09/分组查询/2.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/09/分组查询/3.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/09/分组查询/4.png">
-<meta property="og:updated_time" content="2020-04-09T13:39:31.834Z">
+<meta property="og:updated_time" content="2020-04-10T12:37:07.720Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分组查询">
 <meta name="twitter:description" content="进行分组查询主要有两个关键字：  group by：按照某个字段或者某些字段进行分组 having：having是对分组后的数据再次过滤（注意和where的区别，where子句的作用是在分组前就对数据进行过滤，having子句的作用是筛选满足条件的组，即在分组后过滤数据）  分组数据复杂的数据统计前边介绍了一些用来统计数据的聚集函数，我们可以方便的使用这些函数来统计出某列数据的行数、最大值、最小值">
@@ -359,8 +359,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-09T21:39:31+08:00">
-                2020-04-09
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-10T20:37:07+08:00">
+                2020-04-10
               </time>
             
           </span>
@@ -409,7 +409,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3k
+                  3.1k
                 </span>
               
 
@@ -460,7 +460,7 @@
 <p>如果我们想统计每门课的平均分，具体语句如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT subject, AVG(score) FROM student_score GROUP BY subject;</span><br><span class="line">+-----------------------------+------------+</span><br><span class="line">| subject                     | AVG(score) |</span><br><span class="line">+-----------------------------+------------+</span><br><span class="line">| 母猪的产后护理              |    73.0000 |</span><br><span class="line">| 论萨达姆的战争准备          |    73.2500 |</span><br><span class="line">+-----------------------------+------------+</span><br><span class="line">2 rows in set (0.01 sec)</span><br></pre></td></tr></table></figure>
 <p>这个查询的执行过程就是按照<code>subject</code>中的值将所有的记录分成两组，然后分别对每个分组中记录的<code>score</code>列调用<code>AVG</code>函数进行数据统计。</p>
-<p><strong>注意</strong>：SQL语句中有一个规则：<strong>当一条语句中有group by 的话，select后面只能跟聚集函数（count、max、min、sum和avg，注意聚集函数里面的字段可以随意，不一定非要是参与分组的字段）和参与分组的字段</strong>。如果select后面跟了别的字段，对于Oracle而言会报错，语法错误；但是在MySQL中是有查询结果的，但是结果毫无意义。Oracle的语法规则比MySQL的语法规则更严谨。</p>
+<p><strong>注意</strong>：SQL语句中有一个规则：<strong>当一条语句中有group by 的话，select后面只能跟聚集函数（count、max、min、sum和avg，注意聚集函数里面的字段可以随意，不一定非要是参与分组的字段）和参与分组的字段</strong>。如果select后面跟了别的字段，对于Oracle而言会报错，语法错误；<strong>但是在MySQL中是有查询结果的，但是结果毫无意义</strong>。Oracle的语法规则比MySQL的语法规则更严谨。</p>
 <h3 id="带有WHERE子句的分组查询"><a href="#带有WHERE子句的分组查询" class="headerlink" title="带有WHERE子句的分组查询"></a>带有WHERE子句的分组查询</h3><p>上边的例子是将表中每条记录都划分到某个分组中，我们也可以在划分分组前就将某些记录过滤掉，这时就需要使用<code>WHERE</code>子句了。比如老师觉得各个科目的平均分太低了，所以想先把分数低于<code>60</code>分的记录去掉之后再统计平均分，就可以这么写：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT subject, AVG(score) FROM student_score WHERE score &gt;= 60 GROUP BY subject;</span><br><span class="line">+-----------------------------+------------+</span><br><span class="line">| subject                     | AVG(score) |</span><br><span class="line">+-----------------------------+------------+</span><br><span class="line">| 母猪的产后护理              |    89.0000 |</span><br><span class="line">| 论萨达姆的战争准备          |    82.3333 |</span><br><span class="line">+-----------------------------+------------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
 <p>这个过程可以分成两个步骤理解：</p>
@@ -509,6 +509,7 @@
 <p>但是有的时候，有些需求只能用having，不能用where。例如：查询每个部门的<strong>平均工资</strong>，要求显示平均薪资大于2000的数据。</p>
 <p>这里不能再用where了，只能使用having。如下所示</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select no,avg(sal) from emp group by no having avg(sal)&gt;2000;</span><br></pre></td></tr></table></figure>
+<p>注意：<strong>having是group by的搭档，只有group by出现的时候，having才能用！没有group by，having是不能用的</strong></p>
 <h2 id="使用分组注意事项"><a href="#使用分组注意事项" class="headerlink" title="使用分组注意事项"></a>使用分组注意事项</h2><p>使用分组来统计数据给我们带来了非常大的便利，但是要随时提防有坑的地方：</p>
 <ol>
 <li><p>如果分组列中含有<code>NULL</code>值，那么<code>NULL</code>也会作为一个独立的分组存在。</p>
@@ -569,6 +570,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/10/连接查询/" rel="prev" title="连接查询">
+                连接查询 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -656,7 +661,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -769,7 +774,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共82.8k字</span>
+  <span class="post-count">博客全站共116.6k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -785,7 +790,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">82.8k</span>
+    <span title="Site words total count">116.6k</span>
   
 </div>
 

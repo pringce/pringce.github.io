@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="CodeMonkey · 程序猴">
 <meta property="og:description" content="虽然现在Java版本已经更新到Java14，且从Java11开始，不提供JRE的下载，只提供JDK的下载。但Java1.8由于其稳定性，依然具有广泛的应用。（注意：Java1.8在安装时会有两套JRE，一套在Java目录下，一套在Java目录下的JDK目录中）。 JDK自带的jre称为专用jre，后面独立安装的jre称为公共jre如果安装了JDK的话，其实是没必要再安装公共jre的，公共jre的作">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-20T13:29:49.119Z">
+<meta property="og:updated_time" content="2020-04-20T01:46:27.632Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java环境变量那些事儿">
 <meta name="twitter:description" content="虽然现在Java版本已经更新到Java14，且从Java11开始，不提供JRE的下载，只提供JDK的下载。但Java1.8由于其稳定性，依然具有广泛的应用。（注意：Java1.8在安装时会有两套JRE，一套在Java目录下，一套在Java目录下的JDK目录中）。 JDK自带的jre称为专用jre，后面独立安装的jre称为公共jre如果安装了JDK的话，其实是没必要再安装公共jre的，公共jre的作">
@@ -354,8 +354,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-20T21:29:49+08:00">
-                2020-03-20
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-20T09:46:27+08:00">
+                2020-04-20
               </time>
             
           </span>
@@ -445,7 +445,7 @@
 <p>JDK自带的jre称为<strong>专用jre</strong>，后面独立安装的jre称为<strong>公共jre</strong><br>如果安装了JDK的话，其实是没必要再安装公共jre的，公共jre的作用是<strong>自动向系统和浏览器注册Java运行环境</strong>，以及提供了一些Java更新服务，所以没必要再去单独安装这个公共jre，只要正常安装JDK，指定好环境变量后，就OK了</p>
 <p><strong>从JDK11开始，无论是开发机器还是部署机器都需要下载JDK，且配置环境变量。因为不再提供JRE的下载了。</strong></p>
 <p><strong>JDK7与JDK8安装的区别</strong></p>
-<p>JDK7在安装公共jre时会在<strong>System32</strong>中放置ava.exe，javaw.exe，javaws.exe。而JDK8不会在system32里放置java.exe，javaw.exe，javaws.exe，所以在只安装了JDK8未做任何设置的情况下，应该是无法执行java.exe命令的，那么JDK8就只安装了jdk1.8的文件夹和jre1.8么，也不是，在 <strong>C:\ProgramData\Oracle\Java\javapath</strong>路径下可以找到JDK8版本的java.exe，javaw.exe，javaws.exe，只不过由于这个目录并不在PATH变量下，所以命令行中java命令无法找到这里，当你把这个目录添加到PATH之后，就可以找到了。</p>
+<p>JDK7在安装公共jre时会在<strong>System32</strong>中放置ava.exe，javaw.exe，javaws.exe。而JDK8不会在system32里放置java.exe，javaw.exe，javaws.exe，所以在只安装了JDK8未做任何设置的情况下，应该是无法执行java.exe命令的，那么JDK8就只安装了jdk1.8的文件夹和jre1.8么，也不是，在 <strong>C:\Program Files (x86)\Common Files\Oracle\Java\javapath</strong>路径下可以找到JDK8版本的java.exe，javaw.exe，javaws.exe，只不过由于这个目录并不在PATH变量下（好气呀，我的path里面有这个哎，所以我默认可以用java.exe嘿嘿，但是javac还是不行的），所以命令行中java命令无法找到这里，当你把这个目录添加到PATH之后，就可以找到了。</p>
 <p>下面先聊一聊<strong>Java环境变量配置（主要是Path和ClassPath）</strong>：</p>
 <ul>
 <li>高级系统设置-&gt; 环境变量-&gt; 系统变量</li>
@@ -456,7 +456,7 @@
 <ul>
 <li>在Path变量中，加入如下路径</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%JAVA_HOME%\bin;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%JAVA_HOME%\bin</span><br></pre></td></tr></table></figure>
 <p>至此，环境变量配置完毕。可以在DOS界面使用javac和java了</p>
 <p><strong>下面介绍一下CLASSPATH这个环境变量</strong></p>
 <p>默认情况下，ClassLoader从当前路径下加载.class字节码文件。当然，也可以让ClassLoader去某个指定路径下加载字节码文件，这时需要配置环境变量CLASSPATH。</p>
@@ -625,7 +625,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -722,7 +722,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共82.8k字</span>
+  <span class="post-count">博客全站共116.6k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -738,7 +738,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">82.8k</span>
+    <span title="Site words total count">116.6k</span>
   
 </div>
 

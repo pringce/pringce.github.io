@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MySQL,个人博客,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="什么是子查询？子查询都可以出现在哪里？ select语句当中嵌套select语句，被嵌套的语句是子查询或内层查询。同理，嵌套子查询的语句称为外层查询。 子查询可以出现在：  select后面 from后面 where后面  所有的子查询都必须用小括号扩起来，否则是非法的。 按位置分类where子句中嵌套子查询需求：找出高于平均薪资的员工 这里先写一个错误的方法： 12/*错误*/ mysql&amp;gt">
+<meta name="keywords" content="MySQL,个人博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="子查询">
+<meta property="og:url" content="http://yoursite.com/2020/04/10/子查询/index.html">
+<meta property="og:site_name" content="CodeMonkey · 程序猴">
+<meta property="og:description" content="什么是子查询？子查询都可以出现在哪里？ select语句当中嵌套select语句，被嵌套的语句是子查询或内层查询。同理，嵌套子查询的语句称为外层查询。 子查询可以出现在：  select后面 from后面 where后面  所有的子查询都必须用小括号扩起来，否则是非法的。 按位置分类where子句中嵌套子查询需求：找出高于平均薪资的员工 这里先写一个错误的方法： 12/*错误*/ mysql&amp;gt">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-04-19T05:14:38.855Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="子查询">
+<meta name="twitter:description" content="什么是子查询？子查询都可以出现在哪里？ select语句当中嵌套select语句，被嵌套的语句是子查询或内层查询。同理，嵌套子查询的语句称为外层查询。 子查询可以出现在：  select后面 from后面 where后面  所有的子查询都必须用小括号扩起来，否则是非法的。 按位置分类where子句中嵌套子查询需求：找出高于平均薪资的员工 这里先写一个错误的方法： 12/*错误*/ mysql&amp;gt">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/04/10/子查询/">
+
+
+
+
+
+  <title>子查询 | CodeMonkey · 程序猴</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 爆炸红心效果 -->
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+  <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+  <script type="text/javascript" src="/js/src/firework.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/pringce" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CodeMonkey · 程序猴</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">You are more than what you have become now!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/10/子查询/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CodeMonkey">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/images.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CodeMonkey · 程序猴">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">子查询</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-10T20:42:21+08:00">
+                2020-04-10
+              </time>
+            
+
+            
+
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-19T13:14:38+08:00">
+                2020-04-19
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  16
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>什么是子查询？子查询都可以出现在哪里？</strong></p>
+<p>select语句当中嵌套select语句，被嵌套的语句是<strong>子查询或内层查询</strong>。同理，嵌套子查询的语句称为<strong>外层查询</strong>。</p>
+<p>子查询可以出现在：</p>
+<ul>
+<li>select后面</li>
+<li>from后面</li>
+<li>where后面</li>
+</ul>
+<p><strong>所有的子查询都必须用小括号扩起来，否则是非法的。</strong></p>
+<h1 id="按位置分类"><a href="#按位置分类" class="headerlink" title="按位置分类"></a>按位置分类</h1><h2 id="where子句中嵌套子查询"><a href="#where子句中嵌套子查询" class="headerlink" title="where子句中嵌套子查询"></a>where子句中嵌套子查询</h2><p>需求：找出高于平均薪资的员工</p>
+<p>这里先写一个错误的方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/*错误*/ </span><br><span class="line">mysql&gt; select * from emp where sal &gt; avg(sal);</span><br></pre></td></tr></table></figure>
+<p>为什么错误呢？<strong>因为where子句中不能使用聚集函数</strong></p>
+<p>正确做法如下：</p>
+<ul>
+<li>第一步：找出平均薪资</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select avg(sal) from emp;</span><br><span class="line">+-------------+</span><br><span class="line">| avg(sal)    |</span><br><span class="line">+-------------+</span><br><span class="line">| 2073.214286 |</span><br><span class="line">+-------------+</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第二步：where过滤</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from emp where sal &gt; 2073.214286;</span><br><span class="line">+-------+-------+-----------+------+------------+---------+------+--------+</span><br><span class="line">| EMPNO | ENAME | JOB       | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |</span><br><span class="line">+-------+-------+-----------+------+------------+---------+------+--------+</span><br><span class="line">|  7566 | JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 | NULL |     20 |</span><br><span class="line">|  7698 | BLAKE | MANAGER   | 7839 | 1981-05-01 | 2850.00 | NULL |     30 |</span><br><span class="line">|  7782 | CLARK | MANAGER   | 7839 | 1981-06-09 | 2450.00 | NULL |     10 |</span><br><span class="line">|  7788 | SCOTT | ANALYST   | 7566 | 1987-04-19 | 3000.00 | NULL |     20 |</span><br><span class="line">|  7839 | KING  | PRESIDENT | NULL | 1981-11-17 | 5000.00 | NULL |     10 |</span><br><span class="line">|  7902 | FORD  | ANALYST   | 7566 | 1981-12-03 | 3000.00 | NULL |     20 |</span><br><span class="line">+-------+-------+-----------+------+------------+---------+------+--------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p><strong>第一步和第二步合并</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from emp where sal &gt; (select avg(sal) from emp);</span><br><span class="line">+-------+-------+-----------+------+------------+---------+------+--------+</span><br><span class="line">| EMPNO | ENAME | JOB       | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |</span><br><span class="line">+-------+-------+-----------+------+------------+---------+------+--------+</span><br><span class="line">|  7566 | JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 | NULL |     20 |</span><br><span class="line">|  7698 | BLAKE | MANAGER   | 7839 | 1981-05-01 | 2850.00 | NULL |     30 |</span><br><span class="line">|  7782 | CLARK | MANAGER   | 7839 | 1981-06-09 | 2450.00 | NULL |     10 |</span><br><span class="line">|  7788 | SCOTT | ANALYST   | 7566 | 1987-04-19 | 3000.00 | NULL |     20 |</span><br><span class="line">|  7839 | KING  | PRESIDENT | NULL | 1981-11-17 | 5000.00 | NULL |     10 |</span><br><span class="line">|  7902 | FORD  | ANALYST   | 7566 | 1981-12-03 | 3000.00 | NULL |     20 |</span><br><span class="line">+-------+-------+-----------+------+------------+---------+------+--------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h2 id="from子句中嵌套子查询"><a href="#from子句中嵌套子查询" class="headerlink" title="from子句中嵌套子查询"></a>from子句中嵌套子查询</h2><p>这个在实际应用中使用最多！！一定要掌握！！</p>
+<p>from子句嵌套子查询的诀窍：<strong>一定要将中间结果当做一张临时表</strong></p>
+<p><strong>需求：找出每个部门平均薪水的薪资等级</strong></p>
+<ul>
+<li>第一步：找出每个部门平均薪水（按照部门编号分组，求sal平均值）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select deptno,avg(sal) as avgsal from emp group by deptno;</span><br><span class="line">+--------+-------------+</span><br><span class="line">| deptno | avg(sal)    |</span><br><span class="line">+--------+-------------+</span><br><span class="line">|     20 | 2175.000000 |</span><br><span class="line">|     30 | 1566.666667 |</span><br><span class="line">|     10 | 2916.666667 |</span><br><span class="line">+--------+-------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第二步：将以上的查询结果当作临时表t，让t表和salgrade表连接，连接条件是：t.avgsal between s.losal and s.hisal。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select t.*,s.grade from (select deptno,avg(sal) as avgsal from emp group by deptno) as t join salgrade as s on t.avgsal between s.losal and s.hisal;</span><br><span class="line">+--------+-------------+-------+</span><br><span class="line">| deptno | avgsal      | grade |</span><br><span class="line">+--------+-------------+-------+</span><br><span class="line">|     20 | 2175.000000 |     4 |</span><br><span class="line">|     30 | 1566.666667 |     3 |</span><br><span class="line">|     10 | 2916.666667 |     4 |</span><br><span class="line">+--------+-------------+-------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p><strong>再来一个需求：找出每个部门平均的薪水等级</strong></p>
+<ul>
+<li>第一步：找出每个员工的薪水等级，内连接查询，连接条件是e.sal between s.losal and s.hisal</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select e.ename,e.deptno,s.grade from emp as e join salgrade as s on e.sal between s.losal and s.hisal;</span><br><span class="line">+--------+--------+-------+</span><br><span class="line">| ename  | deptno | grade |</span><br><span class="line">+--------+--------+-------+</span><br><span class="line">| SMITH  |     20 |     1 |</span><br><span class="line">| ALLEN  |     30 |     3 |</span><br><span class="line">| WARD   |     30 |     2 |</span><br><span class="line">| JONES  |     20 |     4 |</span><br><span class="line">| MARTIN |     30 |     2 |</span><br><span class="line">| BLAKE  |     30 |     4 |</span><br><span class="line">| CLARK  |     10 |     4 |</span><br><span class="line">| SCOTT  |     20 |     4 |</span><br><span class="line">| KING   |     10 |     5 |</span><br><span class="line">| TURNER |     30 |     3 |</span><br><span class="line">| ADAMS  |     20 |     1 |</span><br><span class="line">| JAMES  |     30 |     1 |</span><br><span class="line">| FORD   |     20 |     4 |</span><br><span class="line">| MILLER |     10 |     2 |</span><br><span class="line">+--------+--------+-------+</span><br><span class="line">14 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第二步：将以上查询结果当作一张临时表t，针对表t以deptno进行分组，然后再对分组后的薪水等级求平均（avg）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select t.deptno,avg(t.grade) from (select e.ename,e.deptno,s.grade from emp as e join salgrade as s on e.sal between s.losal and s.hisal) as t group by t.deptno;</span><br><span class="line">+--------+--------------+</span><br><span class="line">| deptno | avg(t.grade) |</span><br><span class="line">+--------+--------------+</span><br><span class="line">|     20 |       2.8000 |</span><br><span class="line">|     30 |       2.5000 |</span><br><span class="line">|     10 |       3.6667 |</span><br><span class="line">+--------+--------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>但是对于这个需求而言，没必要这么麻烦，下面有一种简单且效率更高的方法（不使用from子句嵌套子查询）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select e.deptno,avg(s.grade) as avg_salgrade from emp as e join salgrade as s on e.sal between s.losal and hisal group by e.deptno;</span><br><span class="line">+--------+--------------+</span><br><span class="line">| deptno | avg_salgrade |</span><br><span class="line">+--------+--------------+</span><br><span class="line">|     20 |       2.8000 |</span><br><span class="line">|     30 |       2.5000 |</span><br><span class="line">|     10 |       3.6667 |</span><br><span class="line">+--------+--------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p><strong>注意：不要一味的追求子查询！效率优先</strong></p>
+<h2 id="select子句嵌套子查询"><a href="#select子句嵌套子查询" class="headerlink" title="select子句嵌套子查询"></a>select子句嵌套子查询</h2><p>select嵌套子查询十分少用，基本不用！！</p>
+<p><strong>需求：找出每个员工所在的部门名称，要求显示员工名和部门名</strong></p>
+<p>这个用连接查询就可以解决</p>
+<p>但是，这里为了学习子查询，我们重新考虑一下这个需求</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select e.ename,(select d.dname from dept as d where e.deptno = d.deptno) as dname from emp as e;</span><br><span class="line">+--------+------------+</span><br><span class="line">| ename  | dname      |</span><br><span class="line">+--------+------------+</span><br><span class="line">| SMITH  | RESEARCH   |</span><br><span class="line">| ALLEN  | SALES      |</span><br><span class="line">| WARD   | SALES      |</span><br><span class="line">| JONES  | RESEARCH   |</span><br><span class="line">| MARTIN | SALES      |</span><br><span class="line">| BLAKE  | SALES      |</span><br><span class="line">| CLARK  | ACCOUNTING |</span><br><span class="line">| SCOTT  | RESEARCH   |</span><br><span class="line">| KING   | ACCOUNTING |</span><br><span class="line">| TURNER | SALES      |</span><br><span class="line">| ADAMS  | RESEARCH   |</span><br><span class="line">| JAMES  | SALES      |</span><br><span class="line">| FORD   | RESEARCH   |</span><br><span class="line">| MILLER | ACCOUNTING |</span><br><span class="line">+--------+------------+</span><br><span class="line">14 rows in set (0.00 sec)</span><br><span class="line">/* 这是一个相关子查询，具体介绍见后面*/</span><br></pre></td></tr></table></figure>
+<p><strong>当然，如果你想写这个语句，先量一下你是不是发烧了！！连接查询它不香么？</strong></p>
+<h1 id="按结果分类"><a href="#按结果分类" class="headerlink" title="按结果分类"></a>按结果分类</h1><p>上面的where子句嵌套子查询、from子句嵌套子查询和select子句嵌套子查询是根据子查询所处的位置来分类的。下面我们<strong>根据子查询出来的结果进行分类</strong>，主要包括：</p>
+<ul>
+<li>标量子查询</li>
+<li>列子查询</li>
+<li>行子查询</li>
+<li>表子查询</li>
+</ul>
+<p>下面一一介绍！！</p>
+<h2 id="标量子查询"><a href="#标量子查询" class="headerlink" title="标量子查询"></a>标量子查询</h2><p>如果我们想查一下名叫<code>&#39;杜琦燕&#39;</code>的学生的各科成绩该怎么办呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM student_score WHERE number = (SELECT number FROM student_info WHERE name = &apos;杜琦燕&apos;);</span><br><span class="line">+----------+-----------------------------+-------+</span><br><span class="line">| number   | subject                     | score |</span><br><span class="line">+----------+-----------------------------+-------+</span><br><span class="line">| 20180102 | 母猪的产后护理              |   100 |</span><br><span class="line">| 20180102 | 论萨达姆的战争准备          |    98 |</span><br><span class="line">+----------+-----------------------------+-------+</span><br><span class="line">2 rows in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+<p>我们把第二条查询语句用小括号<code>()</code>扩起来作为一个操作数放到了第一条的搜索条件处，这样就起到了合并两条查询语句的作用。小括号中的查询语句也被称为<code>子查询</code>或者<code>内层查询</code>，使用<code>内层查询</code>的结果作为搜索条件的操作数的查询称为<code>外层查询</code>。如果你在一个查询语句中需要用到更多的表的话，那么在一个子查询中可以继续嵌套另一个子查询。</p>
+<p>在这个例子中的子查询的结果只有一个值(也就是<code>&#39;杜琦燕&#39;</code>的学号)，这种子查询称之为<strong>标量子查询</strong>。</p>
+<h2 id="列子查询"><a href="#列子查询" class="headerlink" title="列子查询"></a>列子查询</h2><p>如果我们想查询<code>&#39;计算机科学与工程&#39;</code>专业的学生的成绩，我们需要先从<code>student_info</code>表中根据专业名称找到对应的学生学号，然后再通过学号到<code>student_score</code>表中找着对应的成绩信息，所以这个问题的解决方案就是书写下述两个查询语句：</p>
+<ul>
+<li>第一步：找出计算机科学与工程相应学生的学号</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select number from student_info where major=&apos;计算机科学与工程&apos;;</span><br><span class="line">+----------+</span><br><span class="line">| number   |</span><br><span class="line">+----------+</span><br><span class="line">| 20180101 |</span><br><span class="line">| 20180102 |</span><br><span class="line">+----------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第二步：在student_score中找对应学号的成绩</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM student_score WHERE number IN (20180101, 20180102);</span><br><span class="line">+----------+-----------------------------+-------+</span><br><span class="line">| number   | subject                     | score |</span><br><span class="line">+----------+-----------------------------+-------+</span><br><span class="line">| 20180101 | 母猪的产后护理              |    78 |</span><br><span class="line">| 20180101 | 论萨达姆的战争准备          |    88 |</span><br><span class="line">| 20180102 | 母猪的产后护理              |   100 |</span><br><span class="line">| 20180102 | 论萨达姆的战争准备          |    98 |</span><br><span class="line">+----------+-----------------------------+-------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>第二条查询语句的搜索条件也是用到了第一条查询语句的查询结果，我们自然可以想到把第一条查询语句作为<code>内层查询</code>，把第二条查询语句作为<code>外层</code>查询来将这两个查询语句合并为一个查询语句，就像这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM student_score WHERE number IN (SELECT number FROM student_info WHERE major = &apos;计算机科学与工程&apos;);</span><br><span class="line">+----------+-----------------------------+-------+</span><br><span class="line">| number   | subject                     | score |</span><br><span class="line">+----------+-----------------------------+-------+</span><br><span class="line">| 20180101 | 母猪的产后护理              |    78 |</span><br><span class="line">| 20180101 | 论萨达姆的战争准备          |    88 |</span><br><span class="line">| 20180102 | 母猪的产后护理              |   100 |</span><br><span class="line">| 20180102 | 论萨达姆的战争准备          |    98 |</span><br><span class="line">+----------+-----------------------------+-------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>很显然第一条查询语句的结果集中并不是一个单独的值，而是一个列（本例中第一条查询语句的结果集中该列包含2个值，分别是：<code>20180101</code>和<code>20180102</code>），所以它对应的子查询也被称之为<code>列子查询</code>。因为<code>列子查询</code>得到的结果是多个值，相当于一个列表。我们前边的章节中说过，<code>IN</code>和<code>NOT IN</code>操作符正好是用来匹配列表的，上边使用的例子是使用<code>IN</code>操作符和子查询的结果组成表达式来作为外层查询的搜索条件的。<code>NOT IN</code>和<code>IN</code>的操作符的使用方式是一样的，只不过语义不同罢了，我们就不赘述了。</p>
+<h2 id="行子查询"><a href="#行子查询" class="headerlink" title="行子查询"></a>行子查询</h2><p>有<code>列子查询</code>，大家肯定就好奇有没有<code>行子查询</code>。哈哈，当然有了，只要子查询的结果集中最多只包含一条记录，而且这条记录中有超过一个列的数据（如果该条记录只包含一个列的话，该子查询就成了<code>标量子查询</code>），那么这个子查询就可以被称之为<code>行子查询</code>，比如这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM student_score WHERE (number, subject) = (SELECT number, &apos;母猪的产后护理&apos; FROM student_info LIMIT 1);</span><br><span class="line">+----------+-----------------------+-------+</span><br><span class="line">| number   | subject               | score |</span><br><span class="line">+----------+-----------------------+-------+</span><br><span class="line">| 20180104 | 母猪的产后护理        |    55 |</span><br><span class="line">+----------+-----------------------+-------+</span><br><span class="line">1 row in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+<p>该子查询的查询列表是<code>number, &#39;母猪的产后护理&#39;</code>，其中<code>number</code>是列名，<code>&#39;母猪的产后护理&#39;</code>是一个常数。我们在子查询语句中加了<code>LIMIT 1</code>这个子句，意味着子查询最多只能返回一条记录，所以该子查询就可以被看作一个<code>行子查询</code>。</p>
+<p>由于上述的子查询执行后产生的结果集是一个行（包含2个列），所以用作等值比较的另一个操作数也得是2个值，本例中就是<code>(number, subject)</code>（注意，这两个值必须用小括号<code>()</code>扩住，否则会产生歧义）。它表达的语义就是：先获取到子查询的执行结果，然后再执行外层查询，如果<code>student_score</code>中记录的<code>number</code>等于子查询结果中的<code>number</code>列并且<code>subject</code>列等于子查询结果中的<code>&#39;母猪的产后护理&#39;</code>，那么就将该记录加入到结果集。</p>
+<h2 id="表子查询"><a href="#表子查询" class="headerlink" title="表子查询"></a>表子查询</h2><p>如果子查询结果集中包含<strong>多行多列</strong>，那么这个子查询也可以被称之为<code>表子查询</code>，比如这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM student_score WHERE (number, subject) IN (SELECT number, &apos;母猪的产后护理&apos; FROM student_info WHERE major = &apos;计算机科学与工程&apos;);</span><br><span class="line">+----------+-----------------------+-------+</span><br><span class="line">| number   | subject               | score |</span><br><span class="line">+----------+-----------------------+-------+</span><br><span class="line">| 20180101 | 母猪的产后护理        |    78 |</span><br><span class="line">| 20180102 | 母猪的产后护理        |   100 |</span><br><span class="line">+----------+-----------------------+-------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h1 id="按查询顺序分类"><a href="#按查询顺序分类" class="headerlink" title="按查询顺序分类"></a>按查询顺序分类</h1><p>按内层查询和外层查询的执行顺序，可分为两种：</p>
+<ul>
+<li>不相关子查询</li>
+<li>相关子查询</li>
+</ul>
+<p>下面首先引入一个操作符</p>
+<h2 id="EXISTS和NOT-EXISTS"><a href="#EXISTS和NOT-EXISTS" class="headerlink" title="EXISTS和NOT EXISTS"></a>EXISTS和NOT EXISTS</h2><p>有时候外层查询并不关心子查询中的结果是什么，而<strong>只关心子查询的结果集是不是为空集</strong>，这时可以用到下边这两个操作符：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>示例</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EXISTS</td>
+<td>EXISTS(SELECT…)</td>
+<td>当子查询结果集不是空集时表达式为真</td>
+</tr>
+<tr>
+<td>NOT EXISTS</td>
+<td>NOT EXISTS(SELECT…)</td>
+<td>当子查询结果集是空集时表达式为真</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>我们来举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM student_score WHERE EXISTS (SELECT * FROM student_info WHERE number = 20180108);</span><br><span class="line">Empty set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>其中子查询的意思是在<code>student_info</code>表中查找学号为<code>20180108</code>的学生信息，很显然并没有学号为<code>20180108</code>的学生，所以子查询的结果集是一个空集，于是<code>EXISTS</code>表达式的结果为<code>FALSE</code>，所以外层查询也就不查了，直接返回了一个<code>Empty set</code>，表示没有结果。可以自己试一下<code>NOT EXISTS</code>的使用，和<code>EXISTS</code>用法一样。</p>
+<h2 id="不相关子查询"><a href="#不相关子查询" class="headerlink" title="不相关子查询"></a>不相关子查询</h2><p>当子查询和外层查询没有依赖关系，也就是说子查询可以独立运行并产生结果之后，再拿结果作为外层查询的条件去执行外层查询，这种子查询称为<code>不相关子查询</code>，比如下边这个查询：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM student_score WHERE number = (SELECT number FROM student_info WHERE name = &apos;杜琦燕&apos;);</span><br><span class="line">+----------+-----------------------------+-------+</span><br><span class="line">| number   | subject                     | score |</span><br><span class="line">+----------+-----------------------------+-------+</span><br><span class="line">| 20180102 | 母猪的产后护理              |   100 |</span><br><span class="line">| 20180102 | 论萨达姆的战争准备          |    98 |</span><br><span class="line">+----------+-----------------------------+-------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>子查询中只用到了<code>student_info</code>表而没有使用到<code>student_score</code>表，它可以单独运行并产生结果，这就是一种典型的<code>不相关子查询</code>。</p>
+<p><strong>上面的不相关子查询如何执行呢？</strong></p>
+<ul>
+<li>先执行外层查询的from把student_score加载进来；</li>
+<li>然后执行外层循环的where<ul>
+<li>先执行外层循环where子句中的子查询，由于是不相关子查询，所以查询结束后可以把查询结果缓存起来，将查询结果返回给外层查询<ul>
+<li>子循环的查询语句也遵循以下顺序：from -&gt; where -&gt; select</li>
+</ul>
+</li>
+<li>从student_score中一条一条的取记录，利用where条件进行筛选（记住，只有第一次筛选的时候才进入子查询，后面就不再进入了，直接去缓存里面取值！！<strong>这里和相关子查询有区别</strong>）。筛选完成后会得到一个结果集</li>
+</ul>
+</li>
+<li>最后再执行外层循环的select语句</li>
+</ul>
+<p>对于不相关子查询而言，内层查询的执行独立于外层查询，<strong>内层查询仅执行一次</strong>，执行完毕后将结果作为外层查询的条件使用</p>
+<h2 id="相关子查询"><a href="#相关子查询" class="headerlink" title="相关子查询"></a>相关子查询</h2><p>而有时候我们需要在子查询的语句中引用到外层查询的值，这样的话子查询就不能当作一个独立的语句去执行，这种子查询被称为<code>相关子查询</code>。比方说我们想查看一些学生的基本信息，但是前提是这些学生在<code>student_score</code>表中有成绩记录，那可以这么写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT number, name, id_number, major FROM student_info WHERE EXISTS (SELECT * FROM student_score WHERE student_score.number = student_info.number);</span><br><span class="line">+----------+-----------+--------------------+--------------------------+</span><br><span class="line">| number   | name      | id_number          | major                    |</span><br><span class="line">+----------+-----------+--------------------+--------------------------+</span><br><span class="line">| 20180101 | 杜子腾    | 158177199901044792 | 计算机科学与工程         |</span><br><span class="line">| 20180102 | 杜琦燕    | 151008199801178529 | 计算机科学与工程         |</span><br><span class="line">| 20180103 | 范统      | 17156319980116959X | 软件工程                 |</span><br><span class="line">| 20180104 | 史珍香    | 141992199701078600 | 软件工程                 |</span><br><span class="line">+----------+-----------+--------------------+--------------------------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>这个例子中的<code>相关子查询</code>的查询过程是这样的（<strong>无论是相关子查询还是不相关子查询，都要严格遵守SQL查询语句执行顺序</strong>，见<a href="https://pringce.github.io/2020/03/31/SQL查询语句的定义顺序和执行顺序/#more" target="_blank" rel="noopener">SQL查询语句的定义顺序和执行顺序</a>）：</p>
+<ul>
+<li>先执行外层查询获得到<code>student_info</code>表的第一条记录，发现它的<code>number</code>值是<code>20180101</code>。把<code>20180101</code>当作参数传入到子查询，此时子查询的意思是判断<code>student_score</code>表的<code>number</code>字段是否有<code>20180101</code>这个值存在，子查询的结果是该值存在，所以整个<code>EXISTS</code>表达式的值为<code>TRUE</code>，那么<code>student_info</code>表的第一条记录可以被加入到结果集。</li>
+<li>再执行外层查询获得到<code>student_info</code>表的第二条记录，发现它的<code>number</code>值是<code>20180102</code>，与上边的步骤相同，<code>student_info</code>表的第二条记录也可以被加入到结果集。</li>
+<li>与上边类似，<code>student_info</code>表的第三条记录也可以被加入到结果集。</li>
+<li>与上边类似，<code>student_info</code>表的第四条记录也可以被加入到结果集。</li>
+<li>再执行外层查询获得到<code>student_info</code>表的第五条记录，发现它的<code>number</code>值是<code>20180105</code>，把<code>20180105</code>当作参数传入到它的子查询，此时子查询的意思是判断<code>student_score</code>表的<code>number</code>字段是否有<code>20180105</code>这个值存在，子查询的结果是该值不存在，所以整个<code>EXISTS</code>表达式的值为<code>FALSE</code>，那么<code>student_info</code>表的第五条记录就不被加入结果集中。</li>
+<li>与上一步骤类似，<code>student_info</code>表的第六条记录也不被加入结果集中。</li>
+<li><code>student_info</code>表没有更多的记录了，结束查询。</li>
+</ul>
+<p>注意：在相关子查询中，<strong>内层查询的执行依赖于外层查询的数据，外部查询每执行一次，内部查询也会执行一次</strong>。这里和不相关子查询有较大的区别</p>
+<p>个人理解：<strong>由于相关子查询的内层查询依赖于外层查询，所以不能放在from子句后面，只能放在where和select子句后面！</strong> </p>
+<p><strong>为什么呢？</strong>个人理解是因为如果放在from子句中，肯定是存在连接查询的，和join共用。由于from…join…on是一套语句，基本可以认为同时进行，所以外层查询的表是不能用在内层查询中的（因为它们是同时载入进来的，当然不能用！只有from…join…on这一套语句用完之后，在其执行顺序后面的关键字语句才能使用该表名或者其表别名）</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+            <a href="/tags/个人博客/" rel="tag"># 个人博客</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/10/连接查询/" rel="next" title="连接查询">
+                <i class="fa fa-chevron-left"></i> 连接查询
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/13/union关键字/" rel="prev" title="union关键字">
+                union关键字 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  <div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------ 本文结束------</div>
+    
+</div>
+    
+ </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/images.jpg" alt="CodeMonkey">
+            
+              <p class="site-author-name" itemprop="name">CodeMonkey</p>
+              <p class="site-description motion-element" itemprop="description">Biter & Developer</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/pringce" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:bit_ljy@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/guihenao4010" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://music.163.com/#/playlist?id=147734978" target="_blank" title="Music">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Music</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#按位置分类"><span class="nav-number">1.</span> <span class="nav-text">按位置分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#where子句中嵌套子查询"><span class="nav-number">1.1.</span> <span class="nav-text">where子句中嵌套子查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#from子句中嵌套子查询"><span class="nav-number">1.2.</span> <span class="nav-text">from子句中嵌套子查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#select子句嵌套子查询"><span class="nav-number">1.3.</span> <span class="nav-text">select子句嵌套子查询</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#按结果分类"><span class="nav-number">2.</span> <span class="nav-text">按结果分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标量子查询"><span class="nav-number">2.1.</span> <span class="nav-text">标量子查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列子查询"><span class="nav-number">2.2.</span> <span class="nav-text">列子查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#行子查询"><span class="nav-number">2.3.</span> <span class="nav-text">行子查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表子查询"><span class="nav-number">2.4.</span> <span class="nav-text">表子查询</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#按查询顺序分类"><span class="nav-number">3.</span> <span class="nav-text">按查询顺序分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#EXISTS和NOT-EXISTS"><span class="nav-number">3.1.</span> <span class="nav-text">EXISTS和NOT EXISTS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不相关子查询"><span class="nav-number">3.2.</span> <span class="nav-text">不相关子查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关子查询"><span class="nav-number">3.3.</span> <span class="nav-text">相关子查询</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共116.6k字</span>
+</div>
+<div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CodeMonkey</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">116.6k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
+
+

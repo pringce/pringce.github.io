@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="CodeMonkey · 程序猴">
 <meta property="og:description" content="对于使用MySQL的我们来说，平时使用频率最高的还是查询功能，就是按照我们给定的要求将数据给查出来。 查询查询单个列查看某个表中的某一列的数据的通用格式是这样： 1SELECT 列名 FROM 表名; 也就是说把需要查询的列名放到单词SELECT后边就好了，比如查看student_info表中的number列的数据可以这么写： 123456789101112mysql&amp;gt; SELECT num">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-09T13:01:40.179Z">
+<meta property="og:updated_time" content="2020-04-13T01:37:42.883Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL之查询、去重、限制条数、排序">
 <meta name="twitter:description" content="对于使用MySQL的我们来说，平时使用频率最高的还是查询功能，就是按照我们给定的要求将数据给查出来。 查询查询单个列查看某个表中的某一列的数据的通用格式是这样： 1SELECT 列名 FROM 表名; 也就是说把需要查询的列名放到单词SELECT后边就好了，比如查看student_info表中的number列的数据可以这么写： 123456789101112mysql&amp;gt; SELECT num">
@@ -354,8 +354,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-09T21:01:40+08:00">
-                2020-04-09
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-13T09:37:42+08:00">
+                2020-04-13
               </time>
             
           </span>
@@ -404,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.2k
+                  2.4k
                 </span>
               
 
@@ -480,13 +480,26 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT DISTINCT 列名1, 列名2, ... 列名n  FROM 表名;</span><br></pre></td></tr></table></figure>
 <p>结果如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT DISTINCT department, major FROM student_info;</span><br><span class="line">+------------+------------------+</span><br><span class="line">| department | major            |</span><br><span class="line">+------------+------------------+</span><br><span class="line">| 计算机学院 | 计算机科学与工程 |</span><br><span class="line">| 计算机学院 | 软件工程         |</span><br><span class="line">| 航天学院   | 飞行器设计       |</span><br><span class="line">| 航天学院   | 电子信息         |</span><br><span class="line">+------------+------------------+</span><br><span class="line">4 rows in set</span><br></pre></td></tr></table></figure>
-<h1 id="限制查询结果条数"><a href="#限制查询结果条数" class="headerlink" title="限制查询结果条数"></a>限制查询结果条数</h1><p>有时候查询结果的条数会很多，都显示出来可能会撑爆屏幕～ 所以<code>MySQL</code>给我们提供了一种限制结果集中的记录条数的方式，就是在查询语句的末尾使用这样的语法：</p>
+<p><strong>注意：distinct只能出现在所有字段的最前方</strong>，即前面不能出现的别的字段，要不然查询出来的数目不对应（因为有的去重了，有的没去重）</p>
+<h1 id="限制查询结果条数"><a href="#限制查询结果条数" class="headerlink" title="限制查询结果条数"></a>限制查询结果条数</h1><p>注意：<strong>LIMIT是MySQL特有的，其它数据库不通用（Oracle有一个相同的机制，叫做rownum）</strong></p>
+<p>有时候查询结果的条数会很多，都显示出来可能会撑爆屏幕～ 所以<code>MySQL</code>给我们提供了一种限制结果集中的记录条数的方式，就是在查询语句的末尾使用这样的语法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LIMIT 开始行, 限制条数;</span><br></pre></td></tr></table></figure>
-<p><code>开始行</code>指的是我们想从第几行数据开始查询，<code>限制条数</code>是结果集中最多包含多少条记录。</p>
-<p>比如我们查询一下<code>student_info</code>表，从第0条记录开始，最多查询2条记录可以这么写：</p>
+<p><code>开始行</code>指的是我们想从第几行数据开始查询，<code>限制条数</code>是结果集中最多包含多少条记录。从0开始，0代表第一行</p>
+<p>比如我们查询一下<code>student_info</code>表，从第1条记录开始，最多查询2条记录可以这么写：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT number, name, id_number, major FROM student_info LIMIT 0, 2;</span><br><span class="line">+----------+-----------+--------------------+--------------------------+</span><br><span class="line">| number   | name      | id_number          | major                    |</span><br><span class="line">+----------+-----------+--------------------+--------------------------+</span><br><span class="line">| 20180101 | 杜子腾    | 158177199901044792 | 计算机科学与工程         |</span><br><span class="line">| 20180102 | 杜琦燕    | 151008199801178529 | 计算机科学与工程         |</span><br><span class="line">+----------+-----------+--------------------+--------------------------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<p><strong>注意</strong>：如果指定的<code>开始行</code>大于表中的最大行数，那查询结果就什么都没有：开始行默认从第0行开始（计算机中的第0行是我们平时说的第一行）。如果查询的结果条数不超过<code>限制条数</code>，那就可以全部显式出来。</p>
+<p><strong>注意</strong>：如果指定的<code>开始行</code>大于表中的最大行数，那查询结果就什么都没有：开始行默认从第0行开始（计算机中的第0行是我们平时说的第一行）。如果查询的结果条数不超过<code>限制条数</code>，那就可以全部显式出来</p>
 <p><code>LIMIT</code>后边也可以只有一个参数，那这个参数就代表着<code>限制行数</code>。也就是说我们可以不指定<code>开始行</code>，<strong>默认的开始行就是第0行</strong>。</p>
+<p><strong>重点：通用的标准分页SQL？</strong></p>
+<p>每页显示三条记录：</p>
+<p>第一页：0,3</p>
+<p>第二页：3,3</p>
+<p>第三页：6,3</p>
+<p>第五页：9,3</p>
+<p>……..</p>
+<p>通用公式如下：</p>
+<p>每页显示pageSize记录：</p>
+<p>第pageNo页：<strong>（pageNo-1）*pageSize，pageSize</strong></p>
+<p>pageSize是每页显示多少条记录，pageNo是显示第几页</p>
 <h1 id="对查询结果排序"><a href="#对查询结果排序" class="headerlink" title="对查询结果排序"></a><strong>对查询结果排序</strong></h1><p>我们之前查询<code>number</code>列的时候得到的记录并不是有序的，这是为什么呢？<code>MySQL</code>其实默认会按照这些数据底层存储的顺序来给我们返回数据，但是这些数据可能会经过更新或者删除，如果我们不明确指定按照什么顺序来排序返回结果的话，那我们可以认为该结果中记录的顺序是不确定的。换句话说如<strong>果我们想让返回结果中的记录按照某种特定的规则排序，那我们必须显式的指定排序规则</strong>。</p>
 <h2 id="按照单个列的值排序"><a href="#按照单个列的值排序" class="headerlink" title="按照单个列的值排序"></a>按照单个列的值排序</h2><p>我们可以用下边的语法来指定返回结果的记录按照某一列的值进行排序：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ORDER BY 列名 ASC|DESC</span><br></pre></td></tr></table></figure>
@@ -634,7 +647,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -747,7 +760,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共82.8k字</span>
+  <span class="post-count">博客全站共116.6k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -763,7 +776,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">82.8k</span>
+    <span title="Site words total count">116.6k</span>
   
 </div>
 

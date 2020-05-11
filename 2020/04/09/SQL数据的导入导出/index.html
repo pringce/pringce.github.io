@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="CodeMonkey · 程序猴">
 <meta property="og:description" content="利用数据库开发时，可能会存在下面的小需求：  我们想将数据库备份一下，以免后面有小白兔删库跑路~ 想将一个数据库里面的表导入到另一个数据库里面 下班想回家加班，就把单位的数据库备份一份带回去开发  凡是上面的需求，都需要将数据库导出成sql脚本文件，会生成一个*.sql文件。下面我们分别讲解一下如何导出和导入 导出数据其实很简单的，就是一条语句就可以了，首先我们打开cmd，不用进mysql指令界面">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-09T03:38:42.095Z">
+<meta property="og:updated_time" content="2020-04-18T08:31:49.930Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL数据的导入导出">
 <meta name="twitter:description" content="利用数据库开发时，可能会存在下面的小需求：  我们想将数据库备份一下，以免后面有小白兔删库跑路~ 想将一个数据库里面的表导入到另一个数据库里面 下班想回家加班，就把单位的数据库备份一份带回去开发  凡是上面的需求，都需要将数据库导出成sql脚本文件，会生成一个*.sql文件。下面我们分别讲解一下如何导出和导入 导出数据其实很简单的，就是一条语句就可以了，首先我们打开cmd，不用进mysql指令界面">
@@ -354,8 +354,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-09T11:38:42+08:00">
-                2020-04-09
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-18T16:31:49+08:00">
+                2020-04-18
               </time>
             
           </span>
@@ -404,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  674
+                  679
                 </span>
               
 
@@ -448,7 +448,7 @@
 <li>下班想回家加班，就把单位的数据库备份一份带回去开发</li>
 </ul>
 <p>凡是上面的需求，都需要将数据库导出成sql脚本文件，会生成一个*.sql文件。下面我们分别讲解一下如何导出和导入</p>
-<h3 id="导出数据"><a href="#导出数据" class="headerlink" title="导出数据"></a>导出数据</h3><p>其实很简单的，就是一条语句就可以了，首先我们打开cmd，<strong>不用进mysql指令界面</strong>，直接按照下列格式将导出语句敲进去，然后再输入密码即可了。但有时候我们想导出整个数据库，有时候又想导出数据库里面的一个表，这个时候就会有细小的差别，下面分别说一下：</p>
+<h3 id="导出数据"><a href="#导出数据" class="headerlink" title="导出数据"></a>导出数据</h3><p>其实很简单的，就是一条语句就可以了，首先我们打开cmd，<strong>不用进mysql指令界面</strong>，直接在windows的dos命令窗口按照下列格式将导出语句敲进去，然后再输入密码即可了。但有时候我们想导出整个数据库，有时候又想导出数据库里面的一个表，这个时候就会有细小的差别，下面分别说一下：</p>
 <ul>
 <li><strong>导出整个数据库</strong></li>
 </ul>
@@ -465,12 +465,12 @@
 <li><strong>导出一个数据库结构</strong></li>
 </ul>
 <p>意味着只导出数据库中所有表的结构，不导出数据</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u用户名 -p -d 数据库名&gt;路径+导出的文件名</span><br><span class="line">mysqldump -u dbuser -p -d run&gt;d:/run.sql</span><br><span class="line"><span class="comment">// -d表示没有数据</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u用户名 -p -d 数据库名&gt;路径+导出的文件名</span><br><span class="line">mysqldump -uroot -p -d run&gt;d:/run.sql</span><br><span class="line"><span class="comment">// -d表示没有数据</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li><strong>只导出一个表结构</strong></li>
 </ul>
 <p>意味着只导出一个表中的结构，不导出数据</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u用户名 -p -d 数据库名 表名&gt;路径+导出的文件名</span><br><span class="line">mysqldump -u dbuser -p -d run t1&gt;d:/t1.sql</span><br><span class="line"><span class="comment">// -d表示没有数据</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u用户名 -p -d 数据库名 表名&gt;路径+导出的文件名</span><br><span class="line">mysqldump -uroot -p -d run t1&gt;d:/t1.sql</span><br><span class="line"><span class="comment">// -d表示没有数据</span></span><br></pre></td></tr></table></figure>
 <h3 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h3><ul>
 <li>进入mysql控制台</li>
 </ul>
@@ -615,7 +615,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -728,7 +728,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共82.8k字</span>
+  <span class="post-count">博客全站共116.6k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -744,7 +744,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">82.8k</span>
+    <span title="Site words total count">116.6k</span>
   
 </div>
 
