@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/10/27/MySQL数据类型/16d6779ad10263a2.png">
 <meta property="og:image" content="http://yoursite.com/2019/10/27/MySQL数据类型/16d6779ad21ff99f.png">
 <meta property="og:image" content="http://yoursite.com/2019/10/27/MySQL数据类型/16d6779ad395a41d.png">
-<meta property="og:updated_time" content="2020-04-09T02:01:38.117Z">
+<meta property="og:updated_time" content="2020-05-12T03:14:33.274Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL数据类型">
 <meta name="twitter:description" content="​        MySQL支持所有的SQL数据类型，主要分为以下四类：  数值类型 字符串类型 时间日期类型 二进制类型  一、数值类型​        MySQL数值类型有9种，其中整数类型有5种（INTEGER、TINYINT、SMALLINT、MEDIUMINT和BIGINT）、浮点类型2种（float(M,D)、double(M,D)）、定点数1种（decimal(M,D)）和bit(M">
@@ -362,8 +362,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-09T10:01:38+08:00">
-                2020-04-09
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-12T11:14:33+08:00">
+                2020-05-12
               </time>
             
           </span>
@@ -412,7 +412,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  6.4k
+                  6.6k
                 </span>
               
 
@@ -428,7 +428,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  23
+                  24
                 </span>
               
             </div>
@@ -565,7 +565,10 @@
 <p>​        三个主要部分是：</p>
 <ul>
 <li>符号：表示浮点数是正数还是负数，0表示正数，1表示负数</li>
-<li>指数部分：类似于科学计数法中的M*10^N^中的N，只不过这里是以2为底数而不是10。需要注意的是，这部分中以2^7^-1即127，也即01111111代表指数部分为0，转换时需要根据127作偏移调整。</li>
+<li>指数部分：类似于科学计数法中的M*10^N^中的N，只不过这里是以2为底数而不是10。需要注意的是，这部分中以2^7^-1即127，也即01111111代表指数部分为0，转换时需要根据127作偏移调整。<ul>
+<li><strong>为什么要以127作为偏移量呢？</strong>计算机表示单精度浮点数时，是用8位去存储指数部分，在数值上面，表示0 ~ 255，但是我们同样需要有负指数，正负指数的位数量为了均等，各自一半，-127 ~ 128，0是特殊点，特殊处理。储存时候会加上127，这样就刚刚好是0~255，就能很好的储存了，不然，不移量的话需要判断符号位来判断数值的正负。</li>
+</ul>
+</li>
 <li>尾数部分：浮点数中具体数值的实际表示。</li>
 </ul>
 <p>​        下面展示实际转换过程：</p>
@@ -641,7 +644,7 @@
 </tbody>
 </table>
 </div>
-<p>M取值范围为<strong>0~255</strong>。<strong>FLOAT只保证7位有效数字的准确性</strong>，所以FLOAT(M,D)中，M&lt;=6时，数字通常是准确的。如果M和D都有明确定义，其超出范围后的处理同decimal。</p>
+<p>M取值范围为<strong>0~255</strong>。<strong>FLOAT只保证7位有效数字的准确性</strong>，所以FLOAT(M,D)中，M&lt;=7时，数字通常是准确的。如果M和D都有明确定义，其超出范围后的处理同decimal。</p>
 <p>D取值范围为<strong>0~30</strong>，同时必须<strong>&lt;=M</strong>。<strong>double只保证16位有效数字的准确性</strong>，所以DOUBLE(M,D)中，M&lt;=16时，数字通常是准确的。如果M和D都有明确定义，其超出范围后的处理同decimal。</p>
 <p><strong>FLOAT和DOUBLE中，若M的定义分别超出7和16，则多出的有效数字部分，取值是不定的，通常数值上会发生错误。因为浮点数是不准确的，所以我们要避免使用“=”来判断两个数是否相等。</strong></p>
 <ul>
@@ -746,7 +749,7 @@
 <p><strong>无符号数值类型</strong></p>
 <p>​        <strong>unsigned</strong>是MySQL自定义的类型，主要有以下用途：</p>
 <ul>
-<li><p>起到约束数值的作用，即非负数</p>
+<li><p>起到约束数值的作用，即非负数（如果插入的数据是负数则会报错： Out of range value for column）</p>
 </li>
 <li><p>增加数值范围</p>
 <p><strong>unsigned可以用于整数、浮点数和定点数。</strong>MySQL提供了一个表示无符号数值类型的方式，就是在原数值类型后加一个单词unsigned</p>
@@ -844,8 +847,11 @@
 </li>
 <li><p>如果存进去的是NULL，timestamp会自动存储当前时间，而datetime会储存NULL</p>
 </li>
-<li><p>timestamp类型可以在修改时自动更新</p>
+<li><p>在定义timestamp类型时，加入了default current_timestamp。则无需显示的插入时间数据，在插入数据时会默认插入系统时间</p>
+</li>
+<li><p>timestamp类型可以在修改时自动更新，列定义如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uptime timestamp <span class="keyword">default</span> current_timestamp on update current_timestamp</span><br></pre></td></tr></table></figure>
+<p>上述定义后，如果更新某一列的数据时，会默认更新该列的为当前系统时间</p>
 </li>
 </ul>
 <h3 id="三、字符串类型"><a href="#三、字符串类型" class="headerlink" title="三、字符串类型"></a>三、字符串类型</h3><p>​        字符是面向人的概念，如果想在计算机中表示字符，那就需要将该字符与一个特定的二进制序列对应起来，这个映射过程称为<strong>编码</strong>。但这种映射关系不是唯一的，不同的人制作了不同的编码方案，根据表示一个字符使用的字节数量是不是固定的，编码方案可以分为以下两种：</p>
@@ -1119,7 +1125,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1232,7 +1238,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共116.6k字</span>
+  <span class="post-count">博客全站共122.1k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -1248,7 +1254,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">116.6k</span>
+    <span title="Site words total count">122.1k</span>
   
 </div>
 

@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="CodeMonkey · 程序猴">
 <meta property="og:description" content="Java为8种数据类型又对应准备了8种包装类型，8种包装类型属于引用数据类型 为什么需要包装类？  调用某个方法的时候需要传一个数字进去，但是该方法的参数类型为Object，所以此时无法直接传递；可以传一个数字对应的包装类进去，8种基本数据类型对应的包装类Sun公司已经写好了，我们直接使用即可  8种包装类如下：  byte：java.lang.Byte（父类是Number，Number的父类是O">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-08T07:40:46.703Z">
+<meta property="og:updated_time" content="2020-05-14T03:37:28.846Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="包装类">
 <meta name="twitter:description" content="Java为8种数据类型又对应准备了8种包装类型，8种包装类型属于引用数据类型 为什么需要包装类？  调用某个方法的时候需要传一个数字进去，但是该方法的参数类型为Object，所以此时无法直接传递；可以传一个数字对应的包装类进去，8种基本数据类型对应的包装类Sun公司已经写好了，我们直接使用即可  8种包装类如下：  byte：java.lang.Byte（父类是Number，Number的父类是O">
@@ -354,8 +354,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-08T15:40:46+08:00">
-                2020-05-08
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-14T11:37:28+08:00">
+                2020-05-14
               </time>
             
           </span>
@@ -404,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.1k
+                  1.2k
                 </span>
               
 
@@ -477,7 +477,7 @@
 <p><strong>自动装箱和自动拆箱</strong></p>
 <p>在JDK1.5之后，支持自动装箱和自动拆箱。</p>
 <p>优点：方便编程</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Array</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 自动装箱:基本数据类型自动转换成包装类</span></span><br><span class="line">        Integer x = <span class="number">100</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 自动拆箱:包装类自动转换成基本数据类型</span></span><br><span class="line">        <span class="keyword">int</span> y = x;</span><br><span class="line">        </span><br><span class="line">        Integer z = <span class="number">1000</span>;</span><br><span class="line">        <span class="comment">// z是一个引用，还是保存了一个对象的内存地址</span></span><br><span class="line">        <span class="comment">// 为什么没有报错？</span></span><br><span class="line">        <span class="comment">// +号两边要求是基本数据类型的数字，因为这里会进行自动拆箱</span></span><br><span class="line">        System.out.println(z+<span class="number">1</span>);</span><br><span class="line">        </span><br><span class="line">        Integer a = <span class="number">10000</span>;</span><br><span class="line">        Integer b = <span class="number">10000</span>;</span><br><span class="line">        <span class="comment">// ==比较的是对象的内存地址，不会自动拆箱</span></span><br><span class="line">        <span class="comment">// 只有加减乘除才会自动拆箱</span></span><br><span class="line">        System.out.println(a==b); <span class="comment">// false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Array</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 自动装箱:基本数据类型自动转换成包装类</span></span><br><span class="line">        Integer x = <span class="number">100</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 自动拆箱:包装类自动转换成基本数据类型</span></span><br><span class="line">        <span class="keyword">int</span> y = x;</span><br><span class="line">        </span><br><span class="line">        Integer z = <span class="number">1000</span>;</span><br><span class="line">        <span class="comment">// z是一个引用，还是保存了一个对象的内存地址</span></span><br><span class="line">        <span class="comment">// 为什么没有报错？</span></span><br><span class="line">        <span class="comment">// +号两边要求是基本数据类型的数字，因为这里会进行自动拆箱</span></span><br><span class="line">        System.out.println(z+<span class="number">1</span>);</span><br><span class="line">        </span><br><span class="line">        Integer a = <span class="number">10000</span>;</span><br><span class="line">        Integer b = <span class="number">10000</span>;</span><br><span class="line">        <span class="comment">// ==比较的是对象的内存地址，不会自动拆箱</span></span><br><span class="line">        <span class="comment">// 只有加减乘除才会自动拆箱</span></span><br><span class="line">        <span class="comment">//==两边有一个是基本数据类型会自动拆箱，如果都是包装类则不会自动拆箱</span></span><br><span class="line">        System.out.println(a==b); <span class="comment">// false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在Java中为了提高执行效率，将<strong>[-128,127]</strong>之间的所有的包装对象在<strong>类加载</strong>的时候就创建好，放到了一个方法区的<strong>整数型常量池</strong>当中，目的是只要用到这个区间的数据不需要再new了，直接从整数型常量池当中取出来。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Array</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Integer a = <span class="number">128</span>;</span><br><span class="line">        Integer b = <span class="number">128</span>;</span><br><span class="line">        System.out.println(a==b); <span class="comment">//false</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// x和y保存的对象的内存地址是一样的</span></span><br><span class="line">        Integer x = <span class="number">127</span>;</span><br><span class="line">        Integer y = <span class="number">127</span>;</span><br><span class="line">        System.out.println(x==y);<span class="comment">//true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>Integer常用方法</strong></p>
@@ -493,6 +493,14 @@
 <li>static Integer valueOf(int i)：int转换成Integer。还有类似的Integer valueOf(String s)</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer i1 = Integer.valueOf(<span class="number">100</span>);</span><br><span class="line">Integer i2 = Integer.valueOf(<span class="string">"100"</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>static String toString(int i)：静态方法，把基本类型转换为字符串</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String b = Integer.toStirng(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>重写了Object的toString</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> toString(value);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p><strong>String、int和Integer类型互相转换</strong></p>
 <ul>
 <li>int转String<ul>
@@ -642,7 +650,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -739,7 +747,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共116.6k字</span>
+  <span class="post-count">博客全站共122.1k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -755,7 +763,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">116.6k</span>
+    <span title="Site words total count">122.1k</span>
   
 </div>
 

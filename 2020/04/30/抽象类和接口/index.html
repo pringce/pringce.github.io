@@ -95,7 +95,7 @@
 <meta property="og:description" content="抽象类什么是抽象类？  类和类之间具有共同特征，将这些共同特征提取出来，形成的就是抽象类。类本身是不存在的，所以抽象类无法创建对象（无法实例化） 抽象类是无法实例化的，所以抽象类是用来被子类继承的。子类继承抽象类，子类可以实例化对象 final和abstract不能联合使用 抽象类虽然无法实例化，但是抽象类有构造方法，这个构造方法是供子类使用的（子类构造方法中的第一行是super（））  抽象类属">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="file:///C:/Users/10530/AppData/Local/Temp/SGPicFaceTpBq/18696/14906703.png">
-<meta property="og:updated_time" content="2020-05-05T02:50:06.751Z">
+<meta property="og:updated_time" content="2020-05-22T04:04:55.240Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="抽象类和接口">
 <meta name="twitter:description" content="抽象类什么是抽象类？  类和类之间具有共同特征，将这些共同特征提取出来，形成的就是抽象类。类本身是不存在的，所以抽象类无法创建对象（无法实例化） 抽象类是无法实例化的，所以抽象类是用来被子类继承的。子类继承抽象类，子类可以实例化对象 final和abstract不能联合使用 抽象类虽然无法实例化，但是抽象类有构造方法，这个构造方法是供子类使用的（子类构造方法中的第一行是super（））  抽象类属">
@@ -356,8 +356,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-05T10:50:06+08:00">
-                2020-05-05
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-22T12:04:55+08:00">
+                2020-05-22
               </time>
             
           </span>
@@ -507,6 +507,8 @@
 </li>
 <li><p><strong>接口和接口之间在进行强制类型转换的时候，没有继承关系，也可以强转</strong>。但是一定要注意，运行时可能会出现ClassCastException异常，可以用instance of（这和类有区别，类之间的强制类型转换必须要有继承关系）</p>
 </li>
+<li><p>类也可以<strong>强制类型转换</strong>为接口。当类实现了该接口时不会报错；但如果类没有实现该接口，在转换时编译不会报错，但是运行时会出现ClassCastException异常</p>
+</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">K</span></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">M</span></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">E</span> <span class="keyword">implements</span> <span class="title">M</span></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        M m = <span class="keyword">new</span> E();</span><br><span class="line">        <span class="comment">// 编译正确，运行出现ClassCastException异常</span></span><br><span class="line">        K k = (K)m;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>继承和实现都存在的话，应该怎么写？</strong></p>
@@ -652,7 +654,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -765,7 +767,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共116.6k字</span>
+  <span class="post-count">博客全站共122.1k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -781,7 +783,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">116.6k</span>
+    <span title="Site words total count">122.1k</span>
   
 </div>
 

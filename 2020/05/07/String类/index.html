@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="CodeMonkey · 程序猴">
 <meta property="og:description" content="关于Java JDK中内置的一个类：java.lang.String  String表示字符串类型，属于引用数据类型 重点：在Java中使用双引号括起来的都是String对象 Java规定，双引号括起来的字符串是不可变的。也就是说”abc”自出生到死亡不可变，不能变成”abcd” 在JDK当中双引号括起来的字符串，例如”abc”都是直接存储在方法区的常量池中。为什么这么设计呢？ 因为字符串在实际开">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-08T01:50:39.453Z">
+<meta property="og:updated_time" content="2020-05-19T02:16:06.620Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="String类">
 <meta name="twitter:description" content="关于Java JDK中内置的一个类：java.lang.String  String表示字符串类型，属于引用数据类型 重点：在Java中使用双引号括起来的都是String对象 Java规定，双引号括起来的字符串是不可变的。也就是说”abc”自出生到死亡不可变，不能变成”abcd” 在JDK当中双引号括起来的字符串，例如”abc”都是直接存储在方法区的常量池中。为什么这么设计呢？ 因为字符串在实际开">
@@ -354,8 +354,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-08T09:50:39+08:00">
-                2020-05-08
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-19T10:16:06+08:00">
+                2020-05-19
               </time>
             
           </span>
@@ -457,12 +457,12 @@
 <li>第一种</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="string">"abc"</span>;</span><br></pre></td></tr></table></figure>
-<p>采用这种方式时，”abc”这个String对象存储在方法区的字符串常量池中，在栈中创建了一个s1引用，该引用保存这个String对象的内存地址，指向常量池中的该对象（<strong>注意：堆内存中不会创建任何对象</strong>）。如果此时又有String q = “abc”；那么常量池中不会新建”abc”字符串对象，q依旧指向上面的”abc”对象，q和s1指向的是同一个字符串对象。这个时候可以用”==”比较两个字符串对象是否相等</p>
+<p>采用这种方式时，”abc”这个String对象存储在方法区的字符串常量池中，在栈中创建了一个s1引用，该引用保存这个String对象的内存地址，指向常量池中的该对象（<strong>注意：堆内存中不会创建任何对象</strong>）。如果此时又有String q = “abc”；那么常量池中不会新建”abc”字符串对象，q依旧指向上面的”abc”对象，q和s1指向的是同一个字符串对象。<strong>这个时候可以用”==”比较两个字符串对象是否相等</strong></p>
 <ul>
 <li>第二种</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s2 = <span class="keyword">new</span> String(<span class="string">"abc"</span>)</span><br></pre></td></tr></table></figure>
-<p>采用这种方式时，”abc”这个String对象依然存储在方法区的字符串常量池中，同时在堆中创建了一个对象，该对象中保存着这个常量池中的String对象的内存地址。同时在栈中创建了一个s2引用，该引用保存这个堆内存中对象的内存地址（<strong>注意：堆内存中会创建对象</strong>）。这个时候就不能用”==”判断两个字符串对象是否相等，要用equals方法 。</p>
+<p>采用这种方式时，”abc”这个String对象依然存储在方法区的字符串常量池中，同时在堆中创建了一个对象，该对象中保存着这个常量池中的String对象的内存地址。同时在栈中创建了一个s2引用，该引用保存这个堆内存中对象的内存地址（<strong>注意：堆内存中会创建对象</strong>）<strong>。这个时候就不能用”==”判断两个字符串对象是否相等，要用equals方法 。</strong></p>
 <p>如果此时又有String e = new String(“abc”)；那么常量池中不会增加字符串对象，但是堆中会多一个对象，该对象中存储着”abc”这个String对象的内存地址。e指向堆内存中新创建的对象，e和s2指向的是不同的对象</p>
 <p><strong>String常用的构造方法</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建String对象最常用的方法</span></span><br><span class="line">String s1 = <span class="string">"abc"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 常用的构造方法</span></span><br><span class="line"><span class="comment">// 第一种，参数是byte数组</span></span><br><span class="line"><span class="keyword">byte</span>[] bytes = &#123;<span class="number">97</span>,<span class="number">98</span>,<span class="number">99</span>&#125;; <span class="comment">//97是a，98是b，99是c</span></span><br><span class="line">String s2 = <span class="keyword">new</span> String(bytes);</span><br><span class="line">System.out.println(s2); <span class="comment">// abc</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二种</span></span><br><span class="line"><span class="keyword">byte</span>[] bytes = &#123;<span class="number">97</span>,<span class="number">98</span>,<span class="number">99</span>&#125;; <span class="comment">//97是a，98是b，99是c</span></span><br><span class="line">String s3 = <span class="keyword">new</span> String(bytes,<span class="number">1</span>,<span class="number">2</span>); <span class="comment">// 1是数组起始下标，2是长度</span></span><br><span class="line">System.out.println(s3); <span class="comment">// bc</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第三种</span></span><br><span class="line"><span class="keyword">char</span>[] chars = &#123;<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>&#125;;</span><br><span class="line">String s4 = <span class="keyword">new</span> String(chars);</span><br><span class="line">System.out.println(s4); <span class="comment">// abc</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第四种</span></span><br><span class="line"><span class="keyword">char</span>[] chars = &#123;<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>&#125;;</span><br><span class="line">String s5 = <span class="keyword">new</span> String(chars,<span class="number">1</span>,<span class="number">2</span>); <span class="comment">// 1是数组起始下标，2是长度</span></span><br><span class="line">System.out.println(s5); <span class="comment">// bc</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第五种</span></span><br><span class="line">String s6 = <span class="keyword">new</span> String(<span class="string">"hello,world"</span>);</span><br><span class="line">System.out.println(s6); <span class="comment">// hello,world</span></span><br></pre></td></tr></table></figure>
@@ -686,7 +686,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -799,7 +799,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共116.6k字</span>
+  <span class="post-count">博客全站共122.1k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -815,7 +815,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">116.6k</span>
+    <span title="Site words total count">122.1k</span>
   
 </div>
 

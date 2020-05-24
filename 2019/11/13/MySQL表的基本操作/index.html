@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="CodeMonkey · 程序猴">
 <meta property="og:description" content="​        创建表的时候首先需要描述清楚这个表是什么样的，它有哪些列，这些列都是用来存什么类型的数据等等。表中的一行叫做一条记录，一列就做一个字段。 展示当前数据库的表​        下面的语句用于展示当前数据库中有哪些表： 1mysql&amp;gt; SHOW TABLES; 创建表1、基本语法创建一个表时至少需要完成下列事情： （1）给表起个名 （2）给表定义一些列，并且给这些列都起个名 （">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-15T07:12:31.079Z">
+<meta property="og:updated_time" content="2020-05-12T04:13:31.110Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL表的基本操作">
 <meta name="twitter:description" content="​        创建表的时候首先需要描述清楚这个表是什么样的，它有哪些列，这些列都是用来存什么类型的数据等等。表中的一行叫做一条记录，一列就做一个字段。 展示当前数据库的表​        下面的语句用于展示当前数据库中有哪些表： 1mysql&amp;gt; SHOW TABLES; 创建表1、基本语法创建一个表时至少需要完成下列事情： （1）给表起个名 （2）给表定义一些列，并且给这些列都起个名 （">
@@ -354,8 +354,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-15T15:12:31+08:00">
-                2020-04-15
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-12T12:13:31+08:00">
+                2020-05-12
               </time>
             
           </span>
@@ -404,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4.2k
+                  4.3k
                 </span>
               
 
@@ -420,7 +420,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  17
+                  18
                 </span>
               
             </div>
@@ -553,7 +553,10 @@
 </ul>
 <p>删除大表语法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; truncate table 表名;</span><br></pre></td></tr></table></figure>
-<p>该语法表示，下面的那些存储数据的格子连同数据一起被截断删除，不可回滚，永久丢失</p>
+<p>该语法表示，下面的那些存储数据的格子连同数据一起被截断删除，不可回滚，永久丢失。<strong>但是表的定义还在，还可以往里面添加数据。</strong>删除后发现该表还在，即show tables找得到该表，只不过表中的数据没有了</p>
+<p><strong>还有一种删除表的方式：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; drop table 表名;</span><br></pre></td></tr></table></figure>
+<p>删除内容和定义，释放空间。简单来说就是<strong>把整个表去掉</strong>.以后要新增数据是不可能的,除非新增一个表。删除后发现表没有了，即show tables找不到该表</p>
 <h4 id="表结构修改"><a href="#表结构修改" class="headerlink" title="表结构修改"></a>表结构修改</h4><p>实际开发中，一旦设计好表结构就很少修改了，很少很少用到，可以直接用Navicat工具修改即可。如果非要写SQL语句，就简单说一下语法：</p>
 <ul>
 <li><strong>添加字段</strong></li>
@@ -564,7 +567,7 @@
 <li><strong>修改字段数据类型</strong></li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; alter table 表名 modify 字段名 数据类型 [约束条件];</span><br></pre></td></tr></table></figure>
-<p>其中，<code>表名</code>指要修改数据类型的字段所在表的名称，<code>字段名</code>指需要修改的字段，<code>数据类型</code>指修改后字段的新数据类型。</p>
+<p>其中，<code>表名</code>指要修改数据类型的字段所在表的名称，<code>字段名</code>指需要修改的字段，<code>数据类型</code>指修改后字段的新数据类型。<strong>不写约束条件就默认删除了已有的约束条件，如果想添加新的约束条件可在后面直接写即可，不会影响已经存在的约束条件</strong></p>
 <ul>
 <li><strong>修改字段名称</strong></li>
 </ul>
@@ -712,7 +715,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -825,7 +828,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共116.6k字</span>
+  <span class="post-count">博客全站共122.1k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -841,7 +844,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">116.6k</span>
+    <span title="Site words total count">122.1k</span>
   
 </div>
 
