@@ -1,5 +1,5 @@
 ---
-title: 利用hexo框架搭建个人博客(手把手教学)
+title: 利用hexo框架搭建个人博客
 date: 2019-07-02 21:29:43
 categories:
 - 教程

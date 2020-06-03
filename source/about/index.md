@@ -20,6 +20,5 @@ type: "about"
 
 # 联系方式
 
-- 微信：freedom2003dx
 - 博客：[CodeMonkey · 程序猴](https://pringce.github.io)
 - CSDN：https://blog.csdn.net/guihenao4010
