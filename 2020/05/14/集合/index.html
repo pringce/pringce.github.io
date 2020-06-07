@@ -97,8 +97,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/05/14/集合/1.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/14/集合/2.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/14/集合/3.png">
-<meta property="og:image" content="file:///C:/Users/10530/AppData/Local/Temp/SGPicFaceTpBq/9632/0BD3C65A.png">
-<meta property="og:updated_time" content="2020-05-24T08:17:25.683Z">
+<meta property="og:updated_time" content="2020-05-25T02:08:35.897Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="集合">
 <meta name="twitter:description" content="什么是集合数组其实就是一个集合。集合实际上就是一个容器，可以来容纳其它类型的数据。 集合是一个载体，可以一次容纳多个对象。在实际开发中，假设连接数据库，数据库中有10条记录。那么假设把这10个记录查询出来，在java程序当中会将这10条记录封装成10个java对象，然后将10个对象放到某一个集合当中，将集合传到前端，然后遍历集合，将数据一个一个展现出来 集合不能直接存储基本数据类型，另外集合也不能">
@@ -359,8 +358,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-24T16:17:25+08:00">
-                2020-05-24
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-25T10:08:35+08:00">
+                2020-05-25
               </time>
             
           </span>
@@ -409,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5k
+                  8.2k
                 </span>
               
 
@@ -425,7 +424,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  20
+                  34
                 </span>
               
             </div>
@@ -487,7 +486,7 @@
 <p>TreeSet：底层是TreeMap，<strong>放到TreeSet集合中的元素等同于放到TreeMap集合key部分了</strong>。</p>
 <p>HashMap:底层是哈希表。</p>
 <p>Hashtable：底层也是哈希表，只不过线程安全的，效率较低，使用较少。</p>
-<p>Properties：是线程安全的，并且key和value只能存储字符串String。</p>
+<p>Properties：继承于HashTable，是线程安全的，并且key和value只能存储字符串String。</p>
 <p>TreeMap：底层是二叉树。TreeMap集合的key可以自动按照大小顺序排序。</p>
 <p><strong>List集合存储元素的特点：</strong>有序可重复</p>
 <ul>
@@ -596,7 +595,7 @@
 <li>指定初始容量</li>
 <li>参数是一个集合（<strong>注意：Collection集合之间的互相转换通过这种构造方法的形式就可以实现，但是Collection集合和Map集合不能通过这种互相转换，Map可以通过keySet、entrySet等方法转换为Set集合</strong>）</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Collection c = <span class="keyword">new</span> HashSet();</span><br><span class="line">c.add(<span class="number">1</span>);</span><br><span class="line">c.add(<span class="number">2</span>);</span><br><span class="line"><span class="comment">//通过这个方法将hashset集合转换成List集合。注意参数只能是及其子类，不能是Mp</span></span><br><span class="line">List l = <span class="keyword">new</span> ArrayList(c)</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Collection c = <span class="keyword">new</span> HashSet();</span><br><span class="line">c.add(<span class="number">1</span>);</span><br><span class="line">c.add(<span class="number">2</span>);</span><br><span class="line"><span class="comment">//通过这个方法将hashset集合转换成List集合。注意参数只能是Collection集合，不能是Map</span></span><br><span class="line">List l = <span class="keyword">new</span> ArrayList(c)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>怎么将一个线程不安全的ArrayList集合转换成线程安全的？</p>
 <ul>
@@ -715,7 +714,7 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test01</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Map&lt;Integer,String&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="number">1</span>,<span class="string">"a"</span>);</span><br><span class="line">        map.put(<span class="number">2</span>,<span class="string">"b"</span>);</span><br><span class="line">        map.put(<span class="number">3</span>,<span class="string">"c"</span>);</span><br><span class="line">        map.put(<span class="number">4</span>,<span class="string">"d"</span>);</span><br><span class="line">        Collection&lt;String&gt; values = map.values();</span><br><span class="line">        <span class="keyword">for</span>(String s:values)&#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">a</span></span><br><span class="line"><span class="comment">b</span></span><br><span class="line"><span class="comment">c</span></span><br><span class="line"><span class="comment">d</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>Set<map.entry<k,v>&gt; entrySet()：将Map集合转换成Set集合。Set集合中元素的类型是Map.Entry<k,v>，是<strong>Map中的静态内部类</strong>。Map.Entry<k,v>有key属性和value属性，还有getKey()和getValue()方法以获取Map.Entry<k,v>对象的key和value。实际上转换成的Set集合中存储的是一个一个的Map.Entry<k,v>对象。举个例子</k,v></k,v></k,v></k,v></map.entry<k,v></li>
+<li>Set&lt; Map.Entry &lt; K,V &gt; &gt; entrySet()：将Map集合转换成Set集合。Set集合中元素的类型是Map.Entry&lt; K,V &gt;，是<strong>Map中的静态内部类</strong>。Map.Entry&lt; K,V &gt;有key属性和value属性，还有getKey()和getValue()方法以获取Map.Entry&lt; K,V &gt;对象的key和value。实际上转换成的Set集合中存储的是一个一个的Map.Entry&lt; K,V &gt;对象。举个例子</li>
 </ul>
 <p>Map集合对象：</p>
 <p>​                      key                                                                  value</p>
@@ -733,7 +732,7 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test01</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Map&lt;Integer,String&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="number">1</span>,<span class="string">"a"</span>);</span><br><span class="line">        map.put(<span class="number">2</span>,<span class="string">"b"</span>);</span><br><span class="line">        map.put(<span class="number">3</span>,<span class="string">"c"</span>);</span><br><span class="line">        map.put(<span class="number">4</span>,<span class="string">"d"</span>);</span><br><span class="line">        Set&lt;Integer&gt; key = map.keySet();</span><br><span class="line">        Iterator&lt;Integer&gt; it = key.iterator();</span><br><span class="line">        <span class="comment">//用迭代器</span></span><br><span class="line">        <span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">            Integer k = it.next();</span><br><span class="line">            String value = map.get(k);</span><br><span class="line">            System.out.println(value);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//用for each</span></span><br><span class="line">        <span class="keyword">for</span>(Integer k : key)&#123;</span><br><span class="line">            System.out.println(map.get(k));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>第二种方式：使用<strong>Set<map.entry<k,v>&gt; entrySet()</map.entry<k,v></strong>方法，把Map集合直接转换成Set集合，Set集合中的元素类型是Map.Entry<k,v>。<strong>这种遍历方式效率高，适用于大数据量</strong></k,v></li>
+<li>第二种方式：使用<strong>Set&lt; Map.Entry&lt; K,V &gt; &gt; entrySet()</strong>方法，把Map集合直接转换成Set集合，Set集合中的元素类型是Map.Entry<k,v>。<strong>这种遍历方式效率高，适用于大数据量</strong></k,v></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test01</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Map&lt;Integer,String&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="number">1</span>,<span class="string">"a"</span>);</span><br><span class="line">        map.put(<span class="number">2</span>,<span class="string">"b"</span>);</span><br><span class="line">        map.put(<span class="number">3</span>,<span class="string">"c"</span>);</span><br><span class="line">        map.put(<span class="number">4</span>,<span class="string">"d"</span>);</span><br><span class="line">        Set&lt;Map.Entry&lt;Integer,String&gt;&gt; set = map.entrySet();</span><br><span class="line">        Iterator&lt;Map.Entry&lt;Integer,String&gt;&gt; it = set.iterator();</span><br><span class="line">        <span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">            Map.Entry&lt;Integer,String&gt; node = it.next();</span><br><span class="line">            Integer key = node.getKey();</span><br><span class="line">            String value = node.getValue();</span><br><span class="line">            System.out.println(key + <span class="string">" : "</span> + value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1 : a</span></span><br><span class="line"><span class="comment">2 : b</span></span><br><span class="line"><span class="comment">3 : c</span></span><br><span class="line"><span class="comment">4 : d</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 <ul>
@@ -749,13 +748,13 @@
 <ul>
 <li>HashMap集合底层的源代码：</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashMap</span></span>&#123;</span><br><span class="line">    <span class="comment">//HashMap底层实际上是一个数组（一维数组）</span></span><br><span class="line">	Node&lt;K,V&gt;[] table;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//静态内部类HashMap.Node</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> hash;<span class="comment">//哈希值(哈希值是key的hashCode()方法的执行记过，hash值通过哈希函数/算法可以转换成数组的下标)</span></span><br><span class="line">        <span class="keyword">final</span> K key;<span class="comment">//存储到Map集合的key</span></span><br><span class="line">        V value;<span class="comment">//存储到Map集合中的value</span></span><br><span class="line">        Node&lt;K,V&gt; next;<span class="comment">//下一个节点的内存地址</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//哈希表：一维数组，这个数组中的每一个元素是一个单向链表</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashMap</span></span>&#123;</span><br><span class="line">    <span class="comment">//HashMap底层实际上是一个数组（一维数组）</span></span><br><span class="line">	Node&lt;K,V&gt;[] table;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//静态内部类HashMap.Node</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> hash;<span class="comment">//哈希值(哈希值是key的hashCode()方法的执行结果，hash值通过哈希函数/算法可以转换成数组的下标)</span></span><br><span class="line">        <span class="keyword">final</span> K key;<span class="comment">//存储到Map集合的key</span></span><br><span class="line">        V value;<span class="comment">//存储到Map集合中的value</span></span><br><span class="line">        Node&lt;K,V&gt; next;<span class="comment">//下一个节点的内存地址</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//哈希表：一维数组，这个数组中的每一个元素是一个单向链表</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>HashMap集合的默认初始化容量是16，默认加载因子是0.75。这个默认加载因子是当HashMap集合底层数组的容量达到75%的时候，数组开始扩容。<strong>重点：HashMap集合初始化容量必须是2的幂次方，这是因为达到散列均匀，为了提高HashMap集合的存储效率所必须的</strong></li>
 <li>HashMap数组扩容：新容量是原容量的二倍</li>
 <li><strong>HashMap的key可以为null</strong>，但是只允许有一个，如果再来存储一个key为null的节点，那么value值会被覆盖</li>
 </ul>
-<p><strong>重点掌握</strong>（五颗<img src="file:///C:\Users\10530\AppData\Local\Temp\SGPicFaceTpBq\9632\0BD3C65A.png" alt="img">）：map.put(K k,V v)和map.get(K k)实现原理</p>
+<p><strong>重点掌握</strong>：map.put(K k,V v)和map.get(K k)实现原理</p>
 <ul>
 <li><strong>map.put(K k,V v)实现原理：</strong><ul>
 <li>第一步：先将k，v封装到Node对象当中</li>
@@ -808,7 +807,7 @@
 </ul>
 <p>举个例子：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Properties pro = <span class="keyword">new</span> Properties();</span><br><span class="line">pro.setProperty(<span class="string">"1"</span>,<span class="string">"li"</span>);</span><br><span class="line">System.out.println(pro.getProperty(<span class="string">"1"</span>)); <span class="comment">//li</span></span><br></pre></td></tr></table></figure>
-<p>因为 <strong>Properties</strong> 继承于 <strong>Hashtable</strong>，所以可对 <strong>Properties</strong> 对象应用 <strong>put</strong> 和 <strong>get</strong>方法。<br>但强烈反对使用这两个方法，因为它们允许调用方插入其键或值不是 <strong>Strings</strong> 的项。相反，应该使用 <strong>setProperty</strong> 方法和<strong>getProperty</strong>方法。</p>
+<p>因为 <strong>Properties</strong> 继承于 <strong>Hashtable</strong>，所以可对 <strong>Properties</strong> 对象应用 <strong>put</strong> 和 <strong>get</strong>方法。<br>但强烈反对使用这两个方法，因为它们允许调用方插入其键或值不是 <strong>String</strong> 的项。相反，应该使用 <strong>setProperty</strong> 方法和<strong>getProperty</strong>方法。</p>
 <h2 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h2><ul>
 <li>底层是一个<strong>二叉树</strong></li>
 <li>放到TreeMap集合中的元素，是<strong>按照key排序的，升序</strong>，称为可排序集合</li>
@@ -890,6 +889,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/25/IO流/" rel="prev" title="IO流">
+                IO流 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -977,7 +980,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">70</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1090,7 +1093,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共122.1k字</span>
+  <span class="post-count">博客全站共151.6k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -1106,7 +1109,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">122.1k</span>
+    <span title="Site words total count">151.6k</span>
   
 </div>
 

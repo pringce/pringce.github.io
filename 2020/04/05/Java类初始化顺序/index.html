@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/04/05/Java类初始化顺序/1.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/05/Java类初始化顺序/2.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/05/Java类初始化顺序/4.png">
-<meta property="og:updated_time" content="2020-04-20T12:39:31.121Z">
+<meta property="og:updated_time" content="2020-06-04T08:49:59.421Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java类初始化顺序">
 <meta name="twitter:description" content="对于静态变量、静态初始化块、变量、初始化块、构造器，它们的初始化顺序依次是（静态变量、静态初始化块）&amp;gt;（实例变量、普通初始化块）&amp;gt; 构造器。 代码初始化块是类的成员之一，每次类的创建会隐式的调用它。本质上是一个代码块，或方法体。初始化块分为静态初始化块和普通初始化块。其好处是减少多个构造器内重用的代码。 初始化顺序图示：  1234567891011121314151617181920">
@@ -358,8 +358,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-20T20:39:31+08:00">
-                2020-04-20
+              <time title="更新于" itemprop="dateModified" datetime="2020-06-04T16:49:59+08:00">
+                2020-06-04
               </time>
             
           </span>
@@ -474,7 +474,6 @@
 </ul>
 </li>
 <li>静态初始化块中遵循静态成员的特点，只能直接访问静态成员！也就是在静态初始化块只能修改静态成员</li>
-<li></li>
 </ul>
 <p><strong>个人底层小总结</strong>：</p>
 <ul>
@@ -485,7 +484,7 @@
 <p>这里说了通常情况下在准备阶段被初始为数据类型零值。但也存在例外，如果是常量的话，那么在准备阶段就会被赋值为123。如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> val = <span class="number">123</span>;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>进行准备阶段时，静态变量已经赋过一次系统要求的初始零值。在类加载的初始化阶段，会根据程序员编写的代码去初始化类变量。<strong>初始化阶段就是执行类构造器&lt; clinit &gt;()方法的过程</strong>。&lt; clinit &gt;()并不是程序员在Java代码中直接编写的代码，它是Javac编译器的自动生成物。&lt; clinit &gt;()方法是由编译器自动收集类中的<strong>所有静态变量和静态代码块</strong>中的语句合并产生的。编译器收集的顺序是由语句在源文件中出现的顺序决定的。静态语句块只能访问到定义在静态语句块之前的静态变量。定义在它之后的静态变量只能赋值，但不能访问。<strong>所以最好把静态变量写在静态代码块前面。</strong></li>
+<li>进行准备阶段时，静态变量已经赋过一次系统要求的初始零值。在类加载的初始化阶段，会根据程序员编写的代码去初始化类变量。<strong>初始化阶段就是执行类构造器&lt; clinit &gt;()方法的过程</strong>。&lt; clinit &gt;()并不是程序员在Java代码中直接编写的代码，它是Javac编译器的自动生成物。&lt; clinit &gt;()方法是由编译器自动收集类中的<strong>所有静态变量的赋值动作和静态代码块</strong>中的语句合并产生的（静态变量的声明操作不会被收集）。编译器收集的顺序是由语句在源文件中出现的顺序决定的。静态语句块只能访问到定义在静态语句块之前的静态变量。定义在它之后的静态变量只能赋值，但不能访问。<strong>所以最好把静态变量写在静态代码块前面。</strong></li>
 <li>类初始化前，其直接超类已经被初始化，直接超类的直接超类也需如此。即<strong>javac生成的 &lt; clinit &gt;方法由JVM在“类初始化阶段”调用，调用类的&lt; clinit &gt;方法前，必须先调用父类的&lt; clinit &gt;方法</strong>。因此在Java虚拟机中第一个被执行的&lt; clinit &gt;()方法的类型肯定是java.lang.Object</li>
 <li>&lt; clinit &gt;方法只在类加载阶段的初始化过程中被执行一次，后续创建实例对象将不再执行该方法。也就是创建100个实例对象，只执行依次&lt; clinit &gt;方法，但会执行100次构造方法。</li>
 <li>&lt; clinit &gt;方法不是必须的，如果一个类中没有静态代码块，也没有对静态变量的赋值操作，那么编译器可以不为这个类生成&lt; clinit &gt;方法</li>
@@ -651,7 +650,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">70</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -764,7 +763,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共122.1k字</span>
+  <span class="post-count">博客全站共151.6k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -780,7 +779,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">122.1k</span>
+    <span title="Site words total count">151.6k</span>
   
 </div>
 
