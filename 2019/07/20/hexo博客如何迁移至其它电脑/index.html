@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/07/20/hexo博客如何迁移至其它电脑/20190720192207.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/20/hexo博客如何迁移至其它电脑/20190720193605.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/20/hexo博客如何迁移至其它电脑/20190720194114.png">
-<meta property="og:updated_time" content="2020-06-03T08:57:13.698Z">
+<meta property="og:updated_time" content="2020-06-07T08:44:41.688Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo博客如何迁移至其它电脑">
 <meta name="twitter:description" content="​        当你在一台电脑上写博客写的蛮爽的，但突然有一天你的电脑坏了或者被偷了咋办？你那些本地的博客可咋整！一想到这种有可能发生的危险，我就夜不能寐呀。于是我就开始疯狂地查找资料，但网上的资料良莠不齐。于是本人就自己慢慢的摸索嘛，这是一个程序员最基本的素质(其实还是自己太菜了)。下面我就把我的总结写一下，希望能对以后的自己和大家有帮助。 1、在新电脑上安装NodeJs和Git​">
@@ -359,8 +359,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-06-03T16:57:13+08:00">
-                2020-06-03
+              <time title="更新于" itemprop="dateModified" datetime="2020-06-07T16:44:41+08:00">
+                2020-06-07
               </time>
             
           </span>
@@ -409,7 +409,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  859
+                  1.2k
                 </span>
               
 
@@ -425,7 +425,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -488,8 +488,18 @@
 </li>
 </ol>
 <h1 id="9、安装hexo依赖的包"><a href="#9、安装hexo依赖的包" class="headerlink" title="9、安装hexo依赖的包"></a>9、安装hexo依赖的包</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
-<p>​    所依赖的包都在上一步中的package.json备份文件里，所以直接这一个命令就可以了。就可以把你以前配置的那些包都安装上了。</p>
-<h1 id="10、新旧电脑更新博客"><a href="#10、新旧电脑更新博客" class="headerlink" title="10、新旧电脑更新博客"></a>10、新旧电脑更新博客</h1><p>​        依次按照以下步骤来更新博客：</p>
+<p>​    所依赖的包都在上一步中的package.json备份文件里，所以直接这一个命令就可以了，就可以把你以前配置的那些包都安装上了。</p>
+<h1 id="10、更新博客"><a href="#10、更新博客" class="headerlink" title="10、更新博客"></a>10、更新博客</h1><p>现在，在GitHub上的仓库就有两个分支，一个new分支用来存放网站的原始文件，一个master分支用来存放生成的静态网页。完美( •̀ ω •́ )y！</p>
+<p>现在我们既可以在旧电脑上更新博客，也可以在新电脑上更新博客了。</p>
+<p>在本地对博客进行修改（添加新博文、修改样式等等）后，通过下面的流程进行管理：</p>
+<ul>
+<li>首先git pull下拉，更新合并本地内容</li>
+<li>本地修改编辑博客</li>
+<li>依次执行git add .、git commit -m “…”、git push指令将改动推送到GitHub（此时当前分支应为new）；</li>
+<li>然后才执行hexo g -d发布网站到master分支上。</li>
+</ul>
+<p>虽然两个过程顺序调转一般不会有问题，不过逻辑上这样的顺序是绝对没问题的（例如突然死机要重装了，悲催….的情况，调转顺序就有问题了）。</p>
+<p>具体步骤如下所示：</p>
 <ol>
 <li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
 </li>
@@ -510,7 +520,20 @@
 <li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push //保证new分支版本为最新</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>因此，如果我们电脑又坏了或者又被偷了。。。那我们可以先获得新电脑的ssh key，然后添加到GitHub。然后把new分支的下文件git clone下来，然后再新建、编辑、部署一步一步来即可。</p>
+<p><strong>本地资料丢失后的流程</strong></p>
+<ul>
+<li>获得新电脑的ssh key，然后添加到GitHub</li>
+<li>将new分支clone至本地：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/pringce/pringce.github.io.git</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在本地新拷贝的pringce.github.io文件夹下通过Git bash依次执行下列指令，安装hexo依赖的包（如果是整个电脑丢失了，还需要提前安装好NodeJS、Git和hexo）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p>所依赖的包都在新拷贝的package.json文件里，所以直接这一个命令就可以了，就可以把你以前配置的那些包都安装上了</p>
+<ul>
+<li>然后就可以根据上述步骤10里面的流程更新博客了</li>
+</ul>
 <p>好啦，心理的最大隐患解除了，可以安心睡觉啦。大家晚安！！</p>
 
       
@@ -727,7 +750,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、在新电脑上安装NodeJs和Git"><span class="nav-number">1.</span> <span class="nav-text">1、在新电脑上安装NodeJs和Git</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2、GitHub新建分支"><span class="nav-number">2.</span> <span class="nav-text">2、GitHub新建分支</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3、设置分支为默认仓库"><span class="nav-number">3.</span> <span class="nav-text">3、设置分支为默认仓库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4、clone至本地"><span class="nav-number">4.</span> <span class="nav-text">4、clone至本地</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5、新电脑生成ssh-key并添加至GitHub"><span class="nav-number">5.</span> <span class="nav-text">5、新电脑生成ssh key并添加至GitHub</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6、安装hexo"><span class="nav-number">6.</span> <span class="nav-text">6、安装hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7、将原博客文件拷贝至pringce-github-io文件夹"><span class="nav-number">7.</span> <span class="nav-text">7、将原博客文件拷贝至pringce.github.io文件夹</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8、提交本地至new分支"><span class="nav-number">8.</span> <span class="nav-text">8、提交本地至new分支</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9、安装hexo依赖的包"><span class="nav-number">9.</span> <span class="nav-text">9、安装hexo依赖的包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10、新旧电脑更新博客"><span class="nav-number">10.</span> <span class="nav-text">10、新旧电脑更新博客</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、在新电脑上安装NodeJs和Git"><span class="nav-number">1.</span> <span class="nav-text">1、在新电脑上安装NodeJs和Git</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2、GitHub新建分支"><span class="nav-number">2.</span> <span class="nav-text">2、GitHub新建分支</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3、设置分支为默认仓库"><span class="nav-number">3.</span> <span class="nav-text">3、设置分支为默认仓库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4、clone至本地"><span class="nav-number">4.</span> <span class="nav-text">4、clone至本地</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5、新电脑生成ssh-key并添加至GitHub"><span class="nav-number">5.</span> <span class="nav-text">5、新电脑生成ssh key并添加至GitHub</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6、安装hexo"><span class="nav-number">6.</span> <span class="nav-text">6、安装hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7、将原博客文件拷贝至pringce-github-io文件夹"><span class="nav-number">7.</span> <span class="nav-text">7、将原博客文件拷贝至pringce.github.io文件夹</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8、提交本地至new分支"><span class="nav-number">8.</span> <span class="nav-text">8、提交本地至new分支</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9、安装hexo依赖的包"><span class="nav-number">9.</span> <span class="nav-text">9、安装hexo依赖的包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10、更新博客"><span class="nav-number">10.</span> <span class="nav-text">10、更新博客</span></a></li></ol></div>
             
 
           </div>
@@ -757,7 +780,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共151.6k字</span>
+  <span class="post-count">博客全站共151.9k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -773,7 +796,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">151.6k</span>
+    <span title="Site words total count">151.9k</span>
   
 </div>
 
