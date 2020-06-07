@@ -153,3 +153,20 @@ public class test03{
 - 什么时候需要import？
   - **不是java.lang包下，并且不再同一个包下的时候，需要import进行导入**
 
+
+
+这里需要注意几个问题：
+
+- import只能导入同一个module下面的类，不能导入其它module下面的类，除非建立了依赖关系
+
+- 如果有两个不同的包中存在同名类，在另一个包中的测试文件test.java中不能同时引用上述两个类，只能引用其中某一个，否则会报错
+
+- 如果有两个包，一个包P1中有test.java和A.java文件，另一个包P2中有A.java文件
+
+  - 如果在test.java中不写import P2.A，则这里如果使用A代表的是P1中的A
+  - 如果在test.java中写了import P2.A，则这里如果使用A代表的是P2中的A
+  - 如果两个A类都想使用，可以先import P2.A，然后A代表的是P2中的A，使用P1.A代表P1中的A，这样就可以区分开了
+
+- **其它module 的类需要add dependency on other modules之后，才能import该模块下的各种类。如果存在多个模块，需要指定模块的依赖顺序（如果不同模块下存在相同的包和类，那么在import的时候，会根据依赖顺序引入第一个有该同名包下的同名类）**。如何指定依赖顺序呢？以IntelliJ IDEA为例：File --> project sturcture --> modules，然后就可以添加修改依赖顺序了，如下图：
+
+  {% asset_img 1.png %}

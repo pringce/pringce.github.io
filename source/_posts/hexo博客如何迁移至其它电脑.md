@@ -37,7 +37,7 @@ mathjax: true
 git clone https://github.com/pringce/pringce.github.io.git
 ```
 
-​		cd进入 clone 下来的pringce.github.io文件夹，在此文件夹目录下git bash执行git branch命令，应该是新建的分支名 new。
+​		cd进入 clone 下来的pringce.github.io文件夹，在此文件夹目录下执行git branch命令，应该是新建的分支名 。
 
 # 5、新电脑生成ssh key并添加至GitHub
 
@@ -151,7 +151,7 @@ npm install
 
    
 
-因此，如果我们电脑又坏了或者又被偷了。。。那我们可以先获得新电脑的ssh key，然后添加到GitHub。然后把new分支下文件git clone下来，然后再新建、编辑、部署一步一步来即可。
+因此，如果我们电脑又坏了或者又被偷了。。。那我们可以先获得新电脑的ssh key，然后添加到GitHub。然后把new分支的下文件git clone下来，然后再新建、编辑、部署一步一步来即可。
 
 
 

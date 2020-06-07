@@ -88,8 +88,10 @@ public class FileInputStramTest {
         try {
             //写成这个也是可以的，都是绝对路径
             //file = new FileInputStream("G:/test.txt");
-            //这里也可以用相对路径，一定是从当前所在的位置作为起点开始找
-            //IDEA的默认当前路径是此工程project的根目录！！！（每个工程下有很多模块）
+            //这里也可以用相对路径，默认目录是此工程project的根目录！！！（每个工程下有很多模块）
+            //比如("test.txt")表示在根目录下寻找该文件
+            //如果不采用默认目录，一定是从该文件当前所在的位置作为起点开始找
+            //例如("src/com/info.txt")表示在根目录下的src下的com中寻找info.txt文件
             file = new FileInputStream("G:\\test.txt"); //有异常，处理方式为catch (FileNotFoundException e)
             //read方法的返回值是读取到的"字节"本身,即每调用一次read方法，从FileInputStream中读取一个字节
             //如果已达到文件末尾，返回-1
@@ -1049,6 +1051,7 @@ public class rt {
         //等号key获取value
         String v = pro.getProperty("username");
         System.out.println(v); //admin
+        in.close();
     }
 }
 ```
