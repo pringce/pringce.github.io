@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/02/06/Java入门（含Java基本介绍、数据类型、流程控制和数组操作）/微信图片_20200312103806.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/06/Java入门（含Java基本介绍、数据类型、流程控制和数组操作）/微信图片_20200312105221.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/06/Java入门（含Java基本介绍、数据类型、流程控制和数组操作）/微信图片_20200312105351.png">
-<meta property="og:updated_time" content="2020-05-21T02:24:56.828Z">
+<meta property="og:updated_time" content="2020-08-04T12:21:09.335Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java入门（含Java基本介绍、数据类型、流程控制和数组操作）">
 <meta name="twitter:description" content="1. Java介绍​        Java是目前全球Top 1的程序开发语言，是SUN公司James Gosling为手持设备开发的嵌入式编程语言，原名Oak，1995年改名为Java正式推出，有最大的开发社区；目前广泛应用于企业和互联网后端开发、Android开发和大数据开发。 1.1 Java的特点 一种面向对象的跨平台编程语言，语法比C++简单 以字节码的形式运行在虚拟机上 自带功能齐全的">
@@ -364,8 +364,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-21T10:24:56+08:00">
-                2020-05-21
+              <time title="更新于" itemprop="dateModified" datetime="2020-08-04T20:21:09+08:00">
+                2020-08-04
               </time>
             
           </span>
@@ -414,7 +414,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  11.6k
+                  11.5k
                 </span>
               
 
@@ -473,7 +473,7 @@
 <h2 id="1-3-Java语言特性-开源、免费、纯面向对象、跨平台"><a href="#1-3-Java语言特性-开源、免费、纯面向对象、跨平台" class="headerlink" title="1.3 Java语言特性(开源、免费、纯面向对象、跨平台)"></a>1.3 Java语言特性(开源、免费、纯面向对象、跨平台)</h2><ul>
 <li>简单性</li>
 </ul>
-<p>相对而言的，例如Java中不再支持多继承，C++是支持多继承的，多继承比较复杂。C++中右指针，Java中屏蔽了指针的概念。Java语言底层是C++实现的，不是C语言。</p>
+<p>相对而言的，例如Java中不再支持多继承，C++是支持多继承的，多继承比较复杂。C++中有指针，Java中屏蔽了指针的概念。Java语言底层是C++实现的，不是C语言。</p>
 <ul>
 <li>面向对象</li>
 <li>可移植性（跨平台）</li>
@@ -501,8 +501,8 @@
 <p><strong>Java平台实际上就是运行在各种操作系统上的JVM(虚拟机)</strong></p>
 <img src="/2020/02/06/Java入门（含Java基本介绍、数据类型、流程控制和数组操作）/微信图片_20200206151238.png">
 <h3 id="JDK和JRE的区别"><a href="#JDK和JRE的区别" class="headerlink" title="JDK和JRE的区别"></a>JDK和JRE的区别</h3><ul>
-<li>JRE（Java Runtime Environment）是Java运行时环境。它是运行编译后的Java程序所需的一切包，包括Java虚拟机JVM、Java类库（都是class文件，在lib目录下打包成了jar）、Java命令和其它基础设施。但是，它不能用于创建新程序。总而言之<strong>是使用java语言编写的程序运行所需要的软件环境，是提供给想运行java程序的用户使用的，而不是面向开发者的</strong>。</li>
-<li>JDK（Java Development Kit）顾名思义是java开发工具包，是程序员使用java语言编写java程序所需的开发工具包，是提供给程序员使用的。<strong>它拥有JRE所拥有的一切，但也有编译器（javac）和工具（如javadoc和jdb）</strong>。它能够创建和编译程序。</li>
+<li>JRE（Java Runtime Environment）是Java运行时环境。它是运行编译后的Java程序所需的一切包，包括Java虚拟机JVM、Java核心类库（都是class文件，在lib目录下打包成了jar）、Java命令和其它基础设施。但是，它不能用于创建新程序。总而言之<strong>是使用java语言编写的程序运行所需要的软件环境，是提供给想运行java程序的用户使用的，而不是面向开发者的</strong>。</li>
+<li>JDK（Java Development Kit）顾名思义是java开发工具包，是程序员使用java语言编写java程序所需的开发工具包，是提供给程序员使用的。<strong>它拥有JRE所拥有的一切，但同时也有编译器（javac）和工具类库tools.jar（如javadoc和jdb）等</strong>。有了JDK，不仅可以开发Java程序，也同时拥有了运行Java程序的平台</li>
 </ul>
 <p>举个例子：程序员在本地开发时需要安装JDK。但将开发好的程序部署到客户端时，只需要在客户端安装JRE即可，无需再安装JDK。</p>
 <h2 id="1-7-Java为什么可以跨平台运行？"><a href="#1-7-Java为什么可以跨平台运行？" class="headerlink" title="1.7 Java为什么可以跨平台运行？"></a>1.7 Java为什么可以跨平台运行？</h2><p><strong>Windows操作系统内核和Linux操作系统内核肯定不同，它们执行指令的方式也不同</strong>。因此Java程序不能直接和操作系统打交道，因为Java程序只有一份，操作系统执行原理却不同。</p>
@@ -557,13 +557,8 @@
 </li>
 <li><p><strong>Java用一对大括号作为语句块的范围，称为作用域</strong>，作为在作用域里定义的一个变量，它只有在哪个作用域结束之前才可使用。</p>
 </li>
-<li><strong>下面举个容易错的例子</strong></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 报错</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    String name = <span class="string">"l"</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        String name = <span class="string">"x"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 没有报错</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    &#123;</span><br><span class="line">        String name = <span class="string">"l"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    String name = <span class="string">"x"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>为什么第一段代码报错了，而第二段代码没有报错？</p>
-<p>​        <strong>因为第二种离开作用域，变量所分配的内存空间将被JVM回收，所以语法不会有错误，而第一种写法name并没有离开{}作用域，所以会语法错误。</strong></p>
+<li><p><strong>变量必须被定义赋值才能访问</strong>，两种方式赋值：</p>
 <ul>
-<li><strong>变量必须被定义赋值才能访问</strong>，两种方式赋值：<ul>
 <li>变量名 = 字面值；</li>
 <li>变量类型 变量名 = 字面值; （初始化）</li>
 </ul>
@@ -657,9 +652,9 @@
 <h4 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h4><p>反斜杠 \ 在 Java语言中具有转义功能，转义字符出现在特殊字符前，会将特殊字符转义成普通字符</p>
 <p>\n：换行符</p>
 <p>\t：制表符（Table键，与空格不同）</p>
-<p>\\\\：反斜杠字符（’\\’这种会报错，因为\有转义功能，会与后面的单引号配对成转义字符，因此前面的单引号没人与它配对）</p>
-<p>\\’：单引号字符（’’’会报错，原因类似上面，后面两个单引号会配对）</p>
-<p>\\”：双引号字符。这里需要注意一点</p>
+<p>\\：反斜杠字符（’\\’这种会报错，因为\有转义功能，会与后面的单引号配对成转义字符，因此前面的单引号没人与它配对）</p>
+<p>\’：单引号字符（’’’会报错，原因类似上面，后面两个单引号会配对）</p>
+<p>\”：双引号字符。这里需要注意一点</p>
 <p>\u####：代表后面的一串是一个字符的Unicode编码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"\"Helloworld\""</span>); <span class="comment">//输出:"Helloworld"</span></span><br><span class="line"><span class="comment">//System.out.println(""Helloworld""); //报错</span></span><br><span class="line"><span class="comment">// 因此在字符串中表示双引号需要加反斜杠</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> c = <span class="string">'"'</span>; <span class="comment">// 代表双引号，无需加反斜杠，因为没人跟他配对，这里需要多注意</span></span><br></pre></td></tr></table></figure>
 <h2 id="2-5-数据类型转换"><a href="#2-5-数据类型转换" class="headerlink" title="2.5 数据类型转换"></a>2.5 数据类型转换</h2><p>关于基本数据类型之间的互相转换，<strong>转换规则</strong>如下：</p>
@@ -1316,7 +1311,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">111</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1327,7 +1322,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1338,7 +1333,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1429,7 +1424,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共151.9k字</span>
+  <span class="post-count">博客全站共182.4k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -1445,7 +1440,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">151.9k</span>
+    <span title="Site words total count">182.4k</span>
   
 </div>
 

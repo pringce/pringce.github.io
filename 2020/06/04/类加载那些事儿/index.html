@@ -95,7 +95,7 @@
 <meta property="og:description" content="什么是类的加载Java虚拟机把描述类的数据从Class字节码文件加载到内存，并对数据进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型，这个过程被称为虚拟机的类加载机制，这一过程是在程序运行期完成的 程序编译期：是指把源代码交给编译器译成计算机可以执行的代码，在Java中就是把Java代码编译为class文件的过程。程序运行期：是指把编译后的文件交给计算机执行，直到程序结束。在">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2020/06/04/类加载那些事儿/1.png">
-<meta property="og:updated_time" content="2020-06-06T02:12:35.145Z">
+<meta property="og:updated_time" content="2020-06-09T08:30:12.128Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="类加载那些事儿">
 <meta name="twitter:description" content="什么是类的加载Java虚拟机把描述类的数据从Class字节码文件加载到内存，并对数据进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型，这个过程被称为虚拟机的类加载机制，这一过程是在程序运行期完成的 程序编译期：是指把源代码交给编译器译成计算机可以执行的代码，在Java中就是把Java代码编译为class文件的过程。程序运行期：是指把编译后的文件交给计算机执行，直到程序结束。在">
@@ -356,8 +356,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-06-06T10:12:35+08:00">
-                2020-06-06
+              <time title="更新于" itemprop="dateModified" datetime="2020-06-09T16:30:12+08:00">
+                2020-06-09
               </time>
             
           </span>
@@ -509,7 +509,7 @@
 <li>应用类加载器</li>
 </ul>
 <p>代码在开始执行之前，会将所需要的类全部加载到JVM当中，通过类加载器加载。<strong>那么是怎么加载的呢？</strong></p>
-<p>首先通过<strong>启动类加载器</strong>加载，注意启动类加载器专门加载Java\JDK1.8\jre\lib\rt.jar下的class文件，rt.jar中都是JDK最核心的类库</p>
+<p>首先通过<strong>启动类加载器</strong>加载，注意启动类加载器专门加载Java\JDK1.8\jre\lib下的class文件，而且是Java虚拟机能够识别的（按照文件名识别，如rt.jar、charsets.jar，名字不符合类库即使放在lib目录中也不会被加载）</p>
 <p>如果通过启动类加载器加载不到的话，会通过<strong>扩展类加载器</strong>加载。注意：扩展类加载器专门加载Java\JDK1.8\jre\lib\ext目录下的class文件</p>
 <p>如果扩展类加载器没有加载到，那么会通过<strong>应用类加载器</strong>加载。注意：应用类加载器专门加载：classpath中的字节码文件</p>
 <p>java中为了保证类加载的安全，使用了<strong>双亲委派机制</strong>：优先从启动类加载器（称为父）加载；父无法加载到，再从扩展类加载器（称为母）加载；如果都加载不到，才考虑从应用类加载器加载，直至加载到为止</p>
@@ -643,7 +643,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">111</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -654,7 +654,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -665,7 +665,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -756,7 +756,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共151.9k字</span>
+  <span class="post-count">博客全站共182.4k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -772,7 +772,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">151.9k</span>
+    <span title="Site words total count">182.4k</span>
   
 </div>
 

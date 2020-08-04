@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="CodeMonkey · 程序猴">
 <meta property="og:description" content="反射机制作用通过java语言中的反射机制可以操作字节码文件，可以读取和修改字节码文件 反射机制的相关类在：java.lang.reflect.* 反射机制相关的重要的类：  java.lang.Class：代表整个字节码文件，代表一个类型 java.lang.reflect.Field：代表字节码中的属性（静态变量+实例变量）字节码 java.lang.reflect.Method：代表字节码中的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-07T02:08:55.282Z">
+<meta property="og:updated_time" content="2020-06-14T07:58:05.455Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="反射机制">
 <meta name="twitter:description" content="反射机制作用通过java语言中的反射机制可以操作字节码文件，可以读取和修改字节码文件 反射机制的相关类在：java.lang.reflect.* 反射机制相关的重要的类：  java.lang.Class：代表整个字节码文件，代表一个类型 java.lang.reflect.Field：代表字节码中的属性（静态变量+实例变量）字节码 java.lang.reflect.Method：代表字节码中的">
@@ -354,8 +354,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-06-07T10:08:55+08:00">
-                2020-06-07
+              <time title="更新于" itemprop="dateModified" datetime="2020-06-14T15:58:05+08:00">
+                2020-06-14
               </time>
             
           </span>
@@ -485,8 +485,7 @@
 <p>这里使用的是文件的相对路径，在IDEA中默认的当前路径是project的根目录。这个代码假设离开了IDEA，换到了其它位置，可能当前路径就不是project的根目录了，这时这个路径就无效了</p>
 <p>那有人就要说，那我直接去硬盘里面获取绝对路径再写上去不可以么？<strong>你难道只用windows么？你这个项目放到Linux下就不能用了（Linux下面是没有盘符的概念的）！！所以这种直接写绝对路径的方式不灵活，移植性差</strong></p>
 <p>接下来说一种比较通用的路径：其实代码换位置了，仍旧可以使用</p>
-<p>使用上述通用方式的<strong>前提</strong>：<strong>这个文件必须在类路径（classpath）下</strong></p>
-<p>什么是类路径？<strong>指的是编译后的class文件、xml、properties配置文件等文件所在的目录</strong></p>
+<p>使用上述通用方式的<strong>前提</strong>：<strong>这个文件必须在三种类加载器能加载到的地方，即Bootstrap classes、Extension classes和User classes path（用户自定义类生成的class文件所在的路径）</strong>。</p>
 <p>IntelliJ IDEA中每一个模块都有一个src目录（这是一个<strong>source folder</strong>），里面是源代码和一些文件；编译之后会自动生成一个out目录，里面有一个production目录，下面会存储着各个模块的编译后的class字节码文件以及src下的其它类型文件（如.txt、.properties等）。如果有一个test模块有src下有一个a.java源文件，那么<strong>该文件生成的a.class字节码文件所在的classpath的根目录就是”…/out/production/test/“</strong>。如果该模块中存在一个<strong>test source folder</strong>，该类型文件夹下的java文件编译生成的字节码文件所在的classpath 的根目录就是<strong>“…/out/test/模块名/“</strong>。resource folder和test resource folder下面的的内容（文件和文件夹）会分别被放在source和test source对应的classpath根目录中</p>
 <p>可以这么认为：在IDEA里面，<strong>每个模块的src下的java源文件经过编译之后生成的class字节码文件都会放在…/out/production/下面对应的各个模块里面，但是该源代码文件不会放在该目录下；每个模块的src下的其它文件也会被拷贝一份自动放在…/out/production/下面对应的各个模块里面</strong></p>
 <p><strong>那么如何获取这些文件的绝对路径呢？</strong></p>
@@ -494,7 +493,8 @@
 <p><strong>获取当前ClassPath根目录下的某个指定文件的绝对路径（不递归子目录，只查找此根目录）</strong></p>
 <p>注意：getResource()里面的参数是相对于当前classpath根目录的<strong>相对路径</strong>（<strong>这一点很关键</strong>）</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String path = Thread.currentThread().getContextClassLoader()</span><br><span class="line">    .getResource(<span class="string">"info.properties"</span>).getPath();</span><br></pre></td></tr></table></figure>
-<p>这里的info.properties存储在当前模块的src路径下，编译后会被自动放在<strong>“out/production/模块名/“</strong>目录下面。记住：<strong>如果存在多个模块，这个方式不能获取其它模块classpath下的文件绝对路径，只能获取当前模块classpath路径下的文件绝对路径</strong></p>
+<p>这里的info.properties存储在当前模块的src路径下，编译后会被自动放在<strong>“out/production/模块名/“</strong>目录下面。</p>
+<p>注意：<strong>如果存在多个模块，这个方式也可以获取其它模块classpath下的文件绝对路径，但是需要添加其他模块与当前模块的依赖关系，其实个人认为这个加依赖关系就是设置系统变量里面的CLASSPATH这个变量，功能是一样的！！</strong></p>
 <p>如果存在这样一个文件：…/src/com/bit/auto/info1.properties，该怎么获取它的绝对路径？方法同上！</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String path = Thread.currentThread().getContextClassLoader()</span><br><span class="line">    .getResource(<span class="string">"com/bit/auto/info.properties"</span>).getPath();</span><br></pre></td></tr></table></figure>
 <p>注意：所有的java源代码经IDEA编译后生成的class文件会放在out/production中对应的模块下面。由于上述的方法是获取classpath目录下的文件的绝对路径，因此可以获取放在src下的<strong>java文件编译后的字节码文件和其它文件的绝对路径（因为它们编译后会放在out目录下对应的classpath中）</strong>，而不能获取java源文件的绝对路径，因为它没有存放在out目录下的classpath中，而是存放在src目录下，所以不能获取</p>
@@ -508,7 +508,7 @@
 <p>上面的<strong>Thread.currentThread().getContextClassLoader().getResource()</strong>获取的是当前文件生成的class文件所在的classpath根目录下的指定文件的绝对路径！！！有点绕？？？这里解释一下：如果有三个模块，ja1、ja2和ja3，这个代码在ja1中的src目录下，那么该行代码获取的就是以out/production/ja1/为根目录下的某个指定文件的绝对路径</p>
 <p>那么对于test resource folder呢？在该文件夹下的某个文件中如果有该行代码，那么获取的就是以<strong>out/test/ja1/</strong>为根目录下的某个指定文件的绝对路径</p>
 <p><strong>注意</strong>：如果在src下的某个文件中执行该行代码，只能获取src目录下的java文件生成class文件、其它文件和resource folder目录下的文件的绝对路径，因为classpath根目录是out/production/模块名/。而不能获取test source root下文件的字节码和test resource root下文件的绝对路径，因为这些文件没有放在上述的classpath根目录中</p>
-<p>同理，test source root下的某个文件有该行代码，只能获取test source root下文件的字节码和test resource root下文件的绝对路径，因为；而不能获取src目录下的java文件生成class文件、其它文件和resource folder目录下的文件的绝对路径，因为它们的classpath 的根目录不一样！！！</p>
+<p>同理，test source root下的某个文件有该行代码，只能获取test source root下文件的字节码和test resource root下其它文件的绝对路径；而不能获取src目录下的java文件生成class文件、其它文件和resource folder目录下的文件的绝对路径，因为它们的classpath 的根目录不一样！！！</p>
 <h2 id="反射获取Field"><a href="#反射获取Field" class="headerlink" title="反射获取Field"></a>反射获取Field</h2><p>通过class文件获取类中的属性信息</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">student</span></span>&#123;</span><br><span class="line">    <span class="comment">//4个Field，分别采用了不同的访问控制权限修饰符</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> no;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">boolean</span> sex;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        <span class="comment">//获取整个类</span></span><br><span class="line">        Class c = Class.forName(<span class="string">"auto.student"</span>);</span><br><span class="line">        <span class="comment">//获取类的完整类名</span></span><br><span class="line">        System.out.println(c.getName());<span class="comment">//auto.student</span></span><br><span class="line">        <span class="comment">//获取类的简类名（不包活包名）</span></span><br><span class="line">        System.out.println(c.getSimpleName());<span class="comment">//student</span></span><br><span class="line">        <span class="comment">//获取类中public修饰的Field</span></span><br><span class="line">        Field[] fields = c.getFields();</span><br><span class="line">        System.out.println(fields.length);<span class="comment">//输出数组长度为1，因为该方法只能获取public修饰的Field</span></span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"=========================="</span>);</span><br><span class="line">        <span class="comment">//获取类中所有的Field</span></span><br><span class="line">        Field[] fs = c.getDeclaredFields();</span><br><span class="line">        <span class="keyword">for</span>(Field f:fs)&#123;</span><br><span class="line">            <span class="comment">//获取属性的名字</span></span><br><span class="line">            System.out.println(f.getName());</span><br><span class="line"></span><br><span class="line">            <span class="comment">//获取属性的类型</span></span><br><span class="line">            Class fieldType = f.getType();</span><br><span class="line">            System.out.println(fieldType.getName());<span class="comment">//完整类型名</span></span><br><span class="line">            System.out.println(fieldType.getSimpleName());<span class="comment">//简洁类型名</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">//获取属性的修饰符，可能是缺省，可能是一个，可能是多个（public static final）</span></span><br><span class="line">            <span class="comment">//对于Class对象也可以使用这个方法获取类的修饰符</span></span><br><span class="line">            <span class="keyword">int</span> i = f.getModifiers();<span class="comment">//返回的是修饰符的代号</span></span><br><span class="line">            String modeifiers = Modifier.toString(i);<span class="comment">//将代号转换为字符串类型</span></span><br><span class="line">            System.out.println(modeifiers);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="反编译Field"><a href="#反编译Field" class="headerlink" title="反编译Field"></a>反编译Field</h2><p>通过反射机制，反编译一个类的属性Field，就以反射上面的Student类为例：</p>
@@ -683,7 +683,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">111</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -694,7 +694,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -705,7 +705,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -796,7 +796,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共151.9k字</span>
+  <span class="post-count">博客全站共182.4k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -812,7 +812,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">151.9k</span>
+    <span title="Site words total count">182.4k</span>
   
 </div>
 

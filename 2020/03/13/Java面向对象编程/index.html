@@ -95,7 +95,7 @@
 <meta property="og:description" content="什么是OOP？ 面向对象编程：Object-Oriented Programming 对现实世界建立计算机模型的一种编程方法  面向过程和面向对象的区别？  面向过程：主要关注点是实现的具体过程，因果关系 优点：对于业务逻辑比较简单的程序，可以达到快速开发，前期投入成本较低 缺点：采用面向过程的方式很难解决非常复杂的业务逻辑，另外面向过程的方式导致软件元素之间的耦合度非常高。只要其中一环出问题，整">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2020/03/13/Java面向对象编程/微信图片_20200314144110.png">
-<meta property="og:updated_time" content="2020-05-11T08:08:43.300Z">
+<meta property="og:updated_time" content="2020-06-12T07:58:37.630Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java面向对象编程">
 <meta name="twitter:description" content="什么是OOP？ 面向对象编程：Object-Oriented Programming 对现实世界建立计算机模型的一种编程方法  面向过程和面向对象的区别？  面向过程：主要关注点是实现的具体过程，因果关系 优点：对于业务逻辑比较简单的程序，可以达到快速开发，前期投入成本较低 缺点：采用面向过程的方式很难解决非常复杂的业务逻辑，另外面向过程的方式导致软件元素之间的耦合度非常高。只要其中一环出问题，整">
@@ -356,8 +356,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-11T16:08:43+08:00">
-                2020-05-11
+              <time title="更新于" itemprop="dateModified" datetime="2020-06-12T15:58:37+08:00">
+                2020-06-12
               </time>
             
           </span>
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  6.4k
+                  6.5k
                 </span>
               
 
@@ -818,7 +818,7 @@
 <p><strong>什么时候要用向下转型?</strong></p>
 <p>当调用的方法或属性是子类型中特有的，在父类型中不存在，必须进行向下转型</p>
 <ul>
-<li>向下转型把抽象的类型变成一个具体的子类型</li>
+<li>向下转型把引用的类型转换成它的某一个子类型（<strong>注意：向下转型不一定将引用转换为堆中对象的类型，也可以转换为该堆中对象类型的直接父类、间接父类或者其对应的接口，但是不能是别的类型，因为要存在继承关系（一定要记住！！）。且转换后的引用类型必须是转换前的引用类型的子类型，即存在继承关系</strong>）</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Person p = <span class="keyword">new</span> Student();</span><br><span class="line">Student s = (Student)p; <span class="comment">// 向下转型</span></span><br></pre></td></tr></table></figure>
 <ul>
@@ -830,7 +830,7 @@
 <ul>
 <li><p>上面的程序编译是没有问题的，因为编译器检查到a的类型是animal，animal和cat存在继承关系，并且animal是父类，cat是子类，父类转换成子类叫做向下转型，语法正确</p>
 </li>
-<li><p>程序虽然编译通过了，但是程序运行阶段会出现异常，因为JVM堆内存中真实存在的对象是bird类型，bird对象无法转换成cat对象，因为两种类型之间不存在任何继承关系，此时出现了著名异常</p>
+<li><p>程序虽然编译通过了，但是程序运行阶段会出现异常，因为JVM堆内存中真实存在的对象是bird类型，因为两种类型之间不存在任何继承关系，cat类型引用不能指向bird类型对象，此时出现了著名异常</p>
 <ul>
 <li>java.lang.ClassCastException</li>
 <li>类型转换异常，这种异常总是在向下转型的时候会发生</li>
@@ -845,24 +845,21 @@
 <li>语法格式</li>
 </ul>
 <p>引用 instance of 数据类型名（类名）</p>
-<p>例：a instance of animal</p>
+<p>例：obj instance of class</p>
 <ul>
 <li>执行结果是boolean类型，true或false</li>
-<li>true表示a这个引用指向的对象是一个animal类型</li>
-<li>false表示a这个引用指向的对象不是一个animal类型</li>
+<li>其中 obj 为一个对象，Class 表示一个类或者一个接口，<strong>当 obj 为 Class 的对象，或者是其直接或间接子类的对象，或者是其接口的实现类对象</strong>，结果result 都返回 true，否则返回false</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p>所以在向下转型前，先判断一下引用指向的对象是否是你要转换的类型。例如</p>
 </li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(a instance of cat)&#123;</span><br><span class="line">    cat c = (cat)a;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(a instance of bird)&#123;</span><br><span class="line">    bird b = (bird)a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>java规范中要求：在进行向下转型前，建议使用instance of进行判断，避免出现java.lang.ClassCastException异常</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<p>java规范中要求：在进行向下转型前，建议使用instance of进行判断，避免出现java.lang.ClassCastException异常</p>
 <h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>无论是向上转型还是向下转型，<strong>两个类之间必须有继承关系</strong>，否则编译就将报错。</p>
 <h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><h3 id="多态的优点"><a href="#多态的优点" class="headerlink" title="多态的优点"></a>多态的优点</h3><p>提高了代码的扩展性，前期定义的代码可以使用后期的内容</p>
 <h3 id="多态的弊端"><a href="#多态的弊端" class="headerlink" title="多态的弊端"></a>多态的弊端</h3><p>前期定义的内容不能使用（调用）后期子类的特有方法（就是多态调用的只能是父类）。但如果是继承子类覆盖了父类方法，多态调用的仍是子类的方法！</p>
@@ -1057,7 +1054,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">111</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1068,7 +1065,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1079,7 +1076,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1170,7 +1167,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共151.9k字</span>
+  <span class="post-count">博客全站共182.4k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -1186,7 +1183,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">151.9k</span>
+    <span title="Site words total count">182.4k</span>
   
 </div>
 

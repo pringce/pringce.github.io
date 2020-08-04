@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="CodeMonkey · 程序猴">
 <meta property="og:description" content="什么是事务英文名是Transactions 一个事务是一个完整的业务逻辑单元，不可再分 比如：银行账户转账，从A账户向B账户转账10000，需要执行两条update语句 12update t_act set balance = balance-10000 where actno = &amp;apos;act001&amp;apos;;update t_act set balance = balance+1000">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-16T01:58:52.448Z">
+<meta property="og:updated_time" content="2020-06-17T07:52:48.869Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="事务">
 <meta name="twitter:description" content="什么是事务英文名是Transactions 一个事务是一个完整的业务逻辑单元，不可再分 比如：银行账户转账，从A账户向B账户转账10000，需要执行两条update语句 12update t_act set balance = balance-10000 where actno = &amp;apos;act001&amp;apos;;update t_act set balance = balance+1000">
@@ -354,8 +354,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-16T09:58:52+08:00">
-                2020-04-16
+              <time title="更新于" itemprop="dateModified" datetime="2020-06-17T15:52:48+08:00">
+                2020-06-17
               </time>
             
           </span>
@@ -404,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2k
+                  2.5k
                 </span>
               
 
@@ -420,7 +420,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7
+                  8
                 </span>
               
             </div>
@@ -478,7 +478,7 @@
 </ul>
 <h3 id="关于事务之间的隔离性"><a href="#关于事务之间的隔离性" class="headerlink" title="关于事务之间的隔离性"></a>关于事务之间的隔离性</h3><p>事务隔离性存在隔离级别，理论上隔离级别包括四个（所有数据库都是从第二级别往上的，没人用第一级别）：</p>
 <ul>
-<li>第一级别：读未提交（read uncommitted），允许一个事务可以看到其他事务未提交的修改。一个事务开始读取了某行数据，但是另外一个事务已经更新了此数据但没有能够及时提交，这就出现了脏读取。读未提交存在<strong>脏读</strong>现象（Dirty Read），表示读到了脏的数据，数据很不稳定</li>
+<li>第一级别：读未提交（read uncommitted），允许一个事务可以看到其他事务未提交的修改。一个事务开始读取另外一个事务已经更新但没有能够及时提交的数据，这就出现了脏读取。读未提交存在<strong>脏读</strong>现象（Dirty Read），表示读到了脏的数据，数据很不稳定</li>
 <li>第二级别：读已提交（read commited），允许一个事务只能看到其他事务已经提交的修改，未提交的修改是不可见的。但存在一个问题：<strong>不可重复读（在同一个事务中，同一个读操作对同一个数据的前后两次读取产生了不同的结果）</strong>。这种隔离级别解决了脏读现象</li>
 <li>第三级别：可重复读（repeatable read），确保如果在一个事务中执行两次相同的SELECT语句，都能得到相同的结果，不管其他事务是否提交这些修改。这种隔离级别解决了不可重复读问题。</li>
 <li>第四级别：串行化读/序列化读（serializable），一个事务没结束的时候，另一个事务不允许开启。解决了所有问题，但效率低，需要事务排队</li>
@@ -489,14 +489,46 @@
 <li>怎么关闭自动提交：start transaction;</li>
 </ul>
 <p>如何设置MySQL数据库事务隔离级别：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; set global transaction isolation level &lt;read uncommitted | read committed | repeatable read | serializable&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; set [global|session] transaction isolation level read uncommitted | read committed | repeatable read | serializable</span><br></pre></td></tr></table></figure>
+<p>设置事务的隔离级别的语句中，在<code>SET</code>关键字后可以放置<code>GLOBAL</code>关键字、<code>SESSION</code>关键字或者什么都不放，这样会对不同范围的事务产生不同的影响，具体如下：</p>
+<ul>
+<li><p>使用<code>GLOBAL</code>关键字（在全局范围影响）：</p>
+<p>比方说这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET GLOBAL TRANSACTION ISOLATION LEVEL SERIALIZABLE;</span><br></pre></td></tr></table></figure>
+<p>则：</p>
+<ul>
+<li>只对执行完该语句之后产生的会话（<strong>每个客户端与服务器连接上之后，就可以称之为一个会话</strong>）起作用。</li>
+<li>当前已经存在的会话无效。</li>
+</ul>
+</li>
+<li><p>使用<code>SESSION</code>关键字（在会话范围影响）：</p>
+<p>比方说这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET SESSION TRANSACTION ISOLATION LEVEL SERIALIZABLE;</span><br></pre></td></tr></table></figure>
+<p>则：</p>
+<ul>
+<li>对当前会话的所有后续的事务有效</li>
+<li>该语句可以在已经开启的事务中间执行，但不会影响当前正在执行的事务。</li>
+<li>如果在事务之间执行，则对后续的事务有效。</li>
+</ul>
+</li>
+<li><p>上述两个关键字都不用（只对执行语句后的下一个事务产生影响）：</p>
+<p>比方说这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;</span><br></pre></td></tr></table></figure>
+<p>则：</p>
+<ul>
+<li>只对当前会话中下一个即将开启的事务有效。</li>
+<li>下一个事务执行完后，后续事务将恢复到之前的隔离级别。</li>
+<li>该语句不能在已经开启的事务中间执行，会报错的。</li>
+</ul>
+</li>
+</ul>
 <p>如何查询当前事务隔离级别：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select @@transaction_isolation;</span><br></pre></td></tr></table></figure>
 <p>当多个客户端并发地访问同一个表时，可能出现下面的一致性问题：</p>
 <ul>
 <li><p>脏读取（Dirty Read） </p>
 <ul>
-<li>一个事务读到另一个事务，尚未提交的修改，就是脏读。这里所谓的修改，除了Update操作,不要忘了还包括Insert和Delete操作。</li>
+<li>一个事务读到另一个事务尚未提交的修改，就是脏读。这里所谓的修改，除了Update操作,不要忘了还包括Insert和Delete操作。</li>
 <li>脏读的后果：如果后一个事务回滚，那么它所做的修改，统统都会被撤销。前一个事务读到的数据，就是垃圾数据。</li>
 </ul>
 </li>
@@ -508,6 +540,8 @@
 <li><p>幻像读（Phantom Read） </p>
 <ul>
 <li>幻像读是指在同一个事务中以前没有的行，由于其他事务的提交而<strong>出现的新行</strong>。针对insert</li>
+<li>幻读强调的是一个事务按照某个相同条件多次读取记录时，后读取时读到了之前没有读到的记录。如果delete了一些数据，后读取时发现数据少了，这个不叫幻读！</li>
+<li>那对于先前已经读到的记录，之后又读取不到这种情况，算啥呢？其实这相当于对每一条记录都发生了<strong>不可重复读</strong>的现象。幻读只是重点强调了读取到了之前读取没有获取到的记录。</li>
 </ul>
 </li>
 </ul>
@@ -551,7 +585,7 @@
 </div>
 <p>注意：<strong>InnoDB存储引擎通过多版本并发控制（MVCC）解决了repeatable read中的幻象读的问题</strong></p>
 <p><strong>不可重复读和幻读的区别</strong><br>很多人容易搞混不可重复读和幻读，确实这两者有些相似。但<strong>不可重复读重点在于update和delete，而幻读的重点在于insert</strong>。</p>
-<p>如果使用锁机制来实现这两种隔离级别，在可重复读中，该SQL第一次读取到数据后，就将这些数据加锁，其它事务无法修改这些数据，就可以实现可重复读了。但这种方法却无法锁住insert的数据，所以当事务A先前读取了数据，或者修改了全部数据，事务B还是可以insert数据提交，这时事务A就会发现莫名其妙多了一条之前没有的数据，这就是幻读，不能通过行锁来避免（<strong>当然了在InnoDB引擎中，采用可重复读就解决了幻象读的问题</strong>）。需要Serializable隔离级别 ，读用读锁，写用写锁，读锁和写锁互斥，这么做可以有效的避免幻读、不可重复读、脏读等问题，但会极大的降低数据库的并发能力。</p>
+<p>如果使用锁机制来实现这两种隔离级别，在可重复读中，该SQL第一次读取到数据后，就将这些被读取的数据加行级锁，其它事务无法修改这些数据，就可以实现可重复读了。但这种方法却无法锁住insert的数据，所以当事务A先前读取了数据，或者修改了全部数据，事务B还是可以insert数据提交，这时事务A就会发现莫名其妙多了一条之前没有的数据，这就是幻读，不能通过行锁来避免（<strong>当然了在InnoDB引擎中，采用可重复读就解决了幻象读的问题</strong>）。需要Serializable隔离级别 ，<strong>读用表级共享锁，写用表级排它锁</strong>，读锁和写锁互斥（即给表加表锁），这么做可以有效的避免幻读、不可重复读、脏读等问题，但会极大的降低数据库的并发能力。</p>
 <p>所以说不可重复读和幻读最大的区别，就在于如何通过锁机制来解决他们产生的问题。</p>
 <p><strong>对于这两种问题解决采用不同的办法，防止读到更改数据，只需对操作的数据添加行级锁，防止操作中的数据发生变化；而防止读到新增数据，往往需要添加表级锁，将整张表锁定，防止新增数据。</strong></p>
 
@@ -686,7 +720,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">111</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -697,7 +731,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -708,7 +742,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -799,7 +833,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共151.9k字</span>
+  <span class="post-count">博客全站共182.4k字</span>
 </div>
 <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
@@ -815,7 +849,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">151.9k</span>
+    <span title="Site words total count">182.4k</span>
   
 </div>
 
