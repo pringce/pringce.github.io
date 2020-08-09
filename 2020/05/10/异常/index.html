@@ -95,7 +95,7 @@
 <meta property="og:description" content="什么是异常？123456789public class Array &amp;#123;    public static void main(String[] args)&amp;#123;        int a = 10;        int b = 0;        // Exception in thread &quot;main&quot; java.lang.ArithmeticException: / by z">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2020/05/10/异常/1.png">
-<meta property="og:updated_time" content="2020-05-11T08:21:11.045Z">
+<meta property="og:updated_time" content="2020-08-08T07:14:11.979Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="异常">
 <meta name="twitter:description" content="什么是异常？123456789public class Array &amp;#123;    public static void main(String[] args)&amp;#123;        int a = 10;        int b = 0;        // Exception in thread &quot;main&quot; java.lang.ArithmeticException: / by z">
@@ -356,8 +356,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-11T16:21:11+08:00">
-                2020-05-11
+              <time title="更新于" itemprop="dateModified" datetime="2020-08-08T15:14:11+08:00">
+                2020-08-08
               </time>
             
           </span>
@@ -514,7 +514,7 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Array</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        NullPointerException e = <span class="keyword">new</span> NullPointerException(<span class="string">"空指针异常"</span>);</span><br><span class="line">        <span class="comment">// java.lang.NullPointerException: 空指针异常</span></span><br><span class="line">		<span class="comment">// at test.Array.main(Array.java:20)</span></span><br><span class="line">        <span class="comment">// java后台打印异常堆栈追踪信息的时候，采用了异步线程的方式打印</span></span><br><span class="line">        e.printStackTrace(); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="try-catch中的finally子句"><a href="#try-catch中的finally子句" class="headerlink" title="try-catch中的finally子句"></a>try-catch中的finally子句</h2><ul>
-<li>finally子句的代码是最后执行的，并且一定汇之星，即使try语句中的代码发生了异常</li>
+<li>finally子句的代码是最后执行的，并且一定会执行，即使try语句中的代码发生了异常</li>
 <li>finally得和try一起出现，不能单独编写</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Array</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            FileInputStream f = <span class="keyword">new</span> FileInputStream(<span class="string">"G:\\pringce.github.io\\source\\_posts\\异常\\1.png"</span>);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//会出现空指针异常</span></span><br><span class="line">            MyStack s = <span class="keyword">null</span>;</span><br><span class="line">            s.toString();</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//流必须要关闭，否则会占用内存</span></span><br><span class="line">            <span class="comment">//但由于上面出现了空指针异常，所以这里不会执行，会存在隐患</span></span><br><span class="line">            f.close();</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span>(FileNotFoundException e)&#123;</span><br><span class="line">            String msg = e.getMessage();</span><br><span class="line">            System.out.println(msg);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span>(IOException ioe)&#123;</span><br><span class="line">            ioe.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
