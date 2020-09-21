@@ -670,7 +670,7 @@ Person p = new Student();
 
 当调用的方法或属性是子类型中特有的，在父类型中不存在，必须进行向下转型
 
-- 向下转型把抽象的类型变成一个具体的子类型
+- 向下转型把引用的类型转换成它的某一个子类型（**注意：向下转型不一定将引用转换为堆中对象的类型，也可以转换为该堆中对象类型的直接父类、间接父类或者其对应的接口，但是不能是别的类型，因为要存在继承关系（一定要记住！！）。且转换后的引用类型必须是转换前的引用类型的子类型，即存在继承关系**）
 
 ```java 
 Person p = new Student();
@@ -689,7 +689,7 @@ Student s = (Student)p; // 向下转型
 
   - 上面的程序编译是没有问题的，因为编译器检查到a的类型是animal，animal和cat存在继承关系，并且animal是父类，cat是子类，父类转换成子类叫做向下转型，语法正确
 
-  - 程序虽然编译通过了，但是程序运行阶段会出现异常，因为JVM堆内存中真实存在的对象是bird类型，bird对象无法转换成cat对象，因为两种类型之间不存在任何继承关系，此时出现了著名异常
+  - 程序虽然编译通过了，但是程序运行阶段会出现异常，因为JVM堆内存中真实存在的对象是bird类型，因为两种类型之间不存在任何继承关系，cat类型引用不能指向bird类型对象，此时出现了著名异常
 
     - java.lang.ClassCastException
     - 类型转换异常，这种异常总是在向下转型的时候会发生
@@ -704,22 +704,21 @@ Student s = (Student)p; // 向下转型
 
       引用 instance of 数据类型名（类名）
 
-      例：a instance of animal
+      例：obj instance of class
 
       - 执行结果是boolean类型，true或false
-      - true表示a这个引用指向的对象是一个animal类型
-      - false表示a这个引用指向的对象不是一个animal类型
-
-    - 所以在向下转型前，先判断一下引用指向的对象是否是你要转换的类型。例如
-
-    ```java
-    if(a instance of cat){
-        cat c = (cat)a;
-    }else if(a instance of bird){
-        bird b = (bird)a;
-    }
-    ```
-    - java规范中要求：在进行向下转型前，建议使用instance of进行判断，避免出现java.lang.ClassCastException异常
+      - 其中 obj 为一个对象，Class 表示一个类或者一个接口，**当 obj 为 Class 的对象，或者是其直接或间接子类的对象，或者是其接口的实现类对象**，结果result 都返回 true，否则返回false
+  
+- 所以在向下转型前，先判断一下引用指向的对象是否是你要转换的类型。例如
+  
+```java
+if(a instance of cat){
+    cat c = (cat)a;
+}else if(a instance of bird){
+    bird b = (bird)a;
+}
+```
+java规范中要求：在进行向下转型前，建议使用instance of进行判断，避免出现java.lang.ClassCastException异常
 
 
 

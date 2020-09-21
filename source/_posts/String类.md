@@ -157,7 +157,7 @@ System.out.println(s.isEmpty()); // true
 System.out.println("abc".length()); //3 
 ```
 
-- replace方法：替换。还有个replaceAll，和这个差不多，只不过target支持正则表达式
+- replace方法：替换。还有个replaceAll，和这个差不多，只不过target支持正则表达式，两个方法都是全部替换，即替换全部符合的目标字符串
 
 ```java
 // String replace(String target,String replacement)

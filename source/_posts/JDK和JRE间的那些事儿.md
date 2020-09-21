@@ -65,7 +65,7 @@ bin\jlink.exe --module-path jmods --add-modules java.desktop --output jre
 
 
 
-**Java1.8及以前，服务器上是否只安装 JRE 就可以了？**（Java开始不存在这个问题，因为没有单独的JRE下载，全都要下载JDK）
+**Java1.8及以前，服务器上是否只安装 JRE 就可以了？**（从Java11开始不存在这个问题，因为没有单独的JRE下载，全都要下载JDK）
 
 理论上是可以的，但是有前提条件。
 

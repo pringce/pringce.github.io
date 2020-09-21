@@ -32,7 +32,7 @@ categories:
 
   2. 进入到bin文件夹，打开cmd命令行，输入命令：
 
-     ```sql
+     ```mysql
      mysqld install MySQL80
      ```
 
